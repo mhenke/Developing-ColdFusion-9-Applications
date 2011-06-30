@@ -20,6 +20,10 @@ Please add yourself if you helped:
 
 Mike Henke (henke.mike@gmail.com) - "https://github.com/mhenke/":https://github.com/mhenke/
 
+h2. Translation
+
+If you wish to translate the book, please put your translation into the appropriate subdirectory of this project (ie: 'it' for Italian and so forth) and send me (mhenke) a pull request.
+
 h2. Git Workflow for Contributors
 
 This project uses the excellent "Git Workflow series":http://www.silverwareconsulting.com/index.cfm/Git-Workflow by "Bob Silverburg":https://github.com/bobsilverberg/ for contributions.
