@@ -22,8 +22,7 @@ Mike Henke (henke.mike@gmail.com) - "https://github.com/mhenke/":https://github.
 
 ## File / Folder Structure and Translation
 
-The file and folder structure is based the Pro Git book's github repository at "https://github.com/progit/progit":https://github.com/progit/progit .  It is licensed under the
-Please support this kind of book publishing from Apress by purchasing a print copy of Pro Git at Amazon: http://tinyurl.com/amazonprogit
+The file and folder structure is based the Pro Git book's github repository at "https://github.com/progit/progit":https://github.com/progit/progit . Please support this kind of book publishing from Apress by purchasing a print copy of Pro Git at Amazon: http://tinyurl.com/amazonprogit
 
 If you wish to translate the book, please put your translation into the appropriate subdirectory of this project (ie: 'it' for Italian and so forth) and send me (mhenke) a pull request.
 
