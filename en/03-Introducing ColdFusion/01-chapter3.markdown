@@ -102,11 +102,11 @@ For more information, see "Elements of CFML" on page 17.
 ### CFML tags
 CFML looks like HTML--it includes starting and, in most cases, ending tags, and each tag is enclosed in angle brackets. All ending tags are preceded with a forward slash (/) and all tag names are preceded with cf; for example:
 
-'''
+```cfm
  <cftagname>
      tag body text and CFML
 </cftagname>
-'''
+```
 
 CFML increases productivity by providing a layer of abstraction that hides many low-level details involved with Internet application programming. At the same time, CFML is powerful and flexible. ColdFusion lets you easily build applications that integrate files, databases, legacy systems, mail servers, FTP servers, objects, and components.
 
