@@ -364,10 +364,10 @@ Flex and AIR Integration in ColdFusion
 
 Also, remember the following considerations regarding data types:
 
-· If a string data type on the server represents a valid number in ActionScript, Flash can automatically cast it to a
+* If a string data type on the server represents a valid number in ActionScript, Flash can automatically cast it to a
    number if needed.
 
-· To return multiple, independent values to the SWF application, place them in a complex variable that converts to
+* To return multiple, independent values to the SWF application, place them in a complex variable that converts to
    a Flash Object, Array, or Associative Array, that can hold all of the required data. Return the single variable and
    access its elements in the SWF application.
 
@@ -867,7 +867,7 @@ platforms that ColdFusion supports.
 
 To use Flash Remoting Update, you must have the following installed:
 
-· Flex 2 SDK or later, Flex Builder 2 or later, Flash Builder 4.
+* Flex 2 SDK or later, Flex Builder 2 or later, Flash Builder 4.
 
 
                                                  
@@ -883,7 +883,7 @@ Flex and AIR Integration in ColdFusion
    allows messaging support. For more information about manually installing LiveCycle Data Services ES 2.6.1, see
    Installing LiveCycle Data Services Manually in the Installation Guide.
 
-· Flash Player 8.5 or later
+* Flash Player 8.5 or later
 
 
 Configure Flex Compilation
@@ -903,9 +903,9 @@ Flex Builder to use the services-config.xml file for you. Use the following step
 
 2 Select one of the radio buttons, as follows:
 
-    · Select ColdFusion Flash Remoting to compile in Flex Builder.
+    * Select ColdFusion Flash Remoting to compile in Flex Builder.
 
-    · If you installed LiveCycle Data Services with ColdFusion and want to use messaging or data management, select
+    * If you installed LiveCycle Data Services with ColdFusion and want to use messaging or data management, select
        Flex Data Services.
 
 3 If you select Flex Data services, select whether to compile the application locally in Flex Builder or on the
@@ -951,9 +951,9 @@ Flex and AIR Integration in ColdFusion
 
 3 Select one of the radio buttons, as follows:
 
-    · Select ColdFusion Flash Remoting to compile in Flex Builder.
+    * Select ColdFusion Flash Remoting to compile in Flex Builder.
 
-    · If you installed LiveCycle Data Services and want to compile the application on the server, select LiveCycle Data
+    * If you installed LiveCycle Data Services and want to compile the application on the server, select LiveCycle Data
        services in Flex Builder 3.
 
 4 Click Next to open the Configure ColdFusion page, and enter the required information. If you selected LiveCycle
@@ -982,9 +982,9 @@ compile the application for use with ColdFusion, configure Flex Builder manually
 Specify a CFC
 To specify a CFC to connect to, you do one of the following:
 
-· Specify the dot-delimited path from the web root to the CFC in the MXML.
+* Specify the dot-delimited path from the web root to the CFC in the MXML.
 
-· Create a named resource for the CFC. Creating this resource is like registering a data source; you then use the
+* Create a named resource for the CFC. Creating this resource is like registering a data source; you then use the
    resource name in your XML.
 
 
@@ -999,13 +999,13 @@ To specify the CFC in your MXML, use code such as the following:
 ColdFusion 9 supports BlazeDS that allows messaging support for ColdFusion. When you install ColdFusion, the
 following files are added to the /WEB-INF/flex directory:
 
-· remoting-config.xml
+* remoting-config.xml
 
-· messaging-config.xml
+* messaging-config.xml
 
-· services-config.xml
+* services-config.xml
 
-· proxy-config.xml
+* proxy-config.xml
 
 The destination ColdFusion is preconfigured in remoting-config.xml. The default source value for this destination is
 the wildcard, *. For more information about the changes in Flash Remoting for ColdFusion 9, see Changes in the XML
@@ -1285,11 +1285,11 @@ To manage interactions with the AIR application and keep the data synchronized, 
 component called the SyncManager. The SyncManager implements the CFIDE.AIR.ISyncManager interface. The
 component has two functions:
 
-· A fetch function that the AIR application calls to get data from ColdFusion. This function is not part of the
+* A fetch function that the AIR application calls to get data from ColdFusion. This function is not part of the
    ISyncManager interface, but is required. The function can have any arbitrary name, but is called fetch by
    convention.
 
-· A sync function that the AIR application calls to synchronize the ColdFusion and AIR data sources when the
+* A sync function that the AIR application calls to synchronize the ColdFusion and AIR data sources when the
    application updates or changes data. This function takes three parameters:
 
    operations An array of operations to perform INSERT, UPDATE, or DELETE.
@@ -1308,22 +1308,22 @@ the conflict as described in "Conflict management" on page 635.
 
 
 Server-Side notes
-· When the sync function performs a DELETE operation, it gets the primary key ID from the OriginalObject of the
+* When the sync function performs a DELETE operation, it gets the primary key ID from the OriginalObject of the
    Sync method, as the ClientObject is NULL. For update and insert operations, use the ClientObject key value.
 
-· When you do an INSERT operation, the CFC checks whether the OriginalObject parameter of the sync method is
+* When you do an INSERT operation, the CFC checks whether the OriginalObject parameter of the sync method is
    a simple value, as in the following code:
 
    {NOT IsSimpleValue(OriginalObject)}
 
-· In an INSERT operation, OriginalObject passed to the Sync function is null. So if you attempt to retrieve any of its
+* In an INSERT operation, OriginalObject passed to the Sync function is null. So if you attempt to retrieve any of its
    properties, you get a Method NOT Found error. For Example, OriginalObject.GetID results in a Method GetID()
    not found error. So, for Insert operation, use ClientObject to access various fields.
 
-· While a ColdFusion application can use cfquery to directly manage the database, most AIR applications are
+* While a ColdFusion application can use cfquery to directly manage the database, most AIR applications are
    expected to use the ORM feature. The discussion here uses ColdFusion ORM for server-side data management.
 
-· You may see the following kind of error message if you are using ColdFusion 8 Remoting with AIR offline
+* You may see the following kind of error message if you are using ColdFusion 8 Remoting with AIR offline
    applications, which have server side "Sync" method using ORM EntitySave()/EntityDelete() methods.
 
    Error handling message: flex.messaging.MessageException: Unable to invoke CFC - a different
@@ -1353,7 +1353,7 @@ Flex and AIR Integration in ColdFusion
 
 
 
-· In case of a conflict, the sync function returns an array of "CFIDE.AIR.Conflict" objects to the client. There are
+* In case of a conflict, the sync function returns an array of "CFIDE.AIR.Conflict" objects to the client. There are
    four properties a conflict object can have: operation,serverobject,clientobject,originalobject.
 
    The serverobject property of the conflict object must be a user-defined CFC type that represents the server-side
@@ -1375,7 +1375,7 @@ Flex and AIR Integration in ColdFusion
    <cfset serverobject = EntityLoadByPK("employee",#res.IDENTITYCOL#)>
    <cfset conflict.SetServerobject(serverobject)>
 
-· When an AIR client with stale data tries to update an already deleted record from the database, server throws the
+* When an AIR client with stale data tries to update an already deleted record from the database, server throws the
    conflict, and the client's conflict handle, which has the KeepAllServerObjects or KeepServerObject method
    accepts the changes from the server. However, the client method does not delete the stale record, which no longer
    exists in the server database, from the client database.
@@ -1520,26 +1520,26 @@ persistent objects in the local or offline database.
 Managing relationships
 The ActionScript persistent framework lets you define the following relationship types between two persistent objects.
 
-· one-to-one
+* one-to-one
 
-· one-to-many
+* one-to-many
 
-· many-to-one
+* many-to-one
 
-· many-to-many
+* many-to-many
 
 To understand how the persistent framework handles relationships, let us consider an example of the Employee and
 Department objects in a database.
 
 If you do not specify attribute values, the default values are taken as follows:
 
-· The default table name is the class name.
+* The default table name is the class name.
 
-· The default value for columnDefinition is the ActionScript type of the field.
+* The default value for columnDefinition is the ActionScript type of the field.
 
-· The default value for referencedColumnName is the primary key of the target entity.
+* The default value for referencedColumnName is the primary key of the target entity.
 
-·   The default value for targetEntity is the ActionScript type of the referring field.
+*   The default value for targetEntity is the ActionScript type of the referring field.
 
 Note: In case you are using ORM CFCs, the remotingFetch attribute in the <cfproperty> tag is set to false by default for
 all relationships. You must set this attribute to true to retrieve data on the client side.
@@ -1676,11 +1676,11 @@ object, irrespective of the value you specify for the ignoreLazyLoad parameter.
 
 When you specify fetchType="LAZY" at the class-definition level, you can have two possibilities:
 
-· When you specify the ignoreLazyLoad parameter as true, the related object is also loaded. For example, if you
+* When you specify the ignoreLazyLoad parameter as true, the related object is also loaded. For example, if you
    have two related objects Address and Customer, and specify loadByPK(Customer,{id:3},true), the Address
    object is also loaded.
 
-· When you do not specify any value for the ignoreLazyLoad parameter, it takes the default value that is false, and
+* When you do not specify any value for the ignoreLazyLoad parameter, it takes the default value that is false, and
    the related object is not loaded. For example, if you have two related objects Address and Customer, and specify
    loadByPK(Customer,{id:3}), the Address object is not loaded.
 
@@ -1728,9 +1728,9 @@ The AIR application uses the SyncManager class to fetch data from the server and
 ColdFusion data source. The SyncManager uses a coldfusion.air.Session object to manage the session between the
 client and the local SQLite database, and uses calls to the following methods in the ColdFusion sync manager CFC:
 
-· fetch to get data from the remote system
+* fetch to get data from the remote system
 
-· sync to synchronize the local and remote data
+* sync to synchronize the local and remote data
 
 The following text describes basic functionality that you must implement. For details on the SyncManager and Session
 classes, and other classes in the coldfusion.air package, see ActionScript 3.0 Reference. Alternatively, you can see the
@@ -1851,15 +1851,15 @@ accessible through the Documentation link on the Resources page of the ColdFusio
 
 
 Notes:
-· The SQLite database doesn't validate column types when it creates a table. If you give it an invalid value for column
+* The SQLite database doesn't validate column types when it creates a table. If you give it an invalid value for column
     data type, it creates the column with that type.
 
-· When you pass a unique integer ID parameter (one that is not used in the application) to the OpenSession method,
+* When you pass a unique integer ID parameter (one that is not used in the application) to the OpenSession method,
     the method creates an intermediate database file, which tracks the client changes to be committed on the server. If
     you use more than one database in a single application, use a unique ID for each database. Using a single ID ensures
     that you use the correct database for each client-side transaction.
 
-· For asynchronous calls (such as SaveCache) that save fetched data in the local database, the call result can be
+* For asynchronous calls (such as SaveCache) that save fetched data in the local database, the call result can be
     available by using the session token when the call returns, before the responders are added. This situation occurs if
     the SaveCache operation tries to save null data. That is, if the fetch operation returned null data. In such cases, a
     responder is not required.
@@ -1896,17 +1896,17 @@ Flex and AIR Integration in ColdFusion
 
 
 
-· If you call the SaveUpdate Method and a record with the specified primary key doesn't exist, the function inserts
+* If you call the SaveUpdate Method and a record with the specified primary key doesn't exist, the function inserts
    the record. The method updates an existing record only if the primary key exists in the client database.
 
-· After you fetch data from the server, use only the SaveCache and SaveCacheUpdate methods to save the fetched
+* After you fetch data from the server, use only the SaveCache and SaveCacheUpdate methods to save the fetched
    data into client side database. If you use the Save function to store the fetched data, the data is marked for insert on
    server on commit, and the data you just got is written back to the server. In this case, a conflict occurs for the server
    database primary key. If the server-side logic handles this conflict by ignoring the primary key ID from the client,
    and lets the server generate a new ID, then the records are inserted, resulting in multiple copies of the data with
    different IDs.
 
-· For AIR integration offline support, if you do not globally declare the variables for client side ActionScript classes
+* For AIR integration offline support, if you do not globally declare the variables for client side ActionScript classes
    but attempt to save the data records fetched from server using session.saveCache() or
    session.saveUpdateCache(), you might encounter AIR side error stackstrace with a message similar to the
    following:
@@ -1968,11 +1968,11 @@ Flex and AIR Integration in ColdFusion
 originalobjects: An array of data that was in the client database before the change. There is no conflict in the
 following circumstances:
 
-· If your are updating a record and the data on the server is same as the data in the originalobject. The client before
+* If your are updating a record and the data on the server is same as the data in the originalobject. The client before
    the change had the same data as the server. In this case, the server updates its data source. If the old client data
    differs from that on the server, the application must handle the conflict.
 
-· If you are inserting a new record. In this case, there is no originalobject value and ColdFusion can insert the record
+* If you are inserting a new record. In this case, there is no originalobject value and ColdFusion can insert the record
    in the data store.
 
 You use the ColdFusion ObjectEquals function to identify conflicts. Pass the function the new instance of cfc from the
@@ -2078,7 +2078,7 @@ token.addResponder(new mx.rpc.Responder(conflictSuccess, conflictFault));
 
 Conflicts can happen in the following cases:
 
-· When the client does an update after the server data was updated. In this case, the client was using an old instance
+* When the client does an update after the server data was updated. In this case, the client was using an old instance
    of data and not the latest data on the server. The server can inform the client by creating an instance of conflict.cfc
    in the sync method and setting the server instance on it. On the client side, you can call the keepServerObject
    function in the conflict handler to resolve the conflict by updating the client database with the server instance.
@@ -2094,11 +2094,11 @@ Flex and AIR Integration in ColdFusion
 
 
 
-· When the client does an update but that record no longer exists on the server. Again, a conflict can be passed to the
+* When the client does an update but that record no longer exists on the server. Again, a conflict can be passed to the
    client from the server by creating an instance of Conflict.cfc and returning it. There is no need to set a serverobject
    property, as there is no server instance of the inserted data.
 
-· When the client did an insert, but for example, the server data uses an autoincrement primary key field. The server,
+* When the client did an insert, but for example, the server data uses an autoincrement primary key field. The server,
    therefore, does not use the primary key inserted by the client. To inform the client of the correct key field value, the
    server returns the conflict cfc instance with the server instance. The ActionScript Calling keepServerObject method
    can then update the local data with the new primary key value from the server.
@@ -2630,27 +2630,27 @@ The AIR integration feature introduced in ColdFusion 9 has an ActionScript ORM f
 database present within Adobe Integrated Runtime (AIR). This release has the following enhancements for this
 ActionScript ORM:
 
-· Support for auto-generating primary keys
+* Support for auto-generating primary keys
 
-· Support for encrypted database (introduced in AIR 1.5).
+* Support for encrypted database (introduced in AIR 1.5).
 
-· Cache file used by ActionScript ORM to track the operations on SQLite database is now in the
+* Cache file used by ActionScript ORM to track the operations on SQLite database is now in the
    applicationStoragedirectory instead of applicationDirectory. You can specify the location of the cahceDirectory in
    openSession API on syncmanager.
 
-· Supports Self Join relationships for one-to-one, one-to-many, and many-to-many database relationships.
+* Supports Self Join relationships for one-to-one, one-to-many, and many-to-many database relationships.
 
-· Supports both Array and ArrayCollection for use in ActionScript Entity to represent a collection in a database
+* Supports both Array and ArrayCollection for use in ActionScript Entity to represent a collection in a database
    relationship.
 
-· ActionScript ORM logs all the SQL statements that ORM uses to persist entities into the SQLite database.
+* ActionScript ORM logs all the SQL statements that ORM uses to persist entities into the SQLite database.
 
-· New APIs keepClientObject and keepAllClientObjects to ensure that the server updates are not retained
+* New APIs keepClientObject and keepAllClientObjects to ensure that the server updates are not retained
    when ColdFusion server raises conflict.
 
-· The class SessionToken is dynamic and therefore, data can be stored on the token returned from the ORM APIs.
+* The class SessionToken is dynamic and therefore, data can be stored on the token returned from the ORM APIs.
 
-· Supports autocommit mode
+* Supports autocommit mode
 
 
 Auto-generating primary keys
@@ -3139,11 +3139,11 @@ cfmail, cfpdf, cfpop. Using ColdFusion you can also upload files from the applic
 
 ColdFusion provides the following Flex proxy classes and related support classes:
 
-· Config (configures the application for using ColdFusion services)
+* Config (configures the application for using ColdFusion services)
 
-· Util (includes file upload support)
+* Util (includes file upload support)
 
-· Chart (cfchart)
+* Chart (cfchart)
 
 
 
@@ -3155,15 +3155,15 @@ Flex and AIR Integration in ColdFusion
 
 
 
-· Document (cfdocument)
+* Document (cfdocument)
 
-· Image (cfimage)
+* Image (cfimage)
 
-· Mail (cfmail)
+* Mail (cfmail)
 
-· PDF (cfpdf)
+* PDF (cfpdf)
 
-· Pop (cfpop)
+* Pop (cfpop)
 
 These classes are part of coldfusion.service.mxml package, distributed in the cfservices.swc file. You normally use these
 classes in MXML tag format, using the cf namespace identifier, as in the following line:
@@ -3253,9 +3253,9 @@ Using the Util class
 The Image, PDF, and Mail services typically act on a file that has been uploaded to the server. To upload the file to your
 CF server, use the Util class to run the ColdFusion Upload service. The Util class consists of two elements:
 
-·   The UPLOAD_URL constant contains the URL on the ColdFusion server of the Upload service, relative to cf_webroot.
+*   The UPLOAD_URL constant contains the URL on the ColdFusion server of the Upload service, relative to cf_webroot.
 
-·   The extractURLFromUploadResponse() method takes response returned by the Upload service as input and
+*   The extractURLFromUploadResponse() method takes response returned by the Upload service as input and
    returns the path of the uploaded file on the ColdFusion server.
 
 You use the UPLOAD_URL constant and the extractURLFromUploadResponse() function in the following workflow
@@ -3929,16 +3929,16 @@ Using the Chart class
 The Chart class is the proxy for the ColdFusion Chart service, which provides the functionality of the cfchart tag and
 its child chartdata and chartseries tags.
 
-· You specify the cfchart attributes as Chart object properties.
+* You specify the cfchart attributes as Chart object properties.
 
-· You represent chart series in the chartSeries element of the chart object. The chartSeries element is an arrays
+* You represent chart series in the chartSeries element of the chart object. The chartSeries element is an arrays
     of objects, each of which represents a single chart (chartseries tag) document section. These objects include a
     type element for the chart type, a chartdata element for the chart data, and elements for any other series attributes.
 
-· You represent each chart's data as an array of objects, each of which contains an item element and a value element.
+* You represent each chart's data as an array of objects, each of which contains an item element and a value element.
     You use these arrays as the chartdata elements of the chartSeries object.
 
-· You call the document object execute() function to run the service.
+* You call the document object execute() function to run the service.
 
 The following example shows how you can use the chart service:
 
@@ -4036,19 +4036,19 @@ Using the Document class
 The Document class is the proxy for the ColdFusion Document service, which provides the functionality of the
 cfdocument tag and its child cfdocumentsection and cfdocumentitem tags.
 
-· You specify the cfdocument attributes as Document object properties. You specify document content that is not
+* You specify the cfdocument attributes as Document object properties. You specify document content that is not
    in a section as a content element of the document object.
 
-· You represent document sections in the documentSection element of the document object. The documentSection
+* You represent document sections in the documentSection element of the document object. The documentSection
    element is an arrays of objects, each of which represents a single document section. These objects include a content
    element for the section content, an optional documentItem element for the document items, and elements for any
    other section attributes.
 
-· You represent all document items in a document section (or the document object) as an array of objects with type
+* You represent all document items in a document section (or the document object) as an array of objects with type
    and content elements. The array element type field specifies whether the item is a header, footer, or page break. You
    specify the document item array as a documentItem element of the document object or a documentSection object.
 
-· You call the document object execute() function to run the service.
+* You call the document object execute() function to run the service.
 
 The following excerpt from the full example shows how to create sections and items and add them to a document:
 
@@ -4416,22 +4416,22 @@ To provide configuration information, you edit the following files:
 To ensure that Flex recognizes the LiveCycle Data Services ES assembler and can transport messages to and from the
 destination, by doing the following:
 
-· Specifying ColdFusion-specific channel definitions
+* Specifying ColdFusion-specific channel definitions
 
-· Specifying the ColdFusion Data Service adapter
+* Specifying the ColdFusion Data Service adapter
 
-· Specifying a destination
+* Specifying a destination
 
-· Enabling ColdFusion-specific debugging output
+* Enabling ColdFusion-specific debugging output
 
 
 Enhanced Flash Remoting
 ColdFusion 9 has introduced enhanced Flash Remoting.
 
-· Enhanced Flash Remoting supports Circular references for objects which are not supported in old Flash Remoting
+* Enhanced Flash Remoting supports Circular references for objects which are not supported in old Flash Remoting
    (ColdFusion 8).
 
-· Enhanced Flash Remoting is significantly faster than the old one
+* Enhanced Flash Remoting is significantly faster than the old one
 
 The default ColdFusion 9 installation makes use of this Enhanced Flash Remoting. The structure inside the xml
 configuration files under WEB-INF/flex directory has been changed to support Enhanced Flash Remoting.
@@ -4476,13 +4476,13 @@ Changes in the XML configuration files for Flash Remoting in ColdFusion 9 and Co
 9.0.1
 For ColdFusion 9, the structure of the services-config.xml file has changed. These structural changes are:
 
-· A new <coldfusion> tag has been added under the <properties> in <channel-definition>, where the
+* A new <coldfusion> tag has been added under the <properties> in <channel-definition>, where the
    <access>, <use-accessor>, <use-structs>, and <property-case> tags are defined.
 
    In old ColdFusion 8 style remoting, these tags used to be present in the destination, defined in data-management-
    config.xml file.
 
-· Previously, the <serialization> tag included:
+* Previously, the <serialization> tag included:
 
    <serialization>
          <instantiate-types>false</instantiate-types>
@@ -4491,7 +4491,7 @@ For ColdFusion 9, the structure of the services-config.xml file has changed. The
    However, now you need to either set the <instantiate-types> to true or remove it from the services-config.xml
    file.
 
-· The <enable-small-messages> flag must be set to false under the serialization property.
+* The <enable-small-messages> flag must be set to false under the serialization property.
 
    Note: In case you create custom channel definition on your client side by overriding the XML-based channel
    configurations, you still need to set "enableSmallMessages" flag to false. This is shown in the following code example:
@@ -4504,7 +4504,7 @@ For ColdFusion 9, the structure of the services-config.xml file has changed. The
    </mx:channels>
    </mx:ChannelSet>
 
-· In ColdFusion 9, the endpoint class names have been changed from the endpoint classes in ColdFusion 8. The
+* In ColdFusion 9, the endpoint class names have been changed from the endpoint classes in ColdFusion 8. The
    following table provides a list of channel-definitions and their corresponding endpoint classes:
 
 
@@ -4537,7 +4537,7 @@ Flex and AIR Integration in ColdFusion
 
    Note: For LiveCycle Data Services ES, the cf-polling-amf and cf-rtmp channel definitions are used.
 
-· ColdFusion 9.0.1 supports BlazeDS 4.
+* ColdFusion 9.0.1 supports BlazeDS 4.
 
    The following table details the endpoint classes for BlazeDS:
 
@@ -4549,7 +4549,7 @@ Flex and AIR Integration in ColdFusion
     secure-streaming-amf           coldfusion.flash.messaging.SecureCFStreamingAMFEndPoint
 
 
-· ColdFusion 9.0.1 supports LCDS 3 and LCDS 3.1.
+* ColdFusion 9.0.1 supports LCDS 3 and LCDS 3.1.
 
    The following table details the endpoint classes for LCDS:
 
@@ -4567,7 +4567,7 @@ Flex and AIR Integration in ColdFusion
     secure-nio-amf-stream          coldfusion.flash.messaging.SecureCFStreamingNIOAMFEndPoint
 
 
-· In ColdFusion 9.0.1, a channel-definition construct has been introduced in services-config.xml
+* In ColdFusion 9.0.1, a channel-definition construct has been introduced in services-config.xml
    (CF_root/wwroot/WEB-INF/flex/) named serialize-array-to-arraycollection.
 
    This construct provides more flexibility and control for users to decide whether to serialize the ColdFusion array
@@ -4580,7 +4580,7 @@ Flex and AIR Integration in ColdFusion
    Note: This construct is not considered when ColdFusion Array is sent to LCDS Flex Client. In this case, ColdFusion
    Array always gets translated to ActionScript ArrayCollection.
 
-· All the other files that need to be referenced from services-config.xml are now `included' in services-config.xml.
+* All the other files that need to be referenced from services-config.xml are now `included' in services-config.xml.
 
 In ColdFusion 8, the services-config.xml files looked similar to the following:
 
@@ -4756,9 +4756,9 @@ use-mappings                                         A Boolean value specifying 
 method-access-level                                  Specifies the access attribute values a CFC must have for ColdFusion to respond to
                                                      the request. The following values are valid:
 
-                                                     ·  remote Flex can access only functions that specify remote access. (the default)
+                                                     *  remote Flex can access only functions that specify remote access. (the default)
 
-                                                     ·  public Flex can access functions that specify both remote or public access.
+                                                     *  public Flex can access functions that specify both remote or public access.
 
 
 
@@ -4940,9 +4940,9 @@ management-config.xml file.
 Writing the ColdFusion CFCs
 When you create your ColdFusion CFCs, you can do one of the following:
 
-· Create an assembler CFC and a Value Object CFC.
+* Create an assembler CFC and a Value Object CFC.
 
-· Create an assembler CFC, a Data Access Object (DAO) CFC, and a Value Object CFC.
+* Create an assembler CFC, a Data Access Object (DAO) CFC, and a Value Object CFC.
 
 
 
@@ -5033,22 +5033,22 @@ Flex and AIR Integration in ColdFusion
 In addition to specifying the returntype of the fill function depending on whether you are using Value Objects, a
 query, or an array of structures, you also do the following in the lower level read function:
 
-· Specify the returntype of the read function as the Value Object CFC, a query, or an array, for example:
+* Specify the returntype of the read function as the Value Object CFC, a query, or an array, for example:
 
-   · <cffunction name="read" output="false" access="public"
+   * <cffunction name="read" output="false" access="public"
        returntype="samples.contact.Contact[]">
 
-   · <cffunction name="read" output="false" access="public" returntype="query">
+   * <cffunction name="read" output="false" access="public" returntype="query">
 
-   · <cffunction name="read" output="false" access="public" returntype="array">
+   * <cffunction name="read" output="false" access="public" returntype="array">
 
-· If you are using Value Objects:
+* If you are using Value Objects:
 
-   · Create the array to contain the Value Objects, as follows:
+   * Create the array to contain the Value Objects, as follows:
 
         <cfset var ret = ArrayNew(1)>
 
-   · Loop through the query to create each Value Object based on each row of the query, for example:
+   * Loop through the query to create each Value Object based on each row of the query, for example:
 
         <cfloop query="qRead">
              <cfscript>
@@ -5066,13 +5066,13 @@ query, or an array of structures, you also do the following in the lower level r
              </cfscript>
        </cfloop>
 
-· If you are using a query:
+* If you are using a query:
 
-   · Ensure that you configured the destination with the row type for the destination so that ColdFusion correctly
+   * Ensure that you configured the destination with the row type for the destination so that ColdFusion correctly
        labels each rows in the query with the corresponding ActionScript type. Use the query-row-type element,
        which is in the metadata section of the destination.
 
-   · Specify the following in the fill method:
+   * Specify the following in the fill method:
 
         <cffunction name="fill" output="no" returntype="query"
              access="remote">
@@ -5083,7 +5083,7 @@ query, or an array of structures, you also do the following in the lower level r
              <cfreturn myQuery>
        </cffunction>
 
-   · If you are using a DAO CFC, edit the read method to return a query instead of an array of CFCs.
+   * If you are using a DAO CFC, edit the read method to return a query instead of an array of CFCs.
 
 
 
@@ -5096,17 +5096,17 @@ Flex and AIR Integration in ColdFusion
 
 
 
-     · Ensure that the query column names match the case of the properties in the ActionScript object. Use the
+     * Ensure that the query column names match the case of the properties in the ActionScript object. Use the
         property-case settings in the destination to do so. Set the force-query-lowercase element to false so that
         ColdFusion converts all column names to lowercase.
 
-· If you are using an array of structures:
+* If you are using an array of structures:
 
-     · Create the array to contain the Value Objects, as follows:
+     * Create the array to contain the Value Objects, as follows:
 
         <cfset var ret = ArrayNew(1)>
 
-     · Loop through the query to create the structure that contains the results of the query, for example:
+     * Loop through the query to create the structure that contains the results of the query, for example:
 
         <cfloop query="qRead">
              <cfscript>
@@ -5124,11 +5124,11 @@ Flex and AIR Integration in ColdFusion
              </cfscript>
         </cfloop>
 
-     · Use the __type__ structure element to specify that the Value Object CFC is the type, for example:
+     * Use the __type__ structure element to specify that the Value Object CFC is the type, for example:
 
         stContact["__type_"] = "samples.contact.Contact";
 
-     · Use the associative array syntax, for example, contact["firstName"] to ensure that you match the case of the
+     * Use the associative array syntax, for example, contact["firstName"] to ensure that you match the case of the
         ActionScript property. If you use the other syntax, for example, contact.firstName="Joan", ColdFusion
         makes the key name uppercase.
 
@@ -5170,11 +5170,11 @@ Flex and AIR Integration in ColdFusion
 
 The fillContains method has the following arguments:
 
-· fillArgs is a list of arguments to pass to the fill method.
+* fillArgs is a list of arguments to pass to the fill method.
 
-· item is the record to check to determine if it is in the result set.
+* item is the record to check to determine if it is in the result set.
 
-· isCreate indicates whether the record is new.
+* isCreate indicates whether the record is new.
 
 A sample fillContains method, which determines whether the fill arguments (part of the first or last name) are
 in the Contact item passed to the function, is as follows:
@@ -5249,11 +5249,11 @@ Flex and AIR Integration in ColdFusion
 
 The returntype of a get method can be any of the following:
 
-· The Value Object CFC
+* The Value Object CFC
 
-· Any
+* Any
 
-· An array
+* An array
 
 
 Creating the sync method
@@ -5345,9 +5345,9 @@ you can set credentials in the Flex destination, although it is not the recommen
 
 You can set the credentials by doing either of the following:
 
-· Specifying credentials in ActionScript
+* Specifying credentials in ActionScript
 
-· Specifying credentials in the Flex destination
+* Specifying credentials in the Flex destination
 
 
 Specifying credentials in ActionScript
@@ -5622,11 +5622,11 @@ RecordSet object.
 Software requirements
 To use server-side ActionScript files, you must have the following software installed:
 
-· Adobe Flash
+* Adobe Flash
 
-· ColdFusion
+* ColdFusion
 
-· Flash Remoting Components
+* Flash Remoting Components
 
 For more information about these products, go to www.adobe.com.
 
@@ -5684,13 +5684,13 @@ function basicQuery()
 What to do next
 If you are already familiar with ActionScript, here a few things to get you started:
 
-· How to establish a connection with the Flash Remoting service using client-side ActionScript. See "Connecting to
+* How to establish a connection with the Flash Remoting service using client-side ActionScript. See "Connecting to
    the Flash Remoting service" on page 691
 
-· How to reference server-side ActionScript functions and methods. See "Using server-side ActionScript functions"
+* How to reference server-side ActionScript functions and methods. See "Using server-side ActionScript functions"
    on page 692.
 
-· How to code the server-side CF.query and CF.http functions. See "Using the CF.query function" on page 694 and
+* How to code the server-side CF.query and CF.http functions. See "Using the CF.query function" on page 694 and
    "Using the CF.http function" on page 700. Also see the reference pages for these functions in the CFML Reference.
 
 For additional information on using Flash Remoting, see "Using the Flash Remoting Service" on page 606 and Using
@@ -5774,10 +5774,10 @@ basicCustomerQuery_Result.
 The results returned by server-side ActionScript functions differ somewhat depending on whether you are using
 CF.http or CF.query:
 
-· The CF.query function returns a record set, which you manipulate using methods available in the RecordSet
+* The CF.query function returns a record set, which you manipulate using methods available in the RecordSet
     ActionScript class object. See Using results returned by the CF.query function section.
 
-· The CF.http function returns simple text strings through properties that you reference in your server-side
+* The CF.http function returns simple text strings through properties that you reference in your server-side
     ActionScript. See Using results returned by the CF.http function section.
 
 
@@ -5887,19 +5887,19 @@ You use the server-side ActionScript feature in ColdFusion to publish dynamic da
 ActionScript files that perform queries against ColdFusion data sources. Before using ActionScript, you must
 understand how to do the following:
 
-· Create database queries in the server-side ActionScript file using the CF.query ActionScript function. See "Using
+* Create database queries in the server-side ActionScript file using the CF.query ActionScript function. See "Using
    the CF.query function" on page 694.
 
-· Reference the server-side ActionScript file in your SWF movie. See "Connecting to the Flash Remoting service" on
+* Reference the server-side ActionScript file in your SWF movie. See "Connecting to the Flash Remoting service" on
    page 691.
 
 Using the CF.query function, you can do the following tasks:
 
-· Create user login interfaces that validate users against a ColdFusion data source.
+* Create user login interfaces that validate users against a ColdFusion data source.
 
-· Populate form elements and data grids with data from a ColdFusion data source.
+* Populate form elements and data grids with data from a ColdFusion data source.
 
-· Create banners that pull data (such as URLs or image file paths) out of a database.
+* Create banners that pull data (such as URLs or image file paths) out of a database.
 
 The CF.query function can retrieve data from any supported ColdFusion data source (see "About ColdFusion data
 sources" on page 694).
@@ -5935,11 +5935,11 @@ cfquery attributes.
 
 Use the CF.query function to do the following:
 
-· Identify the data source you want to query.
+* Identify the data source you want to query.
 
-· Pass SQL statements to the data source.
+* Pass SQL statements to the data source.
 
-· Pass other optional parameters to the database.
+* Pass other optional parameters to the database.
 
 For reference information about the CF.query function, see CF.query in the CFML Reference.
 
@@ -6080,10 +6080,10 @@ Note: The server-side ActionScript application that you create provides the back
 
 This example requires the following:
 
-· A server-side ActionScript file named personneldirectory.asr that includes functions that interact with a
+* A server-side ActionScript file named personneldirectory.asr that includes functions that interact with a
    ColdFusion data source.
 
-· A client-side SWF movie in which the NetServices object is created.
+* A client-side SWF movie in which the NetServices object is created.
 
 
 Create the application
@@ -6274,10 +6274,10 @@ About the CF.http function
 You use the CF.http ActionScript function to retrieve information from a remote HTTP server using HTTP Get and
 Post methods, as follows:
 
-· Using the Get method, you send information to the remote server directly in the URL. This method is common for
+* Using the Get method, you send information to the remote server directly in the URL. This method is common for
    a one-way transaction in which the CF.http function retrieves an object, such as the contents of a web page.
 
-· The Post method can pass variables to a form or CGI program, and can also create HTTP cookies.
+* The Post method can pass variables to a form or CGI program, and can also create HTTP cookies.
 
 The most basic way to use the CF.http function is to use it with the Get method argument to retrieve a page from a
 specified URL. The Get method is the default for the CF.http function.
@@ -6403,15 +6403,15 @@ Flex and AIR Integration in ColdFusion
 
  type                       Transaction type:
 
-                            · URL
+                            * URL
 
-                            · FormField
+                            * FormField
 
-                            · Cookie
+                            * Cookie
 
-                            · CGI
+                            * CGI
 
-                            · File
+                            * File
 
  value                      Value of URL, FormField, Cookie, File, or CGI variables that are passed
 

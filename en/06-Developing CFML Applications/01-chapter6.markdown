@@ -14,14 +14,14 @@ full Internet commerce system with catalog pages, shopping carts, and reporting.
 An application, however, has a specific meaning in ColdFusion. A ColdFusion application has the following
 characteristics:
 
-· It consists of one or more ColdFusion pages that work together and share a common set of resources.
+* It consists of one or more ColdFusion pages that work together and share a common set of resources.
 
-· All pages in the application share an application name and configuration settings as specified in an Application.cfc
+* All pages in the application share an application name and configuration settings as specified in an Application.cfc
     file or a cfapplication tag.
 
-· All pages in the application share variables in the Application scope.
+* All pages in the application share variables in the Application scope.
 
-· You can write application-wide event handlers for specific events, such as request start or session end.
+* You can write application-wide event handlers for specific events, such as request start or session end.
 
 What appears to a user to be a single application (for example, a company's website), can consist of multiple
 ColdFusion applications.
@@ -41,13 +41,13 @@ unaffected by the application ending and restarting.
 Although, there are no definite rules about how you represent your web application as a ColdFusion application or
 applications, the following guidelines are useful:
 
-· Application pages share a common general purpose. For example, a web storefront is typically a single ColdFusion
+* Application pages share a common general purpose. For example, a web storefront is typically a single ColdFusion
     application.
 
-· Many, but not necessarily all, pages in a ColdFusion application share data or common code elements, such as a
+* Many, but not necessarily all, pages in a ColdFusion application share data or common code elements, such as a
     single login mechanism.
 
-· Application pages share a common look-and-feel, often enforced by using common code elements, such as the
+* Application pages share a common look-and-feel, often enforced by using common code elements, such as the
     same header and footer pages, and a common error message template.
 
 
@@ -65,17 +65,17 @@ Elements of a ColdFusion application
 Before you develop a ColdFusion application, determine how to structure the application and how to handle
 application-wide needs and issues. In particular, consider all of the following:
 
-· The overall application framework
+* The overall application framework
 
-· Reusable application elements
+* Reusable application elements
 
-· Shared variables
+* Shared variables
 
-· Application events and the Application.cfc file
+* Application events and the Application.cfc file
 
-· Application-level settings and functions
+* Application-level settings and functions
 
-· Application security and user identification
+* Application security and user identification
 
 
 The application framework
@@ -98,15 +98,15 @@ Reusable application elements
 ColdFusion provides a variety of reusable elements that you use to provide commonly used functionality and extend
 CFML. These elements include the following:
 
-· User-defined functions (UDFs)
+* User-defined functions (UDFs)
 
-· CFML custom tags
+* CFML custom tags
 
-· ColdFusion components (CFCs)
+* ColdFusion components (CFCs)
 
-· CFX (ColdFusion Extension) tags
+* CFX (ColdFusion Extension) tags
 
-· Pages that you include using the cfinclude tag
+* Pages that you include using the cfinclude tag
 
 For an overview of these elements, and information about how to choose among them, see "Creating ColdFusion
 Elements" on page 146.
@@ -189,9 +189,9 @@ methods, which provide more features and include logical, hierarchical structure
 If you do not have an Application.cfc file, ColdFusion processes the following two pages, if they are available, every
 time it processes any page in the application:
 
-· The Application.cfm page is processed before each page in the application.
+* The Application.cfm page is processed before each page in the application.
 
-· The OnRequestEnd.cfm page is processed after each page in the application.
+* The OnRequestEnd.cfm page is processed after each page in the application.
 
 Note: UNIX systems are case-sensitive. To ensure that your pages work on UNIX, always capitalize the A in
 Application.cfm and the O, R, and E in OnRequestEnd.cfm.
@@ -229,9 +229,9 @@ cfapplication tag and define common application elements.
 Specifying settings per application
 Set the following on a per-application basis:
 
-· Mappings
+* Mappings
 
-· Custom tag paths
+* Custom tag paths
 
 These settings override the server-side settings in the ColdFusion Administrator for the specified application only.
 Specifying per application settings does not change the server-wide settings. To set per-application settings, first enable
@@ -314,15 +314,15 @@ Each time ColdFusion processes a page request it does the following:
 
 1 When ColdFusion starts processing the request, it does the following:
 
-   · It searches the page's directory for a file named Application.cfc. If one exists, it creates a new instance of the CFC,
+   * It searches the page's directory for a file named Application.cfc. If one exists, it creates a new instance of the CFC,
       processes the initial events, and stops searching. (ColdFusion creates a new instance of the CFC and processes
       its initialization code for each request.)
 
-   · If the requested page's directory does not have an Application.cfc file, it checks the directory for an
+   * If the requested page's directory does not have an Application.cfc file, it checks the directory for an
       Application.cfm file. If one exists, ColdFusion logically includes the Application.cfm page at the beginning of
       the requested page and stops searching further.
 
-   · If the requested page's directory does not have an Application.cfc or Application.cfm file, ColdFusion searches
+   * If the requested page's directory does not have an Application.cfc or Application.cfm file, ColdFusion searches
       up the directory tree and checks each directory first for an Application.cfc file and then, if one is not found, for
       an Application.cfm page, until it reaches the root directory (such as C:\). When it finds an Application.cfc or
       Application.cfm file, it processes the page and stops searching.
@@ -331,7 +331,7 @@ Each time ColdFusion processes a page request it does the following:
 
 3 When the request ends, ColdFusion does the following:
 
-   · If you have an Application.cfc, ColdFusion processes the CFC's onRequestEnd method and releases the CFC
+   * If you have an Application.cfc, ColdFusion processes the CFC's onRequestEnd method and releases the CFC
       instance.
 
 
@@ -345,7 +345,7 @@ Developing CFML Applications
 
 
 
-   · If you do not have an Application.cfc, but do have an Application.cfm page, ColdFusion looks for an
+   * If you do not have an Application.cfc, but do have an Application.cfm page, ColdFusion looks for an
       OnRequestEnd.cfm in the same directory as the Application.cfm page ColdFusion uses for the current page.
       ColdFusion does not search beyond that directory, so it does not run an OnRequestEnd.cfm page that resides
       in another directory. Also, the OnRequestEnd.cfm page does not run if there is an error or an exception on the
@@ -353,15 +353,15 @@ Developing CFML Applications
 
 The following rules determine how ColdFusion processes application pages and settings:
 
-· ColdFusion processes only one Application.cfc or Application.cfm page for each request. If a ColdFusion page has
+* ColdFusion processes only one Application.cfc or Application.cfm page for each request. If a ColdFusion page has
    a cfinclude tag pointing to an additional ColdFusion page, ColdFusion does not search for an Application.cfc or
    Application.cfm page when it includes the additional page.
 
-· If a ColdFusion page has a cfapplication tag, it first processes any Application.cfc or Application.cfm, and then
+* If a ColdFusion page has a cfapplication tag, it first processes any Application.cfc or Application.cfm, and then
    processes the cfapplication tag. The tag overrides the settings from the application files, including the
    application name and the behaviors set by the cfapplication tag attributes.
 
-· You can have multiple Application.cfc files, Application.cfm files, and cfapplication tags that use the same
+* You can have multiple Application.cfc files, Application.cfm files, and cfapplication tags that use the same
    application name. In this case, all pages that have the same name share the same application settings and
    Application scope and set and get all the variables in this scope. ColdFusion uses the parameter settings of the
    cfapplication tag or the most recently processed file, if the settings, such as the session time-out, differ among
@@ -394,7 +394,7 @@ application name, but have different code, for different subsections of your app
 
 The directory trees in the following image show two approaches to implementing an application framework:
 
-· In the example on the left, a company named Web Wonders, Inc. uses a single Application.cfc file installed in the
+* In the example on the left, a company named Web Wonders, Inc. uses a single Application.cfc file installed in the
    application root directory to process all application page requests.
 
 
@@ -408,7 +408,7 @@ Developing CFML Applications
 
 
 
-· In the example on the right, Bandwidth Associates uses the settings in individual Application.cfc files to create
+* In the example on the right, Bandwidth Associates uses the settings in individual Application.cfc files to create
    individual ColdFusion applications at the departmental level. Only the Products application pages are processed
    using the settings in the root Application.cfc file. The Consulting, Marketing, and Sales directories each have their
    own Application.cfc file.
@@ -449,10 +449,10 @@ Developing CFML Applications
 Defining the application and its event handlers in Application.cfc
 The Application.cfc file defines application-wide settings and variables, and application event handlers:
 
-· Application-wide settings and variables include page processing settings, default variables, data sources, style
+* Application-wide settings and variables include page processing settings, default variables, data sources, style
    settings, and other application-level constants.
 
-· Application event handlers are CFC methods that ColdFusion automatically executes when specific events occur
+* Application event handlers are CFC methods that ColdFusion automatically executes when specific events occur
    during the lifetime of an application: application start and end, session start and end, request start, execution, and
    end, and exceptions.
 
@@ -461,13 +461,13 @@ Defining application-level settings and variables
 When you create an application, you can set many application-wide properties and characteristics, including the
 following items:
 
-· Application name
+* Application name
 
-· Application properties, including Client-, Application-, and Session-variable management options
+* Application properties, including Client-, Application-, and Session-variable management options
 
-· Page processing options
+* Page processing options
 
-· Default variables, data sources, style settings, and other application-level constants
+* Default variables, data sources, style settings, and other application-level constants
 
 For information on setting default variables, see "Setting application default variables and constants in
 onApplicationStart" on page 245.
@@ -640,27 +640,27 @@ Developing CFML Applications
 When ColdFusion receives a request, it instantiates the Application CFC and runs the Application.cfc code in the
 following order:
 
-· CFC initialization code at the top of the file
+* CFC initialization code at the top of the file
 
-· onApplicationStart, if not run before for this application
+* onApplicationStart, if not run before for this application
 
-· onSessionStart, if not run before for this session
+* onSessionStart, if not run before for this session
 
-· onRequestStart
+* onRequestStart
 
-· onRequest, or the requested page if there is no onRequest method
+* onRequest, or the requested page if there is no onRequest method
 
-· onRequestEnd
+* onRequestEnd
 
 The following methods are triggered by specific events:
 
-· onApplicationEnd
+* onApplicationEnd
 
-· onSessionEnd
+* onSessionEnd
 
-· onMissingTemplate
+* onMissingTemplate
 
-· onError
+* onError
 
 The onApplicationEnd and onSessionEnd methods do not execute in the context of a page request, so they cannot
 access request variables or display information to the user. The onMissingTemplate method is triggered when a URL
@@ -731,13 +731,13 @@ request.
 Setting application default variables and constants in onApplicationStart
 You can set default variables and application-level constants in Application.cfc. For example, you can do the following:
 
-· Specify a data source and ensure that it is available
+* Specify a data source and ensure that it is available
 
-· Specify domain name
+* Specify domain name
 
-· Set styles, such as fonts or colors
+* Set styles, such as fonts or colors
 
-· Set other application-level variables
+* Set other application-level variables
 
 You do not have to lock Application scope variables when you set them in the Application.cfc onApplicationStart
 method.
@@ -844,11 +844,11 @@ Using the onRequest method
 The onRequest method differs from the onRequestStart method in one major way: the onRequest method
 intercepts the user's request. This difference has two implications:
 
-· ColdFusion does not process the request unless you explicitly call it, for example, by using a cfinclude tag. This
+* ColdFusion does not process the request unless you explicitly call it, for example, by using a cfinclude tag. This
    behavior lets you use the onRequest method to filter requested page content or to implement a switch that
    determines the pages or page contents to be displayed.
 
-· When you use cfinclude to process request, the CFC instance shares the Variables scope with the requested page.
+* When you use cfinclude to process request, the CFC instance shares the Variables scope with the requested page.
    As a result, any method in the CFC that executes can set the page's Variables scope variables, and the
    onRequestEnd method can access any Variable scope values that the included page has set or changed. Therefore,
    for example, the onRequestStart or onRequest method set variables that are used on the page.
@@ -888,14 +888,14 @@ onError in the CFML Reference.
 Application.cfc error handling techniques
 Application.cfc handles errors in any combination of the following ways:
 
-· Use try/catch error handling in the event methods, such as onApplicationStart or onRequestStart, to handle
+* Use try/catch error handling in the event methods, such as onApplicationStart or onRequestStart, to handle
    exceptions that happen in the event methods.
 
-· Implement the onError method. This method receives all exceptions that are not directly handled by try/catch
+* Implement the onError method. This method receives all exceptions that are not directly handled by try/catch
    handlers in CFML code. The method can use the cfthrow tag to pass any errors it does not handle to ColdFusion
    for handling.
 
-· Use cferror tags in the application initialization code following the cfcomponent tag, typically following the code
+* Use cferror tags in the application initialization code following the cfcomponent tag, typically following the code
    that sets the application's This scope variables. These tags specify error processing if you do not implement an
    onError method, or if the onError method throws an error. You could implement an application-specific
    validation error handler, for example, by placing the following tag in the CFC initialization code:
@@ -912,7 +912,7 @@ Developing CFML Applications
 
     <cferror type="VALIDATION" template="validationerrorhandler.cfm">
 
-· The ColdFusion default error mechanisms handle any errors that are not handled by the preceding techniques.
+* The ColdFusion default error mechanisms handle any errors that are not handled by the preceding techniques.
    These mechanisms include the site-wide error handler that you specify in the ColdFusion Administrator and the
    built-in default error pages.
 
@@ -939,10 +939,10 @@ Application.cfc initialization code handles it.
 Example: error Handling with the onError method
 The following Application.cfc file has an onError method that handles errors as follows:
 
-· If the error is a server-side validation error, the onError method throws the error for handling by ColdFusion,
+* If the error is a server-side validation error, the onError method throws the error for handling by ColdFusion,
    which displays its standard validation error message.
 
-· For any other type of exception, the onError method displays the name of the event method in which the error
+* For any other type of exception, the onError method displays the name of the event method in which the error
    occurred and dumps the exception information. In this example, because you generate errors on the CFM page
    only, and not in a Application.cfc method, the event name is always the empty string.
 
@@ -1191,27 +1191,27 @@ Developing CFML Applications
 Migrating from Application.cfm to Application.cfc
 To migrate an existing application that uses Application.cfm to one that uses Application.cfc, do the following:
 
-· Replace the cfapplication tag with CFC initialization code that sets the Application.cfc This scope variables that
+* Replace the cfapplication tag with CFC initialization code that sets the Application.cfc This scope variables that
    correspond to the tag attributes.
 
-· Place in the onApplicationStart method, any code that initializes Application scope variables, and any other
+* Place in the onApplicationStart method, any code that initializes Application scope variables, and any other
    application-specific code that executes only when the application starts. Often, such code in Application.cfm is
    inside a block that tests for the existence of an Application scope switch variable. Remove the variable test and the
    Application scope lock that surrounds the code that sets the Application scope variables.
 
-· Place in the onSessionStart method, any code that initializes Session scope variables, and any other application-
+* Place in the onSessionStart method, any code that initializes Session scope variables, and any other application-
    specific code that executes only when the session starts. Remove any code that tests for the existence of Session
    scope variables to be for initialized and the Session scope lock that surrounds the code that sets the Session scope
    variables.
 
-· Place in the onRequestStart method, any cflogin tag and related authentication code.
+* Place in the onRequestStart method, any cflogin tag and related authentication code.
 
-· Place in the onRequest method, any code that sets Variables scope variables and add a cfinclude tag that includes
+* Place in the onRequest method, any code that sets Variables scope variables and add a cfinclude tag that includes
    the page specified by the Arguments of the method.Targetpage variable.
 
-· Place in the onRequestEnd method, any code you have in an OnRequestEnd.cfm page.
+* Place in the onRequestEnd method, any code you have in an OnRequestEnd.cfm page.
 
-· Consider replacing cferror tags with an onError event method. If you do not do so, place the cferror tags in the
+* Consider replacing cferror tags with an onError event method. If you do not do so, place the cferror tags in the
    CFC initialization code.
 
 
@@ -1243,19 +1243,19 @@ Note: The value that you set for the name attribute in the cfapplication tag is 
 Setting the client, application, and session variables options
 Use the cfapplication tag to specify client state and persistent variable use, as follows:
 
-· To use Client scope variables, specify clientManagement=True.
+* To use Client scope variables, specify clientManagement=True.
 
-· To use Session scope variables, specify sessionManagment=True.
+* To use Session scope variables, specify sessionManagment=True.
 
 You can also optionally do the following:
 
-· Set application-specific time-outs for Application and Session scope variables. These settings override the default
+* Set application-specific time-outs for Application and Session scope variables. These settings override the default
    values set in the ColdFusion Administrator.
 
-· Specify a storage method for Client scope variables. This setting overrides the method set in the ColdFusion
+* Specify a storage method for Client scope variables. This setting overrides the method set in the ColdFusion
    Administrator.
 
-· Specify not to use cookies on the client browser.
+* Specify not to use cookies on the client browser.
 
 For more information on configuring these options, see "Using Persistent Data and Locking" on page 301 and the
 CFML Reference.
@@ -1270,13 +1270,13 @@ Setting application default variables and constants
 Set default variables and application-level constants on the Application.cfm page. For example, specify the following
 values:
 
-· A data source
+* A data source
 
-· A domain name
+* A domain name
 
-· Style settings, such as fonts or colors
+* Style settings, such as fonts or colors
 
-· Other important application-level variables
+* Other important application-level variables
 
 Often, an Application.cfm page uses one or more cfinclude tags to include libraries of commonly used code, such as
 user-defined functions, that are required on many of the application's pages.
@@ -1487,15 +1487,15 @@ Using the cfcache tag
 You tell ColdFusion to cache the page results by placing a cfcache tag on your ColdFusion page before code that
 outputs text. The tag lets you specify the following information:
 
-· Whether to cache the page results on the server, the client system, or both. The default is both. The default is
+* Whether to cache the page results on the server, the client system, or both. The default is both. The default is
    optimal for pages that are identical for all users. If the pages contain client-specific information, or are secured with
    ColdFusion user security, set the action attribute in the cfcache tag to ClientCache.
 
-· The directory on the server in which to store the cached pages. The default directory is cf_root/cache. It is a good
+* The directory on the server in which to store the cached pages. The default directory is cf_root/cache. It is a good
    practice to create a separate cache directory for each application. Doing so prevents the cfcache tag flush action
    from inappropriately flushing more than one application's caches at a time.
 
-· The time span that indicates how long the page lasts in the cache from when it is stored until it is automatically
+* The time span that indicates how long the page lasts in the cache from when it is stored until it is automatically
    flushed.
 
 You can also specify several attributes for accessing a cached page on the web server, including a user name and
@@ -1611,7 +1611,7 @@ For concepts and details related to Amazon S3, see the AmazonS3 Documentation.
 Accessing Amazon S3
 Use either of the following URL formats to access Amazon S3 from ColdFusion:
 
-· s3://bucket/x/y/sample.txt
+* s3://bucket/x/y/sample.txt
 
     Here, bucket is the name of the bucket and the remaining portion of the URL is the key name of the Amazon S3
     object.
@@ -1640,11 +1640,11 @@ Developing CFML Applications
 
   <cffile action="write" output="S3 Specification" file="s3://testbucket/sample.txt"/>
 
-· s3://accessKeyId:awsSecretKey@bucket/x/y/sample.txt
+* s3://accessKeyId:awsSecretKey@bucket/x/y/sample.txt
 
-  · This format has the accessKeyID and awsSecretKey specified in it.
+  * This format has the accessKeyID and awsSecretKey specified in it.
 
-  · @ acts as the token to indicate the end of authentication information.
+  * @ acts as the token to indicate the end of authentication information.
 
   Note: If you have specified the accessKeyID and awsSecretKey in both the URL and Application.cfc, then value
   specified in the URL takes precedence.
@@ -1658,17 +1658,17 @@ file="s3://accessKeyID:awsSecretKey@bucket/x/y/sample.txt"/>
 Supported operations
 The following are the supported operations on Amazon S3:
 
-· Create and delete bucket
+* Create and delete bucket
 
-· Get bucket location
+* Get bucket location
 
-· Read, write, copy, and delete object
+* Read, write, copy, and delete object
 
-· List keys in bucket
+* List keys in bucket
 
-· Get and set metadata for object or bucket
+* Get and set metadata for object or bucket
 
-· Get and set ACL for object or bucket
+* Get and set ACL for object or bucket
 
 
 Bucket operations
@@ -1767,25 +1767,25 @@ Developing CFML Applications
 
 The following are the supported functions:
 
-· FileIsEOF
+* FileIsEOF
 
-· FileReadBinary
+* FileReadBinary
 
-· Filecopy
+* Filecopy
 
-· FileReadLine
+* FileReadLine
 
-· FileExists
+* FileExists
 
-· FileWriteln
+* FileWriteln
 
-· FileOpen
+* FileOpen
 
-· FileClose
+* FileClose
 
-· FileRead
+* FileRead
 
-· FileDelete
+* FileDelete
 
 
 New attributes in cfdirectory action="create" tag
@@ -1812,23 +1812,23 @@ independent. You have to manage them separately. Also, object ACLs do not inheri
 
 ACL consists of multiple Grants where each grant has a grantee and a permission. S3 allows three types of grantees:
 
-· group
+* group
 
-· email
+* email
 
-· canonical (ID)
+* canonical (ID)
 
 The following are the possible permissions:
 
-· read
+* read
 
-· write
+* write
 
-· read_acp
+* read_acp
 
-· write_acp
+* write_acp
 
-· full_control
+* full_control
 
 See Amazon S3 ACL Documentation for more details.
 
@@ -2158,33 +2158,33 @@ The following are the standard keys in the metadata:
 
 
 For objects
-· last_modified
+* last_modified
 
-· date
+* date
 
-· owner
+* owner
 
-· etag
+* etag
 
-· content_length
+* content_length
 
-· content_type
+* content_type
 
-· content_encoding
+* content_encoding
 
-· content_disposition
+* content_disposition
 
-· content_language
+* content_language
 
-· content_md5
+* content_md5
 
-· md5_hash
+* md5_hash
 
 
 For buckets
-· date
+* date
 
-· owner
+* owner
 
 
 Security considerations
@@ -2225,24 +2225,24 @@ cfftp                        cfimage                         cfloop             
 
 
 Limitations
-· The following tags are not supported:
+* The following tags are not supported:
 
-    · cfpdf
+    * cfpdf
 
-    · cfpdfform
+    * cfpdfform
 
-· The following functions are not supported:
+* The following functions are not supported:
 
-    · FileSetAccessMode that sets attributes of a file in Linux/UNIX
+    * FileSetAccessMode that sets attributes of a file in Linux/UNIX
 
-    · FilesSetAttribute that sets the attributes of a file in Windows
+    * FilesSetAttribute that sets the attributes of a file in Windows
 
-    · cfzip does not accept Amazon S3 object as source.
+    * cfzip does not accept Amazon S3 object as source.
 
-    · When S3 object is used as output for outputfile attribute of cfexecute tag, it results in an error Timeout
+    * When S3 object is used as output for outputfile attribute of cfexecute tag, it results in an error Timeout
        period expired without completion of <exe>. It also results in a NullPointerException at server console.
 
-    · To use the function fileMove, the source and destination objects must have the same bucket name. That is,
+    * To use the function fileMove, the source and destination objects must have the same bucket name. That is,
        you cannot move Amazon S3 objects across buckets or to other file systems.
 
 
@@ -2265,7 +2265,7 @@ file="ram:///filename.cfm"/>
 
 The following sample syntax explains how to use the in-memory CFM file:
 
-· For tags that take logical path, define mapping in Administrator. Execute in-memory CFM pages using the
+* For tags that take logical path, define mapping in Administrator. Execute in-memory CFM pages using the
     cfinclude tag:
 
     <cfinclude template="/inmemory/filename.cfm">
@@ -2273,7 +2273,7 @@ The following sample syntax explains how to use the in-memory CFM file:
     Create a mapping for ram:/// so that it can be used in the tags. In this example, /inmemory is the mapping that
     points to ram:///.
 
-· For tags that take absolute path, specify the syntax as provided in the following example:
+* For tags that take absolute path, specify the syntax as provided in the following example:
 
     <cffile action="append" file="ram:///a/b/dynamic.cfm" output="I'm appending">
 
@@ -2336,17 +2336,17 @@ The following sections provide information that can help you to access and use i
 
 
 Using in-memory files
-· You can call a CFC saved on RAM from a CFM file on disk. Similarly, an in-memory CFM file can call a CFC saved
+* You can call a CFC saved on RAM from a CFM file on disk. Similarly, an in-memory CFM file can call a CFC saved
   on disk.
 
-· If a CFC extends another CFC in the same directory in RAM, you can use relative path. For instance, if a.cfc and
+* If a CFC extends another CFC in the same directory in RAM, you can use relative path. For instance, if a.cfc and
   b.cfc belong to the same directory in RAM, a.cfc can extend b.cfc using relative path as shown in the following code:
 
   <cfcomponent name="a" extends"b">
   ...
   </cfcomponent>
 
-· You can use in-memory ColdFusion interfaces in the same way as you use in-memory CFCs.
+* You can use in-memory ColdFusion interfaces in the same way as you use in-memory CFCs.
 
 
 
@@ -2362,51 +2362,51 @@ Developing CFML Applications
 Supported functions
 The following file functions are supported for in-memory files:
 
-· FileIsEOF
+* FileIsEOF
 
-· FileReadBinary
+* FileReadBinary
 
-· Filemove
+* Filemove
 
-· Filecopy
+* Filecopy
 
-· FileReadLine
+* FileReadLine
 
-· FileExists
+* FileExists
 
-· FileOpen
+* FileOpen
 
-· FileWriteln
+* FileWriteln
 
-· FileClose
+* FileClose
 
-· FileRead
+* FileRead
 
-· FileDelete
+* FileDelete
 
-· DirectoryExists
+* DirectoryExists
 
-· FileSetLastModified
+* FileSetLastModified
 
-· GetFileInfo
+* GetFileInfo
 
-· GetDirectoryFromPath
+* GetDirectoryFromPath
 
-· GetFileFromPath
+* GetFileFromPath
 
-· ImageNew
+* ImageNew
 
-· ImageRead
+* ImageRead
 
-· ImageWrite
+* ImageWrite
 
-· ImageWriteBase64
+* ImageWriteBase64
 
-· IsImageFile
+* IsImageFile
 
-· IsPDFFile
+* IsPDFFile
 
-· FileSetLastModified
+* FileSetLastModified
 
 
 Example
@@ -2440,9 +2440,9 @@ Developing CFML Applications
 File operations
 The following file operations are supported for in-memory files:
 
-· Directory-specific operations: create, delete, list, and rename.
+* Directory-specific operations: create, delete, list, and rename.
 
-· File-specific operations: copy, create, write, append, delete, rename, create attributes, modes move, and read.
+* File-specific operations: copy, create, write, append, delete, rename, create attributes, modes move, and read.
 
 
 Example
@@ -2480,25 +2480,25 @@ tags are not supported.
 Using in-memory files in tags
 The following tags are supported for in-memory files:
 
-· cfcontent
+* cfcontent
 
-· cfdocument
+* cfdocument
 
-· cfdump
+* cfdump
 
-· cfexchange
+* cfexchange
 
-· cfexecute
+* cfexecute
 
-· cffeed
+* cffeed
 
-· cfhttp
+* cfhttp
 
-· cfftp
+* cfftp
 
-· cfimage
+* cfimage
 
-· cfloop
+* cfloop
 
 
 
@@ -2511,13 +2511,13 @@ Developing CFML Applications
 
 
 
-· cfpresentation
+* cfpresentation
 
-· cfprint
+* cfprint
 
-· cfreport
+* cfreport
 
-· cfzip
+* cfzip
 
 
 Example using the tag cfcontent
@@ -2558,11 +2558,11 @@ The GetVFSMetaData function lets you access VFS information. This function takes
 
 This function returns a structure that contains the following information:
 
-· If support for in-memory virtual file system is enabled
+* If support for in-memory virtual file system is enabled
 
-· Memory limit in bytes for in-memory virtual file system
+* Memory limit in bytes for in-memory virtual file system
 
-· The used and free memory
+* The used and free memory
 
 For example, <cfdump var="#getVFSMetaData("ram")#">
 
@@ -2585,53 +2585,53 @@ Developing CFML Applications
 
 
 Limitations
-· File names/Directory names on RAM are case sensitive.
+* File names/Directory names on RAM are case sensitive.
 
-· In-memory files must be accessed using mapping or absolute path. Relative paths to files/directories are not
+* In-memory files must be accessed using mapping or absolute path. Relative paths to files/directories are not
    supported.
 
-    · Correct: ram:///a/b/
+    * Correct: ram:///a/b/
 
-    · Incorrect: ram:///a/b/../..
+    * Incorrect: ram:///a/b/../..
 
-· You cannot access in-memory files using HTTP/HTTPS protocols. Instead, use ram:///<file>. For example,
+* You cannot access in-memory files using HTTP/HTTPS protocols. Instead, use ram:///<file>. For example,
    ram:///a/b/test.cfm.
 
-· DDX files and font files cannot be accessed as in-memory files.
+* DDX files and font files cannot be accessed as in-memory files.
 
-· The following functions are not supported for in-memory files.
+* The following functions are not supported for in-memory files.
 
-    · FileSetAccessMode that sets attributes of a file in Linux/Unix
+    * FileSetAccessMode that sets attributes of a file in Linux/Unix
 
-    · FilesSetAttribute that sets the attributes of a file in Windows
+    * FilesSetAttribute that sets the attributes of a file in Windows
 
-· The following tags are not supported:
+* The following tags are not supported:
 
-    · cfpdf
+    * cfpdf
 
-    · cfpdfform
+    * cfpdfform
 
-· The following scenarios are not supported:
+* The following scenarios are not supported:
 
-    · The cfreport tag does not accept a template report on RAM. Therefore, the following does not work:
+    * The cfreport tag does not accept a template report on RAM. Therefore, the following does not work:
 
        <cfreport format="PDF" template="ram:///myReport1.cfr" filename="ram:///test.pdf"
        overwrite="yes">
 
        In this case, the myReport1.cfr must reside on your disk.
 
-    · The cfimport tag does not accept tag libraries on RAM. For instance, the following does not work:
+    * The cfimport tag does not accept tag libraries on RAM. For instance, the following does not work:
 
        <cfimport prefix="custom" taglib="ram:///a/b/mytags.jar">
 
-    · Renaming across file systems (as shown in the following syntax) is not supported.
+    * Renaming across file systems (as shown in the following syntax) is not supported.
 
        <cffile action="rename" source="ram:///src1/message2.txt"
        destination="#ExpandPath('./')#/123.txt">.
 
        Instead, you can move the files.
 
-    · For the cfexecute tag, the executable cannot be on RAM and must be on your local file system. But the output
+    * For the cfexecute tag, the executable cannot be on RAM and must be on your local file system. But the output
        can be an in-memory file as illustrated in the following code:
 
        <cfexecute name="C:\WINDOWS\System32\netstat.exe" arguments="-e"
@@ -2761,28 +2761,28 @@ The following table describes the code and its function:
 
  <cfoutput>                                                             Displays the results of running the stored procedure:
  The output param value: '#foo#'<br>
- </cfoutput>                                                            · The output parameter value,
+ </cfoutput>                                                            * The output parameter value,
 
- <h3>The Results Information</h3>                                       · Thecontentsofthetwocolumnsinthefirstrecordset
+ <h3>The Results Information</h3>                                       * Thecontentsofthetwocolumnsinthefirstrecordset
  <cfoutput query = RS1>
  #name#,#DATE_COL#<br>                                                    identified by the name and DATE_COL variables. You
  </cfoutput>                                                              set the values of these variables elsewhere on the
  <br>                                                                     page.
  <cfoutput>
- <hr>                                                                   · The number of rows and the names of the columns in
+ <hr>                                                                   * The number of rows and the names of the columns in
  Record Count: #RS1.recordCount#<br>
                                                                           the first record set
  Columns: #RS1.columnList#<br>
  <hr>
-                                                                        · The contents of the columns in the other record set
+                                                                        * The contents of the columns in the other record set
  </cfoutput>
                                                                           identified by the col1, col2, and col3 variables.
  <cfoutput query = RS3>
- #col1#,#col2#,#col3#<br>                                               · The number of rows and the names of the columns in
+ #col1#,#col2#,#col3#<br>                                               * The number of rows and the names of the columns in
  </cfoutput>
                                                                           the record set.
  <br>
- <cfoutput>                                                             · The status value returned by the stored procedure.
+ <cfoutput>                                                             * The status value returned by the stored procedure.
  <hr><br>
  Record Count: #RS3.recordCount#<br>
  Columns: #RS3.columnList#<br>
@@ -2856,31 +2856,31 @@ By default, ColdFusion generates its own error messages when it encounters error
 of tools and techniques for you to customize error information and handle errors when they occur. You can use any
 of the following error-management techniques.
 
-· Specify custom pages for ColdFusion to display in each of the following cases:
+* Specify custom pages for ColdFusion to display in each of the following cases:
 
-    · When a ColdFusion page is missing (the Missing Template Handler page)
+    * When a ColdFusion page is missing (the Missing Template Handler page)
 
-    · When an otherwise-unhandled exception error occurs during the processing of a page (the Site-wide Error
+    * When an otherwise-unhandled exception error occurs during the processing of a page (the Site-wide Error
        Handler page)
 
    You specify these pages on the Settings page in the Server Settings page in the ColdFusion Administrator; for more
    information, see the ColdFusion Administrator Help.
 
-· Use the cferror tag to specify ColdFusion pages to handle specific types of errors.
+* Use the cferror tag to specify ColdFusion pages to handle specific types of errors.
 
-· Use the cftry, cfcatch, cfthrow, and cfrethrow tags to catch and handle exception errors directly on the page
+* Use the cftry, cfcatch, cfthrow, and cfrethrow tags to catch and handle exception errors directly on the page
    where they occur.
 
-· In CFScript, use the try and catch statements to handle exceptions.
+* In CFScript, use the try and catch statements to handle exceptions.
 
-· Use the onError event in Application.cfc to handle exception errors that are not handled by try/catch code on the
+* Use the onError event in Application.cfc to handle exception errors that are not handled by try/catch code on the
    application pages.
 
-· Log errors. ColdFusion logs certain errors by default. You can use the cflog tag to log other errors.
+* Log errors. ColdFusion logs certain errors by default. You can use the cflog tag to log other errors.
 
 The following information is detailed in the next few topics:
 
-· The basic building blocks for understating types of ColdFusion errors and how ColdFusion handles them
+* The basic building blocks for understating types of ColdFusion errors and how ColdFusion handles them
 
 
                                                
@@ -2891,11 +2891,11 @@ Developing CFML Applications
 
 
 
-· How to use the cferror tag to specify error-handling pages
+* How to use the cferror tag to specify error-handling pages
 
-· How to log errors
+* How to log errors
 
-· How to handle ColdFusion exceptions
+* How to handle ColdFusion exceptions
 
    Note: Information about using the cftry and cfcatch tags is provided, but not the equivalent CFScript try and
    catch statements. The general discussion of exception handling applies to tags and CFScript statements. However, the
@@ -2991,9 +2991,9 @@ Note: The onSubmit and onBlur form field validation techniques use JavaScript or
 About ColdFusion exceptions
 Most ColdFusion errors are exceptions. You can categorize ColdFusion exceptions in two ways:
 
-· When they occur
+* When they occur
 
-· Their type
+* Their type
 
 
 When exceptions occur
@@ -3013,11 +3013,11 @@ A runtime exception occurs when the compiled ColdFusion Java code runs. It is an
 of instructions in the application. Exceptions can result from system errors or program logic errors. Runtime
 exceptions include:
 
-· Error responses from external services, such as an ODBC driver or CORBA server
+* Error responses from external services, such as an ODBC driver or CORBA server
 
-· CFML errors or the results of cfthrow or cfabort tags
+* CFML errors or the results of cfthrow or cfabort tags
 
-· Internal errors in ColdFusion
+* Internal errors in ColdFusion
 
 
 
@@ -3035,13 +3035,13 @@ ColdFusion exceptions have types that you specify in the cferror, cfcatch, and c
 cferror or cfcatch tag handles only exceptions of the specified type. You identify an exception type by using an
 identifier from one (or more) of the following type categories:
 
-· Basic
+* Basic
 
-· Custom
+* Custom
 
-· Advanced
+* Advanced
 
-· Java class
+* Java class
 
 Note: Use only custom error type names and the Application basic type name in cfthrow tags. All other built-in
 exception type names identify specific types of system-identified errors, so do not use them for errors that you identify
@@ -3174,11 +3174,11 @@ Compiler exception errors
 If ColdFusion encounters a compiler exception, how it handles the exception depends on whether the error occurs on
 a requested page or on an included page:
 
-· If the error occurs on a page that is accessed by a cfinclude or cfmessagebox tag, or on a custom tag page that
+* If the error occurs on a page that is accessed by a cfinclude or cfmessagebox tag, or on a custom tag page that
     you access using the cf_ notation, ColdFusion handles it as a runtime exception in the page that accesses the tag.
     For a description of how these errors are handled, see the next section, " Runtime exception errors."
 
-· If the error occurs directly on the requested page, and the Administrator Settings Site-wide Error Handler field
+* If the error occurs directly on the requested page, and the Administrator Settings Site-wide Error Handler field
     specifies an error handler page, ColdFusion displays the specified error page. Otherwise, ColdFusion reports the
     error using the standard error message format described in "Error messages and the standard error format" on
     page 280.
@@ -3252,11 +3252,11 @@ Developing CFML Applications
 
  Error environment       Information about the request that caused the error. All error messages include the following:
  information
-                         · User browser
+                         * User browser
 
-                         · User IP address
+                         * User IP address
 
-                         · Date and time of error
+                         * Date and time of error
 
  Stack trace             The Java stack at the time of the exception, including the specific Java class of the exception. This is helpful if you
                          must contact Adobe Technical Support.
@@ -3460,31 +3460,31 @@ The following table lists the rules and considerations that apply to error appli
 
  Type                    Considerations
 
- Validation              · Cannot use CFML tags.
+ Validation              * Cannot use CFML tags.
 
-                         · Can use HTML tags.
+                         * Can use HTML tags.
 
-                         · Can use the Error.InvalidFields, Error.validationHeader, and Error.validationFooter
+                         * Can use the Error.InvalidFields, Error.validationHeader, and Error.validationFooter
                            variables by enclosing them with number signs (#).
 
-                         · Cannot use any other CFML variables.
+                         * Cannot use any other CFML variables.
 
- Request                 · Cannot use CFML tags.
+ Request                 * Cannot use CFML tags.
 
-                         · Can use HTML tags.
+                         * Can use HTML tags.
 
-                         · Can use nine CFML error variables, such as Error.Diagnostics, by enclosing them with number signs.
+                         * Can use nine CFML error variables, such as Error.Diagnostics, by enclosing them with number signs.
 
-                         · Cannot use other CFML variables.
+                         * Cannot use other CFML variables.
 
- Exception               · Can use full CFML syntax, including tags, functions, and variables.
+ Exception               * Can use full CFML syntax, including tags, functions, and variables.
 
-                         · Can use nine standard CFML Error variables and cfcatch variables. Use either Error or cferror as the prefix
+                         * Can use nine standard CFML Error variables and cfcatch variables. Use either Error or cferror as the prefix
                            for both types of variables.
 
-                         · Can use other application-defined CFML variables.
+                         * Can use other application-defined CFML variables.
 
-                         · To display any CFML variable, use the cfoutput tag.
+                         * To display any CFML variable, use the cfoutput tag.
 
 
 The following table describes the variables available on error pages: Exception error pages can also use all of the
@@ -3585,13 +3585,13 @@ cflog tag in your error handling code to generate log entries.
 
 The cflog tag lets you specify the following information:
 
-· A custom file or standard ColdFusion log file in which to write the message.
+* A custom file or standard ColdFusion log file in which to write the message.
 
-· Text to write to the log file. This can include the values of all available error and cfcatch variables.
+* Text to write to the log file. This can include the values of all available error and cfcatch variables.
 
-· Message severity (type): Information Warning, Fatal, or Error.
+* Message severity (type): Information Warning, Fatal, or Error.
 
-· Whether to log any of the following: application name, thread ID, system date, or system time. By default, all get
+* Whether to log any of the following: application name, thread ID, system date, or system time. By default, all get
    logged.
 
 For example, you could use a cflog tag in an exception error-handling page to log the error information to an
@@ -3670,18 +3670,18 @@ Developing CFML Applications
 
 The text consists of a comma-delimited list of the following entries:
 
-· Log entry type, specified by the cflogtype attribute
+* Log entry type, specified by the cflogtype attribute
 
-· ID of the thread that was executing
+* ID of the thread that was executing
 
-· Date the entry was written to the log
+* Date the entry was written to the log
 
-· Time the entry was written to the log
+* Time the entry was written to the log
 
-· Application name, as specified in the Application.cfc initialization code (by setting the This.application variable)
+* Application name, as specified in the Application.cfc initialization code (by setting the This.application variable)
    or by a cfapplication tag (for example, in an Application.cfm file).
 
-· The message specified by the cflogtext attribute.
+* The message specified by the cflogtext attribute.
 
 
 Handling runtime exceptions with ColdFusion tags
@@ -3693,9 +3693,9 @@ handling tags to catch and process runtime exceptions directly in ColdFusion pag
 
 This ability to handle exceptions directly in your application pages enables your application to do the following:
 
-· Respond appropriately to specific errors within the context of the current application page
+* Respond appropriately to specific errors within the context of the current application page
 
-· Recover from errors whenever possible.
+* Recover from errors whenever possible.
 
 
 Exception-handling tags
@@ -3732,10 +3732,10 @@ Developing CFML Applications
 Using cftry and cfcatch tags
 The cftry tag lets you go beyond reporting error data to the user:
 
-· You can include code that recovers from errors so your application can continue processing without alerting the
+* You can include code that recovers from errors so your application can continue processing without alerting the
    user.
 
-· You can create customized error messages that apply to the specific code that causes the error.
+* You can create customized error messages that apply to the specific code that causes the error.
 
 For example, you can use cftry to catch errors in code that enters data from a user registration form to a database.
 The cfcatch code could do the following:
@@ -3744,9 +3744,9 @@ The cfcatch code could do the following:
 
 2 If the retries fail:
 
-   · Display a custom message to the user
+   * Display a custom message to the user
 
-   · Post the data to an e-mail address so the company staff can enter the data after the problem has been solved.
+   * Post the data to an e-mail address so the company staff can enter the data after the problem has been solved.
 
 Code that accesses external resources such as databases, files, or LDAP servers where resource availability is not
 guaranteed is a good candidate for using try/catch blocks.
@@ -3778,9 +3778,9 @@ Here is an outline for using cftry and cfcatch to handle errors:
 Try/catch code rules and recommendations
 Follow these rules and recommendations when you use cftry and cfcatch tags:
 
-· The cfcatch tags must follow all other code in a cftry tag body.
+* The cfcatch tags must follow all other code in a cftry tag body.
 
-· You can nest cftry blocks. For example, the following structure is valid:
+* You can nest cftry blocks. For example, the following structure is valid:
 
 
 
@@ -3808,28 +3808,28 @@ Developing CFML Applications
   If an exception occurs in the first level of exception-handling code, the inner cfcatch block can catch and handle
   it. (An exception in a cfcatch block cannot be handled by cfcatch blocks at the same level as that block.)
 
-· ColdFusion always responds to the latest exception that gets raised. For example, if code in a cftry block causes
+* ColdFusion always responds to the latest exception that gets raised. For example, if code in a cftry block causes
   an exception that gets handled by a cfcatch block, and the cfcatch block causes an exception that has no handler,
   ColdFusion displays the default error message for the exception in the cfcatch block, and you are not notified of
   the original exception.
 
-· If an exception occurs when the current tag is nested inside other tags, the CFML processor checks the entire stack
+* If an exception occurs when the current tag is nested inside other tags, the CFML processor checks the entire stack
   of open tags until it finds a suitable cftry/cfcatch combination or reaches the end of the stack.
 
-· Use cftry with cfcatch to handle exceptions based on their point of origin within an application page, or based
+* Use cftry with cfcatch to handle exceptions based on their point of origin within an application page, or based
   on diagnostic information.
 
-· The entire cftry tag, including all its cfcatch tags, must be on a single ColdFusion page. You cannot place the
+* The entire cftry tag, including all its cfcatch tags, must be on a single ColdFusion page. You cannot place the
   <cftry> start tag on one page and have the </cftry> end tag on another page.
 
-· For cases when a cfcatch block is not able to successfully handle an error, consider using the cfrethrow tag, as
+* For cases when a cfcatch block is not able to successfully handle an error, consider using the cfrethrow tag, as
   described in "Using the cfrethrow tag" on page 296.
 
-· If an exception can be safely ignored, use a cfcatch tag with no body; for example:
+* If an exception can be safely ignored, use a cfcatch tag with no body; for example:
 
    <cfcatch Type = Database />
 
-· In problematic cases, enclose an exception-prone tag in a specialized combination of cftry and cfcatch tags to
+* In problematic cases, enclose an exception-prone tag in a specialized combination of cftry and cfcatch tags to
   immediately isolate the tag's exceptions.
 
 
@@ -4277,12 +4277,12 @@ Information pane.
 Catching and displaying thrown errors
 The cfcatch tag catches a custom exception when you use any of the following values for the cfcatchtype attribute:
 
-· The custom exception type specified in the cfthrow tag.
+* The custom exception type specified in the cfthrow tag.
 
-· A custom exception type that hierarchically matches the initial portion of the type specified in the cfthrow tag. For
+* A custom exception type that hierarchically matches the initial portion of the type specified in the cfthrow tag. For
     more information, see the next section, Custom error type name hierarchy.
 
-· Application, which matches an exception that is thrown with the Applicationtype attribute or with no type
+* Application, which matches an exception that is thrown with the Applicationtype attribute or with no type
     attribute.
 
 
@@ -4295,7 +4295,7 @@ Developing CFML Applications
 
 
 
-· Any, which matches any exception that is not caught by a more specific cfcatch tag.
+* Any, which matches any exception that is not caught by a more specific cfcatch tag.
 
 Similarly, if you specify any of these types in a cferror tag, the specified error page displays information about the
 thrown error.
@@ -4388,26 +4388,26 @@ error type.
 
 Follow these rules when you use the cfrethrow tag:
 
-· Nest cftry tags, with one tag for each level of error handling hierarchy. Each level contains the cfcatch tags for
+* Nest cftry tags, with one tag for each level of error handling hierarchy. Each level contains the cfcatch tags for
    that level of error granularity.
 
-· Place the most general error catching code in the outermost cftry block.
+* Place the most general error catching code in the outermost cftry block.
 
-· Place the most specific error catching code in the innermost cftry block.
+* Place the most specific error catching code in the innermost cftry block.
 
-· Place the code that can cause an exception error at the top of the innermost cftry block.
+* Place the code that can cause an exception error at the top of the innermost cftry block.
 
-· End each cfcatch block except those in the outermost cftry block with a cfrethrow tag.
+* End each cfcatch block except those in the outermost cftry block with a cfrethrow tag.
 
 
 Example: using nested tags, cfthrow, and cfrethrow
 The following example shows many of the discussed techniques including nested cftry blocks and the cfthrow and
 cfrethrow tags. The example includes a simple calling page and a custom tag page:
 
-· The calling page does little more than call the custom tag with a single attribute, a name to be looked up in a
+* The calling page does little more than call the custom tag with a single attribute, a name to be looked up in a
    database. It does show, however, how a calling page can handle an exception thrown by the custom tag.
 
-· The custom tag finds all records in the cfdocexamples database with a matching last name, and returns the results
+* The custom tag finds all records in the cfdocexamples database with a matching last name, and returns the results
    in a Caller variable. If it fails to connect with the main database, it tries a backup database.
 
 
@@ -4671,13 +4671,13 @@ Developing CFML Applications
 Testing the code
 To test the various ways errors can occur and be handled in this example, try the following:
 
-· In the calling page, change the attribute name to any other value; for example, My Attrib. Then change it back.
+* In the calling page, change the attribute name to any other value; for example, My Attrib. Then change it back.
 
-· In the first cfquery tag, change the data source name to an invalid data source; for example, NoDatabase.
+* In the first cfquery tag, change the data source name to an invalid data source; for example, NoDatabase.
 
-· With an invalid first data source name, change the data source in the second cfquery tag to cfdocexamples.
+* With an invalid first data source name, change the data source in the second cfquery tag to cfdocexamples.
 
-· Insert cfthrow tags throwing custom exculpations in various places in the code and observe the effects.
+* Insert cfthrow tags throwing custom exculpations in various places in the code and observe the effects.
 
 
 
@@ -4788,11 +4788,11 @@ ColdFusion persistent variable issues
 Variables in the Session, Application, and Server scopes are kept in ColdFusion server memory. This storage method
 has several implications:
 
-· All variables in these scopes are lost if the server stops running.
+* All variables in these scopes are lost if the server stops running.
 
-· Variables in these scopes are not shared by servers in a cluster.
+* Variables in these scopes are not shared by servers in a cluster.
 
-· To prevent race conditions and ensure data consistency, lock access to all code that changes variables in these
+* To prevent race conditions and ensure data consistency, lock access to all code that changes variables in these
    scopes or reads variables in these scopes with values that can change.
 
 Note: If you use J2EE session management and configure the J2EE server to retain session data between server restarts,
@@ -4818,10 +4818,10 @@ Because memory variables are stored in memory, they are not available to all ser
 generally do not use Session, Application, or Server scope variables in clustered environment. However, use these
 scope variables in a clustered system in the following circumstances:
 
-· If the clustering system supports "sticky" sessions, in which the clustering system ensures that each user session
+* If the clustering system supports "sticky" sessions, in which the clustering system ensures that each user session
    remains on a single server. In this case, you can use session variables as you would on a single server.
 
-· You can use Application and Server scope variables in a cluster for write-once variables that are consistently set, for
+* You can use Application and Server scope variables in a cluster for write-once variables that are consistently set, for
    example, from a database.
 
 To use client variables on a clustered system, store the variables as cookies or in a database that is available to all servers.
@@ -4913,9 +4913,9 @@ About client identifiers
 To use client and session variables, ColdFusion must be able to identify the client. It normally does so by setting the
 following two cookie values on the client's system:
 
-· CFID: A sequential client identifier
+* CFID: A sequential client identifier
 
-· CFToken: A random-number client security token
+* CFToken: A random-number client security token
 
 
 
@@ -4976,9 +4976,9 @@ CFTOKEN are regenerated.
 
 ColdFusion provides the URLSessionFormat function, which does the following:
 
-· If the client does not accept cookies, automatically appends all required client identification information to a URL.
+* If the client does not accept cookies, automatically appends all required client identification information to a URL.
 
-· If the client accepts cookies, does not append the information.
+* If the client accepts cookies, does not append the information.
 
 The URLSessionFormat function automatically determines which identifiers are required, and sends only the
 required information. It also provides a more secure and robust method for supporting client identification than
@@ -5011,9 +5011,9 @@ tag posts a request to another page and sends the client identification, if nece
 Client identifiers and security
 The following client identifier issues can have security implications:
 
-· Ensuring the uniqueness and complexity of the CFToken identifier
+* Ensuring the uniqueness and complexity of the CFToken identifier
 
-· Limiting the availability of Session identifiers
+* Limiting the availability of Session identifiers
 
 The next sections discuss these issues.
 
@@ -5050,10 +5050,10 @@ each session, and does not use either the CFToken or the CFID cookie value.
 Security-related changes
 The following security-related specifications apply when you upgrade to ColdFusion 9 Upgrade 1:
 
-· CFID, CFTOKEN, and jsessionid are marked httpOnly. This reduces the chance of session information being
+* CFID, CFTOKEN, and jsessionid are marked httpOnly. This reduces the chance of session information being
    compromised on Cross Site Scripting (XSS) attack.
 
-· Set the following system property for the session cookies to be httpOnly:
+* Set the following system property for the session cookies to be httpOnly:
    Dcoldfusion.sessioncookie.httponly=true
 
 
@@ -5067,13 +5067,13 @@ Developing CFML Applications
 
 
 
-· The support for session cookies to be httpOnly depends on the application server you use:
+* The support for session cookies to be httpOnly depends on the application server you use:
 
-    · For Tomcat/JBoss, httpOnly is not supported for JSESSIONID
+    * For Tomcat/JBoss, httpOnly is not supported for JSESSIONID
 
-    · On JRun, add the system property in jvm.config file
+    * On JRun, add the system property in jvm.config file
 
-    · For other application servers, see the relevant documentation for details on httpOnly support for session
+    * For other application servers, see the relevant documentation for details on httpOnly support for session
        cookies.
 
 
@@ -5100,12 +5100,12 @@ in the cfapplication tag.
 
 You can specify the following values for the client storage method:
 
-· Registry (default). Client variables are stored under the key HKEY_LOCAL_MACHINE\
+* Registry (default). Client variables are stored under the key HKEY_LOCAL_MACHINE\
    SOFTWARE\Macromedia\ColdFusion\CurrentVersion\Clients.
 
-· Name of a data source configured in ColdFusion Administrator
+* Name of a data source configured in ColdFusion Administrator
 
-· Cookie
+* Cookie
 
 Generally, it is most efficient to store client variables in a database. Although the Registry option is the default, the
 Registry has significant limitations for client data storage. The Registry cannot be used in clustered systems and its use
@@ -5119,10 +5119,10 @@ In particular, if the client turns off cookies in the browser, client variables 
 
 Consider the following additional limitations before implementing cookie storage for client variables:
 
-· Any Client variable that you set after a cfflush tag is not sent to the browser, so the variable value does not get
+* Any Client variable that you set after a cfflush tag is not sent to the browser, so the variable value does not get
    saved.
 
-· Some browsers allow only 20 cookies to be set from a particular host. ColdFusion uses two of these cookies for the
+* Some browsers allow only 20 cookies to be set from a particular host. ColdFusion uses two of these cookies for the
    CFID and CFToken identifiers, and also creates a cookie named cfglobals to hold global data about the client, such
    as HitCount, TimeCreated, and LastVisit. This limits you to 17 unique applications per client-host pair.
 
@@ -5137,7 +5137,7 @@ Developing CFML Applications
 
 
 
-· Some browsers set a size limit of 4K bytes per cookie. ColdFusion encodes nonalphanumeric data in cookies with
+* Some browsers set a size limit of 4K bytes per cookie. ColdFusion encodes nonalphanumeric data in cookies with
     a URL encoding scheme that expands at a 3-1 ratio, which means you should not store large amounts of data per
     client. ColdFusion throws an error if you try to store more than 4,000 encoded bytes of data for a client.
 
@@ -5436,42 +5436,42 @@ For detailed information on ending sessions and deleting session variables, see 
 ColdFusion and J2EE session management
 The ColdFusion server can use either of the following types of session management:
 
-· ColdFusion session management
+* ColdFusion session management
 
-· J2EE servlet session management
+* J2EE servlet session management
 
 ColdFusion session management uses the same client identification method as ColdFusion client management.
 
 J2EE session management provides the following advantages over ColdFusion session management:
 
-· J2EE session management uses a session-specific session identifier, jsessionid, which is created afresh at the start
+* J2EE session management uses a session-specific session identifier, jsessionid, which is created afresh at the start
    of each session.
 
-· You can share session variables between ColdFusion pages and JSP pages or Java servlets that you call from the
+* You can share session variables between ColdFusion pages and JSP pages or Java servlets that you call from the
    ColdFusion pages.
 
-· The Session scope is serializable (convertible into a sequence of bytes that can later be fully restored into the original
+* The Session scope is serializable (convertible into a sequence of bytes that can later be fully restored into the original
    object). With ColdFusion session management, the Session scope is not serializable. Only serializable scopes can be
    shared across servers.
 
 Therefore, consider using J2EE session management in any of the following cases:
 
-· You want to maximize session security, particularly if you also use client variables
+* You want to maximize session security, particularly if you also use client variables
 
-· You want to share session variables between ColdFusion pages and JSP pages or servlets in a single application.
+* You want to share session variables between ColdFusion pages and JSP pages or servlets in a single application.
 
-· You want to be able to manually terminate a session while maintaining the client identification cookie for use by
+* You want to be able to manually terminate a session while maintaining the client identification cookie for use by
    the Client scope.
 
-· You want to support clustered sessions; for example, to support session failover among servers.
+* You want to support clustered sessions; for example, to support session failover among servers.
 
 
 Configuring and enabling session variables
 To use session variables, enable them in two places:
 
-· ColdFusion Administrator
+* ColdFusion Administrator
 
-· The Application.cfc initialization code This.sessionManagement variable or the active cfapplication tag.
+* The Application.cfc initialization code This.sessionManagement variable or the active cfapplication tag.
 
 ColdFusion Administrator, Application.cfc, and the cfapplication tag also provide facilities for configuring session
 variable behavior, including the variable time-out.
@@ -5491,12 +5491,12 @@ Selecting and enabling session variables in ColdFusion Administrator
 To use session variables, they must be enabled on the ColdFusion Administrator Memory Variables page. (They are
 enabled by default.) You can also use the Administrator Memory Variables page to do the following:
 
-· Select to use ColdFusion session management (the default) or J2EE session management.
+* Select to use ColdFusion session management (the default) or J2EE session management.
 
-· Change the default session time-out. Application code can override this value. The default value for this time-out
+* Change the default session time-out. Application code can override this value. The default value for this time-out
    is 20 mins.
 
-· Specify a maximum session time-out. Application code cannot set a time-out greater than this value. The default
+* Specify a maximum session time-out. Application code cannot set a time-out greater than this value. The default
    value for this time-out is two days.
 
 
@@ -5506,20 +5506,20 @@ Application.cfm file.
 
 Do the following in the Application.cfc initialization code, below the cfcomponent tag, to enable session variables:
 
-· Set This.sessionManagement="Yes".
+* Set This.sessionManagement="Yes".
 
-· Set This.name to specify the name of the application.
+* Set This.name to specify the name of the application.
 
-· Optionally, set This.sessionTimeout to set an application-specific session time-out value. Use the CreateTimeSpan
+* Optionally, set This.sessionTimeout to set an application-specific session time-out value. Use the CreateTimeSpan
    function to specify the number of days, hours, minutes, and seconds for the time-out.
 
 Do the following in the Application.cfm file to enable session variables:
 
-· Set sessionManagement="Yes"
+* Set sessionManagement="Yes"
 
-· Use the name attribute to specify the name of the application.
+* Use the name attribute to specify the name of the application.
 
-· Optionally, use the sessionTimeout attribute to set an application-specific session time-out value. Use the
+* Optionally, use the sessionTimeout attribute to set an application-specific session time-out value. Use the
    CreateTimeSpan function to specify the number of days, hours, minutes, and seconds for the time-out.
 
 The following sample code enables session management for the GetLeadApp application and sets the session variables
@@ -5651,26 +5651,26 @@ To increase the number of items in the shopping cart, use the following code:
 Ending a session
 The following rules apply to ending a session and deleting Session scope variables:
 
-· If you use ColdFusion session management, ColdFusion automatically ends sessions and deletes all Session scope
+* If you use ColdFusion session management, ColdFusion automatically ends sessions and deletes all Session scope
    variables if the client is inactive for the session time-out period. The session does not end when the user closes the
    browser.
 
-· If you use J2EE session management, ColdFusion ends the session and deletes all Session scope variables if the client
+* If you use J2EE session management, ColdFusion ends the session and deletes all Session scope variables if the client
    is inactive for the session time-out period. However, the browser continues to send the same session ID, and
    ColdFusion reuses this ID for sessions with this browser instance, as long as the browser remains active.
 
-· Logging a user out does not end the session or delete Session scope variables.
+* Logging a user out does not end the session or delete Session scope variables.
 
-· In many cases, you can effectively end a session by clearing the Session scope, as shown in the following line. The
+* In many cases, you can effectively end a session by clearing the Session scope, as shown in the following line. The
    following list, however, includes important limitations and alternatives:
 
    <cfset StructClear(Session)>
 
-· Clearing the Session scope does not clear the session ID, and future requests from the browser continue to use the
+* Clearing the Session scope does not clear the session ID, and future requests from the browser continue to use the
    same session ID until the browser exits. It also does not log out the user, even if you use Session scope storage for
    login information. Always use the cflogout tag to log out users.
 
-· If you use J2EE session management, you can invalidate the session, as follows:
+* If you use J2EE session management, you can invalidate the session, as follows:
 
    <cfset getPageContext().getSession().invalidate()>
 
@@ -5683,7 +5683,7 @@ The following rules apply to ending a session and deleting Session scope variabl
    Note: You cannot destroy the session and create a session on the same request, as creating a new session involves
    sending session cookies back.
 
-· If you do not use client cookies, the Session scope and login state is available to your application only as long as you
+* If you do not use client cookies, the Session scope and login state is available to your application only as long as you
    pass the session's CFID, CFTOKEN, and, for J2EE sessions, jsessionid values in the URL query string. After you
    stop using these values, however, the session data remains in memory until the session time-out period elapses.
 
@@ -5718,9 +5718,9 @@ cflock" on page 318.
 Configuring and enabling application variables
 To use application variables, do the following:
 
-· Ensure that they are enabled in the ColdFusion Administrator. (They are enabled by default.)
+* Ensure that they are enabled in the ColdFusion Administrator. (They are enabled by default.)
 
-· Specify the application name by setting the This.name variable in the initialization code of the Application.cfc or
+* Specify the application name by setting the This.name variable in the initialization code of the Application.cfc or
    by setting the name attribute of the cfapplication tag for the current page.
 
 Note: ColdFusion supports unnamed applications for compatibility with J2EE applications. For more information, see
@@ -5728,11 +5728,11 @@ Note: ColdFusion supports unnamed applications for compatibility with J2EE appli
 
 The ColdFusion Administrator also lets you specify the following information:
 
-· A default variable time-out. If all pages in an application are inactive for the time-out period, ColdFusion deletes
+* A default variable time-out. If all pages in an application are inactive for the time-out period, ColdFusion deletes
    all the application variables. The Application.cfc file or cfapplication tag can override this value for a specific
    application. The default value for this time-out is two days.
 
-· A maximum time-out. The application code cannot set a time-out greater than this value. The default value for this
+* A maximum time-out. The application code cannot set a time-out greater than this value. The default value for this
    time-out is two days.
 
 You can set the time-out period for application variables within a specific application by using the
@@ -5859,17 +5859,17 @@ Developing CFML Applications
 Locking code with cflock
 The cflock tag controls simultaneous access to ColdFusion code. The cflock tag lets you do the following:
 
-· Protect sections of code that access and manipulate shared data in the Session, Application, and Server scopes, and
+* Protect sections of code that access and manipulate shared data in the Session, Application, and Server scopes, and
    in the Request and Variables scopes for applications that use ColdFusion threads.
 
-· Ensure that file updates do not fail because files are open for writing by other applications or ColdFusion tags.
+* Ensure that file updates do not fail because files are open for writing by other applications or ColdFusion tags.
 
-· Ensure that applications do not try to simultaneously access ColdFusion extension tags written using the CFX API
+* Ensure that applications do not try to simultaneously access ColdFusion extension tags written using the CFX API
    that are not thread-safe. This is important for CFX tags that use shared (global) data structures without protecting
    them from simultaneous access (not thread-safe). However, Java CFX tags can also access shared resources that
    could become inconsistent if the CFX tag access is not locked.
 
-· Ensure that applications do not try to simultaneously access databases that are not thread-safe. (This is not
+* Ensure that applications do not try to simultaneously access databases that are not thread-safe. (This is not
    necessary for most database systems.)
 
 ColdFusion is a multi-threaded web application server that can process multiple page requests at a time. As a result,
@@ -6104,10 +6104,10 @@ You can set the attribute to any of the following values:
 
 If multiple code sections share a lock, the following rules apply:
 
-· When code is running in a cflock tag block with the type attribute set to Exclusive, code in cflock tag blocks
+* When code is running in a cflock tag block with the type attribute set to Exclusive, code in cflock tag blocks
    with the same scope attribute is not allowed to run. They wait until the code with the exclusive lock completes.
 
-· When code in a cflock tag block with the type readOnly is running, code in other cflock tag blocks with the same
+* When code in a cflock tag block with the type readOnly is running, code in other cflock tag blocks with the same
    scope attribute and the readOnlytype attribute can run, but any blocks with the same scope attribute and an
    Exclusive type cannot run and must wait until all code with the read-only lock completes. However, if a read-only
    lock is active and code with an exclusive lock with the same scope or name is waiting to execute, read-only requests
@@ -6174,10 +6174,10 @@ When you design your locking strategy, consider whether you should have multiple
 of code or few locks with larger blocks of code. There is no simple rule for making such a decision, and you might do
 performance testing with different options to help make your decision. However, consider the following issues:
 
-· If the code block is larger, ColdFusion spends more time inside the block, which can increase the number of times
+* If the code block is larger, ColdFusion spends more time inside the block, which can increase the number of times
    an application waits for the lock to released.
 
-· Each lock requires processor time. The more locks you have, the more processor time is spent on locking code.
+* Each lock requires processor time. The more locks you have, the more processor time is spent on locking code.
 
 
 Nesting locks and avoiding deadlocks
@@ -6568,22 +6568,22 @@ asynchronously, letting you perform asynchronous processing in CFML.
 
 Threads are useful for two broad types of activities:
 
-· When multiple actions can occur simultaneously
+* When multiple actions can occur simultaneously
 
-· When you do not have to wait for one action to complete before starting the next action
+* When you do not have to wait for one action to complete before starting the next action
 
 Some typical uses for threads include the following examples:
 
-· An application that aggregates information from multiple external sources, that takes significant time to respond,
+* An application that aggregates information from multiple external sources, that takes significant time to respond,
    has the code that gets information from each source in a separate thread. This way, the application starts all requests
    quickly and has to wait only until the last response is received, instead of having to wait for a response to each
    request before the next request can start. One example of such usage is an RSS or Atom feed aggregator.
 
-· A page that sends many mail messages runs the code that sends the mail messages in a separate thread and doesn't
+* A page that sends many mail messages runs the code that sends the mail messages in a separate thread and doesn't
    wait for it to complete to continue processing. The thread that sends the mail messages continues processing after
    the page-level processing is completed and the application starts processing another page.
 
-· An application does maintenance of user data, such as using update queries, deleting records, and so on, whenever
+* An application does maintenance of user data, such as using update queries, deleting records, and so on, whenever
    a user logs into the site. If the application does the maintenance in a separate thread, the user gets an immediate
    response after logging in, without having to wait for the updates to complete.
 
@@ -6596,9 +6596,9 @@ Creating and managing ColdFusion threads
 You use the cfthread tag and the Sleep function to create and manage ColdFusion threads. You manage a thread by
 doing the following actions:
 
-· Start the thread running.
+* Start the thread running.
 
-· Temporarily suspend the processing of the thread. This action is useful if one thread must wait for another thread
+* Temporarily suspend the processing of the thread. This action is useful if one thread must wait for another thread
    to do processing, but both threads must continue processing without joining.
 
 
@@ -6610,9 +6610,9 @@ Developing CFML Applications
 
 
 
-· End a thread. You typically end a running thread if there is an error, or if it is still processing after a long time.
+* End a thread. You typically end a running thread if there is an error, or if it is still processing after a long time.
 
-· Have the page or a thread wait until one or more other threads have completed processing before proceeding with
+* Have the page or a thread wait until one or more other threads have completed processing before proceeding with
    its processing, called joining the threads. You typically join threads when one thread requires the results from
    another thread. For example, if a page uses multiple threads to get several news feeds for display, it joins all the feed
    threads before it displays the results.
@@ -6811,11 +6811,11 @@ information about the thread, such as its status and processing time.
 Thread scopes
 Each thread has three special scopes:
 
-· The thread-local scope
+* The thread-local scope
 
-· The Thread scope
+* The Thread scope
 
-· The Attributes scope
+* The Attributes scope
 
 
 The thread-local scope
@@ -6961,12 +6961,12 @@ Locking thread data and resource access
 When an application uses multiple threads, be careful to ensure that the threads do not simultaneously attempt to use
 or modify shared resources that are not themselves thread-safe, including the following items:
 
-· If multiple threads modify a Variables or Request scope variable, use a Request scope lock to control access to the
+* If multiple threads modify a Variables or Request scope variable, use a Request scope lock to control access to the
     code that uses the variable to prevent deadlocks and race conditions. Similarly, use a Request scope lock around
     code that accesses built-in data structures or subscopes of the Variables scope, such as the Forms variable, that you
     change in multiple threads.
 
-· Multiple threads should not try to access any other shared resource simultaneously. For example, do not use the
+* Multiple threads should not try to access any other shared resource simultaneously. For example, do not use the
     same FTP connection from multiple threads. To prevent this behavior, place the code that uses the resource in
     named cflock tags. Use the same name attribute for all cflock tags around code that uses a specific resource.
 
@@ -7023,15 +7023,15 @@ output, error information, and processing information during and after the time 
 Working with threads
 Multi-threaded applications use several building blocks, including the following:
 
-· Starting threads in loops
+* Starting threads in loops
 
-· Getting information about the thread processing status
+* Getting information about the thread processing status
 
-· Displaying thread results
+* Displaying thread results
 
-· Handling thread errors
+* Handling thread errors
 
-· Using database transactions with threads
+* Using database transactions with threads
 
 
 Starting threads inside loops
@@ -7087,11 +7087,11 @@ abnormally or has hung. The status variable can have the following values:
 
  TERMINATED                  The thread stopped running as a result of one of the following actions:
 
-                             · A cfthread tag with a terminate action stopped the thread.
+                             * A cfthread tag with a terminate action stopped the thread.
 
-                             · An error occurred in the thread that caused it to terminate.
+                             * An error occurred in the thread that caused it to terminate.
 
-                             · A ColdFusion administrator stopped the thread from the Server Monitor.
+                             * A ColdFusion administrator stopped the thread from the Server Monitor.
 
  COMPLETED                   The thread ended normally.
 
@@ -7110,11 +7110,11 @@ NOT_STARTED status.
 Handling thread output
 To prevent conflicts, only the page thread displays output. Therefore, named threads have the following limitations:
 
-· ColdFusion places all output that you generate inside a thread, such as HTML and plain text, or the generated
+* ColdFusion places all output that you generate inside a thread, such as HTML and plain text, or the generated
     output of a cfoutput tag, in the Thread scope output metadata variable. The page-level code can display the
     contents of this variable by accessing the threadName.output variable.
 
-· All tags and tag actions that directly send output to the client (instead of generating page text such as HTML
+* All tags and tag actions that directly send output to the client (instead of generating page text such as HTML
     output), do not work inside the thread. For example, to use the cfdocument or cfreport tags in a thread, specify
     a filename attribute; to use a cfpresentation tag, use a directory attribute.
 
@@ -7295,21 +7295,21 @@ ColdFusion Administrator online Help.
 
 CFML features The CFML language includes the following features that you can use to enhance application security.
 
-· The cfqueryparam tag: This tag helps prevent users from injecting malicious SQL expressions. For more
+* The cfqueryparam tag: This tag helps prevent users from injecting malicious SQL expressions. For more
     information on using this tag for database security, see "Enhancing security with cfqueryparam" on page 416,
 
-· Scriptprotect setting: This setting helps protect against cross-site scripting attacks. You set this value with the
+* Scriptprotect setting: This setting helps protect against cross-site scripting attacks. You set this value with the
     ColdFusion Administrator Enable Global Script Protection setting, in the Application.cfc This.scriptprotect
     variable, or in the corresponding cfapplication tag scriptprotect attribute. For more information on this
     feature, see cfapplication in the CFML Reference. For information on Application.cfc see "Defining the application
     and its event handlers in Application.cfc" on page 241.
 
-· Encryption and hashing functions: The Encrypt, Decrypt, and Hash functions let you select a secure algorithm
+* Encryption and hashing functions: The Encrypt, Decrypt, and Hash functions let you select a secure algorithm
     for encrypting and decrypting data or generating a hash "fingerprint." You can select from among several secure
     algorithms that underlying Java security mechanisms support. For encryption, these include, AES, Blowfish, DES
     and Triple DES. For more information, see the Encrypt, Decrypt, and Hash, functions in the CFML Reference.
 
-· Data validation tools      ColdFusion includes a variety of tools for validating form input and other data values,
+* Data validation tools      ColdFusion includes a variety of tools for validating form input and other data values,
     including ways to ensure that users do not submit malicious form data. For information on data validation see
     "Validating Data" on page 743; for specific information on security and validation, see "Security considerations"
     on page 747.
@@ -7343,10 +7343,10 @@ Developing CFML Applications
 About resource and sandbox security
 ColdFusion provides two levels of resource-based security:
 
-· ColdFusion Standard refers to its resource-based security as resource security. It lets you specify a single set of
+* ColdFusion Standard refers to its resource-based security as resource security. It lets you specify a single set of
     limitations on access to ColdFusion resources that apply to all ColdFusion applications.
 
-· ColdFusion Enterprise refers to its resource-based security as sandbox security. Sandbox security is a superset of
+* ColdFusion Enterprise refers to its resource-based security as sandbox security. Sandbox security is a superset of
     resource security. Sandbox security lets you create multiple sandboxes, each corresponding to a different directory.
     For each sandbox, you specify a set of resource limitations that apply to all ColdFusion pages in the sandbox
     directory and its subdirectories. If you create a sandbox that is a subdirectory of a sandbox, the subdirectory's rules
@@ -7401,7 +7401,7 @@ Sandbox security also lets you structure and partition an application to reflect
 different functional components. For example, if your application has both employee inquiry functions and HR
 functions that include creating, accessing, and modifying sensitive data, you could structure the application as follows:
 
-· HR pages go in one directory with access rules that enable most activities.
+* HR pages go in one directory with access rules that enable most activities.
 
 
 
@@ -7413,9 +7413,9 @@ Developing CFML Applications
 
 
 
-· Employee pages go in another directory whose rules limit the files they modify and the tags they use.
+* Employee pages go in another directory whose rules limit the files they modify and the tags they use.
 
-· Pages required for both HR and employee functions go in a third directory with appropriate access rules.
+* Pages required for both HR and employee functions go in a third directory with appropriate access rules.
 
 
 About user security
@@ -7431,13 +7431,13 @@ database, all users could be members of either the employee role or the contract
 of roles that identify their department, position in the corporate hierarchy, or job description. For example, someone
 could be a member of some or all of the following roles:
 
-· Employees
+* Employees
 
-· Human Resources
+* Human Resources
 
-· Benefits
+* Benefits
 
-· Managers
+* Managers
 
 Roles enable you to control access in your application resources without requiring the application to maintain
 knowledge about individual users. For example, suppose you use ColdFusion for your company's intranet. The
@@ -7540,10 +7540,10 @@ expand on this diagram to describe how you implement user security in ColdFusion
 Authenticating users
 Use either, or both, of the following forms of authentication to secure your ColdFusion application:
 
-· Web server authentication, where the web server authenticates the user and does not allow access to the website by
+* Web server authentication, where the web server authenticates the user and does not allow access to the website by
    users without valid login IDs
 
-· Application authentication, where the ColdFusion application authenticates the user and does not allow access to
+* Application authentication, where the ColdFusion application authenticates the user and does not allow access to
    the application by users without valid login IDs
 
 
@@ -7631,9 +7631,9 @@ ColdFusion authentication storage and persistence
 How ColdFusion application authentication information is maintained by the browser and ColdFusion, and therefore
 how long it is available, depends on the following:
 
-· Whether the user's browser enables cookies
+* Whether the user's browser enables cookies
 
-· Whether the application supports the Session scope for login storage
+* Whether the application supports the Session scope for login storage
 
 Note: For detailed information on Session scope, see "Configuring and using session variables" on page 311. Cookie scope
 contains the cookies that arthe browser sends; for more information on using cookies, see cfcookie in the CFML Reference.
@@ -7652,21 +7652,21 @@ Note: For information on user logins without cookies, see "Using ColdFusion secu
 Using the Session scope
 If you do the following, ColdFusion maintains login information in the Session scope instead of the Cookie scope:
 
-· Enable the Session scope in the ColdFusion Administrator and the Application.cfc initialization code or
+* Enable the Session scope in the ColdFusion Administrator and the Application.cfc initialization code or
    cfapplication tag.
 
-· Specify loginStorage="Session" in the Application.cfc initialization code or cfapplication tag.
+* Specify loginStorage="Session" in the Application.cfc initialization code or cfapplication tag.
 
    When ColdFusion maintains login information in the Session scope, it stores the authentication details in a
    Session.cfauthorization variable, and ColdFusion uses the session cookie information to identify the user. Session-
    based authentication has the following advantages over less persistent login storage:
 
-· After the user logs in, the user ID and password are not passed between the server and the browser.
+* After the user logs in, the user ID and password are not passed between the server and the browser.
 
-· The login information and the session share a single time-out. You do not have to manually synchronize sessions
+* The login information and the session share a single time-out. You do not have to manually synchronize sessions
    and logins.
 
-· If you use server clusters, the Session scope login ID is available across the cluster. For more information on server
+* If you use server clusters, the Session scope login ID is available across the cluster. For more information on server
    clustering, see Configuring and Administering ColdFusion.
 
 If you do not enable the Session scope, the authentication information is not kept in a persistent scope. Instead, the
@@ -7794,14 +7794,14 @@ Getting the user ID and password
 The cflogin tag has a built-in cflogin structure that contains two variables, cflogin.username and cflogin.password,
 if the page is executing in response to any of the following:
 
-· Submission of a login form that contains input fields with the names j_username and j_password.
+* Submission of a login form that contains input fields with the names j_username and j_password.
 
-· A request that uses HTTP Basic authentication and, therefore, includes an Authorization header with the user name
+* A request that uses HTTP Basic authentication and, therefore, includes an Authorization header with the user name
     and password.
 
-· A message from the Flash Remoting gatewayConnection object that has the setCredentials method set.
+* A message from the Flash Remoting gatewayConnection object that has the setCredentials method set.
 
-· A request that uses NTLM or Digest authentication. In this case, the user name and password are hashed using a
+* A request that uses NTLM or Digest authentication. In this case, the user name and password are hashed using a
     one-way algorithm before they are placed in the Authorization header; ColdFusion gets the user name from the web
     server and sets the cflogin.password value to the empty string.
 
@@ -7937,15 +7937,15 @@ Logging out users
 After a user logs in, the ColdFusion user authorization and authentication information remains valid until any of the
 following happens:
 
-· The application uses a cflogout tag to log out the user, usually in response to the user clicking a log-out link or
+* The application uses a cflogout tag to log out the user, usually in response to the user clicking a log-out link or
    button.
 
-· If your application uses the Session scope for login information, the session ends.
+* If your application uses the Session scope for login information, the session ends.
 
-· If your application does not use the Session scope for login information, the user does not request a new page for
+* If your application does not use the Session scope for login information, the user does not request a new page for
    the cflogin tag idleTimeout period.
 
-· If your application does not use Session scope for login information, or if you use J2EE-based session identification,
+* If your application does not use Session scope for login information, or if you use J2EE-based session identification,
    the user closes all browser windows.
 
 Logging out a user by using the cflogout tag does not close the user's session, but if you use session login storage, it
@@ -8067,12 +8067,12 @@ Although this scenario shows one method for implementing user security, it is on
 application could require users to log in for only some pages, such as pages in a folder that contains administrative
 functions. When you design your user security implementation, remember the following:
 
-· Code in the cflogin tag body executes only if there is no user logged in.
+* Code in the cflogin tag body executes only if there is no user logged in.
 
-· With application authentication, you write the code that gets the identification from the user and tests this
+* With application authentication, you write the code that gets the identification from the user and tests this
    information against a secure credential store.
 
-· After you have authenticated the user, you use the cfloginuser tag to log the user into ColdFusion.
+* After you have authenticated the user, you use the cfloginuser tag to log the user into ColdFusion.
 
 
 
@@ -8188,21 +8188,21 @@ pages for managing user authentication and authorization.
 
 The wizard asks you to select how to authenticate the login information. Select one of the following options:
 
-· Simple Specify a single user ID and password in the wizard. All users must enter this information to log in. Use
+* Simple Specify a single user ID and password in the wizard. All users must enter this information to log in. Use
    this option for testing, or use the generated files as a template where you can replace the authentication code with
    more complex code. For example, to verify the ID and password against a database.
 
-· NT domain Specify an NT domain in the wizard, and the wizard generates code that queries the domain.
+* NT domain Specify an NT domain in the wizard, and the wizard generates code that queries the domain.
 
-· LDAP Specify the LDAP server and port, the user name and password required to access the login data, and the
+* LDAP Specify the LDAP server and port, the user name and password required to access the login data, and the
    distinguished name to use to start the search for the user name. The wizard generates the code to query the LDAP
    server with the user ID and password.
 
 The wizard asks you to select one of the following options for displaying the request for login information:
 
-· Browser Dialog Box
+* Browser Dialog Box
 
-· ColdFusion Login Form
+* ColdFusion Login Form
 
 
 Structure code generated by the Login Wizard
@@ -8225,20 +8225,20 @@ mm_wizard.authenticate.
 mm_wizard_authenticate.cfc This CFC contains all of the user authentication and login logic. The CFC consists of the
 following methods:
 
-· The ntauth, ldapauth, and simpleauth authentication methods check the user's name and ID against the valid login
+* The ntauth, ldapauth, and simpleauth authentication methods check the user's name and ID against the valid login
    information, and return information about whether the user is authenticated. For the details of how they
    authenticate the user and the specific return values, see the methods.
 
-· The performLogin method is the master login method. It contains the cflogin tag, which displays the login form
+* The performLogin method is the master login method. It contains the cflogin tag, which displays the login form
    and calls the required authentication method. If the authentication method's return argument indicates a valid
    user, the method logs the user in.
 
-· The logout method logs out a user. If you specified Browser Dialog Box as the login page type, it also calls the
+* The logout method logs out a user. If you specified Browser Dialog Box as the login page type, it also calls the
    closeBrowser method to close the browser window. This behavior is necessary because the browser continues to
    send the old login credentials after the user logs out, and the cflogin tag will automatically use them and log the
    user in again.
 
-· The closeBrowser method closes the browser window or tells the user to close the browser window to complete the
+* The closeBrowser method closes the browser window or tells the user to close the browser window to complete the
    logout, depending on the browser type.
 
 
@@ -8265,9 +8265,9 @@ Modifying the login code for your application
 The Login Wizard creates a basic framework for authenticating a user. Customize this framework to meet the needs
 of your application. Typical security-related changes include the following:
 
-· Providing user-specific role information in the cflogin tag
+* Providing user-specific role information in the cflogin tag
 
-· Authenticating users against a database
+* Authenticating users against a database
 
 
 Providing user-specific role information
@@ -8513,15 +8513,15 @@ Developing CFML Applications
 
 This example has three ColdFusion pages:
 
-· The Application.cfc page contains the authentication logic that checks whether a user is logged in, requests the
+* The Application.cfc page contains the authentication logic that checks whether a user is logged in, requests the
   login page if the user is not logged in, and authenticates the data from the login page. If the user is authenticated, it
   logs the user in.
 
   This page also includes the one-button form and logic for logging out a user, which appears at the top of each page.
 
-· The loginform.cfm page displays the login form. The code on this page could also be included in Application.cfc.
+* The loginform.cfm page displays the login form. The code on this page could also be included in Application.cfc.
 
-· The securitytest.cfm page is a sample application page. It displays the logged-in user's roles.
+* The securitytest.cfm page is a sample application page. It displays the logged-in user's roles.
 
 Test the security behavior by adding your own pages to the same directory as the Application.cfc page.
 
@@ -9088,14 +9088,14 @@ your interface displays in Japanese.
 
 Globalizing your application requires that you perform one or more of the following actions:
 
-· Accept input in more than one language.
+* Accept input in more than one language.
 
-· Process dates, times, currencies, and numbers formatted for multiple locales.
+* Process dates, times, currencies, and numbers formatted for multiple locales.
 
-· Process data from a form, database, HTTP connection, e-mail message, or other input formatted in multiple
+* Process data from a form, database, HTTP connection, e-mail message, or other input formatted in multiple
    character sets.
 
-· Create ColdFusion pages containing text in languages other than English.
+* Create ColdFusion pages containing text in languages other than English.
 
 
 Defining globalization
@@ -9302,11 +9302,11 @@ Windows-1252, includes characters with hexadecimal representations in the range 
 include characters in that range. As a result, under the following circumstances, characters in the range 80-9F, such as
 the euro symbol (Ä), are not displayed properly:
 
-· A file encoded in Windows-1252 includes characters in the range 80-9F.
+* A file encoded in Windows-1252 includes characters in the range 80-9F.
 
-· ColdFusion reads the file, specifying the Windows-1252 encoding in the cffile tag.
+* ColdFusion reads the file, specifying the Windows-1252 encoding in the cffile tag.
 
-· ColdFusion displays the file contents, specifying ISO-8859 in the cfcontent tag.
+* ColdFusion displays the file contents, specifying ISO-8859 in the cfcontent tag.
 
 Similar issues can arise if you convert between other character encodings; for example, if you read files encoded in the
 Japanese Windows default encoding and display them using Shift-JIS. To prevent these problems, ensure that the
@@ -9317,13 +9317,13 @@ Locales
 A locale identifies the exact language and cultural settings to use for a user. The locale controls how to format the
 following:
 
-· Dates
+* Dates
 
-· Times
+* Times
 
-· Numbers
+* Numbers
 
-· Currency amounts
+* Currency amounts
 
 ColdFusion supports all locales supported by the JVM that it uses.
 
@@ -9335,11 +9335,11 @@ Locale names
 ColdFusion supports two formats for specifying locale names: the standard Java locale names and the ColdFusion
 naming convention that was required through ColdFusion 6.1.
 
-· You can specify all locales using a name consisting of the following:
+* You can specify all locales using a name consisting of the following:
 
-    · Two lowercase letters to identify the language; for example, en for English, or zh for Chinese.
+    * Two lowercase letters to identify the language; for example, en for English, or zh for Chinese.
 
-    · Optionally, an underscore and two uppercase letters to identify the regional variant of the language; for example,
+    * Optionally, an underscore and two uppercase letters to identify the regional variant of the language; for example,
        US for the United States, or HK for Hong Kong.
 
 
@@ -9371,22 +9371,22 @@ to users. It lets you display the locale using words in the user's language; for
 Determining the locale
 ColdFusion determines the locale value as follows:
 
-· By default, ColdFusion uses the JVM locale, and the default JVM locale is the operating system locale. You can set
+* By default, ColdFusion uses the JVM locale, and the default JVM locale is the operating system locale. You can set
    the JVM locale value explicitly in ColdFusion in the JVM Arguments field on the Java and JVM Settings page in the
    ColdFusion Administrator; for example:
 
    -Duser.language=de -Duser.country=DE.
 
-· A locale set using the SetLocale function persists for the current request or until it is reset by another SetLocale
+* A locale set using the SetLocale function persists for the current request or until it is reset by another SetLocale
    function in the request.
 
-· If a request has multiple SetLocale functions, the current locale setting affects how locale-sensitive ColdFusion
+* If a request has multiple SetLocale functions, the current locale setting affects how locale-sensitive ColdFusion
    tags and functions (such as the functions that start with LS) format data. The last SetLocale function that
    ColdFusion processes before sending a response to the requestor (typically the client browser) determines the value
    of the response Content-Language HTTP header. The browser that requested the page displays the response
    according to the rules for the language specified by the Content-Language header.
 
-· ColdFusion ignores any SetLocale functions that follow a cfflush tag.
+* ColdFusion ignores any SetLocale functions that follow a cfflush tag.
 
 
 Using the locale
@@ -9397,11 +9397,11 @@ not made a call to SetLocale, GetLocale returns the locale of the JVM.
 
 The current locale has two effects:
 
-· When ColdFusion formats date, time, currency, or numeric output, it determines how to format the output. You
+* When ColdFusion formats date, time, currency, or numeric output, it determines how to format the output. You
    can change the locale multiple times on a ColdFusion page to format information according to different locale
    conventions. This enables you to output a page that properly formats different currency values, for example.
 
-· When ColdFusion returns a page to the client, it includes the HTTP Content-Language header. ColdFusion uses
+* When ColdFusion returns a page to the client, it includes the HTTP Content-Language header. ColdFusion uses
    the last locale setting on the page for this information.
 
 Note: In earlier versions of ColdFusion, the default locale was always English, not the operating system's locale. For the
@@ -9719,35 +9719,35 @@ Additional globalization tags and functions
 In addition to the tags and functions that are specifically for globalized applications, you might find the following
 useful when writing a globalized application:
 
-· All string manipulation functions. For more information, see the String functions list in ColdFusion Functions in
+* All string manipulation functions. For more information, see the String functions list in ColdFusion Functions in
    the CFML Reference.
 
-· The GetTimeZoneInfo function, which returns the time zone of the operating system.
+* The GetTimeZoneInfo function, which returns the time zone of the operating system.
 
 
 Handling data in ColdFusion
 Many of the issues involved with globalizing applications deal with processing data from the various sources supported
 by ColdFusion, including the following:
 
-· General character encoding issues
+* General character encoding issues
 
-· Locale-specific content
+* Locale-specific content
 
-· Input data from URLs and HTML forms
+* Input data from URLs and HTML forms
 
-· File data
+* File data
 
-· Databases
+* Databases
 
-· E-mail
+* E-mail
 
-· HTTP
+* HTTP
 
-· LDAP
+* LDAP
 
-· WDDX
+* WDDX
 
-· COM
+* COM
 
 
 
@@ -9759,9 +9759,9 @@ Developing CFML Applications
 
 
 
-· CORBA
+* CORBA
 
-· Searching and indexing
+* Searching and indexing
 
 
 General character encoding issues
@@ -10039,13 +10039,13 @@ Option                                   Description
 Enable Robust Exception Information      Enables the display of the following information when ColdFusion displays the exception
                                          error page. (Cleared by default.)
 
-                                         · Path and URL of the page that caused the error
+                                         * Path and URL of the page that caused the error
 
-                                         · Line number and short snippet of the code where the error was identified
+                                         * Line number and short snippet of the code where the error was identified
 
-                                         · Any SQL statement and data source
+                                         * Any SQL statement and data source
 
-                                         · Java stack trace
+                                         * Java stack trace
 
 Enable Debugging                         Enables debugging output. When this option is cleared, no debugging information is
                                          displayed, including all output of cftrace and cftimer calls. (Cleared by default.)
@@ -10057,10 +10057,10 @@ Enable Debugging                         Enables debugging output. When this opt
 
 Select Debugging Output Format           Determines how to display debugging output:
 
-                                         · The classic.cfm template (the default) displays information as plain HTML text at the
+                                         * The classic.cfm template (the default) displays information as plain HTML text at the
                                            bottom of the page.
 
-                                         · The dockable.cfm template uses DHTML to display the debugging information using an
+                                         * The dockable.cfm template uses DHTML to display the debugging information using an
                                            expanding tree format in a separate window. This window can be either a floating pane or
                                            docked to the browser window. For more information on the dockable output format, see
                                            "Using the dockable.cfm output format" on page 384.
@@ -10187,9 +10187,9 @@ ColdFusion component (CFC) pages.
 
 You can display the execution time in two formats:
 
-· Summary
+* Summary
 
-· Tree
+* Tree
 
 Note: Execution time decreases substantially between the first and second time you use a page after creating it or changing
 it. The first time ColdFusion uses a page it compiles the page into Java bytecode, which the server saves and loads into
@@ -10251,25 +10251,25 @@ required to process the page, that is, all pages indented below the page in the 
 
 By looking at this output in this image you can determine the following information:
 
-· ColdFusion took 0 ms to process an Application.cfm page as part of the request.
+* ColdFusion took 0 ms to process an Application.cfm page as part of the request.
 
-· The requested page was tryinclude.cfm. It took 203 ms to process this page and all pages required to execute it. The
+* The requested page was tryinclude.cfm. It took 203 ms to process this page and all pages required to execute it. The
    code directly on this page took 71 milliseconds (203 - 93 - 16 - 23) to process.
 
-· The mytag2.cfm page was processed three times. All processing took 93 milliseconds, and the average processing
+* The mytag2.cfm page was processed three times. All processing took 93 milliseconds, and the average processing
    time was 31 milliseconds. (This page does not call any other pages.)
 
-· The mytag1.cfm page was processed two times. All processing took 78 milliseconds, and the average processing
+* The mytag1.cfm page was processed two times. All processing took 78 milliseconds, and the average processing
    time was 39 milliseconds. This time included the time to process mytag2.cfm (this tag calls the mytag2 custom tag);
    therefore, the code directly on the page took an average of 8 milliseconds and a total of 16 milliseconds to process.
 
-· The includeme.cfm page took about 62 ms to process. This processing time includes the time to process the
+* The includeme.cfm page took about 62 ms to process. This processing time includes the time to process the
    mytag1.cfm, and therefore also the time to process mytag2.cfm once. Therefore the code directly on the page took
    23 milliseconds (62-39) to process.
 
-· ColdFusion took 125 ms for processing that was not associated with a specific page.
+* ColdFusion took 125 ms for processing that was not associated with a specific page.
 
-· The total processing time was 328 milliseconds, the sum of 125 + 203.
+* The total processing time was 328 milliseconds, the sum of 125 + 203.
 
 
 Database Activity
@@ -10283,25 +10283,25 @@ database query: cfquery, cfinsert, cfgridupdate, and cfupdate.
 
 The output displays the following information:
 
-· Page on which the query is located.
+* Page on which the query is located.
 
-· The time when the query was made.
+* The time when the query was made.
 
-· Query name.
+* Query name.
 
-· An indicator if the result came from a cached query.
+* An indicator if the result came from a cached query.
 
-· SQL statement, including the results of processing any dynamic elements such as CFML variables and
+* SQL statement, including the results of processing any dynamic elements such as CFML variables and
    cfqueryparam tags. This information is useful because it shows the results of all ColdFusion processing of the SQL
    statement.
 
-· Data source name.
+* Data source name.
 
-· Number of records returned; 0 indicates no match to the query.
+* Number of records returned; 0 indicates no match to the query.
 
-· Query execution time.
+* Query execution time.
 
-· Any query parameters values from cfqueryparam tags.
+* Any query parameters values from cfqueryparam tags.
 
 
                                                 
@@ -10318,21 +10318,21 @@ stored procedure in a database management system.
 
 The output displays the following information:
 
-· Stored procedure name
+* Stored procedure name
 
-· Data source name
+* Data source name
 
-· Query execution time
+* Query execution time
 
-· Page on which the query is located.
+* Page on which the query is located.
 
-· The time when the query was made.
+* The time when the query was made.
 
-· A table displaying the procedure parameters sent and received, as specified in the cfprocparam tags, including the
+* A table displaying the procedure parameters sent and received, as specified in the cfprocparam tags, including the
    ctype, CFSQLType, value, variable, and dbVarName attributes. The variable information for OUT and INOUT
    parameters includes the returned value.
 
-· A table listing the procedure result sets returned, as specified in the cfprocresult tag.
+* A table listing the procedure result sets returned, as specified in the cfprocresult tag.
 
 
 Exceptions
@@ -10408,15 +10408,15 @@ ColdFusion displays two buttons at the bottom of each page, as described in the 
 Debug pane features
 The debug pane has the following features:
 
-· You can expand and collapse each debugging information category, such as Exceptions, by clicking the plus or
+* You can expand and collapse each debugging information category, such as Exceptions, by clicking the plus or
    minus sign (+ or -) in front of each category heading. You can also expand and collapse each scope data type display
    in the Scoped Variables section.
 
-· The top of the debug pane displays the URL of the application page being debugged (as identified by the
+* The top of the debug pane displays the URL of the application page being debugged (as identified by the
    cgi.script_name variable). Click this link to refresh the page and display the debugging information that results.
    (You can also refresh the page and debugging information by using your browser's Refresh button or key.)
 
-· The debug pane also displays a box where you can enter a page path or URL. When you click the Go button,
+* The debug pane also displays a box where you can enter a page path or URL. When you click the Go button,
    ColdFusion processes the page and the debug pane is updated with the debugging information for the new page.
 
 
@@ -10430,10 +10430,10 @@ In the Administrator, the cfquery tag debug attribute overrides the Database Act
 Settings page. The debug attribute has an effect only when debugging output is enabled on the Debugging Settings
 page, as follows:
 
-· If Database Activity is selected in the Administrator, specify debug="No" to prevent ColdFusion from displaying
+* If Database Activity is selected in the Administrator, specify debug="No" to prevent ColdFusion from displaying
    the query's SQL and statistics in the debugging output.
 
-· If Database Activity is not selected in the Administrator, specify debug="Yes" or debug to have ColdFusion display
+* If Database Activity is not selected in the Administrator, specify debug="Yes" or debug to have ColdFusion display
    the query's SQL and statistics in the debugging output.
 
 For example, if Database Activity is not selected in the Administrator, you can use the following code to show the query
@@ -10523,26 +10523,26 @@ Developing CFML Applications
 About the cftrace tag
 The cftrace tag provides the following information:
 
-· A severity identifier specified by the cftrace tag type attribute
+* A severity identifier specified by the cftrace tag type attribute
 
-· A timestamp indicating when the cftrace tag executed
+* A timestamp indicating when the cftrace tag executed
 
-· The time elapsed between the start of processing the request and when the current cftrace tag executes.
+* The time elapsed between the start of processing the request and when the current cftrace tag executes.
 
 
-· The time between any previous cftrace tag in the request and the current one. If this is the first cftrace tag
+* The time between any previous cftrace tag in the request and the current one. If this is the first cftrace tag
    processed for the request, the output indicates "1st trace". ColdFusion does not display this information in inline
    trace output, only the log and in the standard debugging output.
 
-· The name of the page that called the cftrace tag
+* The name of the page that called the cftrace tag
 
-· The line on the page where the cftrace call is located
+* The line on the page where the cftrace call is located
 
-· A trace category specified by the category attribute
+* A trace category specified by the category attribute
 
-· A message specified by the text attribute
+* A message specified by the text attribute
 
-· The name and value, at the time the cftrace call executes, of a single variable specified by the var attribute
+* The name and value, at the time the cftrace call executes, of a single variable specified by the var attribute
 
 A typical cftrace tag might look like the following:
 
@@ -10551,10 +10551,10 @@ A typical cftrace tag might look like the following:
 
 You can display the cftrace tag output in either or both of the following ways:
 
-· As a section in the debugging output: To display the trace information in the debugging output, in the
+* As a section in the debugging output: To display the trace information in the debugging output, in the
    Administrator, select Tracing Information on the Debugging Settings page.
 
-· Inline in your application page: When you specify the inline attribute in a cftrace tag, ColdFusion displays the
+* Inline in your application page: When you specify the inline attribute in a cftrace tag, ColdFusion displays the
    trace output on the page at the cftrace tag location. (An inline cftrace tag does not display any output if it is
    inside a cfsilent tag block.)
 
@@ -10675,25 +10675,25 @@ Using tracing
 As its name indicates, the cftrace tag is designed to help you trace the execution of your application. It can help you
 do any of several things:
 
-· You can time the execution of a tag or code section. This capability is useful for tags and operations that can take
+* You can time the execution of a tag or code section. This capability is useful for tags and operations that can take
   substantial processing time. Typical candidates include all ColdFusion tags that access external resources, including
   cfquery, cfldap, cfftp, cffile, and so on. To time execution of any tag or code block, call the cftrace tag
   before and after the code you want to time.
 
-· You can display the values of internal variables, including data structures. For example, you can display the raw
+* You can display the values of internal variables, including data structures. For example, you can display the raw
   results of a database query.
 
-· You can display an intermediate value of a variable. For example, you could use this tag to display the contents of
+* You can display an intermediate value of a variable. For example, you could use this tag to display the contents of
   a raw string value before you use string functions to select a substring or format it.
 
-· You can display and log processing progress. For example, you can place a cftrace call at the head of pages in your
+* You can display and log processing progress. For example, you can place a cftrace call at the head of pages in your
   application or before critical tags or calls to critical functions. (Doing this could result in massive log files in a
   complex application, so use this technique with care.)
 
-· If a page has many nested cfif and cfelseif tags you can place cftrace tags in each conditional block to trace
+* If a page has many nested cfif and cfelseif tags you can place cftrace tags in each conditional block to trace
   the execution flow. When you do this, use the condition variable in the message or var attribute.
 
-· If you find that the ColdFusion server is hanging, and you suspect a particular block of code (or call to a cfx tag,
+* If you find that the ColdFusion server is hanging, and you suspect a particular block of code (or call to a cfx tag,
   COM object, or other third-party component), you can place a cftrace tag before and after the suspect code, to
   log entry and exit.
 
@@ -10807,15 +10807,15 @@ Settings page, you must also specifically enable usage of the cftimer tag by che
 Calling the cftimer tag
 You can control where the cftimer tag displays timing information, as follows:
 
-· Inline: Displays timing information following the </cftimer> tag.
+* Inline: Displays timing information following the </cftimer> tag.
 
-· Outline: Displays timing information at the beginning of the timed code and draws a box around the timed code.
+* Outline: Displays timing information at the beginning of the timed code and draws a box around the timed code.
    (This requires browser support for the HTML FIELDSET attribute.)
 
-· Comment: Displays timing information in an HTML comment in the format <!--label: elapsed-timems >--. The
+* Comment: Displays timing information in an HTML comment in the format <!--label: elapsed-timems >--. The
    default label is cftimer.
 
-· Debug: Displays timing information in the debugging output under the heading CFTimer Times.
+* Debug: Displays timing information in the debugging output under the heading CFTimer Times.
 
 The following example calls the cftimer tag multiple times, each time using a different type attribute:
 
@@ -10906,22 +10906,22 @@ Developing CFML Applications
 Using the Code Analyzer
 The Code Analyzer has two purposes:
 
-· It can validate the CFML syntax of your application. To do so, the analyzer runs the ColdFusion compiler on your
+* It can validate the CFML syntax of your application. To do so, the analyzer runs the ColdFusion compiler on your
   pages, but does not execute the compiled code. It reports errors that the compiler encounters.
 
-· It provides information about the incompatibility (and its severity), and suggests a remedy where one is required.
+* It provides information about the incompatibility (and its severity), and suggests a remedy where one is required.
 
-· It can identify places where ColdFusion might behave differently than previous versions. The analyzer identifies the
+* It can identify places where ColdFusion might behave differently than previous versions. The analyzer identifies the
   following kinds of features:
 
-  · No longer supported: Their use results in errors. For example, the closable attribute is not supported for the tag
+  * No longer supported: Their use results in errors. For example, the closable attribute is not supported for the tag
       cflayoutarea in border layout (cflayout with type="border").
 
-  · Deprecated: They are still available, but their use is not recommended and they might not be available in future
+  * Deprecated: They are still available, but their use is not recommended and they might not be available in future
       releases. Deprecated features might also behave differently now than in previous releases. For example, in
       cfcache tag the following attributes are deprecated: directory, cachedirectory, port, and protocol.
 
-  · Modified behavior: They might behave differently than in previous versions. For example, if you use cfcache
+  * Modified behavior: They might behave differently than in previous versions. For example, if you use cfcache
       tag in ColdFusion 9 without end tag (</cfcache>), then instead of caching only the current page (which was
       the behavior in the previous releases), the entire request is cached.
 
@@ -10936,7 +10936,7 @@ Developing CFML Applications
 
 
 
-    · New: These are features newly added to ColdFusion 9. For example, if you use throw as a user-defined function
+    * New: These are features newly added to ColdFusion 9. For example, if you use throw as a user-defined function
         in a CFM, analyzer informs that throw is a built-in ColdFusion function and suggests you to rename. If you use
         throw as a user-defined function in a CFC, analyzer informs that throw is a built-in function and suggests you
         to prefix it with object scope. For more details on new features, see example, "What's new in ColdFusion 9" on
@@ -11075,19 +11075,19 @@ About the ColdFusion Debugger
 The ColdFusion Debugger is an Eclipse plugin. It runs in the Eclipse Debug perspective. You can use the ColdFusion
 Debugger to perform debugging tasks, including the following:
 
-· Setting breakpoints
+* Setting breakpoints
 
-· Viewing variables
+* Viewing variables
 
-· Stepping over, into, and out of function calls
+* Stepping over, into, and out of function calls
 
 
 Install and uninstall the ColdFusion Debugger
 To use the ColdFusion Debugger, you must have the following software installed:
 
-· Eclipse version 3.1.2, Eclipse version 3.2, Flex Builder 2, or Flash Builder
+* Eclipse version 3.1.2, Eclipse version 3.2, Flex Builder 2, or Flash Builder
 
-· ColdFusion 9
+* ColdFusion 9
 
 To install the ColdFusion Debugger, you install the ColdFusion Eclipse plugins. For more information, see Installing
 ColdFusion.
@@ -11220,61 +11220,61 @@ ColdFusion Debugger in Eclipse. It is available in the Eclipse Debug perspective
 
 The Debug perspective includes the following:
 
-· Debug pane, which keeps the results of each completed session. The following buttons appear at the top of this pane:
+* Debug pane, which keeps the results of each completed session. The following buttons appear at the top of this pane:
 
-   · Resume - Resumes a debugging session
+   * Resume - Resumes a debugging session
 
-   · Suspend - Pauses a debugging session
+   * Suspend - Pauses a debugging session
 
-   · Terminate - Stops a debugging session
+   * Terminate - Stops a debugging session
 
-   · Disconnect - Disconnects the debugger from the selected debug target when debugging remotely
+   * Disconnect - Disconnects the debugger from the selected debug target when debugging remotely
 
-   · Remove All Terminated Launches - Clears all terminated debug targets from the display
+   * Remove All Terminated Launches - Clears all terminated debug targets from the display
 
-   · Step Into - Executes code line by line, including included code, UDFs, CFCs, and the like
+   * Step Into - Executes code line by line, including included code, UDFs, CFCs, and the like
 
-   · Step Over - Executes code line by line, excluding included code, UDFs, CFCs, and the like
+   * Step Over - Executes code line by line, excluding included code, UDFs, CFCs, and the like
 
-   · Step Return - Returns to the original page from which you entered the included code, UDF, CFC, or the like
+   * Step Return - Returns to the original page from which you entered the included code, UDF, CFC, or the like
 
-   · Drop to Frame -Reenters a specified stack frame, which is analogous to going in reverse and restarting your
+   * Drop to Frame -Reenters a specified stack frame, which is analogous to going in reverse and restarting your
       program partway through
 
-   · Use Step Filters/Step Debug - Ensures that all step functions apply step filters
+   * Use Step Filters/Step Debug - Ensures that all step functions apply step filters
 
-   · Menu - Displays the menu that lets you manage the view, show system threads, show qualified names, and show
+   * Menu - Displays the menu that lets you manage the view, show system threads, show qualified names, and show
       monitors
 
-· Variables pane, which shows the current variables, including the variable scope. The following buttons appear at
+* Variables pane, which shows the current variables, including the variable scope. The following buttons appear at
   the top of this pane:
 
-   · Show Type Names - Displays the type of the variables
+   * Show Type Names - Displays the type of the variables
 
-   · Show Logical Structure - This button is not supported
+   * Show Logical Structure - This button is not supported
 
-   · Collapse All - Collapses the information in the panel to show only variable types
+   * Collapse All - Collapses the information in the panel to show only variable types
 
-· Breakpoints pane - Lists breakpoints in the ColdFusion application. The following buttons appear at the top of this pane:
+* Breakpoints pane - Lists breakpoints in the ColdFusion application. The following buttons appear at the top of this pane:
 
-   · Remove Selected Breakpoints - Removes a breakpoint
+   * Remove Selected Breakpoints - Removes a breakpoint
 
-   · Remove All Breakpoints - Removes all breakpoints
+   * Remove All Breakpoints - Removes all breakpoints
 
-   · Show Breakpoints Supported by Selected Targets - Displays the breakpoints for what you are currently
+   * Show Breakpoints Supported by Selected Targets - Displays the breakpoints for what you are currently
       debugging
 
-   · Go to File for Breakpoint - Goes to the file in which the selected breakpoint is set
+   * Go to File for Breakpoint - Goes to the file in which the selected breakpoint is set
 
-   · Skip All Breakpoints - Ignores all breakpoints
+   * Skip All Breakpoints - Ignores all breakpoints
 
-   · Expand All - Expands the information in the pane
+   * Expand All - Expands the information in the pane
 
-   · Collapse All - Collapses the information in the pane
+   * Collapse All - Collapses the information in the pane
 
-   · Link with Debug View - Highlights the selected breakpoint when the application stops execution in the Debug View
+   * Link with Debug View - Highlights the selected breakpoint when the application stops execution in the Debug View
 
-   · Add Java Exception Breakpoint - Lets you specify which Java exception to throw when you reach the selected
+   * Add Java Exception Breakpoint - Lets you specify which Java exception to throw when you reach the selected
       breakpoint
 
 
@@ -11288,14 +11288,14 @@ Developing CFML Applications
 
 
 
-   · Menu - Lets you specify the type of information to display in the Breakpoints pane
+   * Menu - Lets you specify the type of information to display in the Breakpoints pane
 
-· Debug Output Buffer - Contains two panes: Browser, which displays what appears in the browser during
+* Debug Output Buffer - Contains two panes: Browser, which displays what appears in the browser during
    application execution; Server Output Buffer, which displays the debug output.
 
-· Edit pane, which displays the stacked source panes, one for each source file you have open.
+* Edit pane, which displays the stacked source panes, one for each source file you have open.
 
-· Outline pane, which displays the current source file's content in outline form
+* Outline pane, which displays the current source file's content in outline form
 
 
 Using the ColdFusion Debugger
@@ -11304,11 +11304,11 @@ pages that are in an Eclipse project.
 
 You can use the ColdFusion Debugger to do the following tasks:
 
-· Setting a breakpoint
+* Setting a breakpoint
 
-· Executing code line by line
+* Executing code line by line
 
-· Inspecting variables
+* Inspecting variables
 
 
 Begin debugging a ColdFusion application
@@ -11370,11 +11370,11 @@ performance during debugging. You cannot set a breakpoint in a file that is not 
 
 2 While highlighting the line where you want to set the breakpoint, do one of the following:
 
-    · Double-click in the marker bar that appears to the left of the editor area.
+    * Double-click in the marker bar that appears to the left of the editor area.
 
-    · Right click, and then select Toggle Breakpoint.
+    * Right click, and then select Toggle Breakpoint.
 
-    · Press Alt+Shift+B.
+    * Press Alt+Shift+B.
 
     A blue dot appears before the line on which you set the breakpoint.
 
@@ -11382,10 +11382,10 @@ performance during debugging. You cannot set a breakpoint in a file that is not 
 
     ColdFusion breakpoints have four states in the Eclipse debugger:
 
-    · Enabled and Valid - This is a breakpoint at a valid location. It is represented by a solid blue circle and stops code
+    * Enabled and Valid - This is a breakpoint at a valid location. It is represented by a solid blue circle and stops code
        execution when encountered.
 
-    · Unresolved - ColdFusion sets the breakpoint for the page that is loaded in its memory. If you modify the page
+    * Unresolved - ColdFusion sets the breakpoint for the page that is loaded in its memory. If you modify the page
        and do not execute it, the source is not in sync with the page that ColdFusion sees on the server. In this situation,
        ColdFusion may consider the line where you want to set breakpoint to be invalid. However, you have not yet
        executed the page; when you do so, that line may be valid. This type of breakpoint is represented by a question
@@ -11395,10 +11395,10 @@ performance during debugging. You cannot set a breakpoint in a file that is not 
        page. It tries to resolve them when you modify the page and execute it. If you think that the line at which
        ColdFusion shows an unresolved breakpoint is valid, delete the breakpoint and set it again.
 
-    · Invalid - If ColdFusion determines that the CFML that you edit in Eclipse is the same as the CFML in its
+    * Invalid - If ColdFusion determines that the CFML that you edit in Eclipse is the same as the CFML in its
        memory, and that the breakpoint you have set is at an invalid line, the breakpoint appears as a red X.
 
-    · Disabled.
+    * Disabled.
 
 
 Executing code line by line

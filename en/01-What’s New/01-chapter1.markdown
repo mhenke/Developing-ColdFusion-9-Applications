@@ -9,35 +9,35 @@ Area What's new and changed
 
 Language Support for the following:
 
-· for-in construct (for arrays) in CFScript
+* for-in construct (for arrays) in CFScript
 
-· var declaration within for loop in CFScript
+* var declaration within for loop in CFScript
 
-· Function argument metadata
+* Function argument metadata
 
-· Function equivalents for cfile action="upload" (FileUpload) and cffile
+* Function equivalents for cfile action="upload" (FileUpload) and cffile
 action="uploadall" (FileUploadAll)
 
 The following script functions have been implemented as CFCs:
 
-· dbinfo
+* dbinfo
 
-· imap
+* imap
 
-· pop
+* pop
 
-· ldap
+* ldap
 
-· feed
+* feed
 
-Caching · New function cacheGetSession
+Caching * New function cacheGetSession
 
-· New parameter template in the function cacheGetMetadata
+* New parameter template in the function cacheGetMetadata
 
-· cacheGetProperties and cacheSetProperties support
+* cacheGetProperties and cacheSetProperties support
 diskSpoolBufferSizeMB, clearOnFlush, and diskExpiryThreadIntervalSeconds
 
-· Using user-defined caching regions in all cache functions except
+* Using user-defined caching regions in all cache functions except
 cacheGetProperties and cacheSetProperties
 
 IIS 7 IIS 7 configuration for ColdFusion has no dependency on IIS 6
@@ -47,122 +47,122 @@ DEVELOPING COLDFUSION 9 APPLICATIONS 2 What's New
 
 Area What's new and changed
 
-ColdFusion Ajax · Support for CFCs outside webroot
+ColdFusion Ajax * Support for CFCs outside webroot
 
-· ColdFusion.FileUpload.getselectedfiles returns the status of upload
+* ColdFusion.FileUpload.getselectedfiles returns the status of upload
 operation
 
-· While using cffileupload, the url attribute is now optional and it
+* While using cffileupload, the url attribute is now optional and it
 defaults to cgi.script\_name
 
-· Support for selecting multiple rows in cfgrid
+* Support for selecting multiple rows in cfgrid
 
-· Support for turning on/off grid column headers
+* Support for turning on/off grid column headers
 
-· New attribute autoExpand in cfgridcolumn
+* New attribute autoExpand in cfgridcolumn
 
-· Supports mask attribute for HTML grids
+* Supports mask attribute for HTML grids
 
-· The fileupload control now passes session information implicitly to
+* The fileupload control now passes session information implicitly to
 the target page if session management is turned on either in
 Application.cfc or Application.cfm.
 
-· Added the following JavaScript Functions:
+* Added the following JavaScript Functions:
 
-· ColdFusion.Autosuggest.getAutosuggestObject
+* ColdFusion.Autosuggest.getAutosuggestObject
 
-· ColdFusion.Layout.disableSourceBind
+* ColdFusion.Layout.disableSourceBind
 
-· ColdFusion.Layout.enableSourceBind
+* ColdFusion.Layout.enableSourceBind
 
-· Coldfusion.fileUpload.setUrl
+* Coldfusion.fileUpload.setUrl
 
-· ColdFusion.grid.getSelectedRows
+* ColdFusion.grid.getSelectedRows
 
-· ColdFusion.Map.show
+* ColdFusion.Map.show
 
-· ColdFusion.Map.hide
+* ColdFusion.Map.hide
 
-· ColdFusion.Map.refresh
+* ColdFusion.Map.refresh
 
-· ColdFusion.Grid.getTopToolbar
+* ColdFusion.Grid.getTopToolbar
 
-· ColdFusion.Grid.getBottomToolbar
+* ColdFusion.Grid.getBottomToolbar
 
-· ColdFusion.Grid.showTopToolbar
+* ColdFusion.Grid.showTopToolbar
 
-· ColdFusion.Grid.hideTopToolbar
+* ColdFusion.Grid.hideTopToolbar
 
-· ColdFusion.Grid.showBottomToolbar
+* ColdFusion.Grid.showBottomToolbar
 
-· ColdFusion.Grid.hideBottomToolbar
+* ColdFusion.Grid.hideBottomToolbar
 
-· ColdFusion.Grid.refreshTopToolbar
+* ColdFusion.Grid.refreshTopToolbar
 
-· ColdFusion.Grid.refreshBottomToolbar
+* ColdFusion.Grid.refreshBottomToolbar
 
 DEVELOPING COLDFUSION 9 APPLICATIONS 3 What's New
 
 Area What's new and changed
 
-ORM · Supports multiple data sources for ORM in ColdFusion applications
+ORM * Supports multiple data sources for ORM in ColdFusion applications
 
-· The following enhancements:
+* The following enhancements:
 
-· New attribute MappedSuperClass added to cfcomponent/component
+* New attribute MappedSuperClass added to cfcomponent/component
 
-· New attributes skipCFCWithError and automanagesession added to the
+* New attributes skipCFCWithError and automanagesession added to the
 ormsettings struct in the THIS scope of Application.cfc
 
-· Attribute missingrowignored in cfproperty now supports one-to- one
+* Attribute missingrowignored in cfproperty now supports one-to- one
 relationship
 
-· The function EntityNew takes the property values as struct in a second
+* The function EntityNew takes the property values as struct in a second
 argument
 
 Amazon S3 Support ColdFusion customers can now store data in Amazon S3.
 
 SpreadSheet Support for the following:
 
-· New functions SpreadsheetRemoveSheet and SpreadsheetFormatCellRange
+* New functions SpreadsheetRemoveSheet and SpreadsheetFormatCellRange
 
-· New attribute excludeHeaderRow in cfspreadsheet
+* New attribute excludeHeaderRow in cfspreadsheet
 
-· Performanceimprovementsforformattinghugenumberofrowsandcolumnsusingthe
+* Performanceimprovementsforformattinghugenumberofrowsandcolumnsusingthe
 SpreadSheet format functions
 
-· Preformatting of a cell while you use SpreadSheetformatcell or
+* Preformatting of a cell while you use SpreadSheetformatcell or
 SpreadSheetformatcellrange
 
-· Vertical alignment in format struct using the key verticalalignment
+* Vertical alignment in format struct using the key verticalalignment
 
 AIR integration The following enhancements:
 
-· Support for auto-generating primary keys
+* Support for auto-generating primary keys
 
-· Support for encrypted database (introduced in AIR 1.5)
+* Support for encrypted database (introduced in AIR 1.5)
 
-· Cache file used by ActionScript ORM to track the operations on SQLite
+* Cache file used by ActionScript ORM to track the operations on SQLite
 database is now in the applicationStoragedirectory instead of
 applicationDirectory. You can specify the location of the cahceDirectory
 in openSession API on syncmanager
 
-· Self Join relationships for one-to-one, one-to-many and many-to-many
+* Self Join relationships for one-to-one, one-to-many and many-to-many
 database relationships
 
-· Supports both Array and ArrayCollection for use in ActionScript Entity
+* Supports both Array and ArrayCollection for use in ActionScript Entity
 to represent a collection in a database relationship
 
-· ActionScript ORM logs all the SQL statements that ORM uses to persist
+* ActionScript ORM logs all the SQL statements that ORM uses to persist
 entities into the SQLite database
 
-· NewAPIskeepClientObjectandkeepAllClientObjectstoensurethattheserver
+* NewAPIskeepClientObjectandkeepAllClientObjectstoensurethattheserver
 updates are not retained when ColdFusion server raises conflict
 
-· The class SessionToken is dynamic and therefore, data can be stored on
+* The class SessionToken is dynamic and therefore, data can be stored on
 the token returned from the ORM APIs
 
-· Supports autocommit mode
+* Supports autocommit mode
 
 Flash Remoting A channel-definition construct has been introduced in
 services-config.xml (CF\_root/wwroot/WEB-INF/flex/) named
@@ -174,36 +174,36 @@ Area What's new and changed
 
 BlazeDS 4 and LCDS Support for the following:
 
-· LCDS 3 and LCDS 3.1
+* LCDS 3 and LCDS 3.1
 
-· BlazeDS 4
+* BlazeDS 4
 
-· New methods allowSend and allowSubscribe in ColdFusion Messaging
+* New methods allowSend and allowSubscribe in ColdFusion Messaging
 Gateway CFCs
 
 Solr Apart from overall improvement in the accuracy of indexing, the
 following enhancements:
 
-· Displays correct MIME types for all documents
+* Displays correct MIME types for all documents
 
-· Enhanced support for indexing of metadata for binary files
+* Enhanced support for indexing of metadata for binary files
 
-· Support for the attribute previousCriteria (in the tag cfsearch)
+* Support for the attribute previousCriteria (in the tag cfsearch)
 
-· Both the tags cfindex and cfsearch support the attribute categoryTree
+* Both the tags cfindex and cfsearch support the attribute categoryTree
 
-· Option to enable/disable term highlighting for entire document
+* Option to enable/disable term highlighting for entire document
 
 Logging The following enhancements
 
-· ColdFusion generates log files for the following services: http, ftp,
+* ColdFusion generates log files for the following services: http, ftp,
 web service, Portlet, Derby, and Feed
 
-· Enable/Disable logging: A new icon has been added in the Actions
+* Enable/Disable logging: A new icon has been added in the Actions
 column of the Log Files page (ColdFusion Administrator \> Debugging &
 Logging)
 
-· Support for automatic logging of scheduled tasks
+* Support for automatic logging of scheduled tasks
 
 Server monitoring Enhancements in this release help you use Server
 Monitoring effectively in load conditions.
@@ -216,31 +216,31 @@ encrypt data source passwords encryption
 
 OEM upgrades The following versions are supported:
 
-· Microsoft .NET Framework 4
+* Microsoft .NET Framework 4
 
-· Ehcache 2.0
+* Ehcache 2.0
 
-· Hibernate 3.5.2
+* Hibernate 3.5.2
 
-· ExtJS 3.1
+* ExtJS 3.1
 
-· Solr 1.4
+* Solr 1.4
 
-· DataDirect Connect for JDBC 4.1
+* DataDirect Connect for JDBC 4.1
 
-· MySQL 5.1.11
+* MySQL 5.1.11
 
-Other enhancements · Application.cfc lets you specify data source
+Other enhancements * Application.cfc lets you specify data source
 authentication details in the attribute datasource
 
-· Support for HQL in cfquery
+* Support for HQL in cfquery
 
-· ·New actions for cfpdf AIR Proxy
+* ·New actions for cfpdf AIR Proxy
 
-· The ActionScript proxy class for PDF service has the following new
+* The ActionScript proxy class for PDF service has the following new
 attributes: extracttext and extractimage
 
-· CFID, CFTOKEN, and jsessionid are marked httpOnly
+* CFID, CFTOKEN, and jsessionid are marked httpOnly
 
 DEVELOPING COLDFUSION 9 APPLICATIONS 5 What's New
 
@@ -262,14 +262,14 @@ the open- source Hibernate library as the underlying engine.
 
 ColdFusion ORM provides:
 
-· Enterprise infrastructure for Rapid Application Development
+* Enterprise infrastructure for Rapid Application Development
 
-· In-built performance optimization that include caching and lazy
+* In-built performance optimization that include caching and lazy
 loading
 
-· Cleaner and more manageable application code
+* Cleaner and more manageable application code
 
-· Database vendor independence
+* Database vendor independence
 
 For more information, see ColdFusion ORM.
 
@@ -312,13 +312,13 @@ Operations CFScript now supports import and new operations.
 
 In addition, ColdFusion now supports the following:
 
-· Writing component and interface entirely in CFScript
+* Writing component and interface entirely in CFScript
 
-· Complete control over function declaration in CFScript
+* Complete control over function declaration in CFScript
 
-· Java Doc style comments
+* Java Doc style comments
 
-· Ternary operator
+* Ternary operator
 
 For more information, see Extending ColdFusion Pages with CFML
 Scripting.
@@ -334,15 +334,15 @@ Reference.
 Other language enhancements Apart from new cfsrcipt features and
 onServerStart, this release has the following language enhancements:
 
-· Nested cftransaction
+* Nested cftransaction
 
-· UDF name conflict resolution for CFCs
+* UDF name conflict resolution for CFCs
 
-· Local scope
+* Local scope
 
-· Var scope support anywhere in functions
+* Var scope support anywhere in functions
 
-· Implicit getters and setters for cfproperty in CFCs
+* Implicit getters and setters for cfproperty in CFCs
 
 Integration with other products and technologies
 
@@ -353,27 +353,27 @@ workings and writing less code.
 
 The new Ajax controls support:
 
-· Geographical maps
+* Geographical maps
 
-· Media player
+* Media player
 
-· Multi-file upload
+* Multi-file upload
 
-· Enhanced data grid
+* Enhanced data grid
 
-· Improved Ajax plumbing
+* Improved Ajax plumbing
 
-· Enhanced auto-suggest
+* Enhanced auto-suggest
 
-· Accordion navigation
+* Accordion navigation
 
-· Progress indicator
+* Progress indicator
 
 DEVELOPING COLDFUSION 9 APPLICATIONS 7 What's New
 
-· Confirm, alert, and prompt dialog boxes
+* Confirm, alert, and prompt dialog boxes
 
-· Slider
+* Slider
 
 For more information, see Using Ajax User Interface Components and
 Features.
@@ -385,11 +385,11 @@ can now use ColdFusion with Microsoft Windows SharePoint Services 2.0 or
 
 You can now:
 
-· Load SharePoint actions from a ColdFusion application
+* Load SharePoint actions from a ColdFusion application
 
-· Access a ColdFusion application from SharePoint using custom Web Parts
+* Access a ColdFusion application from SharePoint using custom Web Parts
 
-· Use Single Sign-On to access and display ColdFusion applications using
+* Use Single Sign-On to access and display ColdFusion applications using
 SharePoint
 
 For more information, see SharePoint integration.
@@ -400,16 +400,16 @@ integration support to Office applications such as Excel and PowerPoint.
 
 Using this feature, you can:
 
-· Create, read, and update MS Excel spreadsheets using the cfspreadsheet
+* Create, read, and update MS Excel spreadsheets using the cfspreadsheet
 tag
 
-· Generate PDFs from MS Word and MS PowerPoint automatically using the
+* Generate PDFs from MS Word and MS PowerPoint automatically using the
 cfdocument tag
 
-· Generate PowerPoint presentations dynamically from HTML using the
+* Generate PowerPoint presentations dynamically from HTML using the
 cfpresentation tag
 
-· Create Connect presentations from MS PowerPoint using the
+* Create Connect presentations from MS PowerPoint using the
 cfpresentation tag
 
 For more information, see Office file interoperabilityOffice file
@@ -436,20 +436,20 @@ caching.
 The following features help to improve the performance of your
 application:
 
-· Caching page fragments
+* Caching page fragments
 
-· Caching in memory. Memory is now the default cache location.
+* Caching in memory. Memory is now the default cache location.
 
 DEVELOPING COLDFUSION 9 APPLICATIONS 8 What's New
 
-· Caching specific objects. Includes the ability to put, get, and flush
+* Caching specific objects. Includes the ability to put, get, and flush
 cached objects.
 
-· Setting cache dependencies
+* Setting cache dependencies
 
-· Setting idle timeout
+* Setting idle timeout
 
-· Getting metadata about cached objects
+* Getting metadata about cached objects
 
 For more information, see Optimizing ColdFusion applications.
 
@@ -469,9 +469,9 @@ For more information, see Working with in-memory files.
 Improved Clustering This release supports serialization of query, array,
 and datetime types in CFC.
 
-Other performance enhancements · Improved CFC performance
+Other performance enhancements * Improved CFC performance
 
-· Faster Java method invocation
+* Faster Java method invocation
 
 Database enhancements
 
@@ -479,12 +479,12 @@ DataDirect This release supports DataDirect driver version 4.0 SP 1. The
 feature helps to enhance database operations by providing the following
 features:
 
-· Support for MySQL (Enterprise and Commercial editions), Oracle11g,
+* Support for MySQL (Enterprise and Commercial editions), Oracle11g,
 DB2v9.5, Informix 11, and SQL Server 2008
 
-· Support for IPv6
+* Support for IPv6
 
-· Option to set a default query timeout value
+* Option to set a default query timeout value
 
 For more information, see the DataDirect Connect JDBC Support in the
 Configuring and Administering ColdFusion.
@@ -514,17 +514,17 @@ AMF/Flash remoting.
 
 The following are the exposed services:
 
-· cfpdf
+* cfpdf
 
-· cfImage
+* cfImage
 
-· cfdocument
+* cfdocument
 
-· cfmail
+* cfmail
 
-· cfpop
+* cfpop
 
-· cfchart
+* cfchart
 
 You can secure the exposed services to prevent access by unknown
 applications and users. You can do this by configuring the client IP
@@ -547,17 +547,17 @@ clusters.
 
 You can use Server Manager to:
 
-· Create data sources
+* Create data sources
 
-· Schedule tasks and notify alerts
+* Schedule tasks and notify alerts
 
-· Apply hot fixes
+* Apply hot fixes
 
-· Clear cache across a cluster of ColdFusion servers
+* Clear cache across a cluster of ColdFusion servers
 
-· Compare settings across servers
+* Compare settings across servers
 
-· Monitor server health
+* Monitor server health
 
 For more information, see Working with Server Manager.
 
@@ -576,20 +576,20 @@ DEVELOPING COLDFUSION 9 APPLICATIONS 10 What's New
 PDF functionality The following list includes new features and improved
 functionality:
 
-· FDF support in PDF forms
+* FDF support in PDF forms
 
-· PDF package
+* PDF package
 
-· Size optimization
+* Size optimization
 
-· Adding headers and footers to PDF documents using the cfpdf tag
+* Adding headers and footers to PDF documents using the cfpdf tag
 
-· Support for RGB/ARGB, cfimage and accessible images in watermarking a
+* Support for RGB/ARGB, cfimage and accessible images in watermarking a
 pdf using the cfpdf tag
 
-· Improved quality and performance of thumbnail generation
+* Improved quality and performance of thumbnail generation
 
-· Support for extracting image and text from PDF.
+* Support for extracting image and text from PDF.
 
 For more information, see Assembling PDF Documents.
 
@@ -598,15 +598,15 @@ within multiple folders using the cfimap tag.
 
 This feature lets you:
 
-· Retrieve messages and store information in a query object. You can
+* Retrieve messages and store information in a query object. You can
 also download attachments in a temporary ColdFusion folder or a new
 folder.
 
-· Delete any unnecessary mail or user-created folders
+* Delete any unnecessary mail or user-created folders
 
-· Mark multiple messages as read
+* Mark multiple messages as read
 
-· Manage mail folders by creating folders, renaming them, or moving
+* Manage mail folders by creating folders, renaming them, or moving
 messages across folders
 
 For more information, see the section cfimap in ColdFusion CFML

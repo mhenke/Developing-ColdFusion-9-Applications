@@ -12,31 +12,31 @@ Adobe ColdFusion provides you with several techniques and elements to create sec
 multiple times in an application. Many of the elements also let you extend the built-in capabilities of ColdFusion.
 ColdFusion provides the following techniques and elements:
 
-· ColdFusion pages you include using the cfinclude tag
+* ColdFusion pages you include using the cfinclude tag
 
-· User-defined functions (UDFs)
+* User-defined functions (UDFs)
 
-· ColdFusion components
+* ColdFusion components
 
-· Custom CFML tags
+* Custom CFML tags
 
-· CFX (ColdFusion Extension) tags
+* CFX (ColdFusion Extension) tags
 
 ColdFusion can also use elements developed using other technologies, including the following:
 
-· JSP tags from JSP tag libraries. For information on using JSP tags, see "Integrating J2EE and Java Elements in CFML
+* JSP tags from JSP tag libraries. For information on using JSP tags, see "Integrating J2EE and Java Elements in CFML
    Applications" on page 1125.
 
-· Java objects, including objects in the Java run-time environment and JavaBeans. For information on using Java
+* Java objects, including objects in the Java run-time environment and JavaBeans. For information on using Java
    objects, see "Integrating J2EE and Java Elements in CFML Applications" on page 1125.
 
-· Microsoft COM (Component Object Model) objects. For information on using COM objects, see "Integrating
+* Microsoft COM (Component Object Model) objects. For information on using COM objects, see "Integrating
    COM and CORBA Objects in CFML Applications" on page 1170.
 
-· CORBA (Common Object Request Broker Architecture) objects. For information on using CORBA objects, see
+* CORBA (Common Object Request Broker Architecture) objects. For information on using CORBA objects, see
    "Integrating COM and CORBA Objects in CFML Applications" on page 1170.
 
-· Web services. For information on using web services, see "Using Web Services" on page 1093.
+* Web services. For information on using web services, see "Using Web Services" on page 1093.
 
 
 Including pages with the cfinclude tag
@@ -103,9 +103,9 @@ page, close the block on the same page; you cannot include the closing portion o
 
 ColdFusion searches for included files as follows:
 
-· The template attribute specifies a path relative to the directory of the calling page.
+* The template attribute specifies a path relative to the directory of the calling page.
 
-· If the template value is prefixed with a forward slash (/), ColdFusion searches for the included file in directories that
+* If the template value is prefixed with a forward slash (/), ColdFusion searches for the included file in directories that
    you specify on the Mappings page of the ColdFusion Administrator.
 
 Important: A page must not include itself. Doing so causes an infinite processing loop. To resolve the problem, stop the
@@ -151,11 +151,11 @@ The header appears along with the logo.
 Recommended uses
 Consider using the cfinclude tag in the following cases:
 
-· For page headers and footers
+* For page headers and footers
 
-· To divide a large page into multiple logical chunks that are easier to understand and manage
+* To divide a large page into multiple logical chunks that are easier to understand and manage
 
-· For large "snippets" of code that are used in many places but do not require parameters or fit into the model of a
+* For large "snippets" of code that are used in many places but do not require parameters or fit into the model of a
    function or tag
 
 
@@ -164,9 +164,9 @@ User-defined functions (UDFs) let you create application elements in a format in
 a return a value. You can define UDFs using CFScript or the cffunction tag. The two techniques have several
 differences, of which the following are the most important:
 
-· If you use the cffunction tag, your function can include CFML tags.
+* If you use the cffunction tag, your function can include CFML tags.
 
-· If you write your function using CFScript, you cannot include CFML tags.
+* If you write your function using CFScript, you cannot include CFML tags.
 
 You can use UDFs in your application pages just as you use standard ColdFusion functions. When you create a
 function for an algorithm or procedure that you use frequently, you can then use the function wherever you need the
@@ -185,14 +185,14 @@ www.cflib.org is an open-source collection of CFML user-defined functions.
 Recommended uses
 Typical uses of UDFs include, but are not limited to, the following:
 
-· Data manipulation routines, such as a function to reverse an array
+* Data manipulation routines, such as a function to reverse an array
 
-· String and date and time routines, such as a function to determine whether a string is a valid IP address
+* String and date and time routines, such as a function to determine whether a string is a valid IP address
 
-· Mathematical calculation routines, including standard trigonometric and statistical operations or calculating loan
+* Mathematical calculation routines, including standard trigonometric and statistical operations or calculating loan
    amortization
 
-· Routines that call functions externally, for example using COM or CORBA, such as routines to determine the space
+* Routines that call functions externally, for example using COM or CORBA, such as routines to determine the space
    available on a Windows file system drive
 
 
@@ -208,14 +208,14 @@ Building Blocks of ColdFusion Applications
 
 Consider using UDFs in the following circumstances:
 
-· You want to pass in arguments, process the results, and return a value. UDFs can return complex values, including
+* You want to pass in arguments, process the results, and return a value. UDFs can return complex values, including
    structures that contain multiple simple values.
 
-· You want to provide logical units, such as data manipulation functions.
+* You want to provide logical units, such as data manipulation functions.
 
-· Your code must be recursive.
+* Your code must be recursive.
 
-· You distribute your code to others.
+* You distribute your code to others.
 
 If you can create either a UDF or a custom CFML tag for a particular purpose, first consider creating a UDF because
 running it requires less system overhead than using a custom tag.
@@ -238,28 +238,28 @@ component, but not to any application that uses the component.
 
 ColdFusion components have the following features:
 
-· They are designed to provide related services in a single unit.
+* They are designed to provide related services in a single unit.
 
-· They can provide web services and make them available over the Internet.
+* They can provide web services and make them available over the Internet.
 
-· They can provide ColdFusion services that Flash clients can call directly.
+* They can provide ColdFusion services that Flash clients can call directly.
 
-· They have several features that are familiar to object-oriented programmers, including data hiding, inheritance,
+* They have several features that are familiar to object-oriented programmers, including data hiding, inheritance,
    packages, and introspection.
 
 
 Recommended uses
 Consider using ColdFusion components when doing the following:
 
-· Creating web services. (To create web services in ColdFusion, you must use components.)
+* Creating web services. (To create web services in ColdFusion, you must use components.)
 
-· Creating services that are callable by Flash clients.
+* Creating services that are callable by Flash clients.
 
-· Creating libraries of related functions, particularly if they must share data.
+* Creating libraries of related functions, particularly if they must share data.
 
-· Using integrated application security mechanisms based on roles and the requestor location.
+* Using integrated application security mechanisms based on roles and the requestor location.
 
-· Developing code in an object-oriented manner, in which you use methods on objects and can create objects that
+* Developing code in an object-oriented manner, in which you use methods on objects and can create objects that
    extend the features of existing objects.
 
 
@@ -281,20 +281,20 @@ Building Blocks of ColdFusion Applications
 Using custom CFML tags
 Custom tags written in CFML behave like ColdFusion tags. They can do all of the following:
 
-· Take arguments.
+* Take arguments.
 
-· Have tag bodies with beginning and ending tags.
+* Have tag bodies with beginning and ending tags.
 
-· Do specific processing when ColdFusion encounters the beginning tag.
+* Do specific processing when ColdFusion encounters the beginning tag.
 
-· Do processing that is different from the beginning tag processing when ColdFusion encounters the ending tag.
+* Do processing that is different from the beginning tag processing when ColdFusion encounters the ending tag.
 
-· Have any valid ColdFusion page content in their bodies, including both ColdFusion built-in tags and custom tags
+* Have any valid ColdFusion page content in their bodies, including both ColdFusion built-in tags and custom tags
    (referred to as nested tags), or even JSP tags or JavaScript.
 
-· Be called recursively; that is, a custom tag can, if designed properly, call itself in the tag body.
+* Be called recursively; that is, a custom tag can, if designed properly, call itself in the tag body.
 
-· Return values to the calling page in a common scope or the Variables scope of the calling page, but custom tags do
+* Return values to the calling page in a common scope or the Variables scope of the calling page, but custom tags do
    not return values directly, the way functions do.
 
 Although a custom tag and a ColdFusion page that you include using the cfinclude tag are both ColdFusion pages,
@@ -325,11 +325,11 @@ arrows indicate the flow of ColdFusion processing the pages.
 Calling custom CFML tags
 Unlike built-in tags, you can run custom CFML tags in the following three ways:
 
-· Call a tag directly.
+* Call a tag directly.
 
-· Call a tag using the cfmessagebox tag.
+* Call a tag using the cfmessagebox tag.
 
-· Use the cfimport tag to import a custom tag library directory.
+* Use the cfimport tag to import a custom tag library directory.
 
 To call a CFML custom tag directly, precede the filename with cf_, omit the .cfm extension, and place the name in
 angle brackets (<>). For example, use the following line to call the custom tag defined by the file mytag.cfm:
@@ -363,21 +363,21 @@ of often-complex jobs; see www.adobe.com/go/learn_cfu_exchange_en.
 
 Consider using CFML custom tags in the following circumstances:
 
-· You need a tag-like structure, which has a body and an end tag, with the body contents changing from invocation
+* You need a tag-like structure, which has a body and an end tag, with the body contents changing from invocation
    to invocation.
 
-· You want to associate specific processing with the beginning tag, the ending tag, or both tags.
+* You want to associate specific processing with the beginning tag, the ending tag, or both tags.
 
-· To use a logical structure in which the tag body uses "child" tags or subtags. This structure is like the cfform tag,
+* To use a logical structure in which the tag body uses "child" tags or subtags. This structure is like the cfform tag,
    which uses subtags for the individual form fields.
 
-· You do not need a function format in which the calling code uses a direct return value.
+* You do not need a function format in which the calling code uses a direct return value.
 
-· Your code must be recursive.
+* Your code must be recursive.
 
-· Your functionality is complex.
+* Your functionality is complex.
 
-· To distribute your code in a convenient form to others.
+* To distribute your code in a convenient form to others.
 
 If you can create either a UDF or a custom CFML tag for a purpose, first consider creating a UDF because running it
 requires less system overhead than using a custom tag.
@@ -396,15 +396,15 @@ CFX tags can return information to the calling page in a page variable or by wri
 
 CFX tags can do the following:
 
-· Have any number of custom attributes.
+* Have any number of custom attributes.
 
-· Create and manipulate ColdFusion queries.
+* Create and manipulate ColdFusion queries.
 
-· Dynamically generate HTML that your page returns to the client.
+* Dynamically generate HTML that your page returns to the client.
 
-· Set variables within the ColdFusion page from which they are called.
+* Set variables within the ColdFusion page from which they are called.
 
-· Throw exceptions that result in standard ColdFusion error messages.
+* Throw exceptions that result in standard ColdFusion error messages.
 
 
 Calling CFX tags
@@ -427,23 +427,23 @@ Recommended uses
 CFX tags provide one way of using C++ or Java code. However, you can also create Java classes and COM objects and access
 them using the cfobject tag. CFX tags, however, provide some built-in features that the cfobject tag does not have:
 
-· CFX tags are easier to call in CFML code. You use CFX tags directly in CFML code as you would any other tag, and
+* CFX tags are easier to call in CFML code. You use CFX tags directly in CFML code as you would any other tag, and
    you can pass arguments using a standard tag format.
 
-· ColdFusion provides predefined classes for use in your Java or C++ code that facilitate CFX tag development. These
+* ColdFusion provides predefined classes for use in your Java or C++ code that facilitate CFX tag development. These
    classes include support for request handling, error reporting, and query management.
 
 CFX tags are useful in the following circumstances:
 
-· You already have existing application functionality written in C++ or Java that you want to incorporate into your
+* You already have existing application functionality written in C++ or Java that you want to incorporate into your
    ColdFusion application.
 
-· You cannot build the functionality you need using ColdFusion elements.
+* You cannot build the functionality you need using ColdFusion elements.
 
-· You want to provide the new functionality in a tag format, as opposed to using the cfobject tag to import native
+* You want to provide the new functionality in a tag format, as opposed to using the cfobject tag to import native
    Java or COM objects.
 
-· You want to use the Java and C++ classes provided by ColdFusion for developing your CFX code.
+* You want to use the Java and C++ classes provided by ColdFusion for developing your CFX code.
 
 
 For more information
@@ -535,14 +535,14 @@ wherever you require the procedure. If you must change the procedure, you change
 use your function anywhere that you can use a ColdFusion expression: in tag attributes, between number (#) signs in
 output, and in CFScript code. Typical uses of UDFs include, but are not limited to the following:
 
-· Data manipulation routines, such as a function to reverse an array
+* Data manipulation routines, such as a function to reverse an array
 
-· String and date/time routines, such as a function to determine whether a string is a valid IP address
+* String and date/time routines, such as a function to determine whether a string is a valid IP address
 
-· Mathematical calculation routines, including standard trigonometric and statistical operations or calculating loan
+* Mathematical calculation routines, including standard trigonometric and statistical operations or calculating loan
     amortization
 
-· Routines that call functions externally, for example using COM or CORBA, including routines to determine the
+* Routines that call functions externally, for example using COM or CORBA, including routines to determine the
     space available on a Windows file system drive
 
 For information about selecting among user-defined functions, ColdFusion components, and custom tags, see
@@ -570,20 +570,20 @@ Building Blocks of ColdFusion Applications
 Determining where to create a user-defined function
 You can define a function in the following places:
 
-· In a ColdFusion component. If you organize your functions in ColdFusion components, you use the functions as
+* In a ColdFusion component. If you organize your functions in ColdFusion components, you use the functions as
    described in "Using ColdFusion components" on page 189.
 
-· On the page where it is called. You can even define it below the place on the page where it is called, but this poor
+* On the page where it is called. You can even define it below the place on the page where it is called, but this poor
    coding practice can result in confusing code.
 
-· On a page that you include using a cfinclude tag. The cfinclude tag must be executed before the function gets
+* On a page that you include using a cfinclude tag. The cfinclude tag must be executed before the function gets
    called. For example, you can define all the functions for your application's on a single page and place a cfinclude
    tag at the top of pages that use the functions.
 
-· On any page that places the function name in a scope common with the page on which you call the function. For
+* On any page that places the function name in a scope common with the page on which you call the function. For
    more information on UDF scoping, see "Specifying the scope of a function" on page 173.
 
-· On the Application.cfc or Application.cfm page. For more information, see "Designing and Optimizing a
+* On the Application.cfc or Application.cfm page. For more information, see "Designing and Optimizing a
    ColdFusion Application" on page 235.
 
 For recommendations on selecting where you define functions, see the sections "Using Application.cfm and function
@@ -594,11 +594,11 @@ About creating functions using CFScript
 You use the function statement to define the function in CFScript. CFScript function definitions have the following
 features and limitations:
 
-· The function definition syntax is familiar to anyone who uses JavaScript or most programming languages.
+* The function definition syntax is familiar to anyone who uses JavaScript or most programming languages.
 
-· CFScript is efficient for writing business logic, such as expressions and conditional operations.
+* CFScript is efficient for writing business logic, such as expressions and conditional operations.
 
-· CFScript function definitions cannot include CFML tags.
+* CFScript function definitions cannot include CFML tags.
 
 The following is a CFScript definition for a function that returns a power of 2:
 
@@ -715,15 +715,15 @@ About creating functions by using tags
 You use the cffunction tag to define a UDF in CFML. The cffunction tag syntax has the following features and
 limitations:
 
-· Developers who have a background in CFML or HTML, but no scripting or programming experience are more
+* Developers who have a background in CFML or HTML, but no scripting or programming experience are more
    familiar with the syntax.
 
-· You can include any ColdFusion tag in your function definition. Therefore, you can create a function, for example,
+* You can include any ColdFusion tag in your function definition. Therefore, you can create a function, for example,
    that accesses a database.
 
-· You can embed CFScript code inside the function definition.
+* You can embed CFScript code inside the function definition.
 
-· The cffunction tag provides attributes that enable you to easily limit the execution of the tag to authorized users
+* The cffunction tag provides attributes that enable you to easily limit the execution of the tag to authorized users
    or specify how the function can be accessed.
 
 The following code uses the cffunction tag to define the exponentiation function:
@@ -871,34 +871,34 @@ employee ID, and looks up the corresponding department ID in the cfdocexamples E
 Rules for function definitions
 The following rules apply to functions that you define using CFScript or the cffunction tag:
 
-· The function name must be unique. It must be different from any existing variable, or UDF, except that you can
+* The function name must be unique. It must be different from any existing variable, or UDF, except that you can
    use the ColdFusion advanced security function names.
 
-· You can have a user-defined function with the same name as a built-in function for a CFC but not for CFM.
+* You can have a user-defined function with the same name as a built-in function for a CFC but not for CFM.
 
-· You cannot use the following names to create user-defined functions:
+* You cannot use the following names to create user-defined functions:
 
-   · writedump
+   * writedump
 
-   · writelog
+   * writelog
 
-   · location
+   * location
 
-   · throw
+   * throw
 
-   · trace
+   * trace
 
-· The function name must not start with the letters cf in any form. (For example, CF_MyFunction, cfmyFunction,
+* The function name must not start with the letters cf in any form. (For example, CF_MyFunction, cfmyFunction,
    and cfxMyFunction are not valid UDF names.)
 
-· You cannot redefine or overload a function. If a function definition is active, ColdFusion generates an error if you
+* You cannot redefine or overload a function. If a function definition is active, ColdFusion generates an error if you
    define a second function with the same name.
 
-· You cannot nest function definitions; that is, you cannot define one function inside another function definition.
+* You cannot nest function definitions; that is, you cannot define one function inside another function definition.
 
-· The function can be recursive, that is, the function definition body can call the function.
+* The function can be recursive, that is, the function definition body can call the function.
 
-· The function does not have to return a value.
+* The function does not have to return a value.
 
 You can use tags or CFScript to create a UDF. Each technique has advantages and disadvantages.
 
@@ -921,9 +921,9 @@ Building Blocks of ColdFusion Applications
 
 You can call a UDF in two ways:
 
-· With unnamed, positional arguments, as you would call a built-in function
+* With unnamed, positional arguments, as you would call a built-in function
 
-· With named arguments, as you would use attributes in a tag
+* With named arguments, as you would use attributes in a tag
 
 You can use either technique for any function. However, if you use named arguments, use the same argument names
 to call the function as you use to define the function. You cannot call a function with a mixture of named and unnamed
@@ -973,13 +973,13 @@ The following, similar code is more likely to result in programming errors:
 Passing arguments
 ColdFusion passes the following data types to the function by value:
 
-· Integers
+* Integers
 
-· Real numbers
+* Real numbers
 
-· Strings (including lists)
+* Strings (including lists)
 
-· Date-time objects
+* Date-time objects
 
 
 
@@ -992,7 +992,7 @@ Building Blocks of ColdFusion Applications
 
 
 
-· Arrays
+* Arrays
 
 As a result, any changes that you make in the function to these arguments do not affect the variable that was used to
 call the function, even if the calling code is on the same ColdFusion page as the function definition.
@@ -1059,11 +1059,11 @@ Building Blocks of ColdFusion Applications
 
 This solution is simple, but it is not always optimal:
 
-· This technique requires ColdFusion to copy the entire array twice, once when you call the function and once when
+* This technique requires ColdFusion to copy the entire array twice, once when you call the function and once when
    the function returns. Doing so is inefficient for large arrays and can reduce performance, particularly if the function
    is called frequently.
 
-· You can use the return value for other purposes, such as a status variable.
+* You can use the return value for other purposes, such as a status variable.
 
 If you do not use the return statement to return the array to the caller, you can pass the array as an element in a
 structure and change the array values inside the structure. Then the calling page can access the changed data by using
@@ -1109,15 +1109,15 @@ continue to exist; if the function changes the argument value, the variable in t
 The Arguments scope is special, in that you can treat the scope as either an array or a structure. This dual nature of the
 Arguments scope is useful because it makes it easy to use arguments in any of the following circumstances:
 
-· You define the function using CFScript.
+* You define the function using CFScript.
 
-· You define the function using the cffunction tag.
+* You define the function using the cffunction tag.
 
-· You pass arguments using argument name=value format.
+* You pass arguments using argument name=value format.
 
-· You pass arguments as values only.
+* You pass arguments as values only.
 
-· The function takes optional, undeclared arguments.
+* The function takes optional, undeclared arguments.
 
 
 
@@ -1132,9 +1132,9 @@ Building Blocks of ColdFusion Applications
 The contents of the Arguments scope
 The following rules apply to the Arguments scope and its contents:
 
-· The scope contains all the arguments passed into a function.
+* The scope contains all the arguments passed into a function.
 
-· If you use cffunction to define the function, the scope always contains an entry "slot" for each declared argument,
+* If you use cffunction to define the function, the scope always contains an entry "slot" for each declared argument,
    even if you do not pass the argument to the function when you call it. If you do not pass a declared (optional)
    argument, the scope entry for that argument is empty.
 
@@ -1183,13 +1183,13 @@ the array elements.
 Using the Arguments scope as an array
 The following rules apply to referencing Arguments scope as an array:
 
-· If you call the function using unnamed arguments, the array index is the position of the argument in the function
+* If you call the function using unnamed arguments, the array index is the position of the argument in the function
    call.
 
-· If you use names to pass the arguments, the array indexes correspond to the order in which the arguments are
+* If you use names to pass the arguments, the array indexes correspond to the order in which the arguments are
    declared in the function definition.
 
-· If you use names to pass arguments, and do not pass all the arguments defined in the function, the Arguments array
+* If you use names to pass arguments, and do not pass all the arguments defined in the function, the Arguments array
    has an empty entry at the index corresponding to the argument that was not passed. This rule applies only to
    functions created using the cffunction tag.
 
@@ -1204,12 +1204,12 @@ Building Blocks of ColdFusion Applications
 
 
 
-· If you use a name to pass an optional argument that is not declared in the function definition, the array index of the
+* If you use a name to pass an optional argument that is not declared in the function definition, the array index of the
    argument is the sum of the following:
 
-   · The number of arguments defined with names in the function.
+   * The number of arguments defined with names in the function.
 
-   · The position of the optional argument among the arguments passed in that do not have names defined in the
+   * The position of the optional argument among the arguments passed in that do not have names defined in the
        function.
 
    However, using argument names in this manner is not good programming practice because you cannot ensure that
@@ -1253,7 +1253,7 @@ and the cfdump tag displays the scope as a structure.
 Using the Arguments scope as a structure
 The following rule applies when referencing Arguments scope as a structure:
 
-· Use the argument names as structure keys. For example, if your function definition includes a Principal argument,
+* Use the argument names as structure keys. For example, if your function definition includes a Principal argument,
    reference the argument as Arguments.Principal.
 
    The following rules are also true, but avoid writing code that uses them. To ensure program clarity, only use the
@@ -1271,7 +1271,7 @@ Building Blocks of ColdFusion Applications
 
 
 
-· If you do not name an optional argument in the function definition, but do use a name for it in the function call,
+* If you do not name an optional argument in the function definition, but do use a name for it in the function call,
    use the name specified in the function call For example, if you have an unnamed optional argument and call the
    function using the name myOptArg for the argument, you can reference the argument as Arguments.myOptArg
    in the function body. This usage, however, is poor programming practice, as it makes the function definition
@@ -1380,12 +1380,12 @@ function anywhere in an application (or even in multiple applications), without 
 As with other programming practices, valid exceptions to this recommendation exist. For example, you can do any of
 the following:
 
-· Use a shared scope variable, such as an Application or Session scope counter variable.
+* Use a shared scope variable, such as an Application or Session scope counter variable.
 
-· Use the Request scope to store variables used in the function. For more information, see "Using the Request scope
+* Use the Request scope to store variables used in the function. For more information, see "Using the Request scope
    for static variables and constants" on page 174.
 
-· Create context-specific functions that work directly with caller data if you always synchronize variable names.
+* Create context-specific functions that work directly with caller data if you always synchronize variable names.
 
 Note: If your function must directly change a simple variable in the caller (one that is not passed to the function by
 reference), you can place the variable inside a structure argument.
@@ -1397,7 +1397,7 @@ clarity, however.
 
 The following rules apply to argument persistence:
 
-· Because ColdFusion passes simple variable and array arguments by value, their names and values exist only while
+* Because ColdFusion passes simple variable and array arguments by value, their names and values exist only while
    the function executes.
 
 
@@ -1410,7 +1410,7 @@ Building Blocks of ColdFusion Applications
 
 
 
-· Because ColdFusion passes structures, queries, and objects such as COM objects by reference, the argument name
+* Because ColdFusion passes structures, queries, and objects such as COM objects by reference, the argument name
    exists only while the function executes, but the underlying data persists after the function returns and can be
    accessed by using the variable name of the caller. The variable name of the caller and the argument name can be
    different.
@@ -1423,11 +1423,11 @@ other scopes directly in your code is often poor practice.)
 Handling errors in UDFs
 ColdFusion provides several techniques to handle errors in UDFs:
 
-· Display error messages directly in the function.
+* Display error messages directly in the function.
 
-· Return function status information to the calling page.
+* Return function status information to the calling page.
 
-· Use try/catch or cftry/cfcatch blocks and the cfthrow and cfrethrow tags to handle and generate exceptions.
+* Use try/catch or cftry/cfcatch blocks and the cfthrow and cfrethrow tags to handle and generate exceptions.
 
 The technique you use depends on the circumstances of your function and application and on your preferred
 programming style. However, it is best for most functions to use the second or third technique, or a combination of
@@ -1506,12 +1506,12 @@ must handle the error information and act appropriately.
 
 Consider the following mechanisms for providing status information:
 
-· Use the return value to indicate the function status only. The return value can be a Boolean success/failure
+* Use the return value to indicate the function status only. The return value can be a Boolean success/failure
    indicator. The return value can also be a status code, for example where 1 indicates success, and various failure types
    are assigned known numbers. With this method, the function must set a variable in the caller to the value of a
    successful result.
 
-· Set a status variable that is available to the caller (not the return variable) to indicate success or failure and any
+* Set a status variable that is available to the caller (not the return variable) to indicate success or failure and any
    information about the failure. With this method, the function can return the result directly to the caller. In this
    method, the function uses only the return value and structure arguments to pass the status back to the caller.
 
@@ -1521,10 +1521,10 @@ depends on the type of function, the application in which you use it, and your c
 The following example, which modifies the function used in "A user-defined function example" on page 171, uses one
 version of the status variable method. It provides two forms of error information:
 
-· It returns -1, instead of an interest value, if it encounters an error. This value can serve as an error indicator because
+* It returns -1, instead of an interest value, if it encounters an error. This value can serve as an error indicator because
    you never pay negative interest on a loan.
 
-· It also writes an error message to a structure that contains an error description variable. Because the message is in
+* It also writes an error message to a structure that contains an error description variable. Because the message is in
    a structure, it is available to both the calling page and the function.
 
 
@@ -1658,9 +1658,9 @@ methods at runtime, because it does not require testing and branching.
 
 Exceptions in UDFs have the following two dimensions:
 
-· Handling exceptions generated by running the UDF code
+* Handling exceptions generated by running the UDF code
 
-· Generating exceptions when the UDF identifies invalid data or other conditions that would cause errors if
+* Generating exceptions when the UDF identifies invalid data or other conditions that would cause errors if
    processing continued
 
 
@@ -1684,14 +1684,14 @@ by zero.
 
 When ColdFusion catches an exception, the function can use any of the following methods to handle the exception:
 
-· If the error is recoverable (for example, if the problem is a database time-out where in some cases retrying resolves
+* If the error is recoverable (for example, if the problem is a database time-out where in some cases retrying resolves
    the issue), try to recover from the problem.
 
-· Display a message, as described in "Displaying error messages" on page 166.
+* Display a message, as described in "Displaying error messages" on page 166.
 
-· Return an error status, as described in "Providing status information" on page 167.
+* Return an error status, as described in "Providing status information" on page 167.
 
-· If the UDF is defined using the cffunction tag, throw a custom exception, or rethrow the exception so that it the
+* If the UDF is defined using the cffunction tag, throw a custom exception, or rethrow the exception so that it the
    calling ColdFusion page catches it. For more information on throwing and rethrowing exceptions, see "Handling
    runtime exceptions with ColdFusion tags" on page 287.
 
@@ -1894,11 +1894,11 @@ Building Blocks of ColdFusion Applications
 Using Application.cfm and function include files
 Consider the following techniques for making your functions available to your ColdFusion pages:
 
-· If you consistently call a small number of UDFs, consider putting their definitions on the Application.cfm page.
+* If you consistently call a small number of UDFs, consider putting their definitions on the Application.cfm page.
 
-· If you call UDFs in only a few of your application pages, do not include their definitions in Application.cfm.
+* If you call UDFs in only a few of your application pages, do not include their definitions in Application.cfm.
 
-· If you use many UDFs, place their definitions on one or more ColdFusion pages that contain only UDFs. You can
+* If you use many UDFs, place their definitions on one or more ColdFusion pages that contain only UDFs. You can
    include the UDF definition page in any page that calls the UDFs.
 
 The next section describes other techniques for making UDFs available to your ColdFusion pages.
@@ -1912,9 +1912,9 @@ names are names (references) for segments of CFML code. Therefore, like variable
 About functions and scopes
 Like ColdFusion variables, UDFs exist in a scope:
 
-· When you define a UDF, ColdFusion puts it in the Variables scope.
+* When you define a UDF, ColdFusion puts it in the Variables scope.
 
-· You can assign a UDF to a scope the same way you assign a variable to a scope, by assigning the function to a name
+* You can assign a UDF to a scope the same way you assign a variable to a scope, by assigning the function to a name
    in the new scope. For example, the following line assigns the MyFunc UDF to the Request scope:
 
     <cfset Request.MyFunc = Variables.MyFunc>
@@ -1989,18 +1989,18 @@ You can partially break the rule described in the section "Referencing caller va
 defines variables in the Request scope. However, it is a specific solution to a specific issue, where the following
 circumstances exist:
 
-· Your function initializes a large number of variables.
+* Your function initializes a large number of variables.
 
-· The variables have either of the following characteristics:
+* The variables have either of the following characteristics:
 
-   · They must be static: only the function uses them, the function can change their values, and their values must
+   * They must be static: only the function uses them, the function can change their values, and their values must
        persist from one invocation of the function to the next.
 
-   · They are named constants; that is the variable value never changes.
+   * They are named constants; that is the variable value never changes.
 
-· Your application page (and any custom tags) calls the function multiple times.
+* Your application page (and any custom tags) calls the function multiple times.
 
-· You can assure that only the function uses the variable names.
+* You can assure that only the function uses the variable names.
 
 In these circumstances, you can improve efficiency and save processing time by defining your function's variables in
 the Request scope, rather than the Function scope. The function tests for the Request scope variables and initializes
@@ -2252,13 +2252,13 @@ instance of the CFC, and then invoke methods and refer to properties of the CFC.
 When to use CFCs
 You can use CFCs in the following ways:
 
-· Developing structured, reusable code
+* Developing structured, reusable code
 
-· Creating web services
+* Creating web services
 
-· Creating Flash Remoting elements
+* Creating Flash Remoting elements
 
-· Using asynchronous CFCs
+* Using asynchronous CFCs
 
 
 Developing structured, reusable code
@@ -2270,17 +2270,17 @@ component functionality, you make changes in only one component file.
 CFCs have several advantages over UDFs and custom tags. These advantages, which CFCs automatically provide,
 include all of the following:
 
-· The ability to group related methods into a single component, and to group related components into a package
+* The ability to group related methods into a single component, and to group related components into a package
 
-· Properties that multiple methods can share
+* Properties that multiple methods can share
 
-· The This scope, a component-specific scope
+* The This scope, a component-specific scope
 
-· Inheritance of component methods and properties from a base component, including the use of the Super keyword
+* Inheritance of component methods and properties from a base component, including the use of the Super keyword
 
-· Access control
+* Access control
 
-· Introspection for CFC methods, properties, and metadata
+* Introspection for CFC methods, properties, and metadata
 
 CFCs have one characteristic that prevents them from being the automatic choice for all code reuse. It takes relatively
 more processing time to instantiate a CFC than to process a custom tag. In turn, it takes substantially more time to
@@ -2326,11 +2326,11 @@ ColdFusion provides an event gateway that lets you send a message to a CFC async
 initialize processing by a CFC without waiting for the CFC to complete or return a value. You can use asynchronous
 CFCs that use this gateway for the following:
 
-· Reindexing a Verity collection
+* Reindexing a Verity collection
 
-· Logging information
+* Logging information
 
-· Running batch processes
+* Running batch processes
 
 For more information on using asynchronous CFCs, see "About event gateways" on page 1254.
 
@@ -2366,12 +2366,12 @@ You use the following tags to create a CFC. You include these tags on the CFML p
 Elements of a CFC
 A CFC has the following characteristics:
 
-· It is a single CFML page with a .cfc filename extension. The component name is the same as the filename. For
+* It is a single CFML page with a .cfc filename extension. The component name is the same as the filename. For
     example, if the file is myComponent.cfc, the component name is myComponent.
 
-· The page is surrounded by a cfcomponent tag. No code can be outside this tag.
+* The page is surrounded by a cfcomponent tag. No code can be outside this tag.
 
-· The component page defines methods (functions), properties (data), or both. Most CFCs have methods, or
+* The component page defines methods (functions), properties (data), or both. Most CFCs have methods, or
     methods and properties, but you can also have a CFC that contains only properties.
 
 
@@ -2384,11 +2384,11 @@ Building Blocks of ColdFusion Applications
 
 
 
-· You use the cffunction tag to define CFC methods. The CFScript function statement can create simple methods,
+* You use the cffunction tag to define CFC methods. The CFScript function statement can create simple methods,
    but it does not provide options to control access to the method, provide metadata, specify a return type, or control
    generated output.
 
-· You can write code on the component page that is outside cffunction definitions. This code executes when the
+* You can write code on the component page that is outside cffunction definitions. This code executes when the
    CFC is instantiated or whenever you invoke a method of the CFC.
 
 
@@ -2436,10 +2436,10 @@ information directly by generating output, or can return a value to the code or 
 
 You use the following cffunction tag attributes only for CFCs:
 
-· The displayname and hint attributes, which document the CFC; for more information, see "Documenting CFCs"
+* The displayname and hint attributes, which document the CFC; for more information, see "Documenting CFCs"
    on page 187.
 
-· The access attribute, which controls access to the CFC; for more information, see "Using access security" on
+* The access attribute, which controls access to the CFC; for more information, see "Using access security" on
    page 204.
 
 
@@ -2607,13 +2607,13 @@ You pass data to a method by using parameters. To define a component method para
 the cffunction tag body. To define multiple parameters, use multiple cfargument tags. The tag names a parameter and
 lets you specify the following:
 
-· Whether the parameter is required
+* Whether the parameter is required
 
-· The type of data that is required
+* The type of data that is required
 
-· A default argument value
+* A default argument value
 
-· Display name and hint metadata for CFC introspection
+* Display name and hint metadata for CFC introspection
 
 Note: You can create CFC methods that do not use cfargument tags, for example, if you use positional parameters in
 your methods. However, most CFC methods use the cfargument tag.
@@ -2833,23 +2833,23 @@ directory:
 
 In the example, the cfargument attributes specify the following:
 
-· The name attributes define the parameter names.
+* The name attributes define the parameter names.
 
-· The type attribute for the lastName argument specifies that the parameter must be a text string. The type attribute
+* The type attribute for the lastName argument specifies that the parameter must be a text string. The type attribute
    for the cost argument specifies that the parameter must be a numeric value. These attributes validate the data
    before it is submitted to the database.
 
-· The required attributes indicate that the parameters are required, if not, ColdFusion throws an exception.
+* The required attributes indicate that the parameters are required, if not, ColdFusion throws an exception.
 
-· The Arguments scope provides access to the parameter values.
+* The Arguments scope provides access to the parameter values.
 
 
 Providing results
 ColdFusion components can provide information in the following ways:
 
-· They can generate output that is displayed on the calling page.
+* They can generate output that is displayed on the calling page.
 
-· They can return a variable.
+* They can return a variable.
 
 
 
@@ -2914,11 +2914,11 @@ documentation is available when you use introspection to display information abo
 or GetComponentMetaData function to get the component's metadata. You can use the following tools for
 documenting CFCs:
 
-· The displayname and hint attributes
+* The displayname and hint attributes
 
-· User-defined metadata attributes
+* User-defined metadata attributes
 
-· The cfproperty tag
+* The cfproperty tag
 
 
 
@@ -2980,10 +2980,10 @@ The cfproperty tag
 The cfproperty tag is used to create complex data types with WSDL descriptors and for component property
 documentation, as follows:
 
-· It can create complex data types with WSDL descriptions for ColdFusion web services. For more information, see
+* It can create complex data types with WSDL descriptions for ColdFusion web services. For more information, see
    "Using ColdFusion components to define data types for web services" on page 1109.
 
-· It can provide documentation of component properties in the ColdFusion introspection output. The introspection
+* It can provide documentation of component properties in the ColdFusion introspection output. The introspection
    information includes the values of the standard cfproperty tag attributes.
 
 Note: The cfproperty tag does not create a variable or assign it a value. It is used for information purposes only. You
@@ -3152,14 +3152,14 @@ cfinvoke tag to invoke CFC methods from within a CFC.
 Invoking methods of a CFC instance
 To invoke a component method of a CFC instance, use the cfinvoke tag and specify the following:
 
-· The CFC instance name, enclosed in number signs (#), in the component attribute.
+* The CFC instance name, enclosed in number signs (#), in the component attribute.
 
-· The method name, in the method attribute.
+* The method name, in the method attribute.
 
-· Any parameters. For information on passing parameters, see "Passing parameters to methods by using the cfinvoke
+* Any parameters. For information on passing parameters, see "Passing parameters to methods by using the cfinvoke
    tag" on page 196.
 
-· If the component method returns a result, the name of the variable for the result in the returnVariable attribute.
+* If the component method returns a result, the name of the variable for the result in the returnVariable attribute.
 
 The following procedure creates an application that displays the current UTC and local time.
 
@@ -3221,14 +3221,14 @@ CFC instance.
 
 To invoke a component method transiently, use the cfinvoke tag and specify the following:
 
-· The name or path of the component, in the component attribute.
+* The name or path of the component, in the component attribute.
 
-· The method name, in the method attribute.
+* The method name, in the method attribute.
 
-· Any parameters. For information on passing parameters, see "Passing parameters to methods by using the cfinvoke
+* Any parameters. For information on passing parameters, see "Passing parameters to methods by using the cfinvoke
    tag" on page 196.
 
-· If the component method returns a result, the name of the variable that contains the result, in the returnVariable
+* If the component method returns a result, the name of the variable that contains the result, in the returnVariable
    attribute.
 
 The following procedure creates an application that displays the local time.
@@ -3400,23 +3400,23 @@ places the result in a WDDX packet, and includes the packet in the HTML that it 
 Invoking component methods by using a form
 To invoke a method by using a ColdFusion or HTML form, do the following:
 
-· Specify the CFC filename or path in the form or cfform tag action attribute.
+* Specify the CFC filename or path in the form or cfform tag action attribute.
 
-· Specify the CFC method in a hidden form field, as follows:
+* Specify the CFC method in a hidden form field, as follows:
 
      <form action="myComponent.cfc" method="POST">.
          <input type="Hidden" name="method" value="myMethod">
 
-· Alternatively, if you use the POST method to submit the form, you can follow the filename with
+* Alternatively, if you use the POST method to submit the form, you can follow the filename with
    ?method=methodname, where methodname is the name of the CFC method, as shown in the following line. You
    cannot use this technique with the GET method.
 
      <form action="myComponent.cfc?method=myMethod" method="POST">.
 
-· Create an input tag for each component method parameter. The name attribute of the tag must be the method
+* Create an input tag for each component method parameter. The name attribute of the tag must be the method
    parameter name and the field value is the parameter value.
 
-· Specify the access="remote" attribute in the cffunction tag that defines the CFC method being invoked
+* Specify the access="remote" attribute in the cffunction tag that defines the CFC method being invoked
 
 
 
@@ -3508,7 +3508,7 @@ information, see "Saving and naming ColdFusion components" on page 189.
 
 ColdFusion uses the following rules to find the specified CFC:
 
-· If you use a cfinvoke or cfobject tag, or the CreateObject function, to access the CFC from a CFML page,
+* If you use a cfinvoke or cfobject tag, or the CreateObject function, to access the CFC from a CFML page,
    ColdFusion searches directories in the following order:
 
    1 Local directory of the calling CFML page
@@ -3517,9 +3517,9 @@ ColdFusion uses the following rules to find the specified CFC:
 
    3 Directories specified on the Custom Tag Paths page of ColdFusion Administrator
 
-· If you specify only a component name, ColdFusion searches each of these directories, in turn, for the component.
+* If you specify only a component name, ColdFusion searches each of these directories, in turn, for the component.
 
-· If you specify a qualified path, such as myApp.cfcs.myComponent, ColdFusion looks for a directory matching the
+* If you specify a qualified path, such as myApp.cfcs.myComponent, ColdFusion looks for a directory matching the
    first element of the path in each of these directories (in this example, myApp). If ColdFusion finds a matching
    directory, it looks for a file in the specified path beneath that directory, such as myApp\cfcs\myComponent.cfc,
    relative to each of these directories.
@@ -3527,7 +3527,7 @@ ColdFusion uses the following rules to find the specified CFC:
    Note: If ColdFusion finds a directory that matches the first path element, but does not find a CFC under that directory,
    ColdFusion returns a not found error and does not search for another directory.
 
-· If you invoke a CFC method remotely, using a specific URL, a form field, Flash Remoting, or a web service
+* If you invoke a CFC method remotely, using a specific URL, a form field, Flash Remoting, or a web service
    invocation, ColdFusion looks in the specified path relative to the web root. For form fields and URLs that are
    specified directly on local web pages, ColdFusion also searches relative to the page directory.
 
@@ -3545,11 +3545,11 @@ parameters in a URL.
 Passing parameters to methods by using the cfinvoke tag
 When you use the cfinvoke tag, ColdFusion provides several methods for passing parameters to CFC methods:
 
-· As cfinvoke tag attributes, in name="value" format
+* As cfinvoke tag attributes, in name="value" format
 
-· In the cfinvoke tag argumentcollection attribute
+* In the cfinvoke tag argumentcollection attribute
 
-· In the cfinvoke tag body, using the cfinvokeargument tag
+* In the cfinvoke tag body, using the cfinvokeargument tag
 
 You can use any combination of these methods in a single invocation. If you use the same name in two or three of these
 methods, ColdFusion uses the value based on the following order of precedence:
@@ -3794,13 +3794,13 @@ The Arguments scope
 The Arguments scope exists only in a method, and is not available outside the method. The scope contains the variables
 that you passed into the method, including variables that you passed in the following ways:
 
-· As named attributes to the cfinvoke tag
+* As named attributes to the cfinvoke tag
 
-· In the cfargumentcollection attribute of the cfinvoke tag
+* In the cfargumentcollection attribute of the cfinvoke tag
 
-· In cfinvokeargument tags
+* In cfinvokeargument tags
 
-· As attributes or parameters passed into the method when the method is invoked as a web service, by Flash
+* As attributes or parameters passed into the method when the method is invoked as a web service, by Flash
    Remoting, as a direct URL, or by submitting a form
 
 You can access variables in the Arguments scope using structure notation (Arguments.variablename), or array
@@ -3857,11 +3857,11 @@ Building Blocks of ColdFusion Applications
 Using CFCs effectively
 Several techniques let you effectively use CFCs in your applications:
 
-· Structure and reuse code
+* Structure and reuse code
 
-· Build secure CFCs
+* Build secure CFCs
 
-· Use introspection to get information about components
+* Use introspection to get information about components
 
 
 Structuring and reusing code
@@ -4033,12 +4033,12 @@ Using component packages
 Components stored in the same directory are members of a component package. Component packages help prevent
 naming conflicts, and facilitate easy component deployment; for example:
 
-· ColdFusion searches the current directory first for a CFC. If you place two components in a single directory as a package,
+* ColdFusion searches the current directory first for a CFC. If you place two components in a single directory as a package,
    and one component refers to the other with only the component name, not a qualified path, ColdFusion always searches
    the package directory first for the component. As a result, if you structure each application's components into a package,
    your applications can use the same component names without sharing the component code.
 
-· If you use the access="package" attribute in a method's cffunction tag, access to the method is limited to
+* If you use the access="package" attribute in a method's cffunction tag, access to the method is limited to
    components in the same package. Components in other packages cannot use this method, even if they specify it
    with a fully qualified component name. For more information on access security, see "Using access security" on
    page 204.
@@ -4107,9 +4107,9 @@ shoppingCart component in the Session scope:
 Code that manipulates persistent scope CFC properties must be locked, just as all other code that manipulates
 persistent scope properties must be locked. Therefore, lock both of the following types of application code:
 
-· Code that directly manipulates properties of a persistent scope CFC instance
+* Code that directly manipulates properties of a persistent scope CFC instance
 
-· Code that calls methods of a persistent scope CFC instance that manipulate properties of the instance
+* Code that calls methods of a persistent scope CFC instance that manipulate properties of the instance
 
 If you place multiple CFC instances in a single persistent scope, you can create a named lock for each CFC instance.
 For more information on locking, see "Using Persistent Data and Locking" on page 301.
@@ -4194,11 +4194,11 @@ function IsUserInAnyRole to determine if a user is in particular role, as the fo
 Using introspection to get information about components
 ColdFusion provides several ways for you to get information about components:
 
-· Request a component page from the browser
+* Request a component page from the browser
 
-· Use the ColdFusion component browser
+* Use the ColdFusion component browser
 
-· Use the Adobe Dreamweaver Components panel
+* Use the Adobe Dreamweaver Components panel
 
 
 
@@ -4210,7 +4210,7 @@ Building Blocks of ColdFusion Applications
 
 
 
-· Use the GetMetaData function
+* Use the GetMetaData function
 
 Development teams can use the information about components as up-to-date API reference information.
 
@@ -4236,13 +4236,13 @@ cf_root/wwwroot/CFIDE/componentutils/componentdoc.cfm.
 
 The browser has three panes:
 
-· The upper-left pane lists all CFC packages that ColdFusion can access, and has all components and refresh links.
+* The upper-left pane lists all CFC packages that ColdFusion can access, and has all components and refresh links.
 
-· The lower-left pane lists CFC component names. When the browser first appears, or when you click the all
+* The lower-left pane lists CFC component names. When the browser first appears, or when you click the all
    components link in the upper pane, the lower pane lists all available components. If you click a package name in
    the upper left pane, the lower pane lists only the components in the package.
 
-· The right pane initially lists the paths of all components. When you click a component name in the lower-left pane,
+* The right pane initially lists the paths of all components. When you click a component name in the lower-left pane,
    the right pane shows the ColdFusion introspection page, as described in "Requesting a component page from the
    browser" on page 206.
 
@@ -4263,12 +4263,12 @@ Using the GetMetaData function
 The CFML GetMetaData function returns a structure that contains all the metadata of a CFC instance. This structure
 contains substantially more data about the CFC than the cfdump tag shows, and includes the following information:
 
-· All attributes to the component tag, including any metadata-only attributes, plus the component path.
+* All attributes to the component tag, including any metadata-only attributes, plus the component path.
 
-· An array of structures that contains complete information on each method (function) in the component. This
+* An array of structures that contains complete information on each method (function) in the component. This
    information describes all attributes, including metadata-only function and parameter attributes.
 
-· Within each function structure, a Parameters element that contains an array of parameters specified by cfargument
+* Within each function structure, a Parameters element that contains an array of parameters specified by cfargument
    tags. Information on each parameter includes any metadata-only attributes.
 
 
@@ -4282,7 +4282,7 @@ Building Blocks of ColdFusion Applications
 
 
 
-· Information about any properties that are specified using the cfproperty tag.
+* Information about any properties that are specified using the cfproperty tag.
 
 
 Display metadata for a CFC
@@ -4489,7 +4489,7 @@ Note: Although tag names in ColdFusion pages are not case sensitive, custom tag 
 Storing custom tag pages
 You must store custom tag pages in any one of the following:
 
-· The same directory as the calling page
+* The same directory as the calling page
 
 
 
@@ -4501,11 +4501,11 @@ Building Blocks of ColdFusion Applications
 
 
 
-· The cfusion\CustomTags directory
+* The cfusion\CustomTags directory
 
-· A subdirectory of the cfusion\CustomTags directory
+* A subdirectory of the cfusion\CustomTags directory
 
-· A directory that you specify in the ColdFusion Administrator
+* A directory that you specify in the ColdFusion Administrator
 
 To share a custom tag among applications in multiple directories, place it in the cfusion\CustomTags directory. You
 can create subdirectories to organize custom tags. ColdFusion searches recursively for the Custom Tags directory,
@@ -4529,9 +4529,9 @@ cfmodule attributes:
 
  template                 Required if the name attribute is not used. Same as the template attribute in cfinclude. This attribute:
 
-                          · Specifies a path relative to the directory of the calling page.
+                          * Specifies a path relative to the directory of the calling page.
 
-                          · If the path value is prefixed with "/", ColdFusion searches directories explicitly mapped in the ColdFusion
+                          * If the path value is prefixed with "/", ColdFusion searches directories explicitly mapped in the ColdFusion
                             Administrator for the included file.
 
                           Example: <cfmodule template="../MyTag.cfm"> identifies a custom tag file in the parent directory.
@@ -4721,27 +4721,27 @@ Using tag attributes summary
 Custom tag attribute values are passed from the calling page to the custom tag page as name-value pairs. CFML custom
 tags support required and optional attributes. Custom tag attributes conform to the following CFML coding standards:
 
-· ColdFusion passes any attributes in the Attributes scope.
+* ColdFusion passes any attributes in the Attributes scope.
 
-· Use the Attributes.attribute_namesyntax when referring to passed attributes to distinguish them from custom
+* Use the Attributes.attribute_namesyntax when referring to passed attributes to distinguish them from custom
    tag page local variables.
 
-· Attributes are not case sensitive.
+* Attributes are not case sensitive.
 
-· Attributes can be listed in any order within a tag.
+* Attributes can be listed in any order within a tag.
 
-· in the tag invocation, a space must separate attribute name-value pairs.
+* in the tag invocation, a space must separate attribute name-value pairs.
 
-· Passed values that contain spaces must be enclosed in double-quotation marks.
+* Passed values that contain spaces must be enclosed in double-quotation marks.
 
-· Use the cfparam tag with a default attribute at the top of a custom tag to test for and assign defaults for optional
+* Use the cfparam tag with a default attribute at the top of a custom tag to test for and assign defaults for optional
    attributes that are passed from a calling page. For example:
 
     <!--- The value of the variable Attributes.Name comes from the calling page. If
          the calling page does not set it, make it "Who". --->
    <cfparam name="Attributes.Name" default="Who">
 
-· Use the cfparam tag or a cfif tag with an IsDefined function at the top of a custom tag to test for required
+* Use the cfparam tag or a cfif tag with an IsDefined function at the top of a custom tag to test for required
    attributes that must be passed from a calling page; for example, the following code issues an abort if the user does
    not specify the Name attribute to the custom tag:
 
@@ -5084,13 +5084,13 @@ Considerations when using end tags
 How you code your custom tag to divide processing between the start tag and end tag depends greatly on the function
 of the tag. However, use the following rules to help you make your decisions:
 
-· Use the start tag to validate input attributes, set default values, and validate the presence of the end tag if the custom
+* Use the start tag to validate input attributes, set default values, and validate the presence of the end tag if the custom
    tag requires it.
 
-· Use the end tag to perform the actual processing of the tag, including any body text passed to the tag between the
+* Use the end tag to perform the actual processing of the tag, including any body text passed to the tag between the
    start and end tags. For more information on body text, see "Processing body text" on page 218.
 
-· Perform output in either the start or end tag; do not divide it between the two tags.
+* Perform output in either the start or end tag; do not divide it between the two tags.
 
 
 Processing body text
@@ -5230,13 +5230,13 @@ encapsulating each tag's implementation so that others cannot see it.
 
 When you use nested tags, address the following issues:
 
-· What data must be accessible?
+* What data must be accessible?
 
-· Which tags can communicate to which tags?
+* Which tags can communicate to which tags?
 
-· How are the source and targets of the data exchange identified?
+* How are the source and targets of the data exchange identified?
 
-· What CFML mechanism is used for the data exchange?
+* What CFML mechanism is used for the data exchange?
 
 
 What data is accessible?
@@ -5354,11 +5354,11 @@ A structure object contains all the ancestor's data.
 
 The following functions provide access to ancestral data:
 
-· GetBaseTagList: Returns a comma-delimited list of uppercase ancestor tag names, as a string. The first list
+* GetBaseTagList: Returns a comma-delimited list of uppercase ancestor tag names, as a string. The first list
    element is the current tag, the next element is the parent tag name if the current tag is a nested tag. If the function
    is called for a top-level tag, it returns an empty string.
 
-· GetBaseTagData, InstanceNumber=1): Returns an object that contains all the variables (not just the local
+* GetBaseTagData, InstanceNumber=1): Returns an object that contains all the variables (not just the local
    variables) of the nth ancestor with a given name. By default, the closest ancestor is returned. If there is no ancestor
    by the given name, or if the ancestor does not expose any data (such as cfif), an exception is thrown.
 
@@ -5498,17 +5498,17 @@ means if you already have the code available, CFX tags make it easy to use it in
 
 CFX tags can do the following:
 
-· Handle any number of custom attributes.
+* Handle any number of custom attributes.
 
-· Use and manipulate ColdFusion queries for custom formatting.
+* Use and manipulate ColdFusion queries for custom formatting.
 
-· Generate ColdFusion queries for interfacing with non-ODBC based information sources.
+* Generate ColdFusion queries for interfacing with non-ODBC based information sources.
 
-· Dynamically generate HTML to return to the client.
+* Dynamically generate HTML to return to the client.
 
-· Set variables within the ColdFusion application page from which they are called.
+* Set variables within the ColdFusion application page from which they are called.
 
-· Throw exceptions that result in standard ColdFusion error messages.
+* Throw exceptions that result in standard ColdFusion error messages.
 
 
 
@@ -5907,12 +5907,12 @@ use an interactive debugger to debug Java classes that another process has loade
 
 To overcome this limitation, you can use one of the following techniques:
 
-· Debug the CFX tag while it is running within ColdFusion by outputting the debug information as needed.
+* Debug the CFX tag while it is running within ColdFusion by outputting the debug information as needed.
 
-· Debug the CFX tag using a Java IDE (Integrated Development Environment) that supports debugging features,
+* Debug the CFX tag using a Java IDE (Integrated Development Environment) that supports debugging features,
    such as setting breakpoints, stepping through your code, and displaying variable values.
 
-· Debug the request in an interactive debugger offline from ColdFusion using the special com.allaire.cfx debugging
+* Debug the request in an interactive debugger offline from ColdFusion using the special com.allaire.cfx debugging
    classes.
 
 
@@ -5969,13 +5969,13 @@ included in the com.allaire.cfx package. These classes lets you simulate a call 
 your CFX tag within the context of the interactive debugger of a Java development environment. The three debugging
 classes are the following:
 
-· DebugRequest: An implementation of the Request interface that lets you initialize the request with custom
+* DebugRequest: An implementation of the Request interface that lets you initialize the request with custom
    attributes, settings, and a query.
 
-· DebugResponse: An implementation of the Response interface that lets you print the results of a request once it
+* DebugResponse: An implementation of the Response interface that lets you print the results of a request once it
    has completed.
 
-· DebugQuery: An implementation of the Query interface that lets you initialize a query with a name, columns, and
+* DebugQuery: An implementation of the Query interface that lets you initialize a query with a name, columns, and
    a data set.
 
 
@@ -6068,9 +6068,9 @@ Sample C++ CFX tags
 Before you begin development of a CFX tag in C++, you can study the two CFX tags included with ColdFusion. These
 examples can help you get started working with the CFXAPI. The two example tags are as follows:
 
-· CFX_DIRECTORYLIST: Queries a directory for the list of files it contains.
+* CFX_DIRECTORYLIST: Queries a directory for the list of files it contains.
 
-· CFX_NTUSERDB (Windows only): Lets you add and delete Windows NT users.
+* CFX_NTUSERDB (Windows only): Lets you add and delete Windows NT users.
 
 In Windows, these tags are located in the cf_root\cfx\examples directory. In UNIX, these tags are in the
 cf_root/coldfusion/cfx/examples directory.

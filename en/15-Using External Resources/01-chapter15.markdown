@@ -10,13 +10,13 @@ Using ColdFusion with mail servers
 Adding e-mail to your ColdFusion applications lets you respond automatically to user requests. You can use e-mail in
 your ColdFusion applications in many different ways, including the following:
 
-· Trigger e-mail messages based on requests or orders from users.
+* Trigger e-mail messages based on requests or orders from users.
 
-· Allow users to request and receive additional information or documents through e-mail.
+* Allow users to request and receive additional information or documents through e-mail.
 
-· Confirm customer information based on order entries or updates.
+* Confirm customer information based on order entries or updates.
 
-· Send invoices or reminders, using information pulled from database queries.
+* Send invoices or reminders, using information pulled from database queries.
 
 ColdFusion offers several ways to integrate e-mail into your applications. To send e-mail, you generally use the Simple
 Mail Transfer Protocol (SMTP). To receive e-mail, you use the Post Office Protocol (POP) to retrieve e-mail from the
@@ -32,10 +32,10 @@ in the ColdFusion Administrator, when an application page processes a cfmail tag
 not sent immediately. Instead, they are spooled to disk and processed in the background. This architecture has two
 advantages:
 
-· End users of your application are not required to wait for SMTP processing to complete before a page returns to
+* End users of your application are not required to wait for SMTP processing to complete before a page returns to
    them. This design is especially useful when a user action causes the sending of more than a handful of messages.
 
-· Messages sent using cfmail are delivered reliably, even in the presence of unanticipated events like power outages
+* Messages sent using cfmail are delivered reliably, even in the presence of unanticipated events like power outages
    or server crashes.
 
 You can set how frequently ColdFusion checks for spooled mail messages on the Mail page in the ColdFusion
@@ -64,9 +64,9 @@ Using External Resources
 
 If a message is not delivered because of an error, ColdFusion writes it to this directory:
 
-· In Windows: \CFusion\Mail\Undelivr
+* In Windows: \CFusion\Mail\Undelivr
 
-· On UNIX: /opt/coldfusion/mail/undelivr
+* On UNIX: /opt/coldfusion/mail/undelivr
 
 The error log entry that corresponds to the undelivered message contains the name of the file written to the UnDelivr
 (or undelivr) directory.
@@ -237,11 +237,11 @@ Sample uses of the cfmail tag
 An application page containing the cfmail tag dynamically generates e-mail messages based on the tag settings. Some
 of the tasks that you can accomplish with cfmail include the following:
 
-· Sending a mail message in which the data the user enters in an HTML form determine the recipient and contents
+* Sending a mail message in which the data the user enters in an HTML form determine the recipient and contents
 
-· Using a query to send a mail message to a database-driven list of recipients
+* Using a query to send a mail message to a database-driven list of recipients
 
-· Using a query to send a customized mail message, such as a billing statement, to a list of recipients that is
+* Using a query to send a customized mail message, such as a billing statement, to a list of recipients that is
    dynamically populated from a database
 
 
@@ -558,11 +558,11 @@ You can use the cfmailparam to include images from other files in an HTML messag
 
 2 In each cfmailparam tag, do the following
 
-   · Set the file attribute to the location of the image.
+   * Set the file attribute to the location of the image.
 
-   · Specify disposition="inline"
+   * Specify disposition="inline"
 
-   · Set the contentID attribute to a unique identifier; for example, myImage1.
+   * Set the contentID attribute to a unique identifier; for example, myImage1.
 
 3 In the location in your HTML where you want the message included, use an img tag such as the following:
 
@@ -637,13 +637,13 @@ Protocol (IMAP).
 
 Here are three instances in which implementing POP mail makes sense:
 
-· If your site has generic mailboxes that more than one person reads (sales@yourcompany.com), it can be more
+* If your site has generic mailboxes that more than one person reads (sales@yourcompany.com), it can be more
     efficient to construct a ColdFusion mail front end to supplement individual user mail clients.
 
-· In many applications, you can automate mail processing when the mail is formatted to serve a particular purpose;
+* In many applications, you can automate mail processing when the mail is formatted to serve a particular purpose;
     for example, when subscribing to a list server.
 
-· If you want to save e-mail messages to a database.
+* If you want to save e-mail messages to a database.
 
 Using cfpop with your POP server is like running a query on your mailbox contents. You set its action attribute to
 retrieve either headers (using the GetHeaderOnly value) or entire messages (using the GetAll value) and assign it a
@@ -731,9 +731,9 @@ Whether you use cfpop to retrieve the header or the entire message, ColdFusion r
 one row for each message in the specified mailbox. you specify the query object name in the cfpop tag name attribute.
 The query has the following fields:
 
-· date
+* date
 
-· from
+* from
 
 
 
@@ -746,22 +746,22 @@ Using External Resources
 
 
 
-· header (A string with all the mail header fields, including entries that have separate fields in the query object)
+* header (A string with all the mail header fields, including entries that have separate fields in the query object)
 
-· messageNumber (The sequential number of the message in the POP server; identical to the row number of the entry
+* messageNumber (The sequential number of the message in the POP server; identical to the row number of the entry
    in the query object)
 
-· messageID (The mail header Message-ID field)
+* messageID (The mail header Message-ID field)
 
-· replyTo
+* replyTo
 
-· subject
+* subject
 
-· cc
+* cc
 
-· to
+* to
 
-· UID (The mail header X-UID field)
+* UID (The mail header X-UID field)
 
 The cfpop tag with the getHeaderOnly attribute retrieves any file attachments if you specify an attachmentPath
 attribute; otherwise, it does not get the attachments, and the attachmentfiles column contains empty strings.
@@ -842,16 +842,16 @@ Retrieving messages
 When you use the cfpop tag with action="GetAll", ColdFusion returns the same columns as with getheaderonly,
 plus the following additional columns:
 
-· attachments (A tab-delimited list of attachment filenames)
+* attachments (A tab-delimited list of attachment filenames)
 
-· attachmentfiles (A tab-delimited list of paths to the attachment files retrieved to the local server, if any. You get the
+* attachmentfiles (A tab-delimited list of paths to the attachment files retrieved to the local server, if any. You get the
     files only if you specify an attachmentpath attribute.)
 
-· body
+* body
 
-· htmlbody
+* htmlbody
 
-· textbody
+* textbody
 
 If the message is multipart, the htmlbody and textbody fields contain the contents of the HTML and plain text parts,
 and the body field has the first part in the message. If the message has only one part, the body contains the message,
@@ -1119,17 +1119,17 @@ cfexchangefilter                   Specifies the criteria to get specific items.
 
 The following list describes a few of the activities you can do using ColdFusion with the Exchange server:
 
-· Build a customized Exchange web client interface.
+* Build a customized Exchange web client interface.
 
-· View information about upcoming tasks.
+* View information about upcoming tasks.
 
-· Create mailing lists based on contact entries.
+* Create mailing lists based on contact entries.
 
-· Automatically add tasks to users' task lists based on new bug reports or customer contacts.
+* Automatically add tasks to users' task lists based on new bug reports or customer contacts.
 
-· Schedule meetings and appointments.
+* Schedule meetings and appointments.
 
-· Show and manage meeting attendee availability.
+* Show and manage meeting attendee availability.
 
 
 Managing connections to the Exchange server
@@ -1143,11 +1143,11 @@ on how to enable this access, see "Enabling Outlook web access" on page 1209.
 
 Connections to the server can be persistent or transient:
 
-· A persistent connection lasts until you explicitly close it. Persistent connections let you use a single connection for
+* A persistent connection lasts until you explicitly close it. Persistent connections let you use a single connection for
    multiple tasks, which saves the processing overhead of opening and closing a separate connection for each
    interaction with the Exchange server.
 
-· A transient connection lasts for the duration of the tag that interacts with the Exchange server. Transient
+* A transient connection lasts for the duration of the tag that interacts with the Exchange server. Transient
    connections are a useful technique on ColdFusion pages where you only have to access the Exchange server for a
    single tag; for example, where you only get a set of contacts.
 
@@ -1165,11 +1165,11 @@ Using External Resources
 Enabling access to the Exchange server
 To enable access to the Exchange server, ensure the following:
 
-· The Exchange server, Exchange access, and WebDav access are configured in IIS.
+* The Exchange server, Exchange access, and WebDav access are configured in IIS.
 
-· The Exchange server enables Outlook web access to all login users.
+* The Exchange server enables Outlook web access to all login users.
 
-· If you are using HTTPS to log into the exchange server, you have a valid client certificate in the JRE certificate store.
+* If you are using HTTPS to log into the exchange server, you have a valid client certificate in the JRE certificate store.
 
 
 Ensure that IIS is configured for access to the Exchange server
@@ -1202,9 +1202,9 @@ Check and grant web access
 Enabling HTTPS access to the Exchange server
 To enable HTTPS access from ColdFusion to the Exchange server you must
 
-· Enable SSL on the Exchange server system
+* Enable SSL on the Exchange server system
 
-· Ensure that the JRE certificate store has a valid client certificate
+* Ensure that the JRE certificate store has a valid client certificate
 
 
 Enabling SSL on the Exchange server system
@@ -1350,9 +1350,9 @@ Note: You cannot use ColdFusion to delegate access rights.
 
 To access the delegator's account as a delegated user, specify the following information:
 
-· Specify the delegated user's user name and password in the username and password attributes.
+* Specify the delegated user's user name and password in the username and password attributes.
 
-· Specify the mailbox name of the account that you are accessing in the mailboxName attribute.
+* Specify the mailbox name of the account that you are accessing in the mailboxName attribute.
 
 You can access the account in a cfexchangeconnection tag that opens a persistent connection, or in a ColdFusion
 Exchange tag that uses a transient connection.
@@ -1526,13 +1526,13 @@ attachments to these items.
 
 Getting an exchange item and its attachments can require multiple operations.
 
-· To get mail that is not directly in the Inbox, specify the path from the root of the mailbox to the mail folder, and
+* To get mail that is not directly in the Inbox, specify the path from the root of the mailbox to the mail folder, and
    you can get items from only a single mail folder at a time. You can use the cfexchangeconnection tag to get the
    names, paths, and sizes of all folders in a mailbox, and can use the results to iterate over the folders.
 
-· To get an attachment to an item, you must first get the item, and then use the item UID to get its attachments.
+* To get an attachment to an item, you must first get the item, and then use the item UID to get its attachments.
 
-· If an Exchange item contains a message with inline images, the images are available as attachments. You can get the
+* If an Exchange item contains a message with inline images, the images are available as attachments. You can get the
    attachments, use the attachment CID to locate the image in the message, and display the image inline.
 
    Note: The getattachment action does not always populate the CID field for HTML mail that contains inline
@@ -1545,11 +1545,11 @@ To get the names of folders in the mailbox, or the subfolders of a particular fo
 with the getSubfolders action. This action returns a query with a row for each subfolder. The query has three
 columns:
 
-· folder name
+* folder name
 
-· full path from the mailbox to the folder, including the Inbox
+* full path from the mailbox to the folder, including the Inbox
 
-· folder size, in bytes
+* folder size, in bytes
 
 You can specify the folder whose subfolders you are getting and whether to recursively get all levels of subfolders.
 
@@ -1677,15 +1677,15 @@ has the following pattern:
 
 The following rules determine how you get items:
 
-· You can have zero or more cfexchangefilter tags.
+* You can have zero or more cfexchangefilter tags.
 
-   · If you do not specify a maxrows field in the structure specified by the name attribute, ColdFusion gets a
+   * If you do not specify a maxrows field in the structure specified by the name attribute, ColdFusion gets a
       maximum of 100 items. To get more items, specify a maxrows field value greater than 100.
 
-   · If you specify multiple cfexchangefilter tags with differentname attributes, ColdFusion gets all items that
+   * If you specify multiple cfexchangefilter tags with differentname attributes, ColdFusion gets all items that
       match all of the specified conditions.
 
-   · If you specify multiple cfexchangefilter tags with identicalname attributes ColdFusion gets the items that
+   * If you specify multiple cfexchangefilter tags with identicalname attributes ColdFusion gets the items that
       match only the last tag with the duplicate name attribute.
 
 
@@ -1699,27 +1699,27 @@ Using External Resources
 
 
 
-· The name attributes correspond to field names in the Exchange item records. The valid values for the name
+* The name attributes correspond to field names in the Exchange item records. The valid values for the name
    attributes depend on the type of item you are getting. For detailed lists of the valid values, see the corresponding tag
    references in the CFML Reference.
 
-· If the name attribute specifies a field that takes text or numeric information, you use the value attribute to specify
+* If the name attribute specifies a field that takes text or numeric information, you use the value attribute to specify
    the condition.
 
-· If the name attribute specifies a field that takes a date, time, or date and time, you use the from and to attributes to
+* If the name attribute specifies a field that takes a date, time, or date and time, you use the from and to attributes to
    specify the range. You can omit one of these attributes to specify an open-ended range, such as all dates up to and
    including December 1, 2007.
 
-· Date ranges are inclusive. The selected items include ones with the specified to or from dates.
+* Date ranges are inclusive. The selected items include ones with the specified to or from dates.
 
-· You cannot use the empty string as a value attribute to search for an empty value. To find entries where a particular
+* You cannot use the empty string as a value attribute to search for an empty value. To find entries where a particular
    field has an empty value, get all entries and use a query of queries to filter the results to include only entries where
    the field is empty.
 
-· In fields that take text strings such as Message and or Subject, ColdFusion returns items that contain the exact
+* In fields that take text strings such as Message and or Subject, ColdFusion returns items that contain the exact
    phrase that you specify in the value attribute.
 
-· When you use the cfexchangemail tag, ColdFusion gets only items a single folder. If you include a filter for a
+* When you use the cfexchangemail tag, ColdFusion gets only items a single folder. If you include a filter for a
    folder, ColdFusion gets items that are directly in the Inbox only and does not search any subfolders. For an example
    of getting information from multiple folders, see "Getting and using folder names" on page 1214.
 
@@ -1730,10 +1730,10 @@ information on the returned structures, see the corresponding tag in the CFML Re
 
 The query results for all types of items have two columns:
 
-· A UID column with the unique ID of the item. You use this value to specify the item when you delete, modify, or
+* A UID column with the unique ID of the item. You use this value to specify the item when you delete, modify, or
    (for calendar entries) respond to it. You also use the UID value to get the item attachments.
 
-· A HasAttachments column with a Boolean value specifying whether the item has any attachments. If this field is
+* A HasAttachments column with a Boolean value specifying whether the item has any attachments. If this field is
    true, you can use the getAttachments action to get the attachments.
 
 The following example gets the mail messages that were sent during the last week to the docuser1 user from any e-mail
@@ -1758,7 +1758,7 @@ Getting item attachments
 To get the attachments to an Exchange contact, event, message, or task, use a ColdFusion Exchange tag with a
 getAttachments action. Also specify the following information in the tag:
 
-· The UID of the message that contains the attachment or attachments.
+* The UID of the message that contains the attachment or attachments.
 
 
 
@@ -1771,15 +1771,15 @@ Using External Resources
 
 
 
-· The name of the query to hold the information about the returned attachments. When the tag completes
+* The name of the query to hold the information about the returned attachments. When the tag completes
    processing, the query object contains one record for each retrieved attachment. The query has six columns that
    contain the filename, complete path to the saved attachment file, MIME type, file size, CID value (or an empty
    string) and an indicator that shows whether the attachment is a message.
 
-· The path where the attachment is saved. (If you omit the path, ColdFusion does not get the attachments, but does
+* The path where the attachment is saved. (If you omit the path, ColdFusion does not get the attachments, but does
    get the information about the attachments.)
 
-· Optionally, whether to create unique filenames by appending numbers to the names when two or more attachments
+* Optionally, whether to create unique filenames by appending numbers to the names when two or more attachments
    have the same names. (The default is to not create unique filenames.)
 
 The following ColdFusion Exchange tag gets all attachments to the message identified by the theUID variable, saves
@@ -1797,9 +1797,9 @@ To get message attachments, you must have the UID of the message and know that t
 a ColdFusion Exchange tag, such as cfexchangemail, with the get action to determine this information. When the
 tag completes processing, the query specified by the name attribute includes the following columns:
 
-· The HasAttachments field is true if a message has one or more attachments
+* The HasAttachments field is true if a message has one or more attachments
 
-· The UID field contains the Exchange UID of the item. The exact UID format depends on the type of item; event,
+* The UID field contains the Exchange UID of the item. The exact UID format depends on the type of item; event,
    contact, message, or task.
 
 You can use these fields in your decision logic that determines whether to get attachments for a message and
@@ -2301,19 +2301,19 @@ Working with meetings and appointments
 The following techniques apply specifically to calendar events and the notices about meetings that you get in your mail
 Inbox:
 
-· How to get detailed information about meeting requests, cancellation notices, and responses to invitations
+* How to get detailed information about meeting requests, cancellation notices, and responses to invitations
 
-· How to specify event recurrence
+* How to specify event recurrence
 
 
 Working with meeting notices and requests
 Your mailbox gets a meeting notice when someone takes any of the following actions:
 
-· Sends you a meeting request
+* Sends you a meeting request
 
-· Cancels a meeting in your calendar
+* Cancels a meeting in your calendar
 
-· Responds to a meeting request that you sent and tells Exchange to notify you
+* Responds to a meeting request that you sent and tells Exchange to notify you
 
 
 
@@ -2329,11 +2329,11 @@ Using External Resources
 The information provided by the cfexchangemail tag with the get action does not provide detailed information
 about meeting. It only includes the following meeting-related information:
 
-· The event UID
+* The event UID
 
-· The type of message type: a meeting request, response, or cancellation
+* The type of message type: a meeting request, response, or cancellation
 
-· If the message is a response to a meeting request, an indication whether the meeting was accepted, declined, or
+* If the message is a response to a meeting request, an indication whether the meeting was accepted, declined, or
    tentatively accepted
 
 Also, a meeting request does not appear in your calendar (so you cannot get detailed information about it using the
@@ -2348,9 +2348,9 @@ Get meeting message details and respond to meeting requests
 1 Get the mail messages that contain the meeting notifications by using a cfexchangemail tag with an action
    attribute value of get and a cfexchangefilter child tag with the following attributes:
 
-   · A name attribute with a value MessageType
+   * A name attribute with a value MessageType
 
-   · A value attribute with a value of Meeting, Meeting_Request, Meeting_Response, or Meeting_Cancel. A
+   * A value attribute with a value of Meeting, Meeting_Request, Meeting_Response, or Meeting_Cancel. A
       value of Meeting gets all meeting notifications.
 
    You can use additional cfexchangefilter tags to further limit the messages you get.
@@ -2361,12 +2361,12 @@ Get meeting message details and respond to meeting requests
 2 For each meeting, get the information about the meeting by using a cfexchangemail tag with the following
    attributes:
 
-   · An action attribute value of getMeetingInfo.
+   * An action attribute value of getMeetingInfo.
 
-   · A meetingUID attribute value with the value from the MeetingUID column of the structure specified by the
+   * A meetingUID attribute value with the value from the MeetingUID column of the structure specified by the
       cfexchangemail tag name attribute.
 
-   · (Optional) A mailuid attribute with the UID of the message that contained the meeting notification. Use this
+   * (Optional) A mailuid attribute with the UID of the message that contained the meeting notification. Use this
       attribute to identify a specific message if the Inbox contains multiple messages about a single meeting.
 
 3 Use the information returned in step 2 in application-specific logic to determine the required messages and actions.
@@ -2375,14 +2375,14 @@ Get meeting message details and respond to meeting requests
 4 To respond to a meeting request, use the cfexchangecalendar tag with an action value of respond and set the
    following the attributes:
 
-   · Set the uid attribute to the Meeting UID you received in step 2. Do not use the Message UID.
+   * Set the uid attribute to the Meeting UID you received in step 2. Do not use the Message UID.
 
-   · Specify a responseType value of accept, decline, or tentative.
+   * Specify a responseType value of accept, decline, or tentative.
 
-   · (Optional) Specify a notify value of true (the default value) or false to control whether the event owner
+   * (Optional) Specify a notify value of true (the default value) or false to control whether the event owner
       receives a meeting response message.
 
-   · If the owner receives a notification, you can also specify a message attribute with a text message that is included
+   * If the owner receives a notification, you can also specify a message attribute with a text message that is included
       in the response.
 
 The following example shows how you can use this process. It displays all meeting invitations in the Inbox and lets the
@@ -2499,18 +2499,18 @@ example in "Getting and using folder names" on page 1214.
 Specifying Calendar recurrence
 To create an event that recurs multiple times, you specify the following fields in the event attribute structure:
 
-· Set the IsRecurring field to true.
+* Set the IsRecurring field to true.
 
-· Specify a RecurrenceType field value of DAILY, WEELY, MONTHLY, or YEARLY.
+* Specify a RecurrenceType field value of DAILY, WEELY, MONTHLY, or YEARLY.
 
-· (Optional) Specify one of the following mutually exclusive fields: RecurrenceCount, RecurrenceEndDate, or
+* (Optional) Specify one of the following mutually exclusive fields: RecurrenceCount, RecurrenceEndDate, or
    RecurrenceNoEndDate.
 
    Note: If you omit all three of these fields, the event is created with no end date, and if you specify a count or end date,
    the RecurrenceNoEndDate value is automatically false; therefore, Specify a RecurrenceNoEndDate field only if you
    are changing an existing event with a recurrence count or end date to one with no end date.
 
-· Specify the recurrence details in additional fields that depend on the recurrence type.
+* Specify the recurrence details in additional fields that depend on the recurrence type.
 
 To change an event recurrence, including to change whether the event recurs, you specify only the fields whose values
 change. To stop an event from recurring, set the IsRecurring field to false. To convert an event from nonrecurring
@@ -2528,7 +2528,7 @@ for the second Tuesday of the month, and specify a start date of June 2, 2007, t
 Specifying daily recurrence
 To set a recurrence that is based on days, you do one of the following:
 
-· Define a RecurrenceFrequency field to specify the frequency of the event, in days. To schedule a meeting for every
+* Define a RecurrenceFrequency field to specify the frequency of the event, in days. To schedule a meeting for every
    third day, for example, specify RecurrenceFrequency="3".
 
 
@@ -2541,7 +2541,7 @@ Using External Resources
 
 
 
-· Specify RecurEveryWeekDay="true" to specify a meeting that is held five days a week.
+* Specify RecurEveryWeekDay="true" to specify a meeting that is held five days a week.
 
 You cannot use daily recurrence to schedule a single event that occurs a multiple number of times, but only on week
 days. To schedule such an event, specify a weekly recurrence with multiple recurrence days.
@@ -2558,10 +2558,10 @@ Specifying weekly recurrence
 You can create an event that always occurs on the same day or days of the week, and occurs every week or every several
 weeks by specifying RecurrenceType="WEEKLY". You use the following fields to control the frequency:
 
-· Define a RecurrenceFrequency field to specify the frequency of the event, in weeks. If you omit this field, the event
+* Define a RecurrenceFrequency field to specify the frequency of the event, in weeks. If you omit this field, the event
    occurs every week. To schedule a meeting for every fourth week, for example, specify RecurrenceFrequency="4".
 
-· Specify a RecurrenceDays field with a comma-delimited list of one of more of the following strings: MON, TUE, WED,
+* Specify a RecurrenceDays field with a comma-delimited list of one of more of the following strings: MON, TUE, WED,
    THUR, FRI, SAT, SUN. If you omit this attribute, the event recurs on the day of the week determined by the startTime
    field value.
 
@@ -2579,9 +2579,9 @@ Specifying monthly recurrence
 You can create an event that always occurs on a monthly basis, or occurs every several months by specifying
 RecurrenceType="MONTHLY". You can schedule two types of events:
 
-· Events that occur on the same date of each scheduled month, for example, on the tenth day of every three months.
+* Events that occur on the same date of each scheduled month, for example, on the tenth day of every three months.
 
-· Events that occur on the same week of the month and the same day of the week, for example, on the second thursday
+* Events that occur on the same week of the month and the same day of the week, for example, on the second thursday
    of every month, or on the last Friday of every six months.
 
 To specify a date-based monthly event, you only specify the recurrence type, and, if the recurrence is not every month,
@@ -2629,9 +2629,9 @@ Specifying yearly recurrence
 You can create an event that always occurs on a yearly basis by specifying RecurrenceType="YEARLY". You can
 schedule two types of events:
 
-· Events that occur on the same date of each year, for example, on every August 10.
+* Events that occur on the same date of each year, for example, on every August 10.
 
-· Events that occur on a specific day week and month, for example, on the second Thursday of August.
+* Events that occur on a specific day week and month, for example, on the second Thursday of August.
 
 To specify a date-based yearly event, you only specify the recurrence type. ColdFusion schedules the event to occur
 each year on the date determined by the startTime field value. To schedule a meeting that occurs on the start date
@@ -2888,10 +2888,10 @@ Using cfhttp to interact with the web
 The cfhttp tag, which lets you retrieve information from a remote server, is one of the more powerful tags in the CFML
 tag set. You can use one of two methods--Get or Post--to interact with a remote server using the cfhttp tag:
 
-· Using the Get method, you can only send information to the remote server in the URL. This method is often used
+* Using the Get method, you can only send information to the remote server in the URL. This method is often used
    for a one-way transaction in which cfhttp retrieves an object.
 
-· Using the Post method, you can pass variables to a ColdFusion page or CGI program, which processes them and
+* Using the Post method, you can pass variables to a ColdFusion page or CGI program, which processes them and
    returns data to the calling page. The calling page then appears or further processes the data that was received. For
    example, when you use cfhttp to Post to another ColdFusion page, that page does not appear. It processes the
    request and returns the results to the original ColdFusion page, which then uses the information as appropriate.
@@ -3058,25 +3058,25 @@ object, you can easily reference columns in the query and perform other ColdFusi
 
 ColdFusion processes text files in the following manner:
 
-· You can specify a field delimiter with the delimiter attribute. The default is a comma.
+* You can specify a field delimiter with the delimiter attribute. The default is a comma.
 
-· If data in a field could include the delimiter character, surround the entire field with the text qualifier character,
+* If data in a field could include the delimiter character, surround the entire field with the text qualifier character,
    which you can specify with the textqualifier attribute. The default text qualifier is the double-quotation mark (").
 
-· The textqualifier="" specifies that no text qualifier exists. If you use textqualifier="""" (four " marks in
+* The textqualifier="" specifies that no text qualifier exists. If you use textqualifier="""" (four " marks in
    a row), it explicitly specifies the double-quotation mark as the text qualifier.
 
-· If a text qualifier exists, surround all field values with the text qualifier character.
+* If a text qualifier exists, surround all field values with the text qualifier character.
 
-· To include the text qualifier character in a field, use a double character. For example, if the text qualifier is ", use ""
+* To include the text qualifier character in a field, use a double character. For example, if the text qualifier is ", use ""
    to include a quotation mark in the field.
 
-· The first row of text is always interpreted as column headings, so that row is skipped. You can override the file
+* The first row of text is always interpreted as column headings, so that row is skipped. You can override the file
    column heading names by specifying a different set of names in the columns attribute. Specify a name for each
    column. You then use these new names in your CFML code. However, ColdFusion never treats the first row of the
    file as data.
 
-· When duplicate column heading names are encountered, ColdFusion adds an underscore character to the
+* When duplicate column heading names are encountered, ColdFusion adds an underscore character to the
    duplicate column name to make it unique. For example, if two CustomerID columns are found, the second is
    renamed "CustomerID_".
 
@@ -3602,11 +3602,11 @@ type that returns to the web browser.
 Using cffile
 You can use the cffile tag to work with files on the server in several ways:
 
-· Upload files from a client to the web server using an HTML form
+* Upload files from a client to the web server using an HTML form
 
-· Move, rename, copy, or delete files on the server
+* Move, rename, copy, or delete files on the server
 
-· Read, write, or append to text files on the server
+* Read, write, or append to text files on the server
 
 You use the action attribute to specify any of the following file actions: upload, move, rename, copy, delete, read,
 readBinary, write, and append. The required attributes depend on the action specified. For example, if
@@ -3620,9 +3620,9 @@ system, ColdFusion services must run using an account with permission to access 
 Uploading files
 File uploading requires that you create two files:
 
-· An HTML form to specify file upload information
+* An HTML form to specify file upload information
 
-· An action page containing the file upload code
+* An action page containing the file upload code
 
 The following procedures describe how to create these files.
 
@@ -3837,11 +3837,11 @@ directory permissions using the mode attribute of the cffile or cfdirectory tag.
 Windows
 In Windows, you can set the following file attributes:
 
-· Hidden
+* Hidden
 
-· Normal
+* Normal
 
-· ReadOnly
+* ReadOnly
 
 To specify several attributes in CFML, use a comma-separated list for the attributes attribute; for example,
 attributes="ReadOnly,Hidden". If you do not use the attributes attribute, the existing attributes of the file are
@@ -3854,11 +3854,11 @@ In UNIX, you can individually set permissions on files and directories for each 
 and other. You use a number for each user type. This number is the sum of the numbers for the individual permissions
 allowed. Values for the mode attribute correspond to octal values for the UNIX chmod command:
 
-· 4 = read
+* 4 = read
 
-· 2 = write
+* 2 = write
 
-· 1 = execute
+* 1 = execute
 
 You enter permissions values in the mode attribute for each type of user: owner, group, and other in that order. For
 example, use the following code to assign read permissions for everyone:
@@ -3990,11 +3990,11 @@ Reading, writing, and appending to a text file
 In addition to managing files on the server, you can use the cffile tag to read, create, and modify text files. As a result,
 you can do the following things:
 
-· Create log files. (You can also use cflog to create and write to log files.)
+* Create log files. (You can also use cflog to create and write to log files.)
 
-· Generate static HTML documents.
+* Generate static HTML documents.
 
-· Use text files to store information that can be incorporated into web pages.
+* Use text files to store information that can be incorporated into web pages.
 
 
 Reading a text file
@@ -4253,11 +4253,11 @@ Using External Resources
 
 A MIME content type consists of "type/subtype" format. The following are common MIME content types:
 
-· text/html
+* text/html
 
-· image/gif
+* image/gif
 
-· application/pdf
+* application/pdf
 
 
 Changing the MIME content type with cfcontent
@@ -4401,15 +4401,15 @@ Using External Resources
 
 The event gateway mechanism has the following major features:
 
-· ColdFusion event gateways do not require HTTP requests. ColdFusion developers can write ColdFusion gateway
+* ColdFusion event gateways do not require HTTP requests. ColdFusion developers can write ColdFusion gateway
    applications without using any CFM pages (just CFCs).
 
-· ColdFusion CFCs can use event gateways to listen for and respond directly to external events.
+* ColdFusion CFCs can use event gateways to listen for and respond directly to external events.
 
-· Event gateways operate asynchronously. A gateway typically gets a message and dispatches it for processing,
+* Event gateways operate asynchronously. A gateway typically gets a message and dispatches it for processing,
    without requiring or waiting for a response.
 
-· ColdFusion developers can create event gateways to handle any type event that a Java application can receive.
+* ColdFusion developers can create event gateways to handle any type event that a Java application can receive.
 
 ColdFusion includes several product-level event gateways, such as a gateway for the XMPP (Extensible Messaging and
 Presence Protocol) instant messaging protocol. Adobe also provides the source for several example gateways, such as
@@ -4424,14 +4424,14 @@ Because event gateways provide a generalized asynchronous messaging mechanism, y
 kinds of event or messaging resources. For example, ColdFusion includes gateways (either product quality, or lighter
 weight example gateways) for communicating between ColdFusion applications and the following types of resources:
 
-· Mobile phones and other devices that support short messaging services (SMS)
+* Mobile phones and other devices that support short messaging services (SMS)
 
-· XMPP or IBM Sametime Instant message clients
+* XMPP or IBM Sametime Instant message clients
 
-· Java Sockets (which let your ColdFusion application communicate with TCP/IP-based devices and programs, such
+* Java Sockets (which let your ColdFusion application communicate with TCP/IP-based devices and programs, such
    as Telnet terminal clients).
 
-· Java Messaging Service (JMS) resources, such as storefront sales order handling systems.
+* Java Messaging Service (JMS) resources, such as storefront sales order handling systems.
 
 Event gateways are not limited to sending or receiving information using communications protocols. For example,
 ColdFusion includes an example event gateway that monitors changes to a directory and invokes a CFC method
@@ -4443,22 +4443,22 @@ many kinds of applications that use them. Just a few examples of possible gatewa
 
 
 Server to client push examples
-· An application that sends an instant message (IM) or SMS text message to a person who can approve a purchase
+* An application that sends an instant message (IM) or SMS text message to a person who can approve a purchase
    order, get a response, and mark the purchase order as approved or denied.
 
-· A bot that notifies users through their preferred messaging method (mobile phone, instant messaging, or even e-
+* A bot that notifies users through their preferred messaging method (mobile phone, instant messaging, or even e-
 
    mail) when watch list stock goes up, and offers to buy or sell the stock immediately.
 
-· An application that authenticates web users by sending them an SMS message that includes code that they must to
+* An application that authenticates web users by sending them an SMS message that includes code that they must to
    enter into the browser to proceed.
 
 
 Client to server examples
-· A menu-based SMS application that lets users get information from any of several web service data providers.
+* A menu-based SMS application that lets users get information from any of several web service data providers.
    ColdFusion includes an SMS menuing example int the gateways/cfc directory.
 
-· An instant messaging application that takes messages from users to technical support and assigns and directs the
+* An instant messaging application that takes messages from users to technical support and assigns and directs the
    messages to the most available support staff member. The application could also log the user ID and session, and
    you could use ColdFusion to generate usage reports.
 
@@ -4472,14 +4472,14 @@ Using External Resources
 
 
 
-· A directory lookup robot IM "buddy" that responds to messages chat contain an employee name with the
+* A directory lookup robot IM "buddy" that responds to messages chat contain an employee name with the
    employee's phone number or buddy ID.
 
 
 Server to serve examples
-· A JMS subsystem that publishes status updates that business intelligence systems consume.
+* A JMS subsystem that publishes status updates that business intelligence systems consume.
 
-· A system that monitors and publishes download events from a website.
+* A system that monitors and publishes download events from a website.
 
 
 Event gateway terms and concepts
@@ -4616,10 +4616,10 @@ Using External Resources
 
 The event gateway class can also do the following:
 
-· Provide the ColdFusion application with access to a helper class that provides event gateway-specific services, such
+* Provide the ColdFusion application with access to a helper class that provides event gateway-specific services, such
     as buddy-list management or connection management.
 
-· Use a file that specifies configuration information, such as IP addresses and ports, passwords, and other ID
+* Use a file that specifies configuration information, such as IP addresses and ports, passwords, and other ID
     information, internal time-out values, and so on.
 
 
@@ -4649,16 +4649,16 @@ Event gateway facilities and tools
 ColdFusion provides several features and tools for developing and deploying event-handling applications, these
 including the following:
 
-· Standard event gateways.
+* Standard event gateways.
 
-· Development tools and example code.
+* Development tools and example code.
 
-· A gateway directory structure configured for use by custom event gateways and event gateway applications. This
+* A gateway directory structure configured for use by custom event gateways and event gateway applications. This
     directory also contains the example code.
 
-· An event gateway-specific log file
+* An event gateway-specific log file
 
-· Three pages in the ColdFusion Administrator for managing event gateways.
+* Three pages in the ColdFusion Administrator for managing event gateways.
 
 
 Standard event gateways
@@ -4699,33 +4699,33 @@ Development tools and example code
 ColdFusion provides the following tools and example code for developing your own event gateways and event gateway
 applications:
 
-· An SMS client (phone simulator) and a short message service center (SMSC) server simulator, for developing SMS
+* An SMS client (phone simulator) and a short message service center (SMSC) server simulator, for developing SMS
    applications without requiring an external SMS provider.
 
-· Four sample event gateways with source code:
+* Four sample event gateways with source code:
 
-   · A template for an empty event gateway that contains a skeleton on which you can build your own event gateways
+   * A template for an empty event gateway that contains a skeleton on which you can build your own event gateways
 
-   · A TCP/IP socket event gateway that listens on a TCP/IP port
+   * A TCP/IP socket event gateway that listens on a TCP/IP port
 
-   · A directory watcher event gateway that monitors changes to the contents of a directory
+   * A directory watcher event gateway that monitors changes to the contents of a directory
 
-   · A Java Messaging Service (JMS) gateway that acts as a JMS consumer or producer.
+   * A Java Messaging Service (JMS) gateway that acts as a JMS consumer or producer.
 
-· Several sample applications, including the following:
+* Several sample applications, including the following:
 
-   · A menu application that uses an inquiry-response drill-down menu to provide services such as weather reports
+   * A menu application that uses an inquiry-response drill-down menu to provide services such as weather reports
       and stock quotes.
 
-   · A simple echo application that sends back the messages that it receives.
+   * A simple echo application that sends back the messages that it receives.
 
-   · A temperature converter, an asynchronous logging application.
+   * A temperature converter, an asynchronous logging application.
 
-   · An application that returns employee phone number and other information.
+   * An application that returns employee phone number and other information.
 
    The chapters in this document use these example applications.
 
-· JavaDoc documentation for the Java interfaces and classes that you use to create gateways.
+* JavaDoc documentation for the Java interfaces and classes that you use to create gateways.
 
 For more information on these examples, see "Using the example event gateways and gateway applications" on
 page 1271.
@@ -4776,11 +4776,11 @@ lib                      Executable code for example and user-developed event ga
 src/examples             Source code for the example event gateway classes that Adobe provides. Includes the EmptyGateway.java file
                          and the following subdirectories:
 
-                         · socket: Socket gateway source files
+                         * socket: Socket gateway source files
 
-                         · watcher: directory watcher gateway source files
+                         * watcher: directory watcher gateway source files
 
-                         · JMS: JMS gateway source files
+                         * JMS: JMS gateway source files
 
 
 The eventgateway.log file
@@ -4793,11 +4793,11 @@ debugging event gateways and event gateway applications.
 ColdFusion Administrator event gateway pages
 The ColdFusion Administrator includes a Gateways section with three pages for managing event gateways:
 
-· Settings
+* Settings
 
-· Gateway types
+* Gateway types
 
-· Gateway Instances
+* Gateway Instances
 
 The Settings page lets you enable and disable support for event gateways, specify the number of threads that
 ColdFusion can devote to processing events, specify the maximum number events that ColdFusion can hold in its
@@ -4827,14 +4827,14 @@ Using External Resources
 Structure of an event gateway application
 To develop an event gateway application, you create and use some or all of the following elements:
 
-· One or more listener CFCs that handle any incoming messages and send any necessary responses.
+* One or more listener CFCs that handle any incoming messages and send any necessary responses.
 
-· In some applications, ColdFusion pages that generate outgoing messages directly.
+* In some applications, ColdFusion pages that generate outgoing messages directly.
 
-· An event gateway instance configuration in the ColdFusion Administrator. This configuration could require a
+* An event gateway instance configuration in the ColdFusion Administrator. This configuration could require a
    separate event gateway configuration file.
 
-· In some applications, a GatewayHelper object to provide access to additional features of the protocol or technology;
+* In some applications, a GatewayHelper object to provide access to additional features of the protocol or technology;
    for example, to manage instant messaging buddy lists.
 
 
@@ -4894,18 +4894,18 @@ Configuring an event gateway instance
 Before you develop or deploy an event gateway application, use the ColdFusion Administrator to configure an event
 gateway instance that handles the event messages. You specify the following information:
 
-· An event gateway ID to identify the specific event gateway instance. You use this value in the CFML
+* An event gateway ID to identify the specific event gateway instance. You use this value in the CFML
    GetGatewayHelper and SendGatewayMessage functions.
 
-· The event gateway type, which you select from the available event gateway types, such as SMS or Socket.
+* The event gateway type, which you select from the available event gateway types, such as SMS or Socket.
 
-· The absolute path to the listener CFC or CFCs that handles incoming messages. If you have multiple listener CFCs,
+* The absolute path to the listener CFC or CFCs that handles incoming messages. If you have multiple listener CFCs,
    enter the paths separated by commas. Specify absolute file paths, even if you place the CFCs in the ColdFusion
    gateway\cfc directory.
 
-· A configuration file, if necessary for this event gateway type or instance.
+* A configuration file, if necessary for this event gateway type or instance.
 
-· The event gateway start-up status; one of the following:
+* The event gateway start-up status; one of the following:
 
    Automatic Start the event gateway when ColdFusion starts.
 
@@ -4920,11 +4920,11 @@ All event gateway applications handle information. They exchange event messages,
 information, with other resources. Event gateway applications require a listener CFC to handle events that are sent to
 the event gateway. Event gateway applications can also use the following code elements:
 
-· SendGatewayMessage CFML functions to send messages from outside the listener CFC (or, optionally, from the CFC)
+* SendGatewayMessage CFML functions to send messages from outside the listener CFC (or, optionally, from the CFC)
 
-· GatewayHelper objects
+* GatewayHelper objects
 
-· The eventgateway log file
+* The eventgateway log file
 
 
 Event gateway application models
@@ -4949,7 +4949,7 @@ application that uses SMS to notify customers when orders have been shipped foll
 Sending information to the event gateway
 A ColdFusion application can send an outgoing message to the event gateway in either of the following ways:
 
-· In a cfreturn tag in the listener CFC listener method
+* In a cfreturn tag in the listener CFC listener method
 
 
 
@@ -4961,7 +4961,7 @@ Using External Resources
 
 
 
-· By calling the ColdFusion SendGatewayMessage function
+* By calling the ColdFusion SendGatewayMessage function
 
 The first method is useful to automatically respond to incoming messages. Some complex applications that respond
 to incoming messages could use the SendGatewayMessage function either in place or in addition to the return value.
@@ -4980,9 +4980,9 @@ Developing event gateway listener CFCs
 The listener CFC responds to event gateway messages. The listener CFC uses, at a minimum, the following basic
 software elements:
 
-· One or more listener methods
+* One or more listener methods
 
-· CFEvent structures that contain the messages
+* CFEvent structures that contain the messages
 
 Listener CFCs can use ColdFusion persistent scopes to store data that must be preserved over multiple CFC
 invocations or shared with other CFML elements.
@@ -5118,9 +5118,9 @@ As with all ColdFusion code, use the Application.cfc This.name variable or the c
 application name. The listener CFC can use an Application.cfc or Application.cfm file if the CFC is in a directory that
 is in or under one of the following places:
 
-· the ColdFusion web root
+* the ColdFusion web root
 
-· a directory that is in the ColdFusion Administrator Mappings list.
+* a directory that is in the ColdFusion Administrator Mappings list.
 
 The ColdFusion installer creates a mapping in the ColdFusion Administrator for the gateway\cfc directory.
 
@@ -5170,19 +5170,19 @@ When an event gateway CFC responds to an event, it cannot display debugging info
 CFM pages do. As a result, many of the normal ColdFusion debugging techniques, including the cfdump tag, are not
 available. When you develop event gateway CFCs, consider the following debugging techniques:
 
-· Place trace variables in the Application scope. These variables persist, and you can specify an application name for
+* Place trace variables in the Application scope. These variables persist, and you can specify an application name for
    your CFC (see "Application scope" on page 1265). You can inspect the Application scope contents, including your
    trace variables, in any CFML page that has the same application name as your CFC.
 
-· Use cflog tags to help you trace any errors by logging significant events to a file. Also, carefully inspect the
+* Use cflog tags to help you trace any errors by logging significant events to a file. Also, carefully inspect the
    eventgateway.log and exceptions.log files that ColdFusion maintains. For more information on using the
    eventgateway.log file, see "The eventgateway.log file" on page 1260.
 
-· You can simulate responses from CFCs to the event gateway by using the SendGatewayMessage function in a CFM
+* You can simulate responses from CFCs to the event gateway by using the SendGatewayMessage function in a CFM
    page. The function's message parameter should contain the information that the CFC would place in its return
    variable.
 
-· If you run ColdFusion from the command line, you can use the Java System.out.println method to write
+* If you run ColdFusion from the command line, you can use the Java System.out.println method to write
    messages to the console window, as the following code shows:
 
    <cfscript>
@@ -5308,10 +5308,10 @@ Using External Resources
 
 SendGatewayMessage(gatewayID, messageStruct)
 
-· The gatewayID parameter must be the gateway ID specified in the ColdFusion Administrator for the event gateway
+* The gatewayID parameter must be the gateway ID specified in the ColdFusion Administrator for the event gateway
    instance that sends the message.
 
-· The messageStruct parameter is a structure whose contents depends on the requirements of the outgoingMessage
+* The messageStruct parameter is a structure whose contents depends on the requirements of the outgoingMessage
    method of the event gateway, and possibly the recipient application. For example, in addition to any message, the
    structure could include a destination identifier.
 
@@ -5416,12 +5416,12 @@ The ColdFusion CFML event gateway lets CFML code send a message to CFC methods a
 gateway lets you initiate processing by a CFC method without waiting for it to complete or return a value. Possible uses
 for asynchronous CFCs that you access using this event gateway include the following:
 
-· Reindexing a Verity collection with new information without delaying an application, for example, when a user
+* Reindexing a Verity collection with new information without delaying an application, for example, when a user
    uploads a new file
 
-· Logging information, particularly if significant amount of data must be logged
+* Logging information, particularly if significant amount of data must be logged
 
-· Running batch processes that could take a substantial amount of time to complete
+* Running batch processes that could take a substantial amount of time to complete
 
 Because asynchronous CFCs run independently of a request, they do not provide feedback to the user. Save any results
 or error information to a file, data source, or other external resource.
@@ -5443,9 +5443,9 @@ Using External Resources
 CFML event gateway data structure
 The structure that you use in the CFML SendGatewayMessage function can include two types of fields:
 
-· The structure can include any number of fields with arbitrary contents for use in by the CFC.
+* The structure can include any number of fields with arbitrary contents for use in by the CFC.
 
-· Several optional fields can configure how the gateway delivers the information to the CFC.
+* Several optional fields can configure how the gateway delivers the information to the CFC.
 
 The CFML gateway looks for the following optional fields, and, if they exist, uses them to determine how it delivers
 the message. Do not use these field names for data that you send to your CFC method.
@@ -5485,13 +5485,13 @@ Use an asynchronous CFC
 2 Use the Gateway Instances page in the ColdFusion Administrator to add an instance of the CFML event gateway
     type. Specify the following:
 
-    · A unique Gateway ID.
+    * A unique Gateway ID.
 
-    · The path to the CFC that you created in step 1.
+    * The path to the CFC that you created in step 1.
 
-    · The startup mode. Select Automatic startup mode to start the event gateway when ColdFusion starts up.
+    * The startup mode. Select Automatic startup mode to start the event gateway when ColdFusion starts up.
 
-    · Do not specify a configuration file.
+    * Do not specify a configuration file.
 
 3 Start the event gateway instance.
 
@@ -5517,11 +5517,11 @@ Example: logging messages
 The following asynchronous CFML event gateway CFC uses the cflog tag to log a message to a file in the ColdFusion
 logs directory. The CFC takes a message with the following fields:
 
-· file   The name of the file in which to place the message. The default value is defaultEventLog.
+* file   The name of the file in which to place the message. The default value is defaultEventLog.
 
-· type    The cflog type attribute to use. The default value is info.
+* type    The cflog type attribute to use. The default value is info.
 
-· message      The message text.
+* message      The message text.
 
 <cfcomponent>
      <cffunction name="onIncomingMessage" output="no">
@@ -5675,11 +5675,11 @@ CFC methods
 When the directory contents change, the event gateway calls one of the following CFC listener methods, unless you
 change the names in the configuration file:
 
-· onAdd
+* onAdd
 
-· onChange
+* onChange
 
-· onDelete
+* onDelete
 
 The CFEvent.Data field sent to the listener methods includes the following fields:
 
@@ -5760,9 +5760,9 @@ Using the JMS Gateway as a consumer
 The JMSGateway class creates a subscriber to the topic specified in the configuration file. The gateway consumes the
 following types of messages:
 
-· TextMessage
+* TextMessage
 
-· BytesMessage containing raw UTF-8 text
+* BytesMessage containing raw UTF-8 text
 
 The gateway passes the contents of the message to the configured CFC in the event structure, as follows:
 
@@ -5811,9 +5811,9 @@ SendGatewayMessage function must be a structure with the following fields:
 
  asBytes                 (Optional) How to publish the message:
 
-                         · If omitted, no, or false, send the message as text.
+                         * If omitted, no, or false, send the message as text.
 
-                         · If any other value, send the message as byte-encoded UTF-8.
+                         * If any other value, send the message as byte-encoded UTF-8.
 
 
 If you send the message in a SendGatewayMessage function, the function returns OK if the gateway sends the
@@ -5831,12 +5831,12 @@ ColdFusion is installed with a menu-based responder application. The menu applic
 of the standard ColdFusion event gateways (SMS, XMPP, and Sametime) and with the Socket example event gateway,
 and ColdFusion is preconfigured with an instance of the application that uses SMS, as follows:
 
-· The Gateway Instances page in the ColdFusion Administrator includes a gateway instance for this application that
+* The Gateway Instances page in the ColdFusion Administrator includes a gateway instance for this application that
    uses the SMS gateway type.
 
-· The gateway/cfc/examples/menu directory and its subdirectories include the CFML for the application
+* The gateway/cfc/examples/menu directory and its subdirectories include the CFML for the application
 
-· The gateway/config/sms-test.cfg file is configured to use this application with the SMS client (phone simulator),
+* The gateway/config/sms-test.cfg file is configured to use this application with the SMS client (phone simulator),
    and short message service center (SMSC) server simulator that are provided with ColdFusion.
 
 The application presents users with a drill-down menu of tools that they can use, including a weather report, stock
@@ -5845,9 +5845,9 @@ information, status and configuration information, and language tools such as a 
 The code for this application is relatively complex and is distributed among 13 files. The following brief description
 provides an overview of how it works. To get a full understanding of how the application works, see the source code.
 
-· The top level, menu, directory contains two files: Application.cfm and main.cfc.
+* The top level, menu, directory contains two files: Application.cfm and main.cfc.
 
-· The Application.cfm file consists of a single cfapplication tag that enables session management and names the
+* The Application.cfm file consists of a single cfapplication tag that enables session management and names the
    application. Session variables maintain the current state information of the session, such as the active menu, and so on.
 
 
@@ -5861,7 +5861,7 @@ Using External Resources
 
 
 
-· The main.cfc file contains the master CFC; the event gateway configuration in ColdFusion Administrator uses it as
+* The main.cfc file contains the master CFC; the event gateway configuration in ColdFusion Administrator uses it as
    the listener CFC. The main CFC file processes CFEvent structures from the event gateway. It does the following:
 
    1 Inspects the gatewayType field to determine the rest of the structure contents. This check is necessary because
@@ -5873,7 +5873,7 @@ Using External Resources
    3 Calls the session.menu.process method to process the user input. This method can dispatch a message to an
       individual application for processing, if appropriate.
 
-· The apps directory contains several CFCs. Each file contains the code for a single application, such as the weather
+* The apps directory contains several CFCs. Each file contains the code for a single application, such as the weather
    report or dictionary lookup (definition.cfc).
 
 
@@ -5938,13 +5938,13 @@ IM gateways, and only describes the two types where differences exist.
 
 The ColdFusion IM gateways act as IM clients and let you do the following:
 
-· Send and receive instant messages.
+* Send and receive instant messages.
 
-· Send and respond to buddy or friend requests and manage buddy/friend information.
+* Send and respond to buddy or friend requests and manage buddy/friend information.
 
-· Set and get status and other information.
+* Set and get status and other information.
 
-· Receive and handle messages from the IM server.
+* Receive and handle messages from the IM server.
 
 
 About XMPP
@@ -5956,12 +5956,12 @@ servers and clients are available. ColdFusion supports the IETF XMPP protocol.
 
 The following websites provide additional information about the XMPP protocol:
 
-· Jabber Software Foundation: www.jabber.org/. This site includes information on available XMPP servers and
+* Jabber Software Foundation: www.jabber.org/. This site includes information on available XMPP servers and
    clients.
 
-· IETF has copies of the Internet standards for XMPP: www.ietf.org/rfc.html.
+* IETF has copies of the Internet standards for XMPP: www.ietf.org/rfc.html.
 
-· The xmpp.org website was under development as of December 2004; at that time it included several useful links,
+* The xmpp.org website was under development as of December 2004; at that time it included several useful links,
    including links to relevant specifications: www.xmpp.org/.
 
 
@@ -6072,13 +6072,13 @@ IMGatewayHelper methods
 The ColdFusion IM gateway provides the IMGatewayHelper class, a gateway helper that you can access by calling the
 CFML GetGatewayHelper function. The IMGatewayHelper class has methods that let you do the following:
 
-· Get and set gateway configuration information and get gateway statistics
+* Get and set gateway configuration information and get gateway statistics
 
-· Get and set the gateway online presence status
+* Get and set the gateway online presence status
 
-· Manage the gateway's buddy list
+* Manage the gateway's buddy list
 
-· Manage permissions for others to get information about the gateway status.
+* Manage permissions for others to get information about the gateway status.
 
    For more information on using GatewayHelper methods, including lists of all the methods, see "Using the
    GatewayHelper object" on page 1287.
@@ -6107,18 +6107,18 @@ in the default configuration files.
 
                                                The protocol to use for secure communications. The following values are valid:
 
-                                               · TSL
+                                               * TSL
 
-                                               · SSL
+                                               * SSL
 
  securerequirement      false                  XMPP only.
 
                                                Specifies whether the gateway must use secure communications. The following values
                                                are valid:
 
-                                               · true
+                                               * true
 
-                                               · false
+                                               * false
 
                                                If this value is true, specify a secureprotocol value, and connections succeed only if
                                                a secure connection is established.
@@ -6323,17 +6323,17 @@ The following CFC implements a simple employee phone directory lookup applicatio
 message containing some part of the name to looked up (a space requests all names). The onIncomingMessage
 response depends on the number matches.
 
-· If there is no match, the onIncomingMessage function returns a message indicating that there are no matches.
+* If there is no match, the onIncomingMessage function returns a message indicating that there are no matches.
 
-· If there is one match, the function returns the name, department, and phone number.
+* If there is one match, the function returns the name, department, and phone number.
 
-· If there are up to ten matches, the function returns a list of the names preceded by a number that the user can enter
+* If there are up to ten matches, the function returns a list of the names preceded by a number that the user can enter
    to get the detailed information.
 
-· If there are over ten matches, the function returns a list of only the first ten names. A more complex application can
+* If there are over ten matches, the function returns a list of only the first ten names. A more complex application can
    let the user get multiple lists of messages to provide access to all names.
 
-· If the user enters a number, and previously got a multiple-match list, the application returns the information for
+* If the user enters a number, and previously got a multiple-match list, the application returns the information for
    the name that corresponds to the number.
 
 The following listing shows the CFC code:
@@ -6449,18 +6449,18 @@ structure that contains information on the gateway buddies. This structure limit
 the IM server to get buddy and status information. The application also logs significant events, such as requests to add
 buddies and error messages from the IM server. In particular, it does the following:
 
-· The onBuddyStatus function updates the Application scope buddy status structure when the gateway gets an event
+* The onBuddyStatus function updates the Application scope buddy status structure when the gateway gets an event
    message indicating that a buddy's status has changed.
 
-· The onAddBuddyRequest function searches for the requested buddy's name in a data source. If it finds a single
+* The onAddBuddyRequest function searches for the requested buddy's name in a data source. If it finds a single
    instance of the name, it adds the buddy and updates the status in the Application scope buddyStatus structure. If it
    doesn't find name, it declines the buddy request. If it finds multiple instances of the name, it tells the gateway to
    take no action. It also logs all actions.
 
-· The onAddBuddyResponse function adds the buddy to the Application scope buddy status structure if the buddy
+* The onAddBuddyResponse function adds the buddy to the Application scope buddy status structure if the buddy
    request is accepted, and sets the current status. It logs all responses.
 
-· The onIMServerMessage function logs all messages that it receives.
+* The onIMServerMessage function logs all messages that it receives.
 
    This example uses the IM_ID column of the Employees database of the cfdocexamples database that is included
    with ColdFusion. The entries in this column assume that you use an XMPP server "company." To run this
@@ -6627,13 +6627,13 @@ Using the GatewayHelper object
 The CFML GetGatewayHelper function returns a GatewayHelper object with several methods that manage your
 gateway and buddy list. The GatewayHelper methods let you do the following:
 
-· Get and set gateway configuration information and get gateway statistics.
+* Get and set gateway configuration information and get gateway statistics.
 
-· Get and set the gateway online status.
+* Get and set the gateway online status.
 
-· Manage the gateway's buddy list
+* Manage the gateway's buddy list
 
-· Manage permissions for others to get information about the gateway status.
+* Manage permissions for others to get information about the gateway status.
 
 The following sections briefly describe the class methods. For detailed information about each method, see IM
 Gateway GatewayHelper class methods in the CFML Reference.
@@ -7019,13 +7019,13 @@ Short Message Service (SMS) is a system designed for sending short, often text, 
 such as mobile phones or pagers. SMS is widely used in Europe and Asia and is becoming increasingly popular in the
 United States and elsewhere. Some uses for SMS include the following:
 
-· Performing banking transactions
+* Performing banking transactions
 
-· Sending authentication codes, for example, to be used to access web resources
+* Sending authentication codes, for example, to be used to access web resources
 
-· Voting, such as popularity voting for reality television shows
+* Voting, such as popularity voting for reality television shows
 
-· Initiating an action (such as a server restart) and getting a response
+* Initiating an action (such as a server restart) and getting a response
 
 
 
@@ -7037,29 +7037,29 @@ Using External Resources
 
 
 
-· Notifying users of events such as package shipments or restaurant table availability, or providing stock or weather
+* Notifying users of events such as package shipments or restaurant table availability, or providing stock or weather
    alerts
 
-· Sending person-to-person text messages
+* Sending person-to-person text messages
 
-· Presenting interactive text-based menus on a mobile phone
+* Presenting interactive text-based menus on a mobile phone
 
-· Providing cellular phone updates, such as direct download of logos
+* Providing cellular phone updates, such as direct download of logos
 
-· Providing telematics and mobile or remote wireless device applications, such as soda machines, vehicle tracking,
+* Providing telematics and mobile or remote wireless device applications, such as soda machines, vehicle tracking,
    smart gas pumps, and so on
 
 SMS protocol features include, but are not limited to, the following:
 
-· Authentication verification is built in.
+* Authentication verification is built in.
 
-· Communications can be secure.
+* Communications can be secure.
 
-· Store and forward communication is performed in near real time.
+* Store and forward communication is performed in near real time.
 
-· Communications can be two-way and session-aware.
+* Communications can be two-way and session-aware.
 
-· Mobile devices such as mobile phones already include support; you do not install software on the client.
+* Mobile devices such as mobile phones already include support; you do not install software on the client.
 
 
 About SMS
@@ -7202,9 +7202,9 @@ About SMS providers
 Before you can deploy an SMS application, establish an account with a provider that supports SMPP 3.4 over TCP/IP.
 Two kinds of providers exist:
 
-· Telecommunications carriers such as nation-wide cellular phone providers
+* Telecommunications carriers such as nation-wide cellular phone providers
 
-· Third-party SMPP aggregators
+* Third-party SMPP aggregators
 
 The type of provider and specific provider you use depend on your needs and provider capabilities and price
 structures. Less expensive providers could have slower response times. Telecommunications carriers could be more
@@ -7291,9 +7291,9 @@ The gateway and SMSC communicate asynchronously: the gateway does not wait for a
 one message before it sends another message. However, you can configure your gateway instance so that the CFML
 sendGatewayMessage function behaves asynchronously or synchronously.
 
-· In asynchronous mode, the function returns when the message is queued in ColdFusion gateway services.
+* In asynchronous mode, the function returns when the message is queued in ColdFusion gateway services.
 
-· In synchronous mode, the function waits until the SMSC receives the message and returns a message ID, or an error
+* In synchronous mode, the function waits until the SMSC receives the message and returns a message ID, or an error
     occurs.
 
 For more information on configuring message synchronization and sending messages synchronously, see
@@ -7360,20 +7360,20 @@ Consult the provider documentation.
 
  mode               synchronous             Message transmission mode:
 
-                                            · synchronous The gateway waits for the response from the server when sending a
+                                            * synchronous The gateway waits for the response from the server when sending a
                                                message. In this mode, the SendGatewayMessage CFML function returns the SMS
                                                messageID of the message, or an empty string if an error occurs.
 
-                                            · asynchronous The gateway does not wait for a response. In this mode, the
+                                            * asynchronous The gateway does not wait for a response. In this mode, the
                                                SendGatewayMessage CFML function always returns an empty string.
 
  network-retry      no                      Gateway behavior when a network error occurs while trying to deliver a message:
 
-                                            · yes The gateway queues the message for delivery when the gateway is able to rebind
+                                            * yes The gateway queues the message for delivery when the gateway is able to rebind
                                                to the SMSC. Retrying is useful if the gateway is in asynchronous mode, where the CFML
                                                SendGatewayMessage function does not return an error.
 
-                                            · no The gateway does not retry sending the message.
+                                            * no The gateway does not retry sending the message.
 
 
 
@@ -7390,11 +7390,11 @@ Using External Resources
  transient-retry    no                     Gateway behavior when the SMSC returns an error that indicates a transient error, where it
                                            may be able to accept the message in the future:
 
-                                           · yes Thegatewayattemptstoresendthemessage.Retryingisusefulifthegatewayisin
+                                           * yes Thegatewayattemptstoresendthemessage.Retryingisusefulifthegatewayisin
                                              asynchronous mode, where the CFML SendGatewayMessage function does not return
                                              an error.
 
-                                           · no The gateway does not retry sending the message.
+                                           * no The gateway does not retry sending the message.
 
  cfc-method         onIncomingMessage      Listener CFC method for ColdFusion to invoke when the gateway gets incoming messages.
 
@@ -7432,9 +7432,9 @@ Handling incoming messages
 The SMS event gateway handles messages that are contained in deliver_sm PDUs. These PDUs request the gateway to
 deliver one of the following types of message:
 
-· A user- or application-generated text message
+* A user- or application-generated text message
 
-· A message disposition response
+* A message disposition response
 
 Note: The SMS event gateway does not handle messages that are contained in data_sm PDUs.
 
@@ -7489,9 +7489,9 @@ For a detailed description of each field, see SMS Gateway incoming message CFEve
 The CFC's listener method extracts the message from the Arguments.CFEvent.Data.MESSAGE field and acts on it as
 appropriate for the application. If necessary, the listener can use two fields to determine the required action:
 
-· CFEvent.Data.esmClass indicates the type of information in the MESSAGE field.
+* CFEvent.Data.esmClass indicates the type of information in the MESSAGE field.
 
-· CFEvent.Data.registeredDelivery indicates whether the sender requested any type of delivery receipt or
+* CFEvent.Data.registeredDelivery indicates whether the sender requested any type of delivery receipt or
     acknowledgment.
 
 
@@ -7776,12 +7776,12 @@ application. For information on other ways to configure outgoing message, see th
 Synchronization mode
 You can specify asynchronous or synchronous message mode in the gateway configuration file.
 
-· If you specify asynchronous mode, the sendGatewayMessage function returns an empty string when the gateway
+* If you specify asynchronous mode, the sendGatewayMessage function returns an empty string when the gateway
     submits the message to service code for sending to the SMSC. ColdFusion logs errors that occur after this point,
     such as if a message sent by the gateway to the SMSC times out or if the gateway gets an error response; the
     application does not get notified of any errors.
 
-· If you specify synchronous mode (the default), the sendGatewayMessage function does not return until the
+* If you specify synchronous mode (the default), the sendGatewayMessage function does not return until the
     gateway gets a response from the SMSC or the attempt to communicate times out. If the message is sent
     successfully, the function returns the SMPP message ID string. If an error occurs, the function returns an error
     string.
@@ -7860,11 +7860,11 @@ params["parameter"]=BinaryDecode("string","binaryencoding");
 params["parameter"]=CharsetDecode("string, encoding");
 outgoingSMS.optionalParameters=params;
 
-· parameter: Vendor-specific optional parameter.
+* parameter: Vendor-specific optional parameter.
 
-· BinaryDecode: See BinaryDecode in CFML Reference.
+* BinaryDecode: See BinaryDecode in CFML Reference.
 
-· CharsetDecode: See CharsetDecode in CFML Reference.
+* CharsetDecode: See CharsetDecode in CFML Reference.
 
 
 
@@ -7919,9 +7919,9 @@ period, not a date-time value. The time format 000001063000000R, for example, sp
 ColdFusion SMS development tools
 ColdFusion provides the following tools for developing SMS applications:
 
-· SMS test server
+* SMS test server
 
-· SMS client simulator
+* SMS client simulator
 
 
 SMS test server
@@ -8027,17 +8027,17 @@ The following CFC implements a simple employee phone directory lookup applicatio
 containing some part of the name being looked up (a space requests all names). The onIncomingMessage response
 depends on the number matches.
 
-· If no match exists, the onIncomingMessage function returns a message indicating that no matches exist.
+* If no match exists, the onIncomingMessage function returns a message indicating that no matches exist.
 
-· If one match exists, the function returns the name, department, and phone number.
+* If one match exists, the function returns the name, department, and phone number.
 
-· If up to ten matches exist, the function returns a list of the names preceded by a number that the user can enter to
+* If up to ten matches exist, the function returns a list of the names preceded by a number that the user can enter to
    get the detailed information.
 
-· If over ten matches exist, the function returns a list of only the first ten names. A more complex application could
+* If over ten matches exist, the function returns a list of only the first ten names. A more complex application could
    let the user get multiple lists of messages to provide access to all names.
 
-· If the user enters a number, and previously got a multiple-match list, the application returns the information for
+* If the user enters a number, and previously got a multiple-match list, the application returns the information for
    the name that corresponds to the number.
 
 The following listing shows the CFC code:
@@ -8162,17 +8162,17 @@ Flash Media Server 2 is the newest version of Flash Communication Server. Flash 
 streaming media capabilities and a flexible development environment for creating and delivering innovative,
 interactive media applications. You can use Flash Media Server to create and deliver the following media experiences:
 
-· Video on Demand
+* Video on Demand
 
-· Live web-event broadcasts
+* Live web-event broadcasts
 
-· Mp3 streaming
+* Mp3 streaming
 
-· Video blogging
+* Video blogging
 
-· Video messaging
+* Video messaging
 
-· Multimedia chat environments
+* Multimedia chat environments
 
 To learn more about and to download the Flash Media Server, go to the Adobe website. at
 www.adobe.com/go/learn_cfu_flashmediaserver_en.
@@ -8441,10 +8441,10 @@ and specifying that file as the configuration file when you create an instance o
 the configuration information in the message sent from the Flex application. You provide configuration information
 to the Data Services Messaging event gateway in a configuration file to do either of the following:
 
-· Have the Data Services Messaging event gateway send messages to Flex Enterprise Services 2 on a different
+* Have the Data Services Messaging event gateway send messages to Flex Enterprise Services 2 on a different
    computer
 
-· Use the Data Services Messaging event gateway with a specific Flex destination, and ignore any destination
+* Use the Data Services Messaging event gateway with a specific Flex destination, and ignore any destination
    specified in the message
 
 The Data Services Messaging event gateway configuration file is a simple Java properties file that contains the following
@@ -8635,9 +8635,9 @@ as the following example shows:
 New methods introduced in ColdFusion 9.0.1
 The following new methods have been introduced in ColdFusion Messaging Gateway CFCs:
 
-· allowSend
+* allowSend
 
-· allowSubscribe
+* allowSubscribe
 
     Both the methods take subtopic as the parameter.
 
@@ -8778,9 +8778,9 @@ specifying that file as the configuration file when you create an instance of th
 configuration information in the message. You provide configuration information to the Data Management event
 gateway in a configuration file to do either of the following:
 
-· Have the Data Management event gateway send messages to LiveCycle Data Services ES on a different computer.
+* Have the Data Management event gateway send messages to LiveCycle Data Services ES on a different computer.
 
-· Use the Data Management event gateway with a specific Flex destination, and ignore any destination specified in
+* Use the Data Management event gateway with a specific Flex destination, and ignore any destination specified in
    the message.
 
 The Data Management event gateway configuration file is a simple Java properties file that contains the following
@@ -9027,17 +9027,17 @@ Using External Resources
 Event gateway elements
 You use the following the elements to create and configure a gateway:
 
-· "Gateway interface" on page 1321
+* "Gateway interface" on page 1321
 
-· "GatewayServices class" on page 1322
+* "GatewayServices class" on page 1322
 
-· "CFEvent class" on page 1322
+* "CFEvent class" on page 1322
 
-· "GatewayHelper class" on page 1323
+* "GatewayHelper class" on page 1323
 
-· "Gateway configuration file" on page 1324
+* "Gateway configuration file" on page 1324
 
-· "Gateway development classes" on page 1324
+* "Gateway development classes" on page 1324
 
 Note: The gateway interfaces and classes, except for the GenericGateway class, are fully documented in Gateway
 development interfaces and classes in the CFML Reference. All interfaces and classes in this list, including the
@@ -9284,10 +9284,10 @@ Gateway development classes
 ColdFusion provides two classes that you can use as building blocks to develop your event gateway classes. Each
 corresponds to a different development methodology:
 
-· The coldfusion.eventgateway.GenericGateway class is an abstract class from which you can derive your gateway
+* The coldfusion.eventgateway.GenericGateway class is an abstract class from which you can derive your gateway
     class.
 
-· The EmptyGateway class in the gateway\src\examples directory is a template gateway that you can complete to
+* The EmptyGateway class in the gateway\src\examples directory is a template gateway that you can complete to
     create your gateway class.
 
 
@@ -9309,19 +9309,19 @@ You can derive your gateway class from this class, which handles the basic mecha
 as the getGatewayID and SetCFCListeners methods. Your derived class must implement at least the following
 methods:
 
-· startGateway (not start)
+* startGateway (not start)
 
-· stopGateway (not stop)
+* stopGateway (not stop)
 
-· outgoingMessage
+* outgoingMessage
 
 Your derived gateway class also must implement the following:
 
-· If you support a configuration file, a constructor that takes a configuration file, and configuration loading routines.
+* If you support a configuration file, a constructor that takes a configuration file, and configuration loading routines.
 
-· If you use a gatewayHelper class, the getHelper method.
+* If you use a gatewayHelper class, the getHelper method.
 
-· If the event source status can change asynchronously from the gateway, the getStatus method.
+* If the event source status can change asynchronously from the gateway, the getStatus method.
 
 The example JMS gateway is derived from the generic gateway class. The gateway class JavaDocs in the gateway\docs
 directory provide documentation for this class. (The CFML Reference does not document this class.)
@@ -9351,11 +9351,11 @@ INF/cfusion/gateway/src/examples/socket/SocketGateway.java.)
 Class constructor
 An event gateway can implement any of the following constructors:
 
-· MyGateway(String gatewayID, String configurationFile)
+* MyGateway(String gatewayID, String configurationFile)
 
-· MyGateway(String gatewayID)
+* MyGateway(String gatewayID)
 
-· MyGateway()
+* MyGateway()
 
 When ColdFusion starts, it calls the constructor for each event gateway instance that you configure in ColdFusion.
 (ColdFusion also calls the gateway Start method after the event gateway is instantiated.). ColdFusion first attempts
@@ -9449,15 +9449,15 @@ stored by the ColdFusion Administrator, and to get access to resources and infor
 and applications require. Some of these methods can also be useful in event gateway code. The following methods
 provide these services and information:
 
-· setCFCListeners
+* setCFCListeners
 
-· setGatewayID
+* setGatewayID
 
-· getHelper
+* getHelper
 
-· getGatewayID
+* getGatewayID
 
-· getStatus
+* getStatus
 
 ColdFusion calls the setCFCListeners method with the CFC or CFCs that are specified in the ColdFusion
 Administrator when it starts a gateway. ColdFusion also calls the method in a running event gateway when the
@@ -9652,13 +9652,13 @@ If your ColdFusion server carries a heavy event gateway message load, the ColdFu
 queue could reach the maximum value set in the ColdFusion Administrator. When the queue reaches the maximum,
 the gatewayService.addEvent method returns False and fails. Your code can do any of the following:
 
-· Return a message to the sender to indicate that their message was not received.
+* Return a message to the sender to indicate that their message was not received.
 
-· Wait until the queue is available by periodically comparing the values returned by the GatewayService
+* Wait until the queue is available by periodically comparing the values returned by the GatewayService
     getQueueSize and getMaxQueueSize methods, and retry the addEvent method when the queue size is less than
     the maximum.
 
-· Log the occurrence using the logger returned by the GatewayService getLogger method. (For more information,
+* Log the occurrence using the logger returned by the GatewayService getLogger method. (For more information,
     see "Logging events and using log files" on page 1332.)
 
 The SocketGateway class implements the listener using a java.net.ServerSocket class object and SocketServerThread
@@ -9804,9 +9804,9 @@ The GatewayServices.getLogger method returns an instance of the coldfusion.event
 can use to log messages to a file in the ColdFusion logs directory. (You set this directory on the ColdFusion
 Administrator Logging Settings page.) The method can take no parameter, or one parameter:
 
-· The default GatewayServices.getLogger method uses the eventgateway.log file.
+* The default GatewayServices.getLogger method uses the eventgateway.log file.
 
-· Optionally, you can specify a log filename, without the .log extension or directory path.
+* Optionally, you can specify a log filename, without the .log extension or directory path.
 
 
                                               
@@ -9825,13 +9825,13 @@ coldfusion.eventgateway.Logger log =getGatewayServices().getLogger("mygateway");
 The Logger class has the following methods, all of which take a message string. The method you use determines
 severity level that is set in the log message.
 
-· info
+* info
 
-· warn
+* warn
 
-· error
+* error
 
-· fatal
+* fatal
 
 You can also pass these methods an exception instance as a second parameter. When you pass an exception,
 ColdFusion places the exception information in the exception.log file in the ColdFusion logs directory.
@@ -9904,15 +9904,15 @@ Configure an event gateway instance
 
 2 On the Add/Edit ColdFusion Event Gateways Instances form, do the following:
 
-   · Enter the instance name in the Gateway ID field
+   * Enter the instance name in the Gateway ID field
 
-   · Select the event gateway type that you added from the Gateway Type menu
+   * Select the event gateway type that you added from the Gateway Type menu
 
-   · Specify the paths to the listener CFC or CFCs that handle the messages.
+   * Specify the paths to the listener CFC or CFCs that handle the messages.
 
-   · If the event gateway requires a configuration file, enter the path to the file in Gateway Configuration File field.
+   * If the event gateway requires a configuration file, enter the path to the file in Gateway Configuration File field.
 
-   · If you do not want the gateway to start up automatically when ColdFusion starts, change the Startup Mode
+   * If you do not want the gateway to start up automatically when ColdFusion starts, change the Startup Mode
       selection to Manual or Disabled
 
 3 Click the Add Gateway Instance button.
@@ -9934,22 +9934,22 @@ accessing and using data in ColdFusion applications. You should also be familiar
 About the ColdFusion Extensions for Eclipse
 To make some common coding tasks easier, the ColdFusion Extensions for Eclipse include the following:
 
-· Eclipse RDS Support plug-in, which lets you access files and data sources on a ColdFusion server.
+* Eclipse RDS Support plug-in, which lets you access files and data sources on a ColdFusion server.
 
-· ColdFusion/Flex Application wizard, which lets you create master and detail pages in an application to create, read,
+* ColdFusion/Flex Application wizard, which lets you create master and detail pages in an application to create, read,
    update, and delete records in a database.
 
-· ColdFusion/Ajax Application wizard, which lets you create master and detail pages that use Ajax elements in an
+* ColdFusion/Ajax Application wizard, which lets you create master and detail pages that use Ajax elements in an
    application to create, read, update, and delete records in a database.
 
-· RDS CRUD wizard, which lets you dynamically create a ColdFusion component (CFC) based on a table that is
+* RDS CRUD wizard, which lets you dynamically create a ColdFusion component (CFC) based on a table that is
    registered in the ColdFusion Administrator on a ColdFusion server
 
-· ActionScript to CFC wizard, which lets you create a CFC based on an ActionScript class file.
+* ActionScript to CFC wizard, which lets you create a CFC based on an ActionScript class file.
 
-· CFC to ActionScript wizard, which lets you create an ActionScript file based on a CFC Value Object
+* CFC to ActionScript wizard, which lets you create an ActionScript file based on a CFC Value Object
 
-· Services Browser, which lets you browse CFCs, manage a list of web services, and generate the CFML code to invoke
+* Services Browser, which lets you browse CFCs, manage a list of web services, and generate the CFML code to invoke
    a web service.
 
 
@@ -9974,9 +9974,9 @@ Eclipse RDS Support is supported on all ColdFusion server platforms.
 
 Before you install Eclipse RDS Support, you must have the following installed:
 
-· Eclipse 3.1 or later, Flex Builder 2 or later, or Flash Builder
+* Eclipse 3.1 or later, Flex Builder 2 or later, or Flash Builder
 
-· ColdFusion MX 7.0.1 or later
+* ColdFusion MX 7.0.1 or later
 
 
 Configuring RDS
@@ -9988,29 +9988,29 @@ Configure any ColdFusion servers that you want to connect to using RDS
 
 2 To configure the default localhost server, select localhost and specify the following:
 
-   · Description
+   * Description
 
-   · Host name (127.0.0.1)
+   * Host name (127.0.0.1)
 
-   · Port number (8500 if you are using the built-in web server)
+   * Port number (8500 if you are using the built-in web server)
 
-   · Context root, if necessary (For more information about the context root, see Installing ColdFusion guide.)
+   * Context root, if necessary (For more information about the context root, see Installing ColdFusion guide.)
 
-   · Password, which is the RDS password
+   * Password, which is the RDS password
 
 3 To specify additional servers, click New, and specify the following:
 
-   · Description, which can be any name you want
+   * Description, which can be any name you want
 
-   · Host name (IP address or machine name)
+   * Host name (IP address or machine name)
 
-   · Port number (8500 if you are using the built-in web server)
+   * Port number (8500 if you are using the built-in web server)
 
-   · Context root, if necessary
+   * Context root, if necessary
 
       For more information about the context root, see Installing ColdFusion guide.
 
-   · Password, which is the RDS password
+   * Password, which is the RDS password
 
 4 To remove a server definition, select the server and click Remove.
 
@@ -10106,9 +10106,9 @@ Build and execute a query using the RDS Query Viewer
 
 2 Do one of the following:
 
-    · Enter the SQL, and double-click the field names and table names as appropriate.
+    * Enter the SQL, and double-click the field names and table names as appropriate.
 
-    · Click the Visual Query Builder button.
+    * Click the Visual Query Builder button.
 
 
 
@@ -10217,20 +10217,20 @@ Designing your application
 Before starting the ColdFusion/Flex Application wizard, you should determine which pages to include in your
 application, including the following:
 
-· Whether each page is a master, detail, or master/detail page
+* Whether each page is a master, detail, or master/detail page
 
-· The fields to display in each page
+* The fields to display in each page
 
-· The fields that connect one page to another
+* The fields that connect one page to another
 
 In the following example, you create an application for an art gallery. The first page lists all the artists that your gallery
 represents. When a user selects an artist, a page that lists all the works by that artist appears. When the user then selects
 a work of art, a page that contains details about that piece of art appears. In this example, your application contains the
 following pages:
 
-· A master page that lists the artists
+* A master page that lists the artists
 
-· A master/detail page in which the master page lists the works of art by the artist selected on the List of Artists master
+* A master/detail page in which the master page lists the works of art by the artist selected on the List of Artists master
    page, and a detail page that contains details about the artwork selected on the Artwork master page.
 
 You may find it helpful to draw a diagram of the tables and fields that you want to include in your application,
@@ -10331,17 +10331,17 @@ Using External Resources
 
 9 Specify the following:
 
-    · The context root, if applicable
+    * The context root, if applicable
 
-    · Whether to include a login page in the application
+    * Whether to include a login page in the application
 
-    · The location of the services-config.xml configuration file that the project should use
+    * The location of the services-config.xml configuration file that the project should use
 
-    · The web root URL
+    * The web root URL
 
-    · Whether to use an existing or new Flash Builder or Eclipse project
+    * Whether to use an existing or new Flash Builder or Eclipse project
 
-    · The project name and the location of the project if it is new
+    * The project name and the location of the project if it is new
 
 10 Click Finish.
 
@@ -10355,40 +10355,40 @@ Tips for creating applications with the ColdFusion/Flex Application wizard
 Although the ColdFusion/Flex Application wizard greatly simplifies creating CRUD applications, keep in mind the
 following information to ensure that you create the application that you designed.
 
-· To adjust UI elements, open the MXML file in Flash Builder or Eclipse design mode.
+* To adjust UI elements, open the MXML file in Flash Builder or Eclipse design mode.
 
-· When you create a project that has the same name as a project you previously created, the wizard creates a backup
+* When you create a project that has the same name as a project you previously created, the wizard creates a backup
    folder that contains the files from the project you previously created.
 
-· If you create a master page and a detail page for a table in which there is no primary key defined, the wizard selects
+* If you create a master page and a detail page for a table in which there is no primary key defined, the wizard selects
    the first field in the database as the key value to represent the row.
 
-· In master pages, link a field to the Parameters box to add type validation to the query by using the cfqueryparam
+* In master pages, link a field to the Parameters box to add type validation to the query by using the cfqueryparam
    tag. Doing this is optional.
 
-· You must select a primary key column in the master form; the wizard chooses the key by default. If you create a
+* You must select a primary key column in the master form; the wizard chooses the key by default. If you create a
    master page and do not link it to the id property, you cannot add it to the site tree under another master page.
 
-· Deselect the Display column for fields that your application uses that you do not want to appear in your application.
+* Deselect the Display column for fields that your application uses that you do not want to appear in your application.
 
-· Specify the sort order for the field by which to sort data in the page, and specify any other conditions as appropriate.
+* Specify the sort order for the field by which to sort data in the page, and specify any other conditions as appropriate.
 
-· Change the labels for fields by clicking the field name in the Label column, and then entering a new field name.
+* Change the labels for fields by clicking the field name in the Label column, and then entering a new field name.
 
-· In a detail page, create a combo box that is populated by dynamic data. To do this, change the value in the Input
+* In a detail page, create a combo box that is populated by dynamic data. To do this, change the value in the Input
    Control column for the field to use to populate the combo box to be ComboBox, click the Input Lookup Query
    (sub-select) column in that field, and then use the Visual Query Builder to specify the data to use.
 
-· When you create a detail page, display of the primary key is disabled automatically.
+* When you create a detail page, display of the primary key is disabled automatically.
 
-· When you create a detail page, input controls are assigned by default. You can change them from the default values,
+* When you create a detail page, input controls are assigned by default. You can change them from the default values,
    which appear as follows:
 
-    · Boolean and bit values appear as a check box.
+    * Boolean and bit values appear as a check box.
 
-    · Memo and CLOB values appear as a text area.
+    * Memo and CLOB values appear as a text area.
 
-    · Everything else appears as a text input control.
+    * Everything else appears as a text input control.
 
 
 
@@ -10481,7 +10481,7 @@ you install the ColdFusion wizards.)
 
 The RDS CRUD Wizard lets you create the following types of CFCs:
 
-· ActiveRecord style CRUD CFC, which includes all of the properties, get and set methods, and SQL methods in one
+* ActiveRecord style CRUD CFC, which includes all of the properties, get and set methods, and SQL methods in one
    CFC. The CFC includes the following methods:
 
    init() or init(primary key value)
@@ -10492,11 +10492,11 @@ The RDS CRUD Wizard lets you create the following types of CFCs:
 
    delete()
 
-· Bean/DAO style CRUD CFCs, which creates two related CFCs:
+* Bean/DAO style CRUD CFCs, which creates two related CFCs:
 
-   · A Bean CFC, also called a Value Object, which contains the property definitions and get and set methods.
+   * A Bean CFC, also called a Value Object, which contains the property definitions and get and set methods.
 
-   · The DAO CFC, which contains the following methods:
+   * The DAO CFC, which contains the following methods:
 
       read(primary key value)
 
@@ -10506,7 +10506,7 @@ The RDS CRUD Wizard lets you create the following types of CFCs:
 
       delete(cfc instance)
 
-· Data Service assembler CFC, which includes a Bean (also referred to as a Value Object), a DAO CFC, and an
+* Data Service assembler CFC, which includes a Bean (also referred to as a Value Object), a DAO CFC, and an
    assembler CFC. The assembler CFC is required to take advantage of the Flex Data Services feature
 
 
@@ -10537,7 +10537,7 @@ Use the RDS CRUD wizard
 
 9 Select one of the following CFC Types:
 
-   · Active Record CFC
+   * Active Record CFC
 
 
 
@@ -10549,9 +10549,9 @@ Using External Resources
 
 
 
-   · Bean CFC & DAO CFC
+   * Bean CFC & DAO CFC
 
-   · Flex Data Service Assembler CFCs
+   * Flex Data Service Assembler CFCs
 
 10 Enter the names of the CFCs in the appropriate text boxes.
 
@@ -10578,21 +10578,21 @@ Use the Services Browser
 
 The Services Browser can do the following:
 
-· Browse components
+* Browse components
 
-· Manage web services
+* Manage web services
 
 
 Browsing components
 The Service Browser lists the following components:
 
-· Components that the ColdFusion component browser lists
+* Components that the ColdFusion component browser lists
 
    The ColdFusion component browser is located at cf_root/wwwroot/CFIDE/componentutils/componentdoc.cfm.
 
-· Components that are located in any directories specified in the ColdFusion Administrator Mappings page
+* Components that are located in any directories specified in the ColdFusion Administrator Mappings page
 
-· Components that are located in any directories specified in the ColdFusion Administrator Custom Tag paths page
+* Components that are located in any directories specified in the ColdFusion Administrator Custom Tag paths page
 
 You can restrict the list of CFCs according to whether the functions in a CFC are remote, public, or private.
 

@@ -31,19 +31,19 @@ cost. It then prepares a receipt as an XML document.
 ColdFusion provides a comprehensive and easy-to-use set of tools for creating and using XML documents.
 ColdFusion lets you do the following with XML documents:
 
-· Convert XML text into ColdFusion XML document objects.
+* Convert XML text into ColdFusion XML document objects.
 
-· Create new ColdFusion XML document objects.
+* Create new ColdFusion XML document objects.
 
-· Modify ColdFusion XML document objects.
+* Modify ColdFusion XML document objects.
 
-· Validate XML against a DTD or Schema
+* Validate XML against a DTD or Schema
 
-· Transform XML using XSLT (Extensible Stylesheet Language Transformation).
+* Transform XML using XSLT (Extensible Stylesheet Language Transformation).
 
-· Extract data from XML documents using XPath expressions.
+* Extract data from XML documents using XPath expressions.
 
-· Convert ColdFusion XML document objects to text and save them in files.
+* Convert ColdFusion XML document objects to text and save them in files.
 
 ColdFusion can also represent forms that you create using the cfform tag as XML. You can have ColdFusion generate
 the XML and process it using an XSLT skin to generate output for display, or ColdFusion can generate XML text and
@@ -434,28 +434,28 @@ Using an XML object
 Because an XML document object is represented as a structure, you can access XML document contents using either,
 or a combination of both, of the following ways:
 
-· Using the element names, such as mydoc.employee.name[1]
+* Using the element names, such as mydoc.employee.name[1]
 
-· Using the corresponding structure entry names (that is, XmlChildren array entries), such as
+* Using the corresponding structure entry names (that is, XmlChildren array entries), such as
    mydoc.employee.XmlChildren[1]
 
 Similarly, you can use either, or a combination of both, of the following notation methods:
 
-· Structure (dot) notation, such as mydoc.employee
+* Structure (dot) notation, such as mydoc.employee
 
-· Associative array (bracket) notation, such as mydoc["employee"]
+* Associative array (bracket) notation, such as mydoc["employee"]
 
 
 Referencing the contents of an XML object
 Use the following rules when you reference the contents of an XML document object on the right side of an assignment
 or as a function argument:
 
-· By default, ColdFusion ignores element name case. As a result, it considers the element name MyElement and the
+* By default, ColdFusion ignores element name case. As a result, it considers the element name MyElement and the
    element name myELement to be equivalent. To make element name matching case-sensitive, specify
    CaseSensitive="True" in the cfxml tag, or specify True as a second argument in the XmlParse or XmlNew
    function that creates the document object.
 
-· If your XML object is case sensitive, do not use dot notation to reference an element or attribute name. Use the
+* If your XML object is case sensitive, do not use dot notation to reference an element or attribute name. Use the
    name in associative array (bracket) notation, or a reference that does not use the case-sensitive name. For example,
    do not use names such as the following:
 
@@ -489,24 +489,24 @@ Using Web Elements and External Objects
    attribute names in a case-sensitive XML document can generate unexpected results (such as all-uppercase variable
    names), exceptions, or both.
 
-· If your XML object is case sensitive, you cannot use dot notation to reference an element or attribute name. Use the
+* If your XML object is case sensitive, you cannot use dot notation to reference an element or attribute name. Use the
    name in associative array (bracket) notation, or a reference that does not use the case-sensitive name (such as
    XmlChildren[1]) instead.
 
-· Use an array index to specify one of multiple elements with the same name; for example,
+* Use an array index to specify one of multiple elements with the same name; for example,
    #mydoc.employee.name[1] and #mydoc.employee.name[2].
 
    If you omit the array index on the last component of an element identifier, ColdFusion treats the reference as the
    array of all elements with the specified name. For example, mydoc.employee.name refers to an array of two name
    elements.
 
-· Use an array index into the XmlChildren array to specify an element without using its name; for example,
+* Use an array index into the XmlChildren array to specify an element without using its name; for example,
    mydoc.XmlRoot.XmlChildren[1].
 
-· Use associative array (bracket) notation to specify an element name that contains a period or colon; for example,
+* Use associative array (bracket) notation to specify an element name that contains a period or colon; for example,
    myotherdoc.XmlRoot["Type1.Case1"].
 
-· You can use DOM methods in place of structure entry names.
+* You can use DOM methods in place of structure entry names.
 
 For example, the following variables all reference the XmlText value "Almanzo" in the XML document created in "A
 simple XML document" on page 1059:
@@ -1447,11 +1447,11 @@ Using Web Elements and External Objects
 Validating XML documents
 ColdFusion provides the following methods for validating a document against a DTD or an XML Schema:
 
-· The XmlParse function can validate XML text that it is parsing against a DTD or Schema. It the function
+* The XmlParse function can validate XML text that it is parsing against a DTD or Schema. It the function
    encounters a validation error, ColdFusion generates an error and stops parsing the text. If the validator generates
    warnings, but no errors, ColdFusion parses the document and returns the result.
 
-· The XmlValidate function can validate an XML text document or XML document object. against a DTD or
+* The XmlValidate function can validate an XML text document or XML document object. against a DTD or
    Schema. The function returns a data structure with detailed information from the validator, including arrays of
    warning, error, and fatal error messages, and a Boolean status variable indicating whether the document is valid.
    Your application can examine the status information and determine how to handle it further.
@@ -1564,14 +1564,14 @@ This example displays the results of the processing steps to show you what has b
 The XML document
 The order.xml document has the following structure:
 
-· The root element is named order and has one attribute, id.
+* The root element is named order and has one attribute, id.
 
-· One customer element exists with firstname, lastname, and accountnum attributes. The customer element does not
+* One customer element exists with firstname, lastname, and accountnum attributes. The customer element does not
    have a body
 
-· One items element exists that contains multiple item elements
+* One items element exists that contains multiple item elements
 
-· Each item element has an id attribute and contains a name, quantity, and unitprice element. The name, quantity,
+* Each item element has an id attribute and contains a name, quantity, and unitprice element. The name, quantity,
    and unitprice elements contain their value as body text.
 
 The following order.xml document works correctly with the information in the cfdocexamples database:
@@ -1848,9 +1848,9 @@ Using Web Elements and External Objects
 The WDDX XML vocabulary consists of a document type definition (DTD) that describes the structure of standard
 data types and a set of components for each of the target platforms to do the following:
 
-· Serialize: The data from its native representation into a WDDX XML document or document fragment.
+* Serialize: The data from its native representation into a WDDX XML document or document fragment.
 
-· Deserialize: A WDDX XML document or document fragment into the native data representation, such as a CFML
+* Deserialize: A WDDX XML document or document fragment into the native data representation, such as a CFML
     structure.
 
 This vocabulary creates a way to move data, its associated data types, and descriptors that allow the data to be
@@ -1866,10 +1866,10 @@ in a database, file, or even a client variable.
 
 WDDX has two features that make it useful for transferring data in a web environment:
 
-· It is lightweight. The JavaScript used to serialize and deserialize data, including a debugging function to dump
+* It is lightweight. The JavaScript used to serialize and deserialize data, including a debugging function to dump
     WDDX data, occupies less than 22 K.
 
-· Unlike traditional client-server approaches, the source and target system can have minimal-to-no prior knowledge
+* Unlike traditional client-server approaches, the source and target system can have minimal-to-no prior knowledge
     of each other. They only must know the structure of the data that is being transferred.
 
 WDDX was created in 1998, and many applications now expose WDDX capabilities. The best source of information
@@ -1919,9 +1919,9 @@ application integration by sharing data on the web in a pragmatic, productive ma
 
 WDDX offers the following advantages:
 
-· It can be used by lightweight clients, such as browsers or Flash Player.
+* It can be used by lightweight clients, such as browsers or Flash Player.
 
-· It can be used to store complex data structures in files and databases.
+* It can be used to store complex data structures in files and databases.
 
 Applications that take advantage of WDDX can continue to do so if they start to use web services. These applications
 could also be converted to use web services standards exclusively; only the service and data interchange formats: not
@@ -2159,13 +2159,13 @@ server to a JavaScript object that is processed by the browser.
 
 The application consists of four principal sections:
 
-· Running a data query
+* Running a data query
 
-· Including the WDDX JavaScript utility classes
+* Including the WDDX JavaScript utility classes
 
-· Calling the conversion function
+* Calling the conversion function
 
-· Writing the object data in HTML
+* Writing the object data in HTML
 
 The following example uses the cfdocexamples data source that is installed with ColdFusion:
 
@@ -2486,11 +2486,11 @@ a description of the API to the web service as a Web Services Description Langua
 A WSDL file is an XML-formatted document that includes information about the web service, including the following
 information:
 
-· Operations that you can call on the web service
+* Operations that you can call on the web service
 
-· Input parameters that you pass to each operation
+* Input parameters that you pass to each operation
 
-· Return values from an operation
+* Return values from an operation
 
 Consuming web services typically is a two-step process:
 
@@ -2528,7 +2528,7 @@ Note: For detailed information, consult one of the many web services books.
 
 The following are three primary components of the web services platform:
 
-· SOAP (Simple Object Access Protocol)
+* SOAP (Simple Object Access Protocol)
 
 
 
@@ -2540,9 +2540,9 @@ Using Web Elements and External Objects
 
 
 
-· WSDL (Web Services Description Language)
+* WSDL (Web Services Description Language)
 
-· UDDI (Universal Description, Discovery, and Integration)
+* UDDI (Universal Description, Discovery, and Integration)
 
 
 Supporting web services with SOAP
@@ -2942,9 +2942,9 @@ Consuming web services that ColdFusion does not generate
 To consume a web service that is implemented in a technology other than ColdFusion, the web service must have one
 of the following sets of options:
 
-· rpc as the SOAP binding style and encoding as the encodingStyle
+* rpc as the SOAP binding style and encoding as the encodingStyle
 
-· document as the SOAP binding style and literal as the encodingStyle
+* document as the SOAP binding style and literal as the encodingStyle
 
 The following example shows a portion of the WSDL file for the TemperatureService web service:
 
@@ -3782,21 +3782,21 @@ You typically use different functions in web services clients and in the web ser
 
 In the client:
 
-· AddSOAPRequestHeader, called before the request to set a SOAP header.
+* AddSOAPRequestHeader, called before the request to set a SOAP header.
 
-· GetSOAPResponseHeader, called after the request to retrieve a SOAP header.
+* GetSOAPResponseHeader, called after the request to retrieve a SOAP header.
 
-· GetSOAPResponse, called after the request to retrieve a SOAP response.
+* GetSOAPResponse, called after the request to retrieve a SOAP response.
 
 In the web service CFC:
 
-· IsSOAPRequest, called to determine whether the CFC method is being called as a web service.
+* IsSOAPRequest, called to determine whether the CFC method is being called as a web service.
 
-· GetSOAPRequestHeader, called to retrieve a SOAP header set by the client.
+* GetSOAPRequestHeader, called to retrieve a SOAP header set by the client.
 
-· GetSOAPRequest, called to retrieve a SOAP request sent by the client.
+* GetSOAPRequest, called to retrieve a SOAP request sent by the client.
 
-· AddSOAPResponseHeader, called to set a SOAP header that is returned to the client.
+* AddSOAPResponseHeader, called to set a SOAP header that is returned to the client.
 
 Note: When used in a CFC, you can only use these functions in CFC methods if they are being used as web services. Use
 the IsSOAPRequest function to determine whether the CFC method is being called as a web service.
@@ -3900,9 +3900,9 @@ ret = "Invoked as a web service. Use GetSOAPRequest and GetSOAPResponse to view 
 Handling complex data types
 When dealing with web services, handling complex types falls into the following categories:
 
-· Mapping the data types of a web service to consume to ColdFusion data types
+* Mapping the data types of a web service to consume to ColdFusion data types
 
-· Understanding how clients reference your ColdFusion data types when you publish a web service
+* Understanding how clients reference your ColdFusion data types when you publish a web service
 
 
 Consuming web services that use complex data types
@@ -4211,9 +4211,9 @@ Using Web Elements and External Objects
 Troubleshooting SOAP requests and responses
 ColdFusion provides the following facilities for troubleshooting SOAP requests and responses:
 
-· The getSOAPRequest and getSOAPResponse functions.
+* The getSOAPRequest and getSOAPResponse functions.
 
-· The TCP monitor.
+* The TCP monitor.
 
 
 Viewing SOAP requests and responses
@@ -4223,10 +4223,10 @@ functions for debugging.
 
 Use these functions in the following places:
 
-· GetSOAPRequest Clients call this function after the web service request; web service CFCs call this function in
+* GetSOAPRequest Clients call this function after the web service request; web service CFCs call this function in
    the web service CFC method.
 
-· GetSOAPResponse Clients call this function after the web service request completes; web service CFCs cannot use
+* GetSOAPResponse Clients call this function after the web service request completes; web service CFCs cannot use
    this method.
 
 The following example uses the GetSOAPRequest and GetSOAPResponse functions in a web service client:
@@ -4384,15 +4384,15 @@ ColdFusion can now expose many of its features as document or literal style SOAP
 ColdFusion functionality using web services from other languages like PHP, .NET, or Ruby.You can access the features
 of the following tags (and their child tags) as SOAP services:
 
-· cfchart
+* cfchart
 
-· cfdocument
+* cfdocument
 
-· cfimage
+* cfimage
 
-· cfmail
+* cfmail
 
-· cfpop
+* cfpop
 
 
 
@@ -4405,7 +4405,7 @@ Using Web Elements and External Objects
 
 
 
-· cfpdf
+* cfpdf
 
 
 WorkFlow for a ColdFusion web service
@@ -4612,15 +4612,15 @@ About ColdFusion, Java, and J2EE
 ColdFusion is built on a J2EE-compliant Java technology platform. This structure lets ColdFusion applications take
 advantage of, and integrate with, J2EE elements. ColdFusion pages can do any of the following:
 
-· Include JavaScript and client-side Java applets on the page.
+* Include JavaScript and client-side Java applets on the page.
 
-· Use JSP tags.
+* Use JSP tags.
 
-· Interoperate with JSP pages.
+* Interoperate with JSP pages.
 
-· Use Java servlets.
+* Use Java servlets.
 
-· Use Java objects, including JavaBeans and Enterprise JavaBeans.
+* Use Java objects, including JavaBeans and Enterprise JavaBeans.
 
 
 About ColdFusion and client-side JavaScript and applets
@@ -4650,10 +4650,10 @@ page. For example:
 About ColdFusion and JSP
 ColdFusion supports JSP tags and pages in the following ways:
 
-· Interoperates with JSP pages: ColdFusion pages can include or forward to JSP pages, JSP pages can include or
+* Interoperates with JSP pages: ColdFusion pages can include or forward to JSP pages, JSP pages can include or
    forward to ColdFusion pages, and both types of pages can share data in persistent scopes.
 
-· Imports and uses JSP tag libraries: the cfimport tag imports JSP tag libraries and lets you use its tags.
+* Imports and uses JSP tag libraries: the cfimport tag imports JSP tag libraries and lets you use its tags.
 
 ColdFusion pages are not JSP pages, however, and you cannot use most JSP syntax on ColdFusion pages. In particular,
 you cannot use the following features on ColdFusion pages:
@@ -4700,13 +4700,13 @@ Note: The cfservlet tag, which provides access to servlets on JRun servers, is d
 About ColdFusion and Java objects
 Java objects include the following:
 
-· Standard Java classes and methods that make up the J2EE API
+* Standard Java classes and methods that make up the J2EE API
 
-· Custom-written Java objects, including the following:
+* Custom-written Java objects, including the following:
 
-    · Custom classes, including JavaBeans
+    * Custom classes, including JavaBeans
 
-    · Enterprise JavaBeans
+    * Enterprise JavaBeans
 
 ColdFusion pages use the cfobject tag to access Java objects.
 
@@ -4767,26 +4767,26 @@ pages and servlets.
 
 
 Rules
-· If you use mixed case variables, all variable names must be unique, independent of case. For example, you must not
+* If you use mixed case variables, all variable names must be unique, independent of case. For example, you must not
    have two Java variables, MyVariable and MYVARIABLE. ColdFusion cannot distinguish between the two.
 
-· If you share Request scope variables between a CFML page and a JSP page or servlet, all shared Request scope
+* If you share Request scope variables between a CFML page and a JSP page or servlet, all shared Request scope
    variable names must be all-lowercase in the JSP page or servlet. Mixed case or all-uppercase variables cause null
    pointer exceptions if CFML refers to these variables.
 
-· If you share Application or Session scope variables between a CFML page and a JSP page or servlet and use a named
+* If you share Application or Session scope variables between a CFML page and a JSP page or servlet and use a named
    ColdFusion application (the common usage), the variables on the JSP page or servlet are case-independent.
 
-· If you share the Application or Session scope variables between a CFML page and a JSP page or servlet, and use an
+* If you share the Application or Session scope variables between a CFML page and a JSP page or servlet, and use an
    unnamed ColdFusion application, the variable names in the JSP page or servlet must be all lowercase.
 
-· When you specify a class name in the cfobject tag or CreateObject function, the name must be case-correct.
+* When you specify a class name in the cfobject tag or CreateObject function, the name must be case-correct.
 
 
 Guidelines
-· You can prevent problems by consistently using all-lowercase variable names.
+* You can prevent problems by consistently using all-lowercase variable names.
 
-· In your CFML, use the same case as you do in your Java or JSP. Doing so does not change how the application
+* In your CFML, use the same case as you do in your Java or JSP. Doing so does not change how the application
    works, but does help prevent confusion.
 
 
@@ -4873,11 +4873,11 @@ source custom tag libraries.
 Interoperating with JSP pages and servlets
 ColdFusion pages and JSP pages can interoperate in several ways:
 
-· ColdFusion pages can invoke JSP pages and servlets.
+* ColdFusion pages can invoke JSP pages and servlets.
 
-· JSP pages can invoke ColdFusion pages.
+* JSP pages can invoke ColdFusion pages.
 
-· ColdFusion pages, JSP pages, and servlets can share data in three scopes.
+* ColdFusion pages, JSP pages, and servlets can share data in three scopes.
 
 
 
@@ -5261,9 +5261,9 @@ Invoking objects
 The cfobject tag makes Java objects available in ColdFusion. It can access any Java class that is available on the JVM
 classpath or in either of the following locations:
 
-· In a Java archive (.jar) file in web_root/WEB-INF/lib
+* In a Java archive (.jar) file in web_root/WEB-INF/lib
 
-· In a class (.class) file in web_root/WEB-INF/classes
+* In a class (.class) file in web_root/WEB-INF/classes
 
 For example:
 
@@ -5294,9 +5294,9 @@ execution.
 Using properties
 Use the following coding syntax to access properties if the object does either of the following actions:
 
-· Exposes the properties as public properties.
+* Exposes the properties as public properties.
 
-· Does not make the properties public, but is a JavaBean that provides public getter and setter methods of the form
+* Does not make the properties public, but is a JavaBean that provides public getter and setter methods of the form
    getPropertyName() and setPropertyName(value). For more information, see "Calling JavaBean get and set
    methods" on page 1136.
 
@@ -5310,9 +5310,9 @@ Using Web Elements and External Objects
 
 
 
-· To set a property: <cfset obj.property = "somevalue">
+* To set a property: <cfset obj.property = "somevalue">
 
-· To get a property: <cfset value = obj.property>
+* To get a property: <cfset value = obj.property>
 
 Note: ColdFusion does not require consistently capitalized property and method names. However, it is good
 programming practice to use the same case in ColdFusion as you do in Java to ensure consistency.
@@ -5540,13 +5540,13 @@ Using Web Elements and External Objects
 Java considerations
 The following points are important when you write a ColdFusion page that uses a Java class object:
 
-· The Java class name is case sensitive. Ensure that the Java code and the CFML code use Employee as the class name.
+* The Java class name is case sensitive. Ensure that the Java code and the CFML code use Employee as the class name.
 
-· Although Java method and field names are case sensitive, ColdFusion variables are not case sensitive, and
+* Although Java method and field names are case sensitive, ColdFusion variables are not case sensitive, and
    ColdFusion does any necessary case conversions. As a result, the sample code works even though the CFML uses
    emp.firstname and emp.lastname; the Java source code uses FirstName and LastName for these fields.
 
-· If you do not call the constructor (or, as in this example, comment it out), ColdFusion automatically runs the
+* If you do not call the constructor (or, as in this example, comment it out), ColdFusion automatically runs the
    default constructor when it first uses the class.
 
 
@@ -5836,11 +5836,11 @@ To call an EJB, you use cfobject to create and call the appropriate objects. Bef
 
 2 Have the following information:
 
-    · Name of the EJB server
+    * Name of the EJB server
 
-    · Port number of the JNDI naming service on the EJB server
+    * Port number of the JNDI naming service on the EJB server
 
-    · Name of the EJB, as registered with the naming service
+    * Name of the EJB, as registered with the naming service
 
 3 Install the EJB home and component interface compiled classes on your ColdFusion web server, either as class files
    in the web_root/WEB-INF/classes directory or packaged in a JAR file the web_root/WEB-INF/lib directory.
@@ -6238,11 +6238,11 @@ About ColdFusion and .NET
 ColdFusion lets you access and use Microsoft .NET assembly classes as CFML objects. CFML applications can use
 .NET assemblies in the following ways:
 
-· Directly access and control Microsoft products, such as Word, Excel, or PowerPoint.
+* Directly access and control Microsoft products, such as Word, Excel, or PowerPoint.
 
-· Use existing .NET components.
+* Use existing .NET components.
 
-· Use .NET assemblies that you create to leverage features that are difficult to use or not available in ColdFusion or
+* Use .NET assemblies that you create to leverage features that are difficult to use or not available in ColdFusion or
     Java. (Because ColdFusion is a J2EE application, if you cannot code a feature in CFML, it is more efficient to create
     it in Java than to use .NET.)
 
@@ -6272,14 +6272,14 @@ are accessing. Code that uses a .NET method can be as simple as the following li
 
 ColdFusion .NET access has the following additional features:
 
-· If you make a change in the .NET assembly, ColdFusion automatically recognizes the change and uses that version
+* If you make a change in the .NET assembly, ColdFusion automatically recognizes the change and uses that version
     for the next invocation.
 
-· Your application can access .NET assemblies running on multiple machines.
+* Your application can access .NET assemblies running on multiple machines.
 
-· You can secure the communication between ColdFusion and .NET by using SSL.
+* You can secure the communication between ColdFusion and .NET by using SSL.
 
-· Primitive data types are automatically mapped between ColdFusion and .NET data types.
+* Primitive data types are automatically mapped between ColdFusion and .NET data types.
 
 
 
@@ -6370,15 +6370,15 @@ system to create Java proxies for the .NET classes, and then move or copy them t
 the JNBDotNetSide.exe.config file on the remote system to specify the .NET classes you use. The .NET system requires
 the following .NET extension software:
 
-· JNBDotNetSide.exe, the .NET-side agent that communicates with the ColdFusion system (normally run as the
+* JNBDotNetSide.exe, the .NET-side agent that communicates with the ColdFusion system (normally run as the
     ColdFusion .NET service).
 
-· JNBDotNetSide.exe.config, a configuration file that identifies the .NET assemblies that ColdFusion can access.
+* JNBDotNetSide.exe.config, a configuration file that identifies the .NET assemblies that ColdFusion can access.
 
-· jnbproxy.exe and jnbproxyGui.exe are command line and GUI-based programs that generate the Java proxies that
+* jnbproxy.exe and jnbproxyGui.exe are command line and GUI-based programs that generate the Java proxies that
     represent the .NET assemblies.
 
-· Additional support files, including JNBShare.dll, which invoke the .NET assembly classes.
+* Additional support files, including JNBShare.dll, which invoke the .NET assembly classes.
 
 For information on installing the ColdFusion .NET extension, see Installing ColdFusion guide.
 
@@ -6388,9 +6388,9 @@ Note: When you install a new .NET version, reinstall the ColdFusion .NET extensi
 Accessing .NET assemblies
 ColdFusion provides two methods for accessing .NET assemblies:
 
-· A local access method for .NET objects that are installed on the ColdFusion system
+* A local access method for .NET objects that are installed on the ColdFusion system
 
-· A remote access method for .NET objects located on other systems.
+* A remote access method for .NET objects located on other systems.
 
 For both methods, install the ColdFusion .NET extension and run the ColdFusion .NET service on the system that
 hosts the assemblies. You need not install the extension or run the service on a ColdFusion system that accesses only
@@ -6461,11 +6461,11 @@ you use the stand-alone installer, the programs are located in the installDir\jn
 This document provides the basic information necessary to generate a proxy JAR file using the jnbproxyGui tool.
 Additional information is available in the following locations:
 
-· The jnbridge directory includes a jnbproxy.chm Windows Help file with more complete documentation on the
+* The jnbridge directory includes a jnbproxy.chm Windows Help file with more complete documentation on the
     JNBridge technology that powers the ColdFusion .NET feature, including detailed information on both the
     jnbproxyGui and jnbproxy programs.
 
-· The jnbridge\docs subdirectory includes additional documentation, including users guide.pdf, a PDF version of the
+* The jnbridge\docs subdirectory includes additional documentation, including users guide.pdf, a PDF version of the
     information in the Help file.
 
 Note: The JNBridge documentation includes information on features that are not supported in ColdFusion. ColdFusion,
@@ -6509,14 +6509,14 @@ Using Web Elements and External Objects
    On a system without ColdFusion: If ColdFusion is not currently running on the system, ensure that the following
    options, which are located on the right side of the interface, are set. Leave the default values for the other settings.
 
-   · Ensure that the Start Java Automatically option is selected.
+   * Ensure that the Start Java Automatically option is selected.
 
-   · Specify the java.exe file to use to compile the JAR file. You can use a Java 1.4 or 1.5 (J2SE 5.0) version of this file.
+   * Specify the java.exe file to use to compile the JAR file. You can use a Java 1.4 or 1.5 (J2SE 5.0) version of this file.
 
-   · Specify the jnbcore.jar file. The ColdFusion server installer places this file in the cfroot\lib directory. The J2EE
+   * Specify the jnbcore.jar file. The ColdFusion server installer places this file in the cfroot\lib directory. The J2EE
        installer places the file in the cf_webapp_root\WEB-INF\cfusion\lib directory.
 
-   · Specify the bcel.jar file. The ColdFusion server installer places this file in the cfroot\lib directory. The J2EE
+   * Specify the bcel.jar file. The ColdFusion server installer places this file in the cfroot\lib directory. The J2EE
        installer places the file in the cf_webapp_root\WEB-INF\cfusion\lib directory.
 
 3 In the Launch JNBProxy dialog box, select Create New Java > .NET Project, and click OK.
@@ -6556,17 +6556,17 @@ JNBProxy can generate proxies not only for the .NET classes that are explicitly 
 supporting class for a given .NET class is any class that could be needed as a direct or indirect result of using that .NET
 class. For a given .NET class, supporting classes include all of the following:
 
-· The class.
+* The class.
 
-· The class's superclass or superinterface (if it exists) and all of its supporting classes.
+* The class's superclass or superinterface (if it exists) and all of its supporting classes.
 
-· The class's implemented interfaces (if any) and all of their supporting classes.
+* The class's implemented interfaces (if any) and all of their supporting classes.
 
-· For each field in the class:
+* For each field in the class:
 
-   · The field's class and all of its supporting classes.
+   * The field's class and all of its supporting classes.
 
-   · For each of the field's index parameters, the parameter's class and all of its supporting classes.
+   * For each of the field's index parameters, the parameter's class and all of its supporting classes.
 
 
 
@@ -6578,13 +6578,13 @@ Using Web Elements and External Objects
 
 
 
-· For each method in the class:
+* For each method in the class:
 
-    · The method's return value's class (if any) and all of its supporting classes.
+    * The method's return value's class (if any) and all of its supporting classes.
 
-    · For each of the method's parameters, the parameter's class and all of its supporting classes.
+    * For each of the method's parameters, the parameter's class and all of its supporting classes.
 
-· For each constructor in the class, for each of the constructor's parameters, the parameter's class and all of its
+* For each constructor in the class, for each of the constructor's parameters, the parameter's class and all of its
    supporting classes.
 
 Unlike Java, where supporting classes include exceptions that methods throw, .NET supporting classes don't include
@@ -6609,9 +6609,9 @@ Configuring the .NET-side system
 To configure the .NET-side system, you edit the jnbridge\JNBDotNetSide.exe.config configuration file in the
 following ways:
 
-· For local assemblies, edit this file only if you do not use the default port, or if you use SSL security.
+* For local assemblies, edit this file only if you do not use the default port, or if you use SSL security.
 
-· For a .NET assembly on a remote machine, register the assemblies in this file to make it accessible to ColdFusion.
+* For a .NET assembly on a remote machine, register the assemblies in this file to make it accessible to ColdFusion.
 
 
 Edit the configuration file
@@ -6622,14 +6622,14 @@ Edit the configuration file
               useSSL="true|false" certificateLocation="server certificate path"/>
     </jnbridge>
 
-    · The scheme attribute specifies the communications protocol, and must be jtcp or http.
+    * The scheme attribute specifies the communications protocol, and must be jtcp or http.
 
-    · The port number is the port of the .NET-side agent, normally 6086.
+    * The port number is the port of the .NET-side agent, normally 6086.
 
-    · The useSSL attribute specifies whether to use SSL for secure communications. The attribute is optional; the
+    * The useSSL attribute specifies whether to use SSL for secure communications. The attribute is optional; the
        default is to not use SSL.
 
-    · The certificateLocation attribute specifies the location of the server SSL certificate. It is required only if the
+    * The certificateLocation attribute specifies the location of the server SSL certificate. It is required only if the
        useSSL attribute is true.
 
    These settings must be the same as the corresponding attributes in your cfobject tag.
@@ -6720,20 +6720,20 @@ Using Web Elements and External Objects
 When you create objects and access class methods and fields, and convert data types between ColdFusion and .NET,
 be aware of the following considerations and limitations:
 
-· Data type conversion considerations described in "Converting between .NET and ColdFusion data types" on
+* Data type conversion considerations described in "Converting between .NET and ColdFusion data types" on
    page 1157
 
-· Limitations described in the "Limitations" section of cfobject: .NET object in the CFML Reference.
+* Limitations described in the "Limitations" section of cfobject: .NET object in the CFML Reference.
 
 
 Instantiating objects and calling class constructors
 When you use the cfobject tag to create a .NET object, ColdFusion does not create an instance of the object.
 ColdFusion creates the object instance in either of the following cases:
 
-· If the class has a default constructor, ColdFusion automatically calls the constructor when you first invoke a non-
+* If the class has a default constructor, ColdFusion automatically calls the constructor when you first invoke a non-
    static method of the object.
 
-· If the class does not have a default constructor, or if the class has multiple constructors and you do not want to use
+* If the class does not have a default constructor, or if the class has multiple constructors and you do not want to use
    the default, call the special init method of the ColdFusion object. The cfobject tag automatically creates init
    methods for all class constructors. Using the init method causes ColdFusion to call the class constructor with the
    corresponding number and types of parameters. For example, the following tags cause ColdFusion to call the
@@ -7072,13 +7072,13 @@ When you use complex .NET data such as Hashtable, ArrayList and DataTable, ColdF
 converts the data to the corresponding ColdFusion data type: structure, array, and query, respectively. When you work
 with this data you take specific actions to enable the proper access and conversion of the data, as follows:
 
-· Use associative array notation to properly access .NET Hashtable data from ColdFusion
+* Use associative array notation to properly access .NET Hashtable data from ColdFusion
 
-· You cannot use ColdFusion variables directly in parameters that take Hashtable, ArrayList, or DataTable input.
+* You cannot use ColdFusion variables directly in parameters that take Hashtable, ArrayList, or DataTable input.
 
-· You can disable automatic conversion of complex .NET data to ColdFusion types.
+* You can disable automatic conversion of complex .NET data to ColdFusion types.
 
-· You can manually convert complex .NET data to ColdFusion types.
+* You can manually convert complex .NET data to ColdFusion types.
 
 
 Using Hashtable data in ColdFusion
@@ -7211,13 +7211,13 @@ You can disable automatic conversion of .NET System.Collections.Hashtable,
 System.Collections.ArrayList or System.Data.DataTable objects to the corresponding ColdFusion structure,
 array, or query objects. You could want to disable the conversion under the following circumstances:
 
-· If a collection or DataTable returned by a .NET method is large and you only want a small subset of the data. If auto
+* If a collection or DataTable returned by a .NET method is large and you only want a small subset of the data. If auto
    conversion is enabled, ColdFusion creates a data structure with all the object's fields. Creating the structure could
    take significant time and resources, because ColdFusion must invoke .NET methods internally to get each of the
    fields. You can disable the automatic conversion and retrieve the fields or data from .NET objects like any other
    objects.
 
-· If you invoke a .NET method that returns a complex variable, and then pass the variable to another .NET method
+* If you invoke a .NET method that returns a complex variable, and then pass the variable to another .NET method
    as argument. If automatic conversion is enabled, you cannot pass the Hashtable object from the first method
    directly to the second method.
 
@@ -7233,9 +7233,9 @@ Use the DotNetToCFType function to convert a System.Collections.Hashtable,
 System.Collections.ArrayList or System.Data.DataTable object to a ColdFusion structure, array, or query
 respectively when either of the following circumstances are true:
 
-· You have set the coldfusion.dotnet.disableautoconversion system property to true.
+* You have set the coldfusion.dotnet.disableautoconversion system property to true.
 
-· Automatic conversion is enabled, you created the complex .NET object by using the createObject function or
+* Automatic conversion is enabled, you created the complex .NET object by using the createObject function or
    cfobject tag, and you want to convert this object into the corresponding ColdFusion representation.
 
 For an example of using the function, see DotNetToCFType in the CFML Reference.
@@ -7296,24 +7296,24 @@ Using Web Elements and External Objects
 .NET Interoperability Limitations
 ColdFusion .NET interoperability has the following limitations
 
-· You cannot invoke methods with pointers as arguments or the return type.
+* You cannot invoke methods with pointers as arguments or the return type.
 
-· You cannot invoke methods that take Out parameters.
+* You cannot invoke methods that take Out parameters.
 
-· ColdFusion can only convert from System.Data.DataTable, System.Collection.Hashtable and
+* ColdFusion can only convert from System.Data.DataTable, System.Collection.Hashtable and
    System.Collection.ArrayList to ColdFusion data types. ColdFusion cannot convert from ColdFusion queries,
    structures, and arrays to these System data types; however, it can convert from ColdFusion arrays to the CLR array
    type. Therefore, you cannot pass structures or queries directly to .NET methods.
 
-· You cannot access .NET user interface components.
+* You cannot access .NET user interface components.
 
-· You cannot use callbacks (events and Delegates) from .NET side.
+* You cannot use callbacks (events and Delegates) from .NET side.
 
-· ColdFusion cannot determine the correct data type conversion if a method has multiple signatures that have the
+* ColdFusion cannot determine the correct data type conversion if a method has multiple signatures that have the
    same number of parameters and differ only in the parameter data types. In this case, use the JavaCast method to
    convert the ColdFusion data to the Java type that corresponds to the .NET type.
 
-· If the JavaCast function cannot eliminate ambiguity between functions with the same number of parameters
+* If the JavaCast function cannot eliminate ambiguity between functions with the same number of parameters
    because a single Java type corresponds to multiple .NET types, ColdFusion creates a single proxy that uses the .NET
    data type that corresponds directly to a Java type.
 
@@ -7331,7 +7331,7 @@ Using Web Elements and External Objects
 
 
 
-· Assemblies registered in the DotNetSide.exe.config file must have unique class names. If two or more assemblies
+* Assemblies registered in the DotNetSide.exe.config file must have unique class names. If two or more assemblies
    have the same class name, method invocation can result in an error or can give the wrong result. For example, do
    not have two DLLs, a.dll and b.dll, that contain the same class name, nam1.name2.MyClass. If you use one DLL and
    later want to use another DLL that contains a class that clashes with first, restart the ColdFusion .NET Service if
@@ -7599,9 +7599,9 @@ Using Web Elements and External Objects
  /pro protocol      Required                                  Specifies the communication mechanism between the .NET and Java
                                                               sides. The valid values are:
 
-                                                              ·  b TCP/binary
+                                                              *  b TCP/binary
 
-                                                              ·  h (HTTP/SOAP
+                                                              *  h (HTTP/SOAP
 
 
  /wd dir            optional     The system's default         Specifies the working directory for the JVM.
@@ -7654,16 +7654,16 @@ get the data.
 The choice of whether to use reference or value proxies depends on the desired semantics of the generated proxies, and
 on performance.
 
-· In general, use reference proxies (the default), because they maintain the normal parameter-passing semantics of
+* In general, use reference proxies (the default), because they maintain the normal parameter-passing semantics of
     Java and C#.
 
-· In general, use value proxies in any of the following cases:
+* In general, use value proxies in any of the following cases:
 
-    · The class functions always must pass parameter values and return values back and forth.
+    * The class functions always must pass parameter values and return values back and forth.
 
-    · The class object contains little data.
+    * The class object contains little data.
 
-    · The object data changes frequently, and the object is either relatively small or the frequency of accesses to data
+    * The object data changes frequently, and the object is either relatively small or the frequency of accesses to data
        outweighs the time taken to transfer the object.
 
 
@@ -7868,17 +7868,17 @@ sent by reference usually have their value changed by the object. Some methods h
 
 Use the following techniques to call methods:
 
-· If the method has no arguments, follow the method name with empty parentheses, as in the following cfset tag:
+* If the method has no arguments, follow the method name with empty parentheses, as in the following cfset tag:
 
     <cfset retVal = obj.Method1()>
 
-· If the method has one or more arguments, place the arguments in parentheses, separated by commas, as in the
+* If the method has one or more arguments, place the arguments in parentheses, separated by commas, as in the
    following example, which has one integer argument and one string argument:
 
     <cfset x = 23>
    <cfset retVal = obj.Method1(x, "a string literal")>
 
-· If the method has reference (Out or In,Out) arguments, use double quotation marks (") around the name of the
+* If the method has reference (Out or In,Out) arguments, use double quotation marks (") around the name of the
    variable you are using for these arguments, as shown for the variable x in the following example:
 
     <cfset x = 23>
@@ -7930,10 +7930,10 @@ which type of object is called.
 COM requirements
 To use COM components in your ColdFusion application, you need at least the following items:
 
-· The COM objects (typically DLL or EXE files) that you want to use in your ColdFusion application pages. Ensure
+* The COM objects (typically DLL or EXE files) that you want to use in your ColdFusion application pages. Ensure
    that these components implement the IDispatch interface, and therefore allow late binding.
 
-· Microsoft OLE/COM Object Viewer, available from Microsoft. This tool lets you view registered COM objects.
+* Microsoft OLE/COM Object Viewer, available from Microsoft. This tool lets you view registered COM objects.
 
    Object Viewer lets you view the class information of an object so that you can properly define the class attribute
    for the cfobject tag. It also displays the interfaces the object supports, so you can discover the properties and
@@ -7974,11 +7974,11 @@ component interface.
 Using the cfdump tag to view COM object interfaces
 Effective with ColdFusion, the ColdFusion cfdump tag displays the following information about a COM object:
 
-· Public methods
+* Public methods
 
-· Put properties
+* Put properties
 
-· Get properties
+* Get properties
 
 The method and property information include the parameter or property types and whether they are in, out, optional,
 or retval values. The cfdump tag output does not include the ProgID of the object.
@@ -8158,11 +8158,11 @@ ReleaseComObject(obj);
 General COM object considerations
 When you use COM objects, consider the following to prevent and resolve errors:
 
-· Ensuring correct threading
+* Ensuring correct threading
 
-· Using input and output arguments
+* Using input and output arguments
 
-· Understanding common COM-related error messages
+* Understanding common COM-related error messages
 
 
 
@@ -8263,9 +8263,9 @@ Accessing Complex COM Objects using Java proxies
 ColdFusion supports Java proxies to access COM objects. If you do not create Java proxies in advance, ColdFusion
 must dynamically discover the COM interface. This technique can have two disadvantages:
 
-· Dynamic discovery takes time and can reduce server performance with frequently used complex COM objects.
+* Dynamic discovery takes time and can reduce server performance with frequently used complex COM objects.
 
-· Dynamic discovery uses the IDispatcher interface to determine the COM object features, and does not always
+* Dynamic discovery uses the IDispatcher interface to determine the COM object features, and does not always
     handle some complex COM interfaces.
 
 To overcome these problems, ColdFusion includes a utility, com2java.exe, that creates static Java stub proxy classes
@@ -8338,11 +8338,11 @@ Using Web Elements and External Objects
 
       The files generated in your directory include the following:
 
-      · A Java interface and proxy class for each COM interface
+      * A Java interface and proxy class for each COM interface
 
-      · A Java class for each COM class
+      * A Java class for each COM class
 
-      · A Java interface for each ENUM (a set of constant definitions)
+      * A Java interface for each ENUM (a set of constant definitions)
 
 4 Compile your Java code. In a command prompt, do the following:
 
@@ -8433,15 +8433,15 @@ the Application scope among all pages.
 
 Use this technique only if the following are true:
 
-· The COM object need not be created for every request or session. (For session-specific objects, consider using the
+* The COM object need not be created for every request or session. (For session-specific objects, consider using the
    technique described here with the Session scope in place of the Application scope.)
 
-· The COM object is designed for sharing.
+* The COM object is designed for sharing.
 
 Because the object can be accessed from multiple pages and sessions simultaneously, also consider the following
 threading and locking issues:
 
-· For best performance, make the object multi-threaded. Otherwise, only one request can access the object at a time.
+* For best performance, make the object multi-threaded. Otherwise, only one request can access the object at a time.
 
 
 
@@ -8454,12 +8454,12 @@ Using Web Elements and External Objects
 
 
 
-· Lock the code that accesses and modifies common data. In general, you do not have to lock code that modifies a
+* Lock the code that accesses and modifies common data. In general, you do not have to lock code that modifies a
    shared object's data, including writable properties or file contents, if multiple requests do not share the data (as
    opposed to the object) . However, specific locking needs depend on the COM object's semantics, interface, and
    implementation.
 
-· All cflock tags in the application that use an Application scope lock share one lock. Therefore, code that accesses
+* All cflock tags in the application that use an Application scope lock share one lock. Therefore, code that accesses
    a frequently used COM object inside an Application scope lock can become a bottleneck and reduce throughput if
    many users request pages that use the object. In some cases, you can avoid some contention by placing code that
    uses the COM object in named locks. Place the code that creates the object in an Application scope lock.
@@ -8677,9 +8677,9 @@ type                     Must be CORBA. COM is the default.
 
 context                  Specifies the CORBA binding method, that is, how the object is obtained, as follows:
 
-                         ·  IOR Uses a file containing the object's unique Interoperable Object Reference.
+                         *  IOR Uses a file containing the object's unique Interoperable Object Reference.
 
-                         ·  NameService Uses a naming service.
+                         *  NameService Uses a naming service.
 
 
 class                    Specifies the information required for the binding method to access the object.
@@ -9098,10 +9098,10 @@ whether an applicant is approved for a loan based on the information that is sup
 
 The LoanAnalyzer CORBA interface has one method, which takes the following two in arguments:
 
-· An Account struct that identifies the applicant's account. It includes a Person struct that represents the account
+* An Account struct that identifies the applicant's account. It includes a Person struct that represents the account
    holder, and the applicant's age and income.
 
-· A CreditCards sequence, which corresponds to the set of credit cards the user currently has. A member of the
+* A CreditCards sequence, which corresponds to the set of credit cards the user currently has. A member of the
    CardType enumerator represents the credit card type. (This example assumes that the applicant has no more than
    one of any type of card.)
 

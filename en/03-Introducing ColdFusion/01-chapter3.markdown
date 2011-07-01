@@ -100,11 +100,12 @@ ColdFusion Markup Language (CFML) is a tag-based language, like HTML, that uses 
 For more information, see "Elements of CFML" on page 17.
 
 ### CFML tags
+
 CFML looks like HTML--it includes starting and, in most cases, ending tags, and each tag is enclosed in angle brackets. All ending tags are preceded with a forward slash (/) and all tag names are preceded with cf; for example:
 
 ```cfm
- <cftagname>
-     tag body text and CFML
+<cftagname>
+ tag body text and CFML
 </cftagname>
 ```
 
@@ -145,6 +146,7 @@ You can extend CFML further by creating custom tags or user-defined functions (U
 All these features let you easily create reusable functionality that is customized to the types of applications or websites that you are building.
                                                  
 ### CFML development tools
+
 Adobe Dreamweaver CS3 helps you develop ColdFusion applications efficiently. It includes many features that simplify and enhance ColdFusion development, including tools for debugging CFML. Because CFML is written in an HTML-like text format, and you often use HTML in ColdFusion pages, you can also use an HTML editor or a text editor, such as Notepad, to write ColdFusion applications.
 
 ColdFusion 9 includes a line debugger that you can use to debug your ColdFusion applications in EclipseTM or Adobe FlexTM BuilderTM.
@@ -164,6 +166,7 @@ As the Internet software market has matured, the infrastructure services require
 
 
 ### About ColdFusion and the J2EE platform
+
 ColdFusion is implemented on the Java technology platform and uses a J2EE application server for many of its base services, including database connectivity, naming and directory services, and other runtime services. ColdFusion can be configured to use an embedded J2EE server (in the server configuration) or it can be deployed as a J2EE application on an independent J2EE application server (in the multiserver configuration or the J2EE configuration). ColdFusion Enterprise includes a fully featured version of the JRun J2EE application server, or can be deployed on third-party J2EE servers such as IBM WebSphere and BEA WebLogic.
 
 For more information on ColdFusion configurations, see Installing ColdFusion.

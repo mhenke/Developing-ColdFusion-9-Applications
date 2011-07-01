@@ -3,9 +3,9 @@ Chapter 12: ColdFusion Portlets
 You can now build your own portlets by leveraging Adobe ColdFusion components (CFCs). You can create your own
 portlet using ColdFusion and run it on:
 
-· JBoss portal server
+* JBoss portal server
 
-· WebSphere portal server 6.1
+* WebSphere portal server 6.1
 
 
 
@@ -13,22 +13,22 @@ Run a ColdFusion portlet on JBoss Portal Server
 
 You can run and access ColdFusion portlets on a JBoss portal server, which can be either local or remote.
 
-· A local host: A portal can access portlets on the same computer where JBoss Portal server exists.
+* A local host: A portal can access portlets on the same computer where JBoss Portal server exists.
 
-· A remote host: A portal can access portlets deployed on a remote ColdFusion server instance.
+* A remote host: A portal can access portlets deployed on a remote ColdFusion server instance.
 
 
 Prerequisites
 Before you start developing ColdFusion portlets, you must:
 
-· Install JDK 1.5.x.
+* Install JDK 1.5.x.
 
-· For JSR-168, install bundled version of JBoss 2.6.7 or 2.6.8 portal server and JBoss 4.2.3 Application server. For JSR-
+* For JSR-168, install bundled version of JBoss 2.6.7 or 2.6.8 portal server and JBoss 4.2.3 Application server. For JSR-
   286, install bundled version of JBoss 2.7.2 portal server and JBoss 4.2.3 Application server.
 
-· Deploy ColdFusion on JBoss application server.
+* Deploy ColdFusion on JBoss application server.
 
-· Enable the J2EE sessions in ColdFusion Administrator.
+* Enable the J2EE sessions in ColdFusion Administrator.
 
 
 Build a portlet for a local server
@@ -230,10 +230,10 @@ Access remote ColdFusion portlets (WSRP)
 To access remote ColdFusion portlets and expose them as web services using the Web Service Response Protocol
 (WSRP), configure the following:
 
-· WSRP Producer: The Web Service Response Protocol (WSRP) is used to create the producer of the WSDL. A
+* WSRP Producer: The Web Service Response Protocol (WSRP) is used to create the producer of the WSDL. A
    WSRP producer can be any ColdFusion standalone, multiserver, or J2EE instance.
 
-· WSRP Consumer: Portlets are exposed as web services, which are then consumed by the portal server (JBoss).
+* WSRP Consumer: Portlets are exposed as web services, which are then consumed by the portal server (JBoss).
 
 
 Configure the WSRP producer
@@ -544,7 +544,7 @@ Examples
 The following examples show how you can configure portlets. You can add the following code to the doView()
 method depending on whether you are configuring the portlet on a local or remote server.
 
-· To get portal user information:
+* To get portal user information:
 
    JSR:
 
@@ -554,7 +554,7 @@ method depending on whether you are configuring the portlet on a local or remote
 
    <cfdump var = #renderRequest.getAttribute("javax.portlet.userinfo")#>
 
-· To display PDF:
+* To display PDF:
 
    <cfdocument format="pdf" src="http://www.google.com" filename="cfdoc1.pd f "
    overwrite="true">
@@ -576,7 +576,7 @@ ColdFusion Portlets
 
 
 
-· To display Ajax components, all the URLs used in portlets must be encoded.
+* To display Ajax components, all the URLs used in portlets must be encoded.
 
     CFPOD:
     <cfset sourceURL = getPortletResponse().encodeURL(getPortletRequest().getContextPath() &

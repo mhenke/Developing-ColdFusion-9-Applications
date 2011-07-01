@@ -1,43 +1,42 @@
-Chapter 4: The CFML Programming
-Language
+## Chapter 4: The CFML Programming Language
 
-Elements of CFML
+### Elements of CFML
 
 The basic elements of CFML, including tags, functions, constants, variables, expressions, and CFScript, make it a
 powerful tool for developing interactive web applications.
 
+### CFML Basics
 
-CFML Basics
-CFML is a dynamic application development tool with many of the features of a programming language. These
-features include functions, expressions, variables and constants, and flow-control constructs, such as if-then and loops.
-CFML also has a "language within a language," CFScript, which enables you to use a syntax like JavaScript for many
-operations.
+CFML is a dynamic application development tool with many of the features of a programming language. 
 
-These elements and other basic CFML entities such as comments, data types, escape characters, and reserved words,
-let you create complex applications.
+These features include functions, expressions, variables and constants, and flow-control constructs, such as if-then and loops.
 
+CFML also has a "language within a language," CFScript, which enables you to use a syntax like JavaScript for many operations.
 
-Comments
-ColdFusion comments have a similar format to HTML comments. However, they use three dash characters instead of
-two; for example:
+These elements and other basic CFML entities such as comments, data types, escape characters, and reserved words, let you create complex applications.
 
- <!--- This is a ColdFusion Comment. Browsers do not receive it. --->
+### Comments
 
-The ColdFusion server removes all ColdFusion comments from the page before returning it to the web server. As a
-result, the page that a browser receives does not include the comment. Users cannot see the comment even if they view
-the page source.
+ColdFusion comments have a similar format to HTML comments. However, they use three dash characters instead of two; for example:
 
-You can embed CFML comments in begin tags (not just tag bodies), functions calls, and variable text in number signs.
-ColdFusion ignores the text in comments such as the following:
+```cfm
+<!--- This is a ColdFusion Comment. Browsers do not receive it. --->
+```
 
- <cfset MyVar = var1 <!--- & var2 --->>
+The ColdFusion server removes all ColdFusion comments from the page before returning it to the web server. As a result, the page that a browser receives does not include the comment. Users cannot see the comment even if they view the page source.
+
+You can embed CFML comments in begin tags (not just tag bodies), functions calls, and variable text in number signs. ColdFusion ignores the text in comments such as the following:
+
+```cfm
+<cfset MyVar = var1 <!--- & var2 --->>
 <cfoutput>#Dateformat(now() <!---, "dddd, mmmm yyyy" --->)#</cfoutput>
+```
 
-This technique can be useful if you want to temporarily comment out parts of expressions or optional attributes or
-arguments.
+This technique can be useful if you want to temporarily comment out parts of expressions or optional attributes or arguments.
 
 You can also nest comments, as the following example shows:
 
+```cfm
  <!--- disable this code
 <!--- display error message --->
 <cfset errormessage1="Oops!">
@@ -45,83 +44,64 @@ You can also nest comments, as the following example shows:
 #errormessage1#
 </cfoutput>
 --->
+```
 
 This nesting is useful if you want to temporarily disable a section of code while you test your application.
 
 You can embed comments within comments, however, use this technique carefully.
 
+Note: You cannot embed comments inside a tag name or function name, such as 
 
+```cfm
+<cf_My<!--- New --->CustomTag>.
+```
 
+You also cannot embed comments inside strings, as in the following example: 
 
-                                               
+```cfm
+IsDefined("My<!--- New --->Variable").
+```
 
-DEVELOPING COLDFUSION 9 APPLICATIONS                                                                                      18
-The CFML Programming Language
+### Tags
 
+ColdFusion tags tell the ColdFusion server that it must process information. The ColdFusion server only processes tag contents; it returns text outside ColdFusion to the web server unchanged. ColdFusion provides a wide variety of built-in tags and lets you create custom tags.
 
+### Tag syntax
 
+ColdFusion tags have the same format as HTML tags. They are enclosed in angle brackets (< and >) and can have zero or more named attributes. Many ColdFusion tags have bodies; that is, they have beginning and end tags with text for processing between them. For example:
 
-Note: You cannot embed comments inside a tag name or function name, such as <cf_My<!--- New --->CustomTag>.
-You also cannot embed comments inside strings, as in the following example: IsDefined("My<!--- New ---
->Variable").
-
-
-
-Tags
-ColdFusion tags tell the ColdFusion server that it must process information. The ColdFusion server only processes tag
-contents; it returns text outside ColdFusion to the web server unchanged. ColdFusion provides a wide variety of built-
-in tags and lets you create custom tags.
-
-
-Tag syntax
-ColdFusion tags have the same format as HTML tags. They are enclosed in angle brackets (< and >) and can have zero
-or more named attributes. Many ColdFusion tags have bodies; that is, they have beginning and end tags with text for
-processing between them. For example:
-
- <cfoutput>
-     Hello #YourName#! <br>
+```cfm
+<cfoutput>
+ Hello #YourName#! <br>
 </cfoutput>
+```
 
-Other tags, such as cfset and cfhttp, never have bodies. All the required information goes between the beginning
-(<) character and the ending (>) character, as in the following example:
+Other tags, such as cfset and cfhttp, never have bodies. All the required information goes between the beginning (<) character and the ending (>) character, as in the following example:
 
- <cfset YourName="Bob">
+```cfm
+<cfset YourName="Bob">
+```
 
-Note: The cfset tag differs from other tags in that it does not have a body or arguments. Instead, the tag encloses an
-assignment statement that assigns a value to a variable. The cfset tag can also call a function without assigning a value
-to a result variable.
+Note: The cfset tag differs from other tags in that it does not have a body or arguments. Instead, the tag encloses an assignment statement that assigns a value to a variable. The cfset tag can also call a function without assigning a value to a result variable.
 
-Sometimes, although the tag can have a body, it is unnecessary because the attributes specify all the required
-information. You can omit the end tag and place a forward slash character before the closing (>) character, as in the
-following example:
+Sometimes, although the tag can have a body, it is unnecessary because the attributes specify all the required information. You can omit the end tag and place a forward slash character before the closing (>) character, as in the following example:
 
- <cfprocessingdirective pageencoding="euc-jp" />
+```cfm
+<cfprocessingdirective pageencoding="euc-jp" />
+```
 
-In most cases, you specify tag attributes directly in the tag using the format attributeName=" attributeValue" , as the
-preceding example shows. However, as an alternative, you can place all the attributes in a structure and specify the
-structure in a single attributeCollection attribute, using the following format:
+In most cases, you specify tag attributes directly in the tag using the format attributeName=" attributeValue" , as the preceding example shows. However, as an alternative, you can place all the attributes in a structure and specify the structure in a single attributeCollection attribute, using the following format:
 
- <tagname attributeCollection="#structureName#">
+```cfm
+<tagname attributeCollection="#structureName#">
+```
 
-When you use this format for all built-in ColdFusion tags except cfmodule, the tag must have only the
-attributeCollection attribute. This format is useful when you use dynamic arguments, where the number and
-values of the arguments to a tag can vary based on processing results. The following example shows this usage:
+When you use this format for all built-in ColdFusion tags except cfmodule, the tag must have only the attributeCollection attribute. This format is useful when you use dynamic arguments, where the number and values of the arguments to a tag can vary based on processing results. The following example shows this usage:
 
-
-
-
-                                               
-
-DEVELOPING COLDFUSION 9 APPLICATIONS                                                                                19
-The CFML Programming Language
-
-
-
-
+```cfm
  <!--- Configure dynamic attribute variables. --->
       <cfparam name="theURL" default="http://www.adobe.com">
       <cfparam name="resolveURL" default="yes">
-
 
 <!--- Code that dynamically changes values for attributes can go here. --->
 
@@ -145,17 +125,13 @@ The CFML Programming Language
       <cfoutput>
             #cfhttp.fileContent#
       </cfoutput>
+```
 
-Note: The attributeCollection attribute used in the cfmodule tag and when calling custom tags directly is different
-from the attributeCollection attribute for all other tags. In the cfmodule tag and in custom tags, you can mix the
-attributeCollection attribute and explicit custom tag attributes. Also, in the cfmodule tag, the
-attributeCollection attribute cannot contain the name and template attributes. Specify these attributes directly in
-the cfmodule tag.
+Note: The attributeCollection attribute used in the cfmodule tag and when calling custom tags directly is different from the attributeCollection attribute for all other tags. In the cfmodule tag and in custom tags, you can mix the attributeCollection attribute and explicit custom tag attributes. Also, in the cfmodule tag, the attributeCollection attribute cannot contain the name and template attributes. Specify these attributes directly in the cfmodule tag.
 
 You can use the attributeCollection attribute in all tags except the following:
 
-
- cfargument                  cfelseif                     cflogout                    cfset
+cfargument                  cfelseif                     cflogout                    cfset
 
  cfbreak                     cffunction                   cfloop                      cfsilent
 
@@ -169,462 +145,321 @@ You can use the attributeCollection attribute in all tags except the following:
 
  cfelse                      cfloginuser                  cfreturn
 
+### Built-in tags
 
-
-Built-in tags
 Built-in tags make up the heart of ColdFusion. These tags have many uses, including the following:
 
-· Manipulating variables
-
-· Creating interactive forms
-
-· Accessing and manipulating databases
-
-· Displaying data
-
-· Controlling the flow of execution on the ColdFusion page
-
-· Handling errors
-
-
-                                            
-
-DEVELOPING COLDFUSION 9 APPLICATIONS                                                                                       20
-The CFML Programming Language
-
-
-
-
-· Processing ColdFusion pages
-
-· Managing the CFML application framework
-
-· Manipulating files and directories
-
-· Using external tools and objects, including Verity collections, COM, Java, and CORBA objects, and executable
-   programs
-
-· Using protocols, such as mail, http, ftp, and pop
+* Manipulating variables
+* Creating interactive forms
+* Accessing and manipulating databases
+* Displaying data
+* Controlling the flow of execution on the ColdFusion page
+* Handling errors
+* Processing ColdFusion pages
+* Managing the CFML application framework
+* Manipulating files and directories
+* Using external tools and objects, including Verity collections, COM, Java, and CORBA objects, and executable programs
+* Using protocols, such as mail, http, ftp, and pop
 
 The CFML Reference documents each tag in detail.
 
+### Custom tags
 
-Custom tags
 ColdFusion lets you create custom tags. You can create two types of custom tags:
 
-· CFML custom tags that are ColdFusion pages
+* CFML custom tags that are ColdFusion pages
+* CFX tags that you write in a programing language such as Java or C++
 
-· CFX tags that you write in a programing language such as Java or C++
-
-Custom tags can encapsulate frequently used business logic or display code. These tags enable you to place frequently
-used code in one place and call it from many places. Custom tags also let you abstract complex logic into a single,
-simple interface. They provide an easy way to distribute your code to others. You can even distribute encrypted
-versions of the tags to prevent access to the tag logic.
+Custom tags can encapsulate frequently used business logic or display code. These tags enable you to place frequently used code in one place and call it from many places. Custom tags also let you abstract complex logic into a single, simple interface. They provide an easy way to distribute your code to others. You can even distribute encrypted versions of the tags to prevent access to the tag logic.
 
 You can access a variety of free and commercial custom tags on the Adobe ColdFusion Exchange
-(www.adobe.com/go/learn_cfu_cfdevcenter_en). They perform tasks ranging from checking if Cookies and JavaScript
-are enabled on the client browser to moving items from one list box to another. Many of these tags are free and include
-source code.
+(www.adobe.com/go/learn_cfu_cfdevcenter_en). They perform tasks ranging from checking if Cookies and JavaScript are enabled on the client browser to moving items from one list box to another. Many of these tags are free and include source code.
 
+### CFML custom tags
 
-CFML custom tags
-When you write a custom tag in CFML, you can take advantage of all the features of the ColdFusion language,
-including all built-in tags and even other custom tags. CFML custom tags can include body sections and end tags.
-Because they are written in CFML, you do not need to know a programming language such as Java. CFML custom tags
-provide more capabilities than user-defined functions, but are less efficient.
+When you write a custom tag in CFML, you can take advantage of all the features of the ColdFusion language, including all built-in tags and even other custom tags. CFML custom tags can include body sections and end tags.
+
+Because they are written in CFML, you do not need to know a programming language such as Java. CFML custom tags provide more capabilities than user-defined functions, but are less efficient.
 
 For more information on CFML custom tags, see "Creating and Using Custom CFML Tags" on page 208. For
-information about, and comparisons among, ways to reuse ColdFusion code, including CFML custom tags, user-
-defined functions, and CFX tags, see "Creating ColdFusion Elements" on page 146.
+information about, and comparisons among, ways to reuse ColdFusion code, including CFML custom tags, user- defined functions, and CFX tags, see "Creating ColdFusion Elements" on page 146.
 
+### CFX Tags
 
-CFX Tags
-CFX tags are ColdFusion custom tags that you write in a programming language such as Java or C++. These tags can take
-full advantage of all the tools and resources provided by these languages, including their access to runtime environments.
-CFX tags also generally execute faster than CFML custom tags because they are compiled. CFX tags can be cross-
-platform, but are often platform-specific, for example if they take advantage of COM objects or the Windows API.
+CFX tags are ColdFusion custom tags that you write in a programming language such as Java or C++. These tags can take full advantage of all the tools and resources provided by these languages, including their access to runtime environments.
+
+CFX tags also generally execute faster than CFML custom tags because they are compiled. CFX tags can be cross-platform, but are often platform-specific, for example if they take advantage of COM objects or the Windows API.
 
 For more information on CFX tags, see "Building Custom CFXAPI Tags" on page 224.
 
+### Tags as functions and operators
 
-Tags as functions and operators
-ColdFusion provides many functions or operator language elements that correspond to CFML tags. Together with the
-existing CFScript language, these elements let you define many CFCs and functions entirely in CFScript.
+ColdFusion provides many functions or operator language elements that correspond to CFML tags. Together with the existing CFScript language, these elements let you define many CFCs and functions entirely in CFScript.
 
 The new functions and operators belong to the following tag categories:
 
-· Tags without bodies, such as cfexit and cfinclude
+* Tags without bodies, such as cfexit and cfinclude
+* Language tags with bodies, such as cflock and cftransaction
+* Service tags with bodies, such as cfmail and cfquery
+* Tags for defining and using components and functions: cfcomponent, cfinterface, cfimport, cffunction, cfproperty, cfargument. For more information, see "Defining components and functions in CFScript" on page 121.
 
-· Language tags with bodies, such as cflock and cftransaction
-
-
-
-                                                
-
-DEVELOPING COLDFUSION 9 APPLICATIONS                                                                                        21
-The CFML Programming Language
-
-
-
-
-· Service tags with bodies, such as cfmail and cfquery
-
-· Tags for defining and using components and functions: cfcomponent, cfinterface, cfimport, cffunction, cfproperty,
-   cfargument. For more information, see "Defining components and functions in CFScript" on page 121.
-
-
-Tag without bodies
-Several basic ColdFusion tags now have corresponding CFScript operators. These operators take a subset of standard
-tag attributes, and do not allow custom attributes. They do not return values.
+### Tag without bodies
+Several basic ColdFusion tags now have corresponding CFScript operators. These operators take a subset of standard tag attributes, and do not allow custom attributes. They do not return values.
 
 The following list specifies the CFML tags and their corresponding CFScript syntax:
 
-· cfabort: abort ["message"];
+* cfabort: abort ["message"];
+* cfexit: exit ["methodName"];
+* cfinclude: include "template";
+* cfparam: param [type] name [=defaultValue];
 
-· cfexit: exit ["methodName"];
+The param attribute can now take any number of name=value pairs. Param can also take all the attributes of <cfparam> as name-value pairs.
 
-· cfinclude: include "template";
+For example:
 
-· cfparam: param [type] name [=defaultValue];
-
-   The param attribute can now take any number of name=value pairs. Param can also take all the attributes of
-   <cfparam> as name-value pairs.
-
-   For example:
-
-   <cfscript>
+```cfm
+  <cfscript>
    param name="paramname" default="value" min="minvalue" max="maxvalue" pattern="pattern"
    </cfscript>
+```
 
-· cfrethrow: rethrow;
+* cfrethrow: rethrow;
+* cfthrow: throw "message";
 
-· cfthrow: throw "message";
+For detailed information on the statement parameters, see the corresponding tag attribute description in the CFML Reference.
 
-For detailed information on the statement parameters, see the corresponding tag attribute description in the CFML
-Reference.
+Language-level tags with bodies ColdFusion includes CFScript elements that provide the functions of the following language (compiler)-level tags, which have bodies. These tags manage the execution of code within their bodies:
 
+* cflock: lock
+* cfthread: thread
+* cftransaction: transaction
 
-Language-level tags with bodies
-ColdFusion includes CFScript elements that provide the functions of the following language (compiler)-level tags,
-which have bodies. These tags manage the execution of code within their bodies:
-
-· cflock: lock
-
-· cfthread: thread
-
-· cftransaction: transaction
-
-Thread and transaction support also include functions, such as threadJoin and transactionCommit, that let you
-manage any thread or transaction, whether you define it with a tag or a function.
+Thread and transaction support also include functions, such as threadJoin and transactionCommit, that let you manage any thread or transaction, whether you define it with a tag or a function.
 
 The lock, thread, and transaction operations have the following syntax:
 
 operationName attributeName1=value1 attributName2=value2...
 {body contents }
 
+### cflock
 
-
-cflock
 The lock operation has no special characteristics or limitations. All cflock tag attributes are valid operation parameters.
+
 The following code uses the lock operation:
 
-
-
-
-                                              
-
-DEVELOPING COLDFUSION 9 APPLICATIONS                                                                                 22
-The CFML Programming Language
-
-
-
-
+```cfm
 lock scope = "request" timeout = "30" type = "Exclusive" {
 request.number = 1;
 writeoutput("E-Turtleneck has now sold "& request.number &"
 turtlenecks!");
 }
+```
 
 
-
-cftransaction
+### cftransaction
 To use the transaction operation you specify a begin action parameter. A transaction has the following general form:
 
+```cfm
 TRANSACTION action="begin" [isolation="isolationValue"] {
 transaction code
 }
+```
 
 Within the transaction block you call the following methods to manage the transaction:
 
-· transactionCommit()
-
-· transactionRollback([savepoint])
-
-· transactionSetSavepoint([savepoint])
+* transactionCommit()
+* transactionRollback([savepoint])
+* transactionSetSavepoint([savepoint])
 
 The savepoint parameter is a string identifier for the savepoint.
 
 Note: You can also use theses methods in a cftransaction tag body.
 
-You can nest transaction operations. For more information on nested transactions, see cftransaction in CFML
-Reference.
+You can nest transaction operations. For more information on nested transactions, see cftransaction in CFML Reference.
 
 The following example uses nested transaction operations:
 
+```cfm
 <cfscript>
-     qry = new Query();
-     qry.setDatasource("test");
-     qry.setSQL("delete from art where artid=62");
-     qry.execute();
-     TRANSACTION action="begin"
-     {writeoutput("Transaction in cfscript test");
-     TRANSACTION action="begin" {
-     qry.setSQL("insert into art(artid, artistid, artname, description, issold, price)
-     values ( 62, 1, 'art12', 'something', 1, 100)");
-     qry.execute();}
-     transactionSetSavepoint("sp01");
-     qry.setSQL("update art set artname='art45' where artid=62");
-     qry.execute();
-     transactionSetSavepoint("sp02");
+ qry = new Query();
+ qry.setDatasource("test");
+ qry.setSQL("delete from art where artid=62");
+ qry.execute();
+ TRANSACTION action="begin"
+  {writeoutput("Transaction in cfscript test");
+   TRANSACTION action="begin" {
+   qry.setSQL("insert into art(artid, artistid, artname, description, issold, price)
+   values ( 62, 1, 'art12', 'something', 1, 100)");
+   qry.execute();}
+ transactionSetSavepoint("sp01");
+ qry.setSQL("update art set artname='art45' where artid=62");
+ qry.execute();
+ transactionSetSavepoint("sp02");
      qry.setSQL("update art set artname='art56' where artid=62");
      qry.execute();
      transactionrollback("sp02");
      transactioncommit();
      }
 </cfscript>
+```
 
+### cfthread
 
+To use the thread operation you specify a run action parameter. The thread runs the code in the operation body. A thread block has the following general form:
 
-cfthread
-To use the thread operation you specify a run action parameter. The thread runs the code in the operation body. A
-thread block has the following general form:
-
-
-
-
-                                              
-
-DEVELOPING COLDFUSION 9 APPLICATIONS                                                                                        23
-The CFML Programming Language
-
-
-
-
+```cfm
 THREAD name="text" [action="run"] [priority="priorityValue"
 application-specific attributes] {
 thread code
 }
+```
 
 The code in the thread operation body executes in a single ColdFusion thread. Code outside the body is not part of the
 thread. You can use the following methods to manage the thread:
 
-· threadTerminate(threadName)
+* threadTerminate(threadName)
 
-   This function terminates the thread specified by the threadName parameter. It behaves in the same way as cfthread
-   action="terminate".
+This function terminates the thread specified by the threadName parameter. It behaves in the same way as cfthread action="terminate".
 
-· threadJoin([[threadName], timeout])
+* threadJoin([[threadName], timeout])
 
-   This function joins the current thread with the specified thread or threads. The current thread waits until either the
-   specified threads complete, or the timeout period passes, whichever happens first. The current thread inside a
-   thread function block belongs to that block thread and the current thread outside a thread function block is the page
-   thread.The threadName parameter is a comma-delimited list specifying one or more threads to join with the page
-   thread. If you omit this attribute, the current thread waits until all ColdFusion threads finish running.The timeout
-   parameter specifies the maximum time, in milliseconds, the calling thread waits for the other threads to complete
-   processing. If one or more threads do not complete before the time out period, the current thread processing begins
-   immediately. If you omit this attribute, the current thread waits until all specified threads finish running.
+This function joins the current thread with the specified thread or threads. The current thread waits until either the specified threads complete, or the timeout period passes, whichever happens first. The current thread inside a thread function block belongs to that block thread and the current thread outside a thread function block is the page thread.The threadName parameter is a comma-delimited list specifying one or more threads to join with the page thread. If you omit this attribute, the current thread waits until all ColdFusion threads finish running. The timeout parameter specifies the maximum time, in milliseconds, the calling thread waits for the other threads to complete processing. If one or more threads do not complete before the time out period, the current thread processing begins immediately. If you omit this attribute, the current thread waits until all specified threads finish running.
 
-   Note: You can also use these functions with transactions that you create by using cftransaction tags.
+Note: You can also use these functions with transactions that you create by using cftransaction tags.
 
+### Service tags with bodies
 
-Service tags with bodies
 ColdFusion provides objects, implemented as CFCs, that correspond to the following service tags:
 
-· cfftp
+* cfftp
+* cfhttp
+* cfmail
+* cfpdf
+* cfquery
+* cfstoredproc
 
-· cfhttp
-
-· cfmail
-
-· cfpdf
-
-· cfquery
-
-· cfstoredproc
-
-These tags have bodies and provide services such as executing queries or sending mail. Many of them have action
-attributes, whereas others have an implicit action, such as execute. For each service tag, except for cfmail and cfpdf, a
-component is returned with applicable properties set and you need to invoke getters on the properties to access the data.
+These tags have bodies and provide services such as executing queries or sending mail. Many of them have action attributes, whereas others have an implicit action, such as execute. For each service tag, except for cfmail and cfpdf, a component is returned with applicable properties set and you need to invoke getters on the properties to access the data.
 
 Note: Previously, invoking getName() and getResult() methods returned data like query resultset, pdf object, or ftp prefix,
 but now this has been changed and instead a component is returned with appropriate properties set.
 
-The object names are the tag names without the cf prefix, for example, ftp. These objects also support child tag
-functionality, such as cfmailpart and cfmailparam.
+The object names are the tag names without the cf prefix, for example, ftp. These objects also support child tag functionality, such as cfmailpart and cfmailparam.
 
-Note: There may be thread-safety issues if implicit setters are used and child tags such as cfmailpart or cfmailparam
-are added because they get added into the CFC variable scope. It is therefore recommended that you create a new
-component for each service. If you need to preserve the attribute state, use duplicate() on the component to retain any
-initialized attribute values.
+Note: There may be thread-safety issues if implicit setters are used and child tags such as cfmailpart or cfmailparam are added because they get added into the CFC variable scope. It is therefore recommended that you create a new component for each service. If you need to preserve the attribute state, use duplicate() on the component to retain any initialized attribute values.
 
 To use these tags in functions you:
 
-1 Instantiate a service object.
+1. Instantiate a service object.
+2. Set object attributes and child tags
+3. Execute one or more actions on the object.
 
-2 Set object attributes and child tags
+Note: Unlike the corresponding tags, you cannot use application-specific parameters in these functions. You can only use the parameters that ColdFusion supports directly.
 
+#### Step 1: Instantiate a service object
 
+To create a function object, such as a mail object, use the new operator or createobject() function, as in the following example:
 
-                                               
-
-DEVELOPING COLDFUSION 9 APPLICATIONS                                                                                     24
-The CFML Programming Language
-
-
-
-
-3 Execute one or more actions on the object.
-
-Note: Unlike the corresponding tags, you cannot use application-specific parameters in these functions. You can only use
-the parameters that ColdFusion supports directly.
-
-
-Step 1: Instantiate a service object
-To create a function object, such as a mail object, use the new operator or createobject() function, as in the
-following example:
-
+```cfm
 myMail = new mail(server="sendmail.myCo.com");
+```
 
+#### Step 2a: Managing attributes
 
-Step 2a: Managing attributes
 You can set attributes in several ways:
 
-· As name=value parameters to the object initializer when you instantiate the object, as in the following example.
+* As name=value parameters to the object initializer when you instantiate the object, as in the following example.
 
+```cfm
    myMail = new mail(server="sendmail.myCo.com");
+```
 
-· As name=value parameters to an object action method, as in the following example:
+* As name=value parameters to an object action method, as in the following example:
 
+```cfm
    Q = myQuery.execute(sql="select * from art");
+```
 
-· By using attribute setters, as in the following example:
+* By using attribute setters, as in the following example:
 
+```cfm
    myMail.setSubject("Hi");
+```
 
-   Note: You cannot use a getAttributeName function to get the value of the attribute specified by AttributeName.
-   Instead, use GetAttributes(AttributeName).
+Note: You cannot use a getAttributeName function to get the value of the attribute specified by AttributeName. Instead, use GetAttributes(AttributeName).
 
-· By using the following functions:
+* By using the following functions:
 
+```cfm
    SetAttributes(attrib1=value,attrib2=value,...);
    GetAttributes([attribName1[,attribName2]]....);
    ClearAttributes([attribName1[,attribName2]]...);
+```
 
 Note: If you specify a result attribute for a stored procedure, then calling getPrefix() returns,
 executionTime,statusCode,cached . If you do not specify a result attribute, getPrefix() returns only
 executionTime and statusCode.
 
-
-Step 2b: Managing child tag operations
-All service objects correspond to tags that have child tags. For example, cfmail has cfmailpart and cfmailparam
-child tags.
+#### Step 2b: Managing child tag operations
+All service objects correspond to tags that have child tags. For example, cfmail has cfmailpart and cfmailparam child tags.
 
 To specify the child tag functionality, use the following methods:
 
-· httpObj.addParam
-
-· mailObj.addParam
-
-· mailObj.addPart
-
-· pdfObj.addParam
-
-· queryObj.addParam
-
-· storedProcObj.addParam
-
-· storedProcObj.addProcResult
+* httpObj.addParam
+* mailObj.addParam
+* mailObj.addPart
+* pdfObj.addParam
+* queryObj.addParam
+* storedProcObj.addParam
+* storedProcObj.addProcResult
 
 For example:
 
-
-
-
-                                                 
-
-DEVELOPING COLDFUSION 9 APPLICATIONS                                                                                       25
-The CFML Programming Language
-
-
-
-
+```cfm
 mailObj.addparam(file="#ExpandPath('test.txt')#");
 mailObj.addPart(name="foo",type="html",charset="utf-8",
 body="This is a test message.");
+```
 
 You can also clear child tag settings by calling the following functions.
 
-· httpObj.clearParams
-
-· mailObj.clearParams
-
-· mailObj.clearParts
-
-· pdfObj.clearParams
-
-· queryObj.clearParams
-
-· storedProcObj.clearParams
-
-· storedProcObj.clearProcResults
+* httpObj.clearParams
+* mailObj.clearParams
+* mailObj.clearParts
+* pdfObj.clearParams
+* queryObj.clearParams
+* storedProcObj.clearParams
+* storedProcObj.clearProcResults
 
 If you used multiple add methods on an object, the clear method clears all values set in all the methods.
 
+#### Step 3: Executing service actions
 
-Step 3: Executing service actions
-Service tags, excluding cfmail and cfpdf, have one or more actions that return results. Some, including the cfpdf and
-cfftp tags have action attributes. For these tags, each action corresponds to a method on the service object. For example,
-the ftp object action methods include open, close, listDir, getFile, rename, and many others. However, the way
-service tags return data has changed. Now, a component is returned with applicable properties set and you need to
-invoke getters on the properties to access the data.
+Service tags, excluding cfmail and cfpdf, have one or more actions that return results. Some, including the cfpdf and cfftp tags have action attributes. For these tags, each action corresponds to a method on the service object. For example, the ftp object action methods include open, close, listDir, getFile, rename, and many others. However, the way service tags return data has changed. Now, a component is returned with applicable properties set and you need to invoke getters on the properties to access the data.
 
 Note: The PDF object has two action methods whose names differ from the corresponding cfftp action attribute values:
 getPDFInfo and setPDFInfo instead of getInfo and setInfo. This difference is required to prevent name collisions
 with the set and get methods for the PDF info attribute.
 
-The cfhttp, cfmail, cfquery, and cfstoredproc tags do not have action attributes. Instead, the tags perform a
-single action. To perform these actions in cfscript, call the following functions:
+The cfhttp, cfmail, cfquery, and cfstoredproc tags do not have action attributes. Instead, the tags perform a single action. To perform these actions in cfscript, call the following functions:
 
-· httpObj.send()
-
-· mailObj.send()
-
-· queryObj.execute()
-
-· storedProcObj.execute()
+* httpObj.send()
+* mailObj.send()
+* queryObj.execute()
+* storedProcObj.execute()
 
 To get an action result, you typically assign the results of the action method to a variable, as in the following example:
 
+```cfm
 Q = qry.execute(sql="select * from art");
+```
 
-Note: The attributes that specify you for an action are valid only for that action and are cleared once the action is
-completed.
-
+Note: The attributes that specify you for an action are valid only for that action and are cleared once the action is completed.
 
 Service code example: mail, ftp, and http
+
 The following example shows the use of the mail, http, and ftp services in cfscript.
 
-
-
-
-                                                
-
-DEVELOPING COLDFUSION 9 APPLICATIONS                                                        26
-The CFML Programming Language
-
-
-
-
+```cfm
 <!---mail and ftp service --->
 <cfscript>
      m = new mail();
@@ -680,41 +515,25 @@ The CFML Programming Language
          writedump(r.getPrefix());
          writedump(r.getResult());
 </cfscript>
-
-
-
-
-                                      
-
-DEVELOPING COLDFUSION 9 APPLICATIONS                                                                                27
-The CFML Programming Language
-
-
-
+```
 
 For cfftp, following are available getters on the returned component:
 
-· getPrefix()
-
-  Returns the tag prefix cfftp, which is a struct, available after any cfftp operation
-
-· getResult()
-
-  Applicable only to action="listDir"
+* getPrefix()
+** Returns the tag prefix cfftp, which is a struct, available after any cfftp operation
+* getResult()
+** Applicable only to action="listDir"
 
 For cfhttp, following are the available getters on the returned component:
 
-· getPrefix()
-
-  Returns the cfhttp prefix (struct) available after the tag has executed
-
-· getResult()
-
-  Applicable only if attributes like columns, delimiter, firstrowasheaders, name, or textQualifier are
-  specified, which direct ColdFusion to return a query object.
-
+* getPrefix()
+** Returns the cfhttp prefix (struct) available after the tag has executed
+* getResult()
+** Applicable only if attributes like columns, delimiter, firstrowasheaders, name, or textQualifier are specified, which direct ColdFusion to return a query object.
 
 Query service example
+
+```cfm
 <cfscript>
      qryObj = new createObject("component","com.adobe.coldfuison.query").init();
      <!---r here is no longer the query recordset but a component --->
@@ -731,35 +550,23 @@ Query service example
      writedump(r.getResult());
      writedump(r.getPrefix());
 </cfscript>
+```
 
 The following are the available getters on the returned component:
 
-· getPrefix()
-
-  Returns the result struct available after the query has executed.
-
-· getResult()
-
-  Returns the resultset returned by query (SELECT query) and throws an error for other types of SQL statements or
-  queries (like INSERT, UPDATE, DELETE).
+* getPrefix()
+** Returns the result struct available after the query has executed.
+* getResult()
+**  Returns the resultset returned by query (SELECT query) and throws an error for other types of SQL statements or queries (like INSERT, UPDATE, DELETE).
 
 
 PDF example
+
 Whenever any action is performed for which a name attribute is specified, the new pdf is returned back to the user.
 
 The following code shows typical actions on a PDF.
 
-
-
-
-                                              
-
-DEVELOPING COLDFUSION 9 APPLICATIONS                                                       28
-The CFML Programming Language
-
-
-
-
+```cfm
 <cfscript>
      pdfObj = new pdf();
      x = pdfObj.read(source=#sourcefile#, name="PDFInfo");
@@ -780,10 +587,10 @@ The CFML Programming Language
                         newuserpassword="newuserpw", newownerpassword="newownerpw");
 </cfscript>
 
-
 Storedproc example
 The following code shows sample usage of the storedproc service object.
 
+```cfm
 <cfscript>
      sp = new storedproc();
      <!---add cfprocparam tags --->
@@ -807,18 +614,19 @@ The following code shows sample usage of the storedproc service object.
          writedump(r.getProcOutVariables());
      <!---changed from sp.getProcVars()--->
 </cfscript>
+```
 
 The following are the available getters on the returned component:
 
-· getPrefix()
+* getPrefix()
 
   Returns the cfstoredproc prefix (struct) available after the procedure has executed.
 
-· getProcResultsets()
+* getProcResultsets()
 
   Returns any resultsets returned by the strored procedure.
 
-· getProcOutVariables()
+* getProcOutVariables()
 
 
 
@@ -849,21 +657,21 @@ Round(3.14159) returns the value 3.
 Built-in functions
 ColdFusion built-in functions perform a variety of tasks, including, but not limited to, the following:
 
-· Creating and manipulating complex data variables, such as arrays, lists, and structures
+* Creating and manipulating complex data variables, such as arrays, lists, and structures
 
-· Creating and manipulating queries
+* Creating and manipulating queries
 
-· Creating, analyzing, manipulating, and formatting strings and date and time values
+* Creating, analyzing, manipulating, and formatting strings and date and time values
 
-· Evaluating the values of dynamic data
+* Evaluating the values of dynamic data
 
-· Determining the type of a variable value
+* Determining the type of a variable value
 
-· Converting data between formats
+* Converting data between formats
 
-· Performing mathematical operations
+* Performing mathematical operations
 
-· Getting system information and resources
+* Getting system information and resources
 
 For alphabetical and categorized lists of ColdFusion functions, see ColdFusion Functions in the CFML Reference.
 
@@ -906,24 +714,24 @@ The CFML Programming Language
 
 Features of properties with setter and getter methods include the following:
 
-· Component properties you assign with the set method are in the Variables scope that is private to the CFC. You
+* Component properties you assign with the set method are in the Variables scope that is private to the CFC. You
    can get or reset the properties only by calling get or set methods.
 
-· If a property has a type attribute value, ColdFusion validates the data you pass to the setter function. The default
+* If a property has a type attribute value, ColdFusion validates the data you pass to the setter function. The default
    attribute has no effect on the property and does not set an initial property value.
 
-· A direct assignment statement, such as myCFC.MyProp=27 creates a standard This scope variable in the CFC, even
+* A direct assignment statement, such as myCFC.MyProp=27 creates a standard This scope variable in the CFC, even
    if you specify the property in a cfproperty tag. The This scope variable is independent of the properties that you
    access using the set and get methods. In fact, you can have a This scope variable with the same name as a property
    that you access using the set and get methods.
 
-· Use the cfproperty tag getter and setter attributes to control access to a property from outside the CFC:
+* Use the cfproperty tag getter and setter attributes to control access to a property from outside the CFC:
 
    A setter attribute value of true allows application code to set the property (the default behavior).
 
    A false value specifies that the property can only be set from within the CFC. The getter attribute works similarly.
 
-· Explicit set or get methods override the implicit set and get methods. Therefore, if a CFC has a MyProp property
+* Explicit set or get methods override the implicit set and get methods. Therefore, if a CFC has a MyProp property
    with an explicit setMyProp method, and you call the setMyProp() function in your application code, ColdFusion
    uses your function and not an implicit function.
 
@@ -932,43 +740,43 @@ Validate and validateparams attributes
 The validate attribute available with <cfproperty> takes the validator to be used for validating data when implicit
 setter for this property is called. It takes the following validators:
 
-· string
+* string
 
-· boolean
+* boolean
 
-· integer
+* integer
 
-· numeric
+* numeric
 
-· date
+* date
 
-· time
+* time
 
-· creditcard: A 13-16 digit number conforming to the mod10 algorithm.
+* creditcard: A 13-16 digit number conforming to the mod10 algorithm.
 
-· email: A valid e-mail address.
+* email: A valid e-mail address.
 
-· eurodate: A date-time value. Any date part must be in the format dd/mm/yy. The format can use /, -, or . characters
+* eurodate: A date-time value. Any date part must be in the format dd/mm/yy. The format can use /, -, or . characters
    as delimiters.
 
-· regex: Matches input against pattern specified in validateparams.
+* regex: Matches input against pattern specified in validateparams.
 
-· ssn: A U.S. social security number.
+* ssn: A U.S. social security number.
 
-· telephone: A standard U.S. telephone number.
+* telephone: A standard U.S. telephone number.
 
-· UUID: A Home Universally Unique Identifier, formatted 'XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXX',
+* UUID: A Home Universally Unique Identifier, formatted 'XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXX',
    where 'X' is a hexadecimal number.
 
-· guid: A Universally Unique Identifier of the form "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" where
+* guid: A Universally Unique Identifier of the form "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" where
    'X' is a hexadecimal number
 
-· zipcode: U.S., 5- or 9-digit format ZIP codes
+* zipcode: U.S., 5- or 9-digit format ZIP codes
 
 The validateparams attribute available with <cfproperty> takes the parameters required by the validator specified
 in the validate attribute. This should be specified in the implicit struct notation.
 
-· min: Minimum value if validate is integer/numeric/
+* min: Minimum value if validate is integer/numeric/
 
 
 
@@ -980,13 +788,13 @@ The CFML Programming Language
 
 
 
-· max: Maximum value if the validate is integer/numeric/
+* max: Maximum value if the validate is integer/numeric/
 
-· minLength: Minimum length of the string if the validate is string
+* minLength: Minimum length of the string if the validate is string
 
-· maxLength: Maximum length of the string if the validate is string
+* maxLength: Maximum length of the string if the validate is string
 
-· pattern: regex expression if the validator specified in validate attribute is regex
+* pattern: regex expression if the validator specified in validate attribute is regex
 
 For example, the following code sets the validators for e-mail, zipcode, and age of an employee.
 
@@ -1028,13 +836,13 @@ called methods) in the component, but not to any application that uses the compo
 
 ColdFusion components have the following features:
 
-· They are designed to provide related services in a single unit.
+* They are designed to provide related services in a single unit.
 
-· They can provide web services and make them available over the Internet.
+* They can provide web services and make them available over the Internet.
 
-· They can provide ColdFusion services that Flash clients can call directly.
+* They can provide ColdFusion services that Flash clients can call directly.
 
-· They have several features that are familiar to object-oriented programmers, including data hiding, inheritance,
+* They have several features that are familiar to object-oriented programmers, including data hiding, inheritance,
    packages, and introspection.
 
 For more information on ColdFusion components, see "Building and Using ColdFusion Components" on page 177.
@@ -1066,9 +874,9 @@ list of the ColdFusion built-in variables, see Reserved Words and Variables in t
 
 The following two characteristics classify a variable:
 
-· The scope of the variable, which indicates where the information is available and how long the variable persists
+* The scope of the variable, which indicates where the information is available and how long the variable persists
 
-· The data type of the variable value, which indicates the type of information a variable represents, such as number,
+* The data type of the variable value, which indicates the type of information a variable represents, such as number,
     string, or date
 
 See "Data types" on page 32 for a list of data types (which also apply to constant values). For detailed information on
@@ -1118,26 +926,26 @@ The CFML Programming Language
  Simple                 Represents one value. You can use simple data types directly in ColdFusion expressions. ColdFusion simple data
                         types are:
 
-                        · strings Asequenceofalphanumericcharactersenclosedinsingleordoublequotationmarks,suchas"Thisis
+                        * strings Asequenceofalphanumericcharactersenclosedinsingleordoublequotationmarks,suchas"Thisis
                            a test."
 
-                        · integers A sequence of numbers written without quotation marks, such as 356.
+                        * integers A sequence of numbers written without quotation marks, such as 356.
 
-                        · real numbers, such as -3.14159
+                        * real numbers, such as -3.14159
 
-                        · Boolean values Use True, Yes, or 1 for true and False, No, or 0 for false. Boolean values are not case sensitive.
+                        * Boolean values Use True, Yes, or 1 for true and False, No, or 0 for false. Boolean values are not case sensitive.
 
-                        · date-time values ColdFusion supports a variety of data formats. For more information, see "Date and time
+                        * date-time values ColdFusion supports a variety of data formats. For more information, see "Date and time
                            formats" on page 44.
 
  Complex                A container for data. Complex variables generally represent more than one value. ColdFusion built-in complex
                         data types are:
 
-                        · arrays
+                        * arrays
 
-                        · structures
+                        * structures
 
-                        · queries
+                        * queries
 
  Binary                 Raw data, such as the contents of a GIF file or an executable program file
 
@@ -1361,10 +1169,10 @@ Character case
 ColdFusion is not case sensitive. For example, the following all represent the cfset tag: cfset, CFSET, CFSet, and even
 cfsEt. However, get in the habit of consistently using the same case rules in your programs; for example:
 
-· Develop consistent rules for case use, and stick to them. If you use lowercase characters for some tag names, use
+* Develop consistent rules for case use, and stick to them. If you use lowercase characters for some tag names, use
    them for all tag names.
 
-· Always use the same case for a variable. For example, do not use both myvariable and MyVariable to represent the
+* Always use the same case for a variable. For example, do not use both myvariable and MyVariable to represent the
    same variable on a page.
 
    Follow these rules to prevent errors on application pages where you use both CFML and case-sensitive languages,
@@ -1419,30 +1227,30 @@ The following list indicates words you must not use for ColdFusion variables, us
 tag names. While some of these words can be used safely in some situations, you can prevent errors by avoiding them
 entirely. For a complete list of reserved words, see the CFML Reference.
 
-· Built-in function names, such as Now or Hash
+* Built-in function names, such as Now or Hash
 
-· Scope names, such as Form or Session
+* Scope names, such as Form or Session
 
-· Any name starting with cf. However, when you call a CFML custom tag directly, you prefix the custom tag page
+* Any name starting with cf. However, when you call a CFML custom tag directly, you prefix the custom tag page
    name with cf_.
 
-· Operators, such as NE or IS
+* Operators, such as NE or IS
 
-· The names of any built-in data structures, such as Error or File
+* The names of any built-in data structures, such as Error or File
 
-· The names of any built-in variables, such as RecordCount or CGI variable names
+* The names of any built-in variables, such as RecordCount or CGI variable names
 
-· CFScript language element names such as for, default, or continue
+* CFScript language element names such as for, default, or continue
 
 Also, do not create form field names ending in any of the following, except to specify a form field validation rule using
 a hidden form field name. (For more information on form field validation, see "Introduction to Retrieving and
 Formatting Data" on page 703.)
 
-· _integer
+* _integer
 
-· _float
+* _float
 
-· _range
+* _range
 
 
 
@@ -1455,11 +1263,11 @@ The CFML Programming Language
 
 
 
-· _date
+* _date
 
-· _time
+* _time
 
-· _eurodate
+* _eurodate
 
 Because ColdFusion is not case-sensitive, all of the following are reserved words: IS, Is, iS, and is.
 
@@ -1471,11 +1279,11 @@ CFScript script can use all ColdFusion functions and all ColdFusion variables th
 
 CFScript provides a compact and efficient way to write ColdFusion logic. Typical uses of CFScript include:
 
-· Simplifying and speeding variable setting
+* Simplifying and speeding variable setting
 
-· Building compact flow control structures
+* Building compact flow control structures
 
-· Encapsulating business logic in user-defined functions
+* Encapsulating business logic in user-defined functions
 
 The following sample script populates an array and locates the first array entry that starts with the word "key". It shows
 several of the elements of CFScript, including setting variables, loop structures, script code blocks, and function calls.
@@ -1509,13 +1317,13 @@ can replace most constants.
 
 To create and use ColdFusion variables, you should know the following:
 
-· How variables can represent different types of data
+* How variables can represent different types of data
 
-· How the data types get converted
+* How the data types get converted
 
-· How variables exist in different scopes
+* How variables exist in different scopes
 
-· How scopes are used
+* How scopes are used
 
 
 
@@ -1527,7 +1335,7 @@ The CFML Programming Language
 
 
 
-· How to use variables correctly
+* How to use variables correctly
 
 
 Creating variables
@@ -1552,27 +1360,27 @@ Variable naming rules
 ColdFusion variable names, including form field names and custom function and ColdFusion component argument
 names, must conform to Java naming rules and the following guidelines:
 
-· A variable name must begin with a letter, underscore, or Unicode currency symbol.
+* A variable name must begin with a letter, underscore, or Unicode currency symbol.
 
-· The initial character can by followed by any number of letters, numbers, underscore characters, and Unicode
+* The initial character can by followed by any number of letters, numbers, underscore characters, and Unicode
    currency symbols.
 
-· A variable name cannot contain spaces.
+* A variable name cannot contain spaces.
 
-· A query result is a type of variable, so it overwrites a local variable with the same name.
+* A query result is a type of variable, so it overwrites a local variable with the same name.
 
-· ColdFusion variables are not case sensitive. However, consistent capitalization makes the code easier to read.
+* ColdFusion variables are not case sensitive. However, consistent capitalization makes the code easier to read.
 
-· When creating a form with fields that are used in a query, match form field names with the corresponding database
+* When creating a form with fields that are used in a query, match form field names with the corresponding database
    field names.
 
-· Periods separate the components of structure or object names. They also separate a variable scope from the variable
+* Periods separate the components of structure or object names. They also separate a variable scope from the variable
    name. You cannot use periods in simple variable names, with the exception of variables in the Cookie and Client
    scopes. For more information on using periods, see "Using periods in variable references" on page 49.
 
 The following rule applies to variable names, but does not apply to form field and argument names:
 
-· Prefix each variable's name with its scope. Although some ColdFusion programmers do not use the Variables prefix
+* Prefix each variable's name with its scope. Although some ColdFusion programmers do not use the Variables prefix
    for local variable names, use prefixes for all other scopes. Using scope prefixes makes variable names clearer and
    increases code efficiency. In many cases, you must prefix the scope. For more information, see "About scopes" on
    page 56.
@@ -1595,10 +1403,10 @@ The CFML Programming Language
 Variable characteristics
 You can classify a variable using the following characteristics:
 
-· The data type of the variable value, which indicates the kind of information a variable represents, such as number,
+* The data type of the variable value, which indicates the kind of information a variable represents, such as number,
    string, or date
 
-· The scope of the variable, which indicates where the information is available and how long the variable persists.
+* The scope of the variable, which indicates where the information is available and how long the variable persists.
 
 
 Data types
@@ -1666,36 +1474,36 @@ The CFML Programming Language
 
 ColdFusion provides the following functions for identifying the data type of a variable:
 
-· IsArray
+* IsArray
 
-· IsBinary
+* IsBinary
 
-· IsBoolean
+* IsBoolean
 
-· IsImage
+* IsImage
 
-· IsNumericDate
+* IsNumericDate
 
-· IsObject
+* IsObject
 
-· IsPDFObject
+* IsPDFObject
 
-· IsQuery
+* IsQuery
 
-· IsSimpleValue
+* IsSimpleValue
 
-· IsStruct
+* IsStruct
 
-· IsXmlDoc
+* IsXmlDoc
 
 ColdFusion also includes the following functions for determining whether a string can be represented as or converted
 to another data type:
 
-· IsDate
+* IsDate
 
-· IsNumeric
+* IsNumeric
 
-· IsXML
+* IsXML
 
 ColdFusion does not use a null data type. However, if ColdFusion receives a null value from an external source such
 as a database, a Java object, or some other mechanism, it maintains the null value until you use it as a simple value. At
@@ -1766,9 +1574,9 @@ quotation marks. For example, the following two strings are equivalent:
 
 You can write an empty string in the following ways:
 
-· "" (a pair of double-quotation marks with nothing in between)
+* "" (a pair of double-quotation marks with nothing in between)
 
-· '' (a pair of single-quotation marks with nothing in between)
+* '' (a pair of single-quotation marks with nothing in between)
 
 Strings can be any length, limited by the amount of available memory on the ColdFusion server. However, the default
 size limit for long text retrieval (CLOB) is 64K. The ColdFusion Administrator lets you increase the limit for database
@@ -2032,12 +1840,12 @@ Arrays
 Arrays are a way of storing multiple values in a table-like format that can have one or more dimensions. You create
 arrays using a function or an assignment statement:
 
-· The ColdFusion ArrayNew function creates an array and specifies its initial dimensions. For example, the following
+* The ColdFusion ArrayNew function creates an array and specifies its initial dimensions. For example, the following
    line creates an empty two-dimensional array:
 
     <cfset myarray=ArrayNew(2)>
 
-· A direct assignment creates an array and populates an array element. For example, the following line creates a two-
+* A direct assignment creates an array and populates an array element. For example, the following line creates a two-
    dimensional array and sets the value of row 1 column 2 to the current date.
 
     <cfset myarray[1][2]=Now()>
@@ -2079,9 +1887,9 @@ key-value pairs.
 
 You can use either of the following methods to reference elements stored in a structure:
 
-· StructureName.KeyName
+* StructureName.KeyName
 
-· StructureName["KeyName"]
+* StructureName["KeyName"]
 
 The following examples show these methods:
 
@@ -2122,17 +1930,17 @@ A query object, sometimes referred to as a query, query result, or recordset, is
 represents data in a set of named columns, like the columns of a database table. Many tags can return data as a query
 object, including the following:
 
-· cfquery
+* cfquery
 
-· cfdirectory
+* cfdirectory
 
-· cfhttp
+* cfhttp
 
-· cfldap
+* cfldap
 
-· cfpop
+* cfpop
 
-· cfprocresult
+* cfprocresult
 
 In these tags, the name attribute specifies the query object's variable name. The QueryNew function also creates query
 objects.
@@ -2396,10 +2204,10 @@ Using brackets to create variables with periods
 You can create a variable name that includes periods by using associative array structure notation, as described in
 "Structure notation" on page 93. To do so, you must do the following:
 
-· Reference the variable as part of a structure. You can always do this, because ColdFusion considers all scopes to be
+* Reference the variable as part of a structure. You can always do this, because ColdFusion considers all scopes to be
    structures. For more information on scopes, see "About scopes" on page 56.
 
-· Place the variable name that must include a period inside brackets and single- or double-quotation marks.
+* Place the variable name that must include a period inside brackets and single- or double-quotation marks.
 
 The following example shows this technique:
 
@@ -2976,12 +2784,12 @@ Form            No                 On the action page of a form and in custom ta
 
 Local           No                 Within the body of a user-defined function or     Either of the following:
                                    ColdFusion component method, only while the
-                                                                                     · In the function or method definition, a var
+                                                                                     * In the function or method definition, a var
                                    function executes.
                                                                                         keyword in a cfset tag or a CFScript var
                                                                                         statement.
 
-                                                                                     · Specifying the Local keyword when you
+                                                                                     * Specifying the Local keyword when you
                                                                                         create a variable in the function or method.
 
 Request         Yes                On the creating page and in any pages run         Specifying the prefix Request when you create
@@ -3140,11 +2948,11 @@ values for fields, and checking for the existence of field variable values befor
 
 There are several ways to ensure that a variable exists before you use it, including the following:
 
-· You can use the IsDefined function to test for the variable's existence.
+* You can use the IsDefined function to test for the variable's existence.
 
-· You can use the cfparam tag to test for a variable and set it to a default value if it does not exist.
+* You can use the cfparam tag to test for a variable and set it to a default value if it does not exist.
 
-· You can use a cfinput tag with a hidden attribute to tell ColdFusion to display a helpful message to any user who
+* You can use a cfinput tag with a hidden attribute to tell ColdFusion to display a helpful message to any user who
    does not enter data in a required field. For more information on this technique, see "Requiring users to enter values
    in form fields" on page 709.
 
@@ -3217,10 +3025,10 @@ Note: For information on using the type attribute to validate the parameter data
 There are two ways to use the cfparam tag to test for variable existence, depending on how you want the validation
 test to proceed:
 
-· With only the name attribute to test that a required variable exists. If it does not exist, the ColdFusion server stops
+* With only the name attribute to test that a required variable exists. If it does not exist, the ColdFusion server stops
    processing the page and displays an error message.
 
-· With the name and default attributes to test for the existence of an optional variable. If the variable exists,
+* With the name and default attributes to test for the existence of an optional variable. If the variable exists,
    processing continues and the value is not changed. If the variable does not exist, it is created and set to the value of
    the default attribute, and processing continues.
 
@@ -3277,15 +3085,15 @@ It is often not sufficient that input data merely exists; it must also have the 
 have data in a date format. A salary field must have data in a numeric or currency format. There are many ways to
 ensure the validity of data, including the following methods:
 
-· Use the cfparam tag with the type attribute to validate a variable.
+* Use the cfparam tag with the type attribute to validate a variable.
 
-· Use the IsValid function to validate a variable.
+* Use the IsValid function to validate a variable.
 
-· Use the cfqueryparam tag in a SQL WHERE clause to validate query parameters.
+* Use the cfqueryparam tag in a SQL WHERE clause to validate query parameters.
 
-· Use cfform controls that have validation attributes.
+* Use cfform controls that have validation attributes.
 
-· Use a form input tag with a hidden attribute to validate the contents of a form input field.
+* Use a form input tag with a hidden attribute to validate the contents of a form input field.
 
 Note: Data validation using the cfparam,cfqueryparam, and form tags is done by the server. Validation using cfform
 tags and hidden fields is done using JavaScript in the user's browser, before any data is sent to the server.
@@ -3304,7 +3112,7 @@ When you pass a variable to a CFML custom tag as an attribute, or to a user-defi
 following rules determine whether the custom tag or function receives its own private copy of the variable or only gets
 a reference to the calling page's variable:
 
-· Simple variables and arrays are passed as copies of the data. If your argument is an expression that contains multiple
+* Simple variables and arrays are passed as copies of the data. If your argument is an expression that contains multiple
     simple variables, the result of the expression evaluation is copied to the function or tag.
 
 
@@ -3319,7 +3127,7 @@ The CFML Programming Language
 
 
 
-· Structures, queries, and cfobject objects are passed as references to the object.
+* Structures, queries, and cfobject objects are passed as references to the object.
 
 If the tag or function gets a copy of the calling page's data, changes to the variable in the custom tag or function do not
 change the value of the variable on the calling page. If the variable is passed by reference, changes to the variable in the
@@ -3391,15 +3199,15 @@ The CFML Programming Language
 Operator types
 ColdFusion has Five types of operators:
 
-· Arithmetic
+* Arithmetic
 
-· Boolean
+* Boolean
 
-· Decision (or comparison)
+* Decision (or comparison)
 
-· String
+* String
 
-· Ternary
+* Ternary
 
 Functions also can be viewed as operators because they act on operands.
 
@@ -3551,24 +3359,24 @@ in tags. == (EQ), != (NEQ), > (GT), < (LT), >= (GTE), and <= (LTE).
 Decision operator rules
 The following rules apply to decision operators:
 
-· When ColdFusion evaluates an expression that contains a decision operator other than CONTAINS or DOES NOT
+* When ColdFusion evaluates an expression that contains a decision operator other than CONTAINS or DOES NOT
     CONTAIN, it first determines if the data can be converted to numeric values. If they can be converted, it performs
     a numeric comparison on the data. If they cannot be converted, it performs a string comparison. This can
     sometimes result in unexpected results. For more information on this behavior, see "Evaluation and type
     conversion issues" on page 53.
 
-· When ColdFusion evaluates an expression with CONTAINS or DOES NOT CONTAIN it does a string
+* When ColdFusion evaluates an expression with CONTAINS or DOES NOT CONTAIN it does a string
     comparison. The expression A CONTAINS B evaluates to True if B is a substring of A. Therefore an expression
     such as the following evaluates as True:
 
      123.45 CONTAINS 3.4
 
-· When a ColdFusion decision operator compares strings, it ignores the case. As a result, the following expression is
+* When a ColdFusion decision operator compares strings, it ignores the case. As a result, the following expression is
     True:
 
      "a" IS "A"
 
-· When a ColdFusion decision operator compares strings, it evaluates the strings from left to right, comparing the
+* When a ColdFusion decision operator compares strings, it evaluates the strings from left to right, comparing the
     characters in each position according to their sorting order. The first position where the characters differ
     determines the relative values of the strings. As a result, the following expressions are True:
 
@@ -3644,9 +3452,9 @@ IMP
 
 To enforce a nonstandard order of evaluation, parenthesize expressions. For example:
 
-· 6 - 3 * 2 is equal to 0
+* 6 - 3 * 2 is equal to 0
 
-· (6 - 3) * 2 is equal to 6
+* (6 - 3) * 2 is equal to 6
 
 You can nest parenthesized expressions. When in doubt about the order in which operators in an expression are
 evaluated, use parentheses to force the order of evaluation.
@@ -3656,9 +3464,9 @@ Using functions as operators
 Functions are a form of operator. Because ColdFusion functions return values, you can use function results as
 operands. Function arguments are expressions. For example, the following are valid expressions:
 
-· Rand()
+* Rand()
 
-· UCase("This is a text: ") & ToString(123 + 456)
+* UCase("This is a text: ") & ToString(123 + 456)
 
 
 Function syntax
@@ -3708,9 +3516,9 @@ Optional function arguments
 Some functions take optional arguments after their required arguments. If omitted, all optional arguments default to
 a predefined value. For example:
 
-· Replace("Eat and Eat", "Eat", "Drink") returns "Drink and Eat"
+* Replace("Eat and Eat", "Eat", "Drink") returns "Drink and Eat"
 
-· Replace("Eat and Eat", "Eat", "Drink", "All") returns "Drink and Drink"
+* Replace("Eat and Eat", "Eat", "Drink", "All") returns "Drink and Drink"
 
 The difference in the results is because the Replace function takes an optional fourth argument that specifies the scope
 of replacement. The default value is "One," which explains why only the first occurrence of "Eat" was replaced with
@@ -3791,16 +3599,16 @@ In this example, the variable Form.MyFormVariable is replaced with the value ass
 
 Follow these guidelines when using number signs:
 
-· Use number signs to distinguish variables or functions from plain text.
+* Use number signs to distinguish variables or functions from plain text.
 
-· Surround only a single variable or function in number signs; for example, #Variables.myVar# or #Left(myString,
+* Surround only a single variable or function in number signs; for example, #Variables.myVar# or #Left(myString,
     position)#. (However, a function in number signs can contain nested functions, such as #Left(trim(myString),
     position)#.
 
-· Do not place complex expressions, such as 1 + 2 in number signs. Although this is allowed in a cfoutput block,
+* Do not place complex expressions, such as 1 + 2 in number signs. Although this is allowed in a cfoutput block,
     such as <cfoutput>One plus one is #1 + 1#</cfoutput>, doing so mixes logic and presentation.
 
-· Use number signs only where necessary, because unneeded number signs slow processing.
+* Use number signs only where necessary, because unneeded number signs slow processing.
 
 For a description of using number signs to create variable names, see "Using number signs to construct a variable name
 in assignments" on page 74.
@@ -3845,11 +3653,11 @@ Using number signs in tag bodies
 You can place variables or functions freely inside the bodies of the following tags by enclosing each variable or
 expression with number signs:
 
-· cfoutput
+* cfoutput
 
-· cfquery
+* cfquery
 
-· cfmail
+* cfmail
 
 For example:
 
@@ -4021,17 +3829,17 @@ For information on using arrays and structures, see "Using Arrays and Structures
 Selecting how to create variable names
 The following two examples describe cases when you need dynamic variable names:
 
-· Form applications where the number and names of fields on the form vary dynamically. In this case, the form posts
+* Form applications where the number and names of fields on the form vary dynamically. In this case, the form posts
    only the names and values of its fields to the action page. The action page does not know all the names of the fields,
    although it does know how the field names (that is, the variable names) are constructed.
 
-· If the following are true:
+* If the following are true:
 
-    · ColdFusion calls a custom tag multiple times.
+    * ColdFusion calls a custom tag multiple times.
 
-    · The custom tag result must be returned to different variables each time.
+    * The custom tag result must be returned to different variables each time.
 
-    · The calling code can specify the variable in which to return the custom tag result.
+    * The calling code can specify the variable in which to return the custom tag result.
 
    In this case, the custom tag does not know the return variable name in advance, and gets it as an attribute value.
 
@@ -4053,11 +3861,11 @@ The CFML Programming Language
 This does not mean that you must always avoid dynamic evaluation. However, given the substantial performance costs
 of dynamic evaluation, first ensure that one of the following techniques cannot serve your purpose:
 
-· An array (using index variables)
+* An array (using index variables)
 
-· Associative array references containing expressions to access structure elements
+* Associative array references containing expressions to access structure elements
 
-· Dynamically generated variable names
+* Dynamically generated variable names
 
 
 Dynamic variable naming without dynamic evaluation
@@ -4296,9 +4104,9 @@ Example 2
 This example shows how you can use an associative array reference in place of an Evaluate function. This technique
 is powerful because:
 
-· Most ColdFusion scopes are accessible as structures.
+* Most ColdFusion scopes are accessible as structures.
 
-· You can use ColdFusion expressions in the indexes of associative array structure references. For more information
+* You can use ColdFusion expressions in the indexes of associative array structure references. For more information
    on using associative array references for structures, see "Structure notation" on page 93.
 
 The following example uses the Evaluate function to construct a variable name:
@@ -5169,7 +4977,7 @@ existing array.
 
 In particular, consider using the following techniques:
 
-· Populating an array with the ArraySet function
+* Populating an array with the ArraySet function
 
 
                                               
@@ -5180,9 +4988,9 @@ The CFML Programming Language
 
 
 
-· Populating an array with the cfloop tag
+* Populating an array with the cfloop tag
 
-· Populating an array from a query
+* Populating an array from a query
 
 
 Populating an array with the ArraySet function
@@ -5281,13 +5089,13 @@ code short.)
 Populating an array from a query
 When populating an array from a query, remember the following:
 
-· You cannot add query data to an array all at once. A looping structure is often required to populate an array from
+* You cannot add query data to an array all at once. A looping structure is often required to populate an array from
    a query.
 
-· You can reference query column data using array-like syntax. For example, myquery.col_name[1] references data
+* You can reference query column data using array-like syntax. For example, myquery.col_name[1] references data
    in the first row in the col_name column of the myquery query.
 
-· Inside a cfloopquery= loop, you do not have to specify the query name to reference the query variables.
+* Inside a cfloopquery= loop, you do not have to specify the query name to reference the query variables.
 
 You can use a cfset tag with the following syntax to define values for array indexes:
 
@@ -5581,41 +5389,41 @@ Code                                                        Description
 <cfoutput>                                                  Output the value of the key1 (string) entry using the following
  Value of the first key<br>                                 notation:
  #mystruct.key1#<br>
- #mystruct["key1"]#<br>                                     · object.property notation
+ #mystruct["key1"]#<br>                                     * object.property notation
  #mystruct[key1Var]#<br>
  <br>
-                                                            · associative array notation with a constant
+                                                            * associative array notation with a constant
 
-                                                            · associative array notation with a variable
+                                                            * associative array notation with a variable
 
  <br>                                                       Output the value of the second entry in the key2 array using the
  Value of the second entry in the key2 array<br>            following notation:
  #myStruct.key2[2]#<br>
- #myStruct["key2"][2]#<br>                                  · object.property notation
+ #myStruct["key2"][2]#<br>                                  * object.property notation
  #myStruct[key2Var][2]#<br>
  #myStruct[key2Var][var2]#<br>
-                                                            · associative array notation with a constant
+                                                            * associative array notation with a constant
  <br>
 
-                                                            · associative array notation with a variable
+                                                            * associative array notation with a variable
 
-                                                            · associative array notation with variables for both the array and the
+                                                            * associative array notation with variables for both the array and the
                                                               array index
 
  Value of the struct2key2 entry in the key3                 Output the value of second entry in the key3 embedded structure
 structure<br>                                               using the following notation:
  #myStruct.key3.struct2key2#<br>
- #myStruct["key3"]["struct2key2"]#<br>                      · object.property notation
+ #myStruct["key3"]["struct2key2"]#<br>                      * object.property notation
  #myStruct[key3Var]["struct2key2"]#<br>
  #myStruct.key3["struct2key2"]#<br>
-                                                            · associative array notation with two constants
+                                                            * associative array notation with two constants
  #myStruct["key3"].struct2key2#<br>
  <br>
-                                                            · associative array notation with a variable and a constant
+                                                            * associative array notation with a variable and a constant
 
-                                                            · object.property notation followed by associative array notation
+                                                            * object.property notation followed by associative array notation
 
-                                                            · associative array notation followed by object.property notation
+                                                            * associative array notation followed by object.property notation
 
 
 Creating and using structures
@@ -6381,11 +6189,11 @@ The CFML Programming Language
 CFScript provides a compact and efficient way to write ColdFusion logic. Typical uses of CFScript include the
 following:
 
-· Simplifying and speeding variable setting
+* Simplifying and speeding variable setting
 
-· Building compact JavaScript-like flow control structures
+* Building compact JavaScript-like flow control structures
 
-· Creating user-defined functions
+* Creating user-defined functions
 
 Because you use functions and expressions directly in CFScript, you do not have to surround each assignment or
 function in a cfset tag. Also, CFScript assignments are often faster than cfset tags.
@@ -6550,15 +6358,15 @@ For details of the Script Functions, see the section Script Functions Implemente
 
 
 Reserved words introduced in ColdFusion 9
-· import
+* import
 
-· finally
+* finally
 
-· local (inside function declaration)
+* local (inside function declaration)
 
-· interface
+* interface
 
-· pageencoding
+* pageencoding
 
 
 What is supported in CFScript
@@ -6635,11 +6443,11 @@ cflock                                lock
 
 cflog                                 writelog
 
-cfloop                               · Indexed cfloop: for loops
+cfloop                               * Indexed cfloop: for loops
 
-                                     · Conditional cfloop: while loops and do while loops
+                                     * Conditional cfloop: while loops and do while loops
 
-                                     · Structure cfloop: for in loop. (There is no equivalent for queries, lists, or objects.)
+                                     * Structure cfloop: for in loop. (There is no equivalent for queries, lists, or objects.)
 
 cfobject                              createobject, new
 
@@ -6803,15 +6611,15 @@ for                                     continue
 
 The following rules apply to statements:
 
-· You must put a semicolon at the end of a statement.
+* You must put a semicolon at the end of a statement.
 
-· Line breaks are ignored. A single statement can cross multiple lines.
+* Line breaks are ignored. A single statement can cross multiple lines.
 
-· White space is ignored. For example, it does not matter whether you precede a semicolon with a space character.
+* White space is ignored. For example, it does not matter whether you precede a semicolon with a space character.
 
-· Use curly brackets to group multiple statements into one logical statement unit.
+* Use curly brackets to group multiple statements into one logical statement unit.
 
-· Unless otherwise indicated, you can use any ColdFusion expression in the body of a statement.
+* Unless otherwise indicated, you can use any ColdFusion expression in the body of a statement.
 
 Note: For information on the function, var, and return statements, see "Defining functions in CFScript" on page 154.
 
@@ -6859,38 +6667,38 @@ A multiline comment starts with a /* marker and continues until it reaches a */ 
 
 The following rules apply to comments:
 
-· Comments do not have to start at the beginning of a line. They can follow active code on a line. For example, the
+* Comments do not have to start at the beginning of a line. They can follow active code on a line. For example, the
    following line is valid:
 
     MyVariable = 12; // Set MyVariable to the default value.
 
-· The end of a multiline comment can be followed on the same line by active code. For example, the following line is
+* The end of a multiline comment can be followed on the same line by active code. For example, the following line is
    valid, although it is poor coding practice:
 
     End of my long comment */ foo = "bar";
 
-· You can use multiline format for a comment on a single line, for example:
+* You can use multiline format for a comment on a single line, for example:
 
     /*This is a single-line comment using multiline format. */
 
-· You cannot nest /* and */ markers inside other comment lines.
+* You cannot nest /* and */ markers inside other comment lines.
 
-· CFML comments (<!--- and --->) do not work in CFScript.
+* CFML comments (<!--- and --->) do not work in CFScript.
 
 
 Differences from JavaScript
 Although CFScript and JavaScript are similar, they have several key differences. The following list identifies CFScript
 features that differ from JavaScript:
 
-· CFScript uses ColdFusion expressions, which are not a superset or a subset of JavaScript expressions. In particular,
+* CFScript uses ColdFusion expressions, which are not a superset or a subset of JavaScript expressions. In particular,
    ColdFusion expressions do not support bitwise operators, and the ColdFusion MOD or % operator operates
    differently from the corresponding JavaScript % operator: In ColdFusion, the operator does integer arithmetic and
    ignores fractional parts. ColdFusion expressions also support the EQV, IMP, CONTAINS, and DOES NOT
    CONTAIN operators that are not supported in JavaScript.
 
-· Variable declarations (var keyword) are only used in user-defined functions and threads.
+* Variable declarations (var keyword) are only used in user-defined functions and threads.
 
-· CFScript is not case sensitive.
+* CFScript is not case sensitive.
 
 
 
@@ -6903,14 +6711,14 @@ The CFML Programming Language
 
 
 
-· All statements end with a semicolon, and line breaks in the code are ignored.
+* All statements end with a semicolon, and line breaks in the code are ignored.
 
-· Assignments are statements, not expressions, and therefore cannot be used in situations that require evaluating the
+* Assignments are statements, not expressions, and therefore cannot be used in situations that require evaluating the
    assignment operation.
 
-· JavaScript objects, such as Window and Document, are not available.
+* JavaScript objects, such as Window and Document, are not available.
 
-· Only the ColdFusion server processes CFScript. There is no client-side CFScript.
+* Only the ColdFusion server processes CFScript. There is no client-side CFScript.
 
 
 CFScript limitation
@@ -6921,11 +6729,11 @@ tags, such as cfoutput.
 Using CFScript statements
 CFScript includes the following types of statements:
 
-· Assignment statements and functions
+* Assignment statements and functions
 
-· Conditional processing statements
+* Conditional processing statements
 
-· Looping statements
+* Looping statements
 
 
 Using assignment statements and functions
@@ -6950,9 +6758,9 @@ StructInsert(employee,"lastname",FORM.lastname);
 Using conditional processing statements
 CFScript includes the following conditional processing statements:
 
-· if and else statements, which serve the same purpose as the cfif, cfelseif, and cfelse tags
+* if and else statements, which serve the same purpose as the cfif, cfelseif, and cfelse tags
 
-· switch, case, and default statements, which are the equivalents of the cfswitch, cfcase, and cfdefaultcase tags
+* switch, case, and default statements, which are the equivalents of the cfswitch, cfcase, and cfdefaultcase tags
 
 
 Using if and else statements
@@ -7018,24 +6826,24 @@ switch (expression) {
 
 Use the following rules and recommendations for switch statements:
 
-· You cannot mix Boolean and numeric constant values in a switch statement.
+* You cannot mix Boolean and numeric constant values in a switch statement.
 
-· Each constant value must be a constant (that is, not a variable, a function, or other expression).
+* Each constant value must be a constant (that is, not a variable, a function, or other expression).
 
-· Multiple caseconstant: statements can precede the statement or statements to execute if any of the cases are true.
+* Multiple caseconstant: statements can precede the statement or statements to execute if any of the cases are true.
    This lets you specify several matches for one code block.
 
-· No two constant values can be the same.
+* No two constant values can be the same.
 
-· The statements following the colon in a case statement block do not have to be in curly brackets. If a constant value
+* The statements following the colon in a case statement block do not have to be in curly brackets. If a constant value
    equals the switch expression, ColdFusion executes all statements through the break statement.
 
-· The break statement at the end of the case statement tells ColdFusion to exit the switch statement. ColdFusion
+* The break statement at the end of the case statement tells ColdFusion to exit the switch statement. ColdFusion
    does not generate an error message if you omit a break statement. However, if you omit it, ColdFusion executes all
    the statements in the following case statement, even if that case is false. In nearly all circumstances, this is not what
    you want to do.
 
-· You can have only one default statement in a switch statement block. ColdFusion executes the statements in the
+* You can have only one default statement in a switch statement block. ColdFusion executes the statements in the
    default block if none of the case statement constants equals the expression value.
 
 
@@ -7049,14 +6857,14 @@ The CFML Programming Language
 
 
 
-· The default statement does not have to follow all switch statements, but it is good programming practice to do
+* The default statement does not have to follow all switch statements, but it is good programming practice to do
    so. If any switch statements follow the default statement you must end the default block code with a break
    statement.
 
-· The default statement is not required. However, use one if the case constants do not include all possible values
+* The default statement is not required. However, use one if the case constants do not include all possible values
    of the expression.
 
-· The default statement does not have to follow all the case statements; however, it is good programming practice
+* The default statement does not have to follow all the case statements; however, it is good programming practice
    to place it there.
 
 The following switch statement takes the value of a name variable:
@@ -7086,13 +6894,13 @@ CFScript provides a richer selection of looping constructs than those supplied b
 efficient looping constructs like those in most programming and scripting languages. CFScript provides the following
 looping constructs:
 
-· For
+* For
 
-· While
+* While
 
-· Do-while
+* Do-while
 
-· For-in
+* For-in
 
 CFScript also includes the continue and break statements that control loop processing.
 
@@ -7104,15 +6912,15 @@ for (initial-expression; test-expression; final-expression) statement
 
 The initial-expression and final-expression can be one of the following:
 
-· A single assignment expression; for example, x=5 or loop=loop+1
+* A single assignment expression; for example, x=5 or loop=loop+1
 
-· Any ColdFusion expression; for example, SetVariable("a",a+1)
+* Any ColdFusion expression; for example, SetVariable("a",a+1)
 
-· Empty
+* Empty
 
 The test-expression can be one of the following:
 
-· Any ColdFusion expression; for example:
+* Any ColdFusion expression; for example:
 
 
 
@@ -7128,7 +6936,7 @@ The CFML Programming Language
    index LE x
    status EQ "not found" AND index LT end
 
-· Empty
+* Empty
 
 Note: The test expression is re-evaluated before each repeat of the loop. If code inside the loop changes any part of the test
 expression, it can affect the number of iterations in the loop.
@@ -7163,9 +6971,9 @@ for(index=1;
 
 The following, more complex, example demonstrates two features:
 
-· The use of curly brackets to group multiple statements into a single block.
+* The use of curly brackets to group multiple statements into a single block.
 
-· An empty condition statement. All loop control logic is in the statement block.
+* An empty condition statement. All loop control logic is in the statement block.
 
 <cfscript>
 strings=ArrayNew(1);
@@ -7331,7 +7139,7 @@ Note: Unlike the cfloop tag, CFScript for-in loops do not provide built-in suppo
 Using continue and break statements
 The continue and break statements enable you to control the processing inside loops:
 
-· The continue statement tells ColdFusion to skip to the beginning of the next loop iteration.
+* The continue statement tells ColdFusion to skip to the beginning of the next loop iteration.
 
 
 
@@ -7343,7 +7151,7 @@ The CFML Programming Language
 
 
 
-· The break statement exits the current loop or case statement.
+* The break statement exits the current loop or case statement.
 
 
 Using continue
@@ -7576,7 +7384,7 @@ return("Arguments written.");
 Setting attributes
 The definition syntax provides two ways to set attributes:
 
-· At the end of a comment that immediately precedes the element, in the following format
+* At the end of a comment that immediately precedes the element, in the following format
 
     /**
     *Comment
@@ -7585,7 +7393,7 @@ The definition syntax provides two ways to set attributes:
     *...
     */
 
-· In the element declaration using standard attribute-value assignment notation, as in the following line:
+* In the element declaration using standard attribute-value assignment notation, as in the following line:
 
     component extends="component_01"
 
@@ -7646,9 +7454,9 @@ Note: To use this feature, you must install ColdFusion 9 Update 1.
 
 You can specify custom metadata for function arguments in script syntax in either of the following ways:
 
-· With arguments, as space-separated list of key-value pairs.
+* With arguments, as space-separated list of key-value pairs.
 
-· In annotations, using @arg1.custommetadata "custom value".
+* In annotations, using @arg1.custommetadata "custom value".
 
 
 Example
@@ -7727,9 +7535,9 @@ For more information about function local scope see "Using ColdFusion Variables"
 Using system level functions
 In the <cfscript> mode, you can now use the following basic language constructs:
 
-· throw
+* throw
 
-· writedump
+* writedump
 
 
 
@@ -7742,11 +7550,11 @@ The CFML Programming Language
 
 
 
-· writelog
+* writelog
 
-· location
+* location
 
-· trace
+* trace
 
 You can call these functions by passing the argument as name="value" pairs or positional notations. For positional
 notations, the sequence of arguments must be followed. The sequence of arguments for each construct is mentioned
@@ -7927,13 +7735,13 @@ on the returned Java exception object. The message in the finally block appears 
 CFScript example
 The following example uses these CFScript features:
 
-· Variable assignment
+* Variable assignment
 
-· Function calls
+* Function calls
 
-· For loops
+* For loops
 
-· If-else statements
+* If-else statements
 
 
 
@@ -7946,9 +7754,9 @@ The CFML Programming Language
 
 
 
-· WriteOutput functions
+* WriteOutput functions
 
-· Switch statements
+* Switch statements
 
 The example uses CFScript without any other ColdFusion tags. It creates a structure of course applicants. This
 structure contains two arrays; the first has accepted students, the second has rejected students. The script also creates
@@ -8129,17 +7937,17 @@ Using Regular Expressions in Functions
 Regular expressions let you perform string matching operations using Adobe ColdFusion functions; in particular.
 regular expressions work with the following functions:
 
-· REFind
+* REFind
 
-· REFindNoCase
+* REFindNoCase
 
-· REMatch
+* REMatch
 
-· REMatchNoCase
+* REMatchNoCase
 
-· REReplace
+* REReplace
 
-· REReplaceNoCase
+* REReplaceNoCase
 
 Regular expressions used in the cfinput and cftextinput tags are JavaScript regular expressions, which have a
 slightly different syntax than ColdFusion regular expressions. For information on JavaScript regular expressions, see
@@ -8189,17 +7997,17 @@ complex ColdFusion applications.
 Using ColdFusion regular expression functions
 ColdFusion supplies four functions that work with regular expressions:
 
-· REFind
+* REFind
 
-· REFindNoCase
+* REFindNoCase
 
-· REMatch
+* REMatch
 
-· REMatchNoCase
+* REMatchNoCase
 
-· REReplace
+* REReplace
 
-· REReplaceNoCase
+* REReplaceNoCase
 
 REFind and REFindNoCase use a regular expression to search a string for a pattern and return the string index where
 it finds the pattern. For example, the following function returns the index of the first instance of the string " BIG ":
@@ -8371,7 +8179,7 @@ function. To make a regular expression case insensitive, substitute individual c
 example, the regular expression [Jj][Aa][Vv][Aa], when used with the case-sensitive functions REFind or REReplace,
 matches all of the following string patterns:
 
-· JAVA
+* JAVA
 
 
 
@@ -8384,13 +8192,13 @@ The CFML Programming Language
 
 
 
-· java
+* java
 
-· Java
+* Java
 
-· jAva
+* jAva
 
-· All other combinations of case
+* All other combinations of case
 
 
 Using subexpressions
@@ -8584,11 +8392,11 @@ Special Character        Description
 
 You must be aware of the following considerations when using special characters in character sets, such as [a-z]:
 
-· To include a hyphen (-) in the brackets of a character set as a literal character, you cannot escape it as you can other
+* To include a hyphen (-) in the brackets of a character set as a literal character, you cannot escape it as you can other
     special characters because ColdFusion always interprets a hyphen as a range indicator. Therefore, if you use a literal
     hyphen in a character set, make it the last character in the set.
 
-· To include a closing square bracket (]) in the character set, escape it with a backslash, as in [1-3\]A-z]. You do not
+* To include a closing square bracket (]) in the character set, escape it with a backslash, as in [1-3\]A-z]. You do not
     have to escape the ] character outside the character set designator.
 
 
@@ -8990,9 +8798,9 @@ the search string that match the regular expression. This behavior is called max
 For example, you use the regular expression "<b>(.*)</b>" to search the string "<b>one</b> <b>two</b>". The regular
 expression "<b>(.*)</b>", matches both of the following:
 
-· <b>one</b>
+* <b>one</b>
 
-· <b>one</b> <b>two</b>
+* <b>one</b> <b>two</b>
 
 By default, ColdFusion always tries to match the regular expression to the largest string in the search string. The
 following code shows the results of this example:
@@ -9114,7 +8922,7 @@ necessarily compatible with other technologies.
 
 ColdFusion supports regular expressions that are Perl compliant with a few exceptions:
 
-· A period, ., always matches newlines.
+* A period, ., always matches newlines.
 
 
 
@@ -9127,27 +8935,27 @@ The CFML Programming Language
 
 
 
-· In replacement strings, use \n instead of $n for backreference variables. ColdFusion escapes all $ in the replacement
+* In replacement strings, use \n instead of $n for backreference variables. ColdFusion escapes all $ in the replacement
   string.
 
-· You do not have to escape backslashes in replacement strings. ColdFusion escapes them, except in case conversion
+* You do not have to escape backslashes in replacement strings. ColdFusion escapes them, except in case conversion
   sequences or escaped versions (for example, \u or \\u).
 
-· Embedded modifiers such as (?i) always operate on the entire expression, even if they are inside a group.
+* Embedded modifiers such as (?i) always operate on the entire expression, even if they are inside a group.
 
-· \` and the combinations \u\L and \l\U are not supported in replacement strings.
+* \` and the combinations \u\L and \l\U are not supported in replacement strings.
 
 The following Perl statements are not supported:
 
-· Lookbehind (?<=) (<?!)
+* Lookbehind (?<=) (<?!)
 
-· \\x
+* \\x
 
-· \N
+* \N
 
-· \p
+* \p
 
-· \C
+* \C
 
 An excellent reference on regular expressions is Mastering Regular Expressions, by Jeffrey E. F. Friedl, O'Reilly &
 Associates, Inc., 1997, ISBN: 1-56592-257-3, available at www.oreilly.com.

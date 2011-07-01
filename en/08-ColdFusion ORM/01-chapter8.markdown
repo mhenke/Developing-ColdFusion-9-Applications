@@ -11,13 +11,13 @@ a bridge between the relational database and the object model.
 By using ORM, you can access and update data entirely using the object model of an application. ORM provides
 features such as:
 
-· Database vendor independence
+* Database vendor independence
 
-· Caching
+* Caching
 
-· Concurrency
+* Concurrency
 
-· Performance optimization
+* Performance optimization
 
 
 
@@ -25,23 +25,23 @@ Introducing ColdFusion ORM
 
 In previous ColdFusion releases, database access was achieved by:
 
-· Managing relational data using tags such as cfquery, cfinsert, and cfupdate, which handle SQL statements.
+* Managing relational data using tags such as cfquery, cfinsert, and cfupdate, which handle SQL statements.
 
-· Managing objects using ColdFusion components (CFCs), and object lifecycle using the application itself
+* Managing objects using ColdFusion components (CFCs), and object lifecycle using the application itself
 
-· Writing SQL queries for each CFC, even for basic CRUD (Create, Retrieve, Update, and Delete) operations.
+* Writing SQL queries for each CFC, even for basic CRUD (Create, Retrieve, Update, and Delete) operations.
 
 The complexity of managing these tasks increases as your application grows.
 
 ColdFusion ORM automates most of these tasks, which:
 
-· Makes application code cleaner and more manageable
+* Makes application code cleaner and more manageable
 
-· Enhances your productivity and lets you develop database applications faster
+* Enhances your productivity and lets you develop database applications faster
 
-· Creates applications that can run faster because of built-in ORM optimizations
+* Creates applications that can run faster because of built-in ORM optimizations
 
-· Minimizes the amount of code you write
+* Minimizes the amount of code you write
 
 Apart from providing a framework for mapping the object model with the relational database, ColdFusionORM
 provides data query and retrieval facilities.
@@ -277,11 +277,11 @@ Architecture
 In ColdFusion ORM, you need to define an object mapping to create persistent objects. The object mapping includes
 details such as:
 
-· The table name for the object's class
+* The table name for the object's class
 
-· The column name that corresponds to each field in the object
+* The column name that corresponds to each field in the object
 
-· The join conditions for related objects
+* The join conditions for related objects
 
 ColdFusion allows you to specify the mapping in CFCs. Such CFCs are called as persistent CFCs. Each persistent CFC
 usually maps to a table in the database. Each property in the CFC usually maps to a column in the table. Additional
@@ -404,11 +404,11 @@ autogenmap                  true           Specifies whether ColdFusion should a
 
 automanageSession           true           Lets you specify if ColdFusion must manage Hibernate session automatically.
 
-Added in ColdFusion 9.0.1                  · If enabled: ColdFusion manages the session completely. That is, it decides
+Added in ColdFusion 9.0.1                  * If enabled: ColdFusion manages the session completely. That is, it decides
                                              when to flush the session, when to clear the session, and when to close the
                                              session.
 
-                                           · Ifdisabled:Theapplicationisresponsibleformanagingflushing,clearing,or
+                                           * Ifdisabled:Theapplicationisresponsibleformanagingflushing,clearing,or
                                              closing of the session. The only exception is (in the case of transaction),
                                              when the transaction commits, the application flushes the session.
 
@@ -424,15 +424,15 @@ cacheconfig                                Specifies the location of the configu
 cacheprovider              ehcache         Specifies the cache provider that should be used by ORM as secondary cache.
                                            The values can be:
 
-                                           · Ehcache
+                                           * Ehcache
 
-                                           · JBossCache
+                                           * JBossCache
 
-                                           · Hashtable
+                                           * Hashtable
 
-                                           · SwarmCache
+                                           * SwarmCache
 
-                                           · OSCache
+                                           * OSCache
 
                                            Fully qualified name of the class for any other cache provider.
 
@@ -455,12 +455,12 @@ dbcreate                    none           ColdFusion ORM can automatically crea
                                            database when ORM is initialized for the application. This can be enabled by
                                            using dbcreate in ormsettings. dbCreate takes the following values:
 
-                                           · update: Setting this value creates the table if it does not exist or update the
+                                           * update: Setting this value creates the table if it does not exist or update the
                                              table if it exists.
 
-                                           · dropcreate:Settingthisvaluedropsthetableifitexistsandthencreatesit.
+                                           * dropcreate:Settingthisvaluedropsthetableifitexistsandthencreatesit.
 
-                                           · none (default): Setting this value does not change anything in the database
+                                           * none (default): Setting this value does not change anything in the database
                                              schema.
 
 
@@ -480,35 +480,35 @@ dialect                                    Specifies the dialect.
 
                                            ColdFusion supports the following dialects:
 
-                                           · DB2
+                                           * DB2
 
-                                           · DB2AS400
+                                           * DB2AS400
 
-                                           · DB2OS390
+                                           * DB2OS390
 
-                                           · Derby
+                                           * Derby
 
-                                           · PostgreSQL
+                                           * PostgreSQL
 
-                                           · MySQL
+                                           * MySQL
 
-                                           · MySQLwithInnoDB
+                                           * MySQLwithInnoDB
 
-                                           · MySQLwithMyISAM
+                                           * MySQLwithMyISAM
 
-                                           · Oracle8i
+                                           * Oracle8i
 
-                                           · Oracle9i
+                                           * Oracle9i
 
-                                           · Oracle10g
+                                           * Oracle10g
 
-                                           · Sybase
+                                           * Sybase
 
-                                           · SybaseAnywhere
+                                           * SybaseAnywhere
 
-                                           · MicrosoftSQLServer
+                                           * MicrosoftSQLServer
 
-                                           · Informix
+                                           * Informix
 
                                            Apart from these dialects, you can specify custom dialects by using the fully
                                            qualified class name.
@@ -597,14 +597,14 @@ optimization.
 
 You can monitor and log the queries by:
 
-· Defining logsql in ormsettings: This is a simple way to quickly enable SQL logging. The flag should be enabled
+* Defining logsql in ormsettings: This is a simple way to quickly enable SQL logging. The flag should be enabled
    in application.cfc:
 
    <cfset this.ormsettings.logsql = "true">
 
    This logs all the SQL queries that are generated by Hibernate to the console and server's output log file.
 
-· Using log4J.properties: Hibernate uses log4j for its logging and you can completely control its logging
+* Using log4J.properties: Hibernate uses log4j for its logging and you can completely control its logging
    including SQL by modifying the log4j.properties, which is present under <CF_HOME>/lib directory.
 
    Following is a sample snippet from the log4j.properties file:
@@ -648,13 +648,13 @@ ColdFusion ORM
    changed to a FileAppender, which will then be logged to a log file. The configuration controls the logging for the
    following:
 
-   · SQL generated for entity operations
+   * SQL generated for entity operations
 
-   · Parameter binding for the prepared statements
+   * Parameter binding for the prepared statements
 
-   · SQL generated for DDL
+   * SQL generated for DDL
 
-   · Secondary cache operations
+   * Secondary cache operations
 
    With the default settings, all the logs get logged to console. You can also direct the logging to a log file using the
    FileAppender provided by log4j.
@@ -784,18 +784,18 @@ discriminatorvalue  optional                               Use this attribute to
 
 dynamicInsert       Optional            false              Whether INSERT SQL is to be generated at runtime:
 
-                                                           · true
+                                                           * true
 
-                                                           · false
+                                                           * false
 
                                                            Only those columns whose values are not null are
                                                            included in the SQL.
 
 dynamicupdate       Optional            false              Whether UPDATE SQL is to be generated at runtime:
 
-                                                           · true
+                                                           * true
 
-                                                           · false
+                                                           * false
 
                                                             Only those columns that have changed values are
                                                            included in the SQL.
@@ -813,9 +813,9 @@ joincolumn          optional                               Use this attribute to
 
 lazy                Optional            true               Whether loading is to be done lazily:
 
-                                                           · true
+                                                           * true
 
-                                                           · false
+                                                           * false
 
                                                            For details, see Lazy Loading.
 
@@ -823,13 +823,13 @@ optimisticLock      Optional            version            Determines the lockin
 
                                                            It can be any one of the following four values:
 
-                                                           · none
+                                                           * none
 
-                                                           · version
+                                                           * version
 
-                                                           · dirty
+                                                           * dirty
 
-                                                           · all
+                                                           * all
 
                                                            For details, see Optimistic locking.
 
@@ -848,15 +848,15 @@ Attribute               Req/Opt               Default                    Descrip
 
 persistent              Required              false                      Whether the CFC is a persistent CFC:
 
-                                                                         · true
+                                                                         * true
 
-                                                                         · false
+                                                                         * false
 
 readonly                Optional              false                      Whether the table is read-only:
 
-                                                                         · true
+                                                                         * true
 
-                                                                         · false
+                                                                         * false
 
 savemapping             Optional                                         Saves the generated Hibernate mapping file to the
                                                                          disk.If you have set savemapping for the
@@ -868,9 +868,9 @@ selectbeforeupdate      Optional              false                      Whether
                                                                          UPDATE unless it is certain that an object is actually
                                                                          modified:
 
-                                                                         · true
+                                                                         * true
 
-                                                                         · false
+                                                                         * false
 
                                                                          In cases when a transient object is associated with a
                                                                          new session using update(), Hibernate performs an
@@ -885,13 +885,13 @@ table                   Optional              Name of the CFC            Specifi
 Map the properties
 The cfproperty tag is used to define:
 
-· Primary or composite key
+* Primary or composite key
 
-· Columns
+* Columns
 
-· Relationships
+* Relationships
 
-· Versioning
+* Versioning
 
 The following table lists the common attributes that are used to define these mappings:
 
@@ -914,25 +914,25 @@ default          optional                                        This sets the d
 fieldtype        optional               column                   This attribute is used to specify the type of the property. Use this
                                                                  attribute to specify the following:
 
-                                                                 · Primary key: Specify fieldtype       = "id" to map a property to
+                                                                 * Primary key: Specify fieldtype       = "id" to map a property to
                                                                     the primary key in the table. For details, see Primary key.
 
-                                                                 · Column: Specify the fieldtype        = "column" to map a
+                                                                 * Column: Specify the fieldtype        = "column" to map a
                                                                     property to a column in the table. For details, see Column.
 
-                                                                 · Relationship: Specify the fieldtype      =
+                                                                 * Relationship: Specify the fieldtype      =
                                                                     "relationship_type". The relationship_type can be one-
                                                                     to-one,one-to-many,many-to-one,ormany-to-many.For
                                                                     details, see Define Relationships.
 
-                                                                 · Version: Specify the fieldtype="version" to indicate that
+                                                                 * Version: Specify the fieldtype="version" to indicate that
                                                                     the column contains versioned data. For details, see Version.
 
-                                                                 · Timestamp:Specifythefieldtype="timestamp"toindicate
+                                                                 * Timestamp:Specifythefieldtype="timestamp"toindicate
                                                                     the column contains data with timestamp. For details, see Time
                                                                     stamp.
 
-                                                                 · Collection: Specify the fieldtype="collection" to define
+                                                                 * Collection: Specify the fieldtype="collection" to define
                                                                     the collection mapping. For details, see Collection Mapping
 
 name             required                                        Specifies the name of the property.
@@ -1101,16 +1101,16 @@ Generators
 Generators are algorithms that are used to generate unique identifiers for instances of the persistent CFC. Generators
 can have any one of the following values:
 
-· increment: This algorithm generates identifiers of type long, short, or int by incrementing a counter maintained
+* increment: This algorithm generates identifiers of type long, short, or int by incrementing a counter maintained
     by ORM. This is commonly used when auto-generation for the primary key is not enabled in the table and you want
     ORM to generate the primary key. This should be used when a single instance of ColdFusion is the only process to
     insert data into the table.
 
-· identity: For databases such as DB2, MySQL, Sybase, and MS SQL, which support identity columns, you can use
+* identity: For databases such as DB2, MySQL, Sybase, and MS SQL, which support identity columns, you can use
     identity key generation. The key is automatically generated by the database and the object is populated with the
     generated key. This strategy requires ORM to execute two SQL queries to insert a new object.
 
-· sequence: For databases such as DB2, Oracle, PostgreSQL, Interbase, McKoi, and SAP, which support sequences,
+* sequence: For databases such as DB2, Oracle, PostgreSQL, Interbase, McKoi, and SAP, which support sequences,
     you can use sequence style key generation. The key is automatically generated by the database and the object is
     populated with the generated key. This strategy requires ORM to execute two SQL queries to insert a new object.
     This generator includes the sequence parameter, which needs to be specified in the params attribute.
@@ -1120,10 +1120,10 @@ can have any one of the following values:
     <cfproperty name="id" fieldtype="id" generator="sequence"
     params="{sequence='id_sequence'}">
 
-· native: This algorithm is commonly used to automatically generate primary keys. This generator picks identity or
+* native: This algorithm is commonly used to automatically generate primary keys. This generator picks identity or
     sequence depending upon the capabilities of the underlying database.
 
-· assigned: This algorithm is used when the application needs to assign its own identifier to the object. It is the
+* assigned: This algorithm is used when the application needs to assign its own identifier to the object. It is the
     default generator used by ColdFusion.
 
 
@@ -1137,21 +1137,21 @@ ColdFusion ORM
 
 
 
-· foreign: This is used with a <one-to-one> primary key association. In this case, the primary key is the same as
+* foreign: This is used with a <one-to-one> primary key association. In this case, the primary key is the same as
    the primary key of the associated object. This generator would need the property parameter, which needs to be
    specified in the params attribute. The value of the param property should be the name of the relationship property.
 
    See One-to-one relationships for details.
 
-· seqhilo: See www.hibernate.org/5.html.
+* seqhilo: See www.hibernate.org/5.html.
 
-· uuid: See www.hibernate.org/5.html.
+* uuid: See www.hibernate.org/5.html.
 
-· guid: See www.hibernate.org/5.html.
+* guid: See www.hibernate.org/5.html.
 
-· select: See www.hibernate.org/5.html.
+* select: See www.hibernate.org/5.html.
 
-· sequence-identity: See www.hibernate.org/5.html.
+* sequence-identity: See www.hibernate.org/5.html.
 
 
 Column
@@ -1225,13 +1225,13 @@ formula            optional                                  SQL expression that
 generated          optional            never                 Specifies that this property value is actually generated by the
                                                              database {never|always|insert}
 
-                                                             ·  never: Specifies that the value for this property is never
+                                                             *  never: Specifies that the value for this property is never
                                                                 generated by database
 
-                                                             ·  always: Specifies that the value for this property is always
+                                                             *  always: Specifies that the value for this property is always
                                                                 generated by database
 
-                                                             ·  insert: Specifies that the value for this property is generated at
+                                                             *  insert: Specifies that the value for this property is generated at
                                                                 the time of insert but is not regenerated at updates.
 
 insert             optional            true                  Specifies whether the column should be included in SQL UPDATE
@@ -1254,10 +1254,10 @@ ormtype            optional            string                Specifies the data 
 
                                                              If specified, then
 
-                                                             · If ORM setting useDBForMapping is set to true and the table
+                                                             * If ORM setting useDBForMapping is set to true and the table
                                                                 exists, then ormtype is obtained by inspecting the table
 
-                                                             · (Otherewise) Type, if specified, is used as ormtype
+                                                             * (Otherewise) Type, if specified, is used as ormtype
 
 update             optional            true                  Specifies whether the column should be included in SQL update
                                                              statement:
@@ -1456,45 +1456,45 @@ source             Optional              vm                    Specifies the sou
 ORM data types
 You can use any of the following ORM data types for CFCs:
 
-· string
+* string
 
-· character
+* character
 
-· char
+* char
 
-· short
+* short
 
-· integer
+* integer
 
-· int
+* int
 
-· long
+* long
 
-· big_decimal
+* big_decimal
 
-· float
+* float
 
-· double
+* double
 
-· Boolean
+* Boolean
 
-· yes_no
+* yes_no
 
-· true_false
+* true_false
 
-· text
+* text
 
-· date
+* date
 
-· timestamp
+* timestamp
 
-· binary
+* binary
 
-· serializable
+* serializable
 
-· blob
+* blob
 
-· clob
+* clob
 
 
 
@@ -1525,11 +1525,11 @@ In this topic, relation and association would be used interchangeably.
 
 Before you learn how to define the mapping for relation, it is important to understand few key concepts:
 
-· Source object: Object having the reference to the related object is termed as source of the relationship.
+* Source object: Object having the reference to the related object is termed as source of the relationship.
 
-· Target object: Object being referred or associated is termed as target of the relationship.
+* Target object: Object being referred or associated is termed as target of the relationship.
 
-· Direction and Navigability: In relational database, the relationship is always unidirectional, which implies that you
+* Direction and Navigability: In relational database, the relationship is always unidirectional, which implies that you
    can navigate from one table to another but not back to the same table. However, object model can be either
    unidirectional or bidirectional. A unidirectional association means that source has the reference to the target but the
    target does not know about the source. A bidirectional association means that both the objects have reference to each
@@ -1547,7 +1547,7 @@ Before you learn how to define the mapping for relation, it is important to unde
 
    address.setPerson(person);
 
-· Multiplicity: This defines how many target entities can a particular source have and how many source entities can
+* Multiplicity: This defines how many target entities can a particular source have and how many source entities can
    a particular target have. Consider the example of artwork and artist, where an artist has many artwork pieces. In an
    object model, an artwork has reference to one artist and an artist has reference to many pieces of artwork. So, for
    artwork and artist the multiplicity is many-to-one and for artist and artwork, it is one-to-many. The other two type
@@ -1558,13 +1558,13 @@ Before you learn how to define the mapping for relation, it is important to unde
 To indicate that a property defines the relationship between two persistent components, as a result of relationship in
 the database table, specify the fieldtype in the cfproperty tag to one of the following:
 
-· one-to-one
+* one-to-one
 
-· one-to-many
+* one-to-many
 
-· many-to-one
+* many-to-one
 
-· many-to-many
+* many-to-many
 
 
 
@@ -1663,10 +1663,10 @@ fkcolumn               all           Optional                 Specifies the fore
                                                               specified must match the order of composite keys defined. If
                                                               you do not specify any values, then
 
-                                                              · If the table exists and the constraints are defined,
+                                                              * If the table exists and the constraints are defined,
                                                                  ColdFusion automatically selects the values from the table
 
-                                                              · If the table does not exist, ColdFusion auto-generates the
+                                                              * If the table does not exist, ColdFusion auto-generates the
                                                                  values
 
 foreignkeyname         one-to-one    optional    autogenerate Specifies the name of the foreign key constraint. This is used
@@ -1709,10 +1709,10 @@ inversejoincolumn      all           Optional                 Specifies the fore
                                                               of composite keys defined.If you do not specify any values,
                                                               then
 
-                                                              · If the table exists and the constraints are defined, then
+                                                              * If the table exists and the constraints are defined, then
                                                                  ColdFusion automatically selects the values from the table
 
-                                                              · If the table does not exist, then ColdFusion auto-generates
+                                                              * If the table does not exist, then ColdFusion auto-generates
                                                                  the values
 
 
@@ -1865,18 +1865,18 @@ the Department as well. The cascade option in Hibernate allows you to perform su
 
 You can specify the following values in the cascade attribute:
 
-· all: Allows you to apply all operations to be cascaded to the associated object.
+* all: Allows you to apply all operations to be cascaded to the associated object.
 
-· save-update: If the parent object is saved, the associated objects are saved as well.
+* save-update: If the parent object is saved, the associated objects are saved as well.
 
-· delete: Deletes the child object if the delete operation is called on the parent object.
+* delete: Deletes the child object if the delete operation is called on the parent object.
 
-· delete-orphan: This is a special kind of cascade option that applies to one-to-many relation only. Deletes all child
+* delete-orphan: This is a special kind of cascade option that applies to one-to-many relation only. Deletes all child
    objects for which the association has been removed.
 
-· all-delete-orphan: Cascades all operations to child objects, and performs delete-orphan action.
+* all-delete-orphan: Cascades all operations to child objects, and performs delete-orphan action.
 
-· refresh: Cascades the refresh action to the child object. The refresh action is used to reload an object and its
+* refresh: Cascades the refresh action to the child object. The refresh action is used to reload an object and its
    collections.
 
 Typically, cascade attribute is not used on a many-to-one or a many-to-many relationship.
@@ -1950,7 +1950,7 @@ lazy="[true]|false">
 
 There are two types of one-to-one relationships:
 
-· Primary key association
+* Primary key association
 
 
 
@@ -1962,7 +1962,7 @@ ColdFusion ORM
 
 
 
-· Unique Foreign Key association
+* Unique Foreign Key association
 
 
 Primary key association
@@ -1976,7 +1976,7 @@ Example
 Consider the EMPLOYEE and OFFICECUBICLE example. Both the tables share the same primary key. The mapping
 for these tables are as follows:
 
-· EMPLOYEE.cfc
+* EMPLOYEE.cfc
 
    <cfcomponent persistent="true" table="Employee">
          <cfproperty name="id" fieldtype="id" generator="native">
@@ -1985,7 +1985,7 @@ for these tables are as follows:
          <cfproperty name="officecubicle" fieldtype="one-to-one" cfc="OfficeCubicle">
    </cfcomponent>
 
-· OFFICECUBICLE.cfc
+* OFFICECUBICLE.cfc
 
    <cfcomponent persistent="true" table="OfficeCubicle">
          <cfproperty name="id" fieldtype="id" generator="foreign"
@@ -2069,13 +2069,13 @@ OFFICECUBICLE.cfc
      <cfproperty name="Size">
 </cfcomponent>
 
-· In OFFICECUBICLE entity, fkcolumn="EmployeeID" specifies that EmployeeID is the foreign key column in
+* In OFFICECUBICLE entity, fkcolumn="EmployeeID" specifies that EmployeeID is the foreign key column in
    OFFICECUBICLE table.
 
-· mappedby="Employee" specifies that the one-to-one relationship is with the foreign-key property 'EMPLOYEE' in
+* mappedby="Employee" specifies that the one-to-one relationship is with the foreign-key property 'EMPLOYEE' in
    OFFICECUBICLE entity and not with its primary key.
 
-· In Employee entity, fkcolumn should not be specified.
+* In Employee entity, fkcolumn should not be specified.
 
 In this case, OFFICECUBICLE entity has a independent Primary key which is auto-generated.
 
@@ -2103,9 +2103,9 @@ A one-to-many relationship between two persistent components is defined using th
 in the cfproperty tag. The source object contains a collection of target objects. ColdFusion allows the collection to
 be one of the following types:
 
-· Array
+* Array
 
-· Struct
+* Struct
 
 This collection is a persistence aware collection. Any addition or deletion from this collection is automatically persisted
 in the database.
@@ -2139,9 +2139,9 @@ For the artist-art example, the relationship property in Artist.cfc is defined a
 
 <cfproperty name="art" type="array" fieldtype="one-to-many" cfc="Art" fkcolumn="ARTISTID">
 
-· type-array specifies that the artist object will contain art objects in an array.
+* type-array specifies that the artist object will contain art objects in an array.
 
-· fkcolumn="ArtistID" specifies that the foreign key column is ARTISTID that references the primary key of
+* fkcolumn="ArtistID" specifies that the foreign key column is ARTISTID that references the primary key of
    ARTIST table.
 
 
@@ -2188,15 +2188,15 @@ For the artist-art example, you can define the relationship property as:
 <cfproperty name="art" type="struct" fieldtype="one-to-many" cfc="Art" fkcolumn="ARTISTID"
 structkeytype="int" structkeycolumn="ArtID">
 
-· type=struct specifies that the artist object will contain art objects in a struct.
+* type=struct specifies that the artist object will contain art objects in a struct.
 
-· structkeycolumn="ArtID" specifies that the key of the struct would be ArtID.
+* structkeycolumn="ArtID" specifies that the key of the struct would be ArtID.
 
    Note that ARTID is the primary key in Art table.
 
-· structkeytype="int" specifies the datatype of structkeycolumn.
+* structkeytype="int" specifies the datatype of structkeycolumn.
 
-· fkcolumn="ArtistID" specifies that the foreign key column is ARTISTID that references the primary key of Artist
+* fkcolumn="ArtistID" specifies that the foreign key column is ARTISTID that references the primary key of Artist
    table.
 
 
@@ -2306,7 +2306,7 @@ For the Order-Product example, the many-to-many relationship is established usin
 has two foreign keys: OrderId and ProductId. OrderId references the primary key orderId in the order table, and
 ProductId references the primary key productId in the Product table. This relationship can be defined as follows:
 
-· Order.cfc
+* Order.cfc
 
    <cfproperty
    name="products"
@@ -2319,7 +2319,7 @@ ProductId references the primary key productId in the Product table. This relati
    cascade="all"
    orderby="productId">
 
-· Product.cfc
+* Product.cfc
 
    <cfproperty
    name="orders"
@@ -2566,7 +2566,7 @@ tables such that the entire hierarchy is persisted.
 
 There are multiple strategies followed for inheritance mapping:
 
-· Table per hierarchy
+* Table per hierarchy
 
 
 
@@ -2578,9 +2578,9 @@ ColdFusion ORM
 
 
 
-· Table per subclass without discriminator
+* Table per subclass without discriminator
 
-· Table per subclass with discriminator
+* Table per subclass with discriminator
 
 
 Table per hierarchy
@@ -2910,15 +2910,15 @@ mapping, see www.hibernate.org/hib_docs/reference/en/html/mapping.html.
 
 Note the following points when using Hibernate mapping files.
 
-· The extension of the Hibernate configuration file is *.hbmxml.
+* The extension of the Hibernate configuration file is *.hbmxml.
 
-· The class name must be specified as cfc:<fully qualified name of cfc>. If a package is specified in the hibernate
+* The class name must be specified as cfc:<fully qualified name of cfc>. If a package is specified in the hibernate
    mapping, then specify the class name as cfc:<name of cfc>.
 
-· The entityname attribute is optional. If you do not specify this attribute, it takes the component name, by default.
+* The entityname attribute is optional. If you do not specify this attribute, it takes the component name, by default.
    For example, for the component artgallery.art, the value of the entityname attribute is "Art", by default.
 
-· The entity name must be unique for an application. If there are two components with the same name (even if they
+* The entity name must be unique for an application. If there are two components with the same name (even if they
    are in different packages), specify different entity names for each of these components.
 
 The following is an example of Hibernate mapping:
@@ -2992,9 +2992,9 @@ The columns are fetched only as column properties. Relationship, timestamp, or v
 
 
 Limitations
-· If the mapping file for the CFC exists, then the properties are not added automatically.
+* If the mapping file for the CFC exists, then the properties are not added automatically.
 
-· In the case of inheritance, properties are not added to the CFC automatically.
+* In the case of inheritance, properties are not added to the CFC automatically.
 
 
 
@@ -3021,9 +3021,9 @@ more information, see Implicit Get and Set Functions. For example, if a property
 
 There are two methods generated in the Artist object:
 
-· setFirstName(firstName)
+* setFirstName(firstName)
 
-· getFirstName()
+* getFirstName()
 
 You can invoke these methods like regular methods in the CFC. For a property, the generated setter saves the value for
 the property in the object's VARIABLES scope. The generated getter retrieves the value of the property from the
@@ -3039,7 +3039,7 @@ associated objects and to check their existence, for each relationship defined i
 
 The generated methods for relationships include:
 
-· add<relationship_property_name>()
+* add<relationship_property_name>()
 
    This method is generated for one-to-many and many-to-many relationships. The method adds the given object to
    the association collection (array or struct) of the component. For a bidirectional relationship, this method does not
@@ -3053,7 +3053,7 @@ The generated methods for relationships include:
 
    add<relationship_property_name>(<key>, <associated_object>)
 
-· boolean remove<relationship_property_name>()
+* boolean remove<relationship_property_name>()
 
    This method is generated for one-to-many and many-to-many relationships. The method removes the object from
    the associated collection (array or struct) of the component. If the associated object was removed from the
@@ -3079,13 +3079,13 @@ ColdFusion ORM
 
 
 
-· boolean Has<relationship_property_name>()
+* boolean Has<relationship_property_name>()
 
    This method is generated for all the relationships. For one-to-many and many-to-many, this method checks
    whether the association collection is empty. If the association collection is empty, it will return true. For one-to-one
    and many-to-one, this method checks whether the associated object exists.
 
-· boolean Has<relationship_property_name>(<associated_object>)
+* boolean Has<relationship_property_name>(<associated_object>)
 
    This method is generated for one-to-many and many-to-many relationships. The method checks whether the given
    associated object is present in the association collection. If it is present, it returns true.
@@ -3123,13 +3123,13 @@ Art.cfc
 
 In this example Artist has a relation field art with Art. The following methods are implicitly added to the Artist object:
 
-· addArts(Art art)
+* addArts(Art art)
 
-· booleanremoveArts(Art art)
+* booleanremoveArts(Art art)
 
-· booleanhasArts()
+* booleanhasArts()
 
-· booleanhasArts(Art art)
+* booleanhasArts(Art art)
 
 The attribute singularName provides the flexibility to change the name of the generated relationship methods. For
 example, if the relationship property of Artist is specified as follows:
@@ -3139,11 +3139,11 @@ singularName="Art">
 
 then the following methods are generated:
 
-· addArt(Art art)
+* addArt(Art art)
 
-· removeArt(Art art)
+* removeArt(Art art)
 
-· hasArt()
+* hasArt()
 
 
 
@@ -3155,19 +3155,19 @@ ColdFusion ORM
 
 
 
-· hasArt(Art art)
+* hasArt(Art art)
 
 
 Perform create, read, update, delete operations on ORM Objects
 In any data-centric application, you can perform the following operations on the database:
 
-· Insert (Create)
+* Insert (Create)
 
-· Update
+* Update
 
-· Retrieve
+* Retrieve
 
-· Delete
+* Delete
 
 Once the object relational model is defined in a ColdFusion application, you can perform CRUD operations on the
 objects directly using the methods provided by ColdFusion ORM. ColdFusion ORM, in turn, takes care of persisting
@@ -3268,14 +3268,14 @@ EntityReload(entity)
 
 
 Examples
-· EntityLoad (entityname)
+* EntityLoad (entityname)
 
     Loads and returns an array of entities of the specified entity name. For example, to retrieve all the objects of the
     "artist" CFC:
 
     <cfset artist = EntityLoad('ARTIST')>
 
-· EntityLoad (entityname, id [, unique])
+* EntityLoad (entityname, id [, unique])
 
     Loads and returns an entity whose Primary key's value is id. The entity is returned as an array by default. If unique
     is true, then the entity is returned.
@@ -3311,7 +3311,7 @@ ColdFusion ORM
 
    <cfset orderDetail = EntityLoad('orderdetails', {OrderID=100, ProductID=1}, true)>
 
-· EntityLoad (entityname, filtercriteria [,unique]
+* EntityLoad (entityname, filtercriteria [,unique]
 
    Loads and returns an array of entities of the given entity name that matches the filtercriteria.
    filtercriteria is a key-value pair (ColdFusion struct) of property names and its values. If there are more than
@@ -3329,7 +3329,7 @@ ColdFusion ORM
 
    <cfset artist = EntityLoad('artist', {firstname="Austin", lastname="Weber"}, "true")>
 
-· EntityLoad(entityname,filtercriteria,sortorder[, options])
+* EntityLoad(entityname,filtercriteria,sortorder[, options])
 
    Loads and returns an array of entities that satisfy the filtercriteria that is sorted as specified by the sortorder
    parameter.
@@ -3358,13 +3358,13 @@ ColdFusion ORM
    Certain configuration options can be input as name-value pairs as options argument. Several options can be
    specified to control the behavior of entity retrieval.
 
-   · maxResults: Specifies the maximum number of objects to be retrieved.
+   * maxResults: Specifies the maximum number of objects to be retrieved.
 
-   · offset: Specifies the start index of the resultset from where it has to start the retrieval.
+   * offset: Specifies the start index of the resultset from where it has to start the retrieval.
 
-   · cacheable: Whether the result of this query is to be cached in the secondary cache. Default is false.
+   * cacheable: Whether the result of this query is to be cached in the secondary cache. Default is false.
 
-   · cachename: Name of the cache in secondary cache.
+   * cachename: Name of the cache in secondary cache.
 
 
 
@@ -3376,7 +3376,7 @@ ColdFusion ORM
 
 
 
-    · timeout: Specifies the timeout value (in seconds) for the query.
+    * timeout: Specifies the timeout value (in seconds) for the query.
 
    Maxresults and timeout are used for pagination.
 
@@ -3386,7 +3386,7 @@ ColdFusion ORM
 
    <cfset artists = EntityLoad("Artist",{state='CA"}, "FirstName", {maxResults=5}>
 
-· EntityLoadByExample(sampleentity [,unique])
+* EntityLoadByExample(sampleentity [,unique])
 
    Loads and returns an array of objects that match the sampleentity. The filter criteria is constructed by ANDing
    all the non-null properties of the sampleentity.For example, to retrieve an array of objects matching the specified
@@ -3401,7 +3401,7 @@ ColdFusion ORM
    unique=true so that a single entity is returned instead of an array. If unique=true and multiple records are
    returned, then an exception occurs.
 
-· EntityReload(entity)
+* EntityReload(entity)
 
    Reloads data for an entity that is already loaded in this session. This method refetches data from the database and
    repopulates the entity.
@@ -3477,15 +3477,15 @@ with HQL, you can use it for running complex queries.
 
 In general, use HQL in the following scenarios:
 
-· The query is not specific to a particular object but only to some fields in the object.
+* The query is not specific to a particular object but only to some fields in the object.
 
-· To retrieve some fields of the object without loading the object.
+* To retrieve some fields of the object without loading the object.
 
-· When you use table joins.
+* When you use table joins.
 
-· When you use aggregate functions like min, max, avg, and count.
+* When you use aggregate functions like min, max, avg, and count.
 
-· To retrieve entities by specifying a filter that needs to use operators other than AND.
+* To retrieve entities by specifying a filter that needs to use operators other than AND.
 
 For more information on HQL, see
 
@@ -3524,15 +3524,15 @@ ORMExecuteQuery(hql, [,unique] [, queryoptions])
 Runs the HQL on the default data source specified for the application. You can specify several options to control the
 behavior of retrieval using queryoptions:
 
-· maxResults: Specifies the maximum number of objects to be retrieved.
+* maxResults: Specifies the maximum number of objects to be retrieved.
 
-· offset: Specifies the start index of the resultset from where it has to start the retrieval.
+* offset: Specifies the start index of the resultset from where it has to start the retrieval.
 
-· cacheable: Whether the result of this query is to be cached in the secondary cache. Default is false.
+* cacheable: Whether the result of this query is to be cached in the secondary cache. Default is false.
 
-· cachename: Name of the cache in secondary cache.
+* cachename: Name of the cache in secondary cache.
 
-· timeout: Specifies the timeout value (in seconds) for the query
+* timeout: Specifies the timeout value (in seconds) for the query
 
 Maxresults and timeout are used for pagination.
 
@@ -3701,14 +3701,14 @@ transaction in your application so that the data in your database is always in a
 
 With ColdFusion ORM, you can manage transactions in the following two ways:
 
-· Using Hibernate transaction: User has full control and ColdFusion does not intervene. The application has to
+* Using Hibernate transaction: User has full control and ColdFusion does not intervene. The application has to
    flush/close the session and commit/rollback the transaction.
 
    For more information on transactions, go to the following URL:
 
    http://community.jboss.org/wiki/sessionsandtransactions
 
-· Using CFTransaction: ColdFusion manages the transaction. Since a transaction cannot be distributed (across
+* Using CFTransaction: ColdFusion manages the transaction. Since a transaction cannot be distributed (across
    different data sources), application must ensure that the changes made in the transaction affect only one Hibernate
    session. That is, only one data source.
 
@@ -3791,7 +3791,7 @@ based approach, a version number is incremented and for the timestamp approach, 
 time whenever the object is modified. It must be noted that version increment or timestamp updation is managed by
 Hibernate and is not triggered at the database level.
 
-· Using version: To use optimistic concurrency control using version numbers, add a property with
+* Using version: To use optimistic concurrency control using version numbers, add a property with
     fieldtype='version' in your CFC.
 
     For example:
@@ -3825,7 +3825,7 @@ ColdFusion ORM
    In case updating fails because the version number was changed outside the current session, an error is thrown
    specifying that the session contained stale data.
 
-· Using timestamp: To use optimistic concurrency control using timestamp, add a property with
+* Using timestamp: To use optimistic concurrency control using timestamp, add a property with
    fieldtype="timestamp" in your CFC.
 
    For example:
@@ -3854,13 +3854,13 @@ for objects that are retrieved and modified in the same ORM session. For optimis
 To use optimistic locking for objects that do not have version or timestamp, you need to set attribute 'optimistic-
 lock' on the CFC. This attribute can take the following values:
 
-· all: This means that all the properties are included in the where clause of update query.
+* all: This means that all the properties are included in the where clause of update query.
 
-· dirty (default): This means that only the modified properties are included in the where clause of the update query.
+* dirty (default): This means that only the modified properties are included in the where clause of the update query.
 
-· version: This means that only the version field is included in the where clause of update query.
+* version: This means that only the version field is included in the where clause of update query.
 
-· none: This means that none of the properties are included in the where clause, which in effect means that optimistic
+* none: This means that none of the properties are included in the where clause, which in effect means that optimistic
    concurrency is disabled for that component.
 
    Example:
@@ -3904,9 +3904,9 @@ Lazy Loading
 Optimizing SQL queries enhances the performance of any data-centric application. Some of the common approaches
 used to optimize SQL queries are:
 
-· Avoid round trips to the database and fetch all required data for an operation using a single SQL query using Joins.
+* Avoid round trips to the database and fetch all required data for an operation using a single SQL query using Joins.
 
-· Fetch only required data to reduce the load on the database
+* Fetch only required data to reduce the load on the database
 
 SQL queries are generated and executed by the underlying ORM engine. Therefore, Hibernate provides various hooks
 to optimize SQL. The fetching strategy is one of the most important hooks, which defines the data that to be fetched,
@@ -3914,13 +3914,13 @@ the time of fetching the data, and the way in which it needs to be fetched.
 
 There are four strategies for loading an object and its associations.
 
-· Immediate fetching
+* Immediate fetching
 
-· Lazy fetching
+* Lazy fetching
 
-· Eager fetching
+* Eager fetching
 
-· Batch fetching
+* Batch fetching
 
 Note: If memory tracking is enabled on a server, it accesses each field of the object to compute its size. As a result, even
 lazy fields are accessed causing the lazy fields to get loaded immediately.
@@ -3962,7 +3962,7 @@ not loaded and they are loaded only when getarts() is called.
 
 ColdFusion ORM provides three types of lazy loading for relationships:
 
-· lazy: This is the default lazy loading that applies to collection mapping, one-to-many and many-to-many
+* lazy: This is the default lazy loading that applies to collection mapping, one-to-many and many-to-many
    relationship. In this case, when you call the accessor for the collection/relation, the collection is fully loaded. So,
    when you call EntityLoad() for a particular artist, its artworks are not loaded at that time. When you call
    artist.getarts(), all the art object belonging to the artist will get loaded. This is achieved by setting lazy="true" on
@@ -3974,7 +3974,7 @@ ColdFusion ORM provides three types of lazy loading for relationships:
 
    <cfproperty name="art" fieldtype="one-to-many" cfc="ART" fkcolumn="artistId" lazy="true">
 
-· Extra lazy: This applies to one-to-many and many-to-many relationships. This type of lazy loading goes one step
+* Extra lazy: This applies to one-to-many and many-to-many relationships. This type of lazy loading goes one step
    ahead of lazy and does not load all the associated objects when the accessor for that relation is called. It just loads
    the primary keys for those objects and keeps a proxy object for them. When you call any method on the wrapper
    object, that object's data is loaded from the database.
@@ -3991,7 +3991,7 @@ ColdFusion ORM provides three types of lazy loading for relationships:
 
    <cfproperty name="art" fieldtype="one-to-many" cfc="art" fkcolumn="artistId" lazy="extra" >
 
-· proxy: This applies to one-to-one and many-to-one relationships. When the owner object is loaded, the related
+* proxy: This applies to one-to-one and many-to-one relationships. When the owner object is loaded, the related
    object is not loaded from the database. ColdFusion only creates a proxy object for the related object and when any
    method is invoked on the related object, the data for the proxy object is loaded from the database and populated in
    the proxy object.
@@ -4046,7 +4046,7 @@ that are referenced in the current request. This is generally useful in nested t
 
 There are two ways you can tune batch fetching:
 
-· Batch fetching at CFC level: This allows batch fetching of the proxied objects and is applied to one-to-one and
+* Batch fetching at CFC level: This allows batch fetching of the proxied objects and is applied to one-to-one and
    many-to-one relationship. For example, consider artwork and artist example where there are 25 art instances
    loaded in the request (ORM session). Each artwork has a reference to the artist and the relationship is lazy.
    Therefore, art objects contain the proxied object for artist. If you now iterate through all the art objects and call
@@ -4061,7 +4061,7 @@ There are two ways you can tune batch fetching:
    So for 25 art objects, this type of batch fetching makes Hibernate execute a maximum of three queries in batches of
    10, 10, and 5.
 
-· Batch fetching at collections: This allows batch fetching of value collections, one-to-many or many-to-many
+* Batch fetching at collections: This allows batch fetching of value collections, one-to-many or many-to-many
    relationships that are uninitialized. For example, consider artist-art one-to-many relationship where there are 25
    artists loaded and each artist has a lazy collection of artworks. If you now iterate through the artists and call
    getarts() on each, by default 25 SELECT statements are executed, one for each artist to load its art objects. This
@@ -4102,9 +4102,9 @@ and the application.
 
 ColdFusion ORM supports two levels of caching:
 
-· Session level
+* Session level
 
-· Secondary level
+* Secondary level
 
 
 Session level cache
@@ -4176,17 +4176,17 @@ ColdFusion ORM
 Modifications to ehcache.xml in ColdFusion 9.0.1
 ehCache.xml includes the following configuration properties:
 
-· diskSpoolBufferSizeMB: Size to allocate the DiskStore for a spool buffer.
+* diskSpoolBufferSizeMB: Size to allocate the DiskStore for a spool buffer.
 
    The default size is 30 MB. Each spool buffer is used only by its cache.
 
    Turning on trace-level logging shows if backup for cache created/updated using action="put" occurs in the
    diskstore.
 
-· clearOnFlush: Determines if the MemoryStore must be cleared when the cache is flushed. By default, the
+* clearOnFlush: Determines if the MemoryStore must be cleared when the cache is flushed. By default, the
    MemoryStore is cleared.
 
-· diskExpiryThreadIntervalSeconds: The number of seconds between runs of the disk expiry thread. The default
+* diskExpiryThreadIntervalSeconds: The number of seconds between runs of the disk expiry thread. The default
    value is 120 seconds.
 
 Note: The functions cacheGetProperties and cacheSetProperties can be used to get/set these properties.
@@ -4195,17 +4195,17 @@ Note: The functions cacheGetProperties and cacheSetProperties can be used to get
 Use secondary cache
 To use secondary cache, you must configure the following settings in the application:
 
-· ormsettings.secondarycacheenabled
+* ormsettings.secondarycacheenabled
 
    This setting defines whether the secondary cache would be used by the application. By default, this is set to false.
 
-· ormsettings.Cacheprovider
+* ormsettings.Cacheprovider
 
    This setting defines the cache provider that needs to be used for secondary cache. This defaults to EHCache. The
    other values for this setting are JBossCache, OSCache, SwarmCache and Hashtable. You can also specify the fully
    qualified class name of the cache provider.
 
-· ormsettings.cacheconfig
+* ormsettings.cacheconfig
 
    This setting defines the configuration file required by the secondary cache provider. For example, EHCache
    requires EHCache.xml that defines the configuration settings for the secondary cache. Specify the path to the XML
@@ -4226,30 +4226,30 @@ After you have configured the secondary cache, it is critical to identify the ob
 cached because the data cached by secondary cache is shared by all the sessions of an application. Typically, caching
 should be enabled for a CFC that represents:
 
-· Data that changes rarely
+* Data that changes rarely
 
-· Data that is local to an application and is not modified by other applications
+* Data that is local to an application and is not modified by other applications
 
-· Non-critical data
+* Non-critical data
 
 For each type of object that needs to be cached, you also need to decide the access strategies. ORM provides the
 following cache strategies that you can use for your objects:
 
-· read-only
+* read-only
 
    This strategy is useful for data that is read frequently but never updated. This is the best performing cache strategy.
 
-· nonrestrict-read-write
+* nonrestrict-read-write
 
    This strategy is useful for data that is updated occasionally. Typically, it is very unlikely that two transactions would
    update the same object simultaneously.
 
-· read-write
+* read-write
 
    This strategy may be appropriate if your data needs to be updated. It carries more overhead than the two preceding
    strategies.
 
-· Transactional
+* Transactional
 
    This strategy provides the support for transactional cache. It can only be used if the cache provider is transaction
    aware.
@@ -4261,20 +4261,20 @@ www.hibernate.org/hib_docs/reference/en/html/performance-cache.html
 
 The secondary cache can cache the following types of data.
 
-· Persistent object data
+* Persistent object data
 
-· Persistent object association
+* Persistent object association
 
-· Query data
+* Query data
 
 
 Cache data of a persistent object
 In this case, the data of the persistent object is cached. It will not cache the associations or associated object's data. To
 enable this flag on a persistent CFC, specify the following attributes on the component.
 
-· cacheuse: Defines the caching strategy.
+* cacheuse: Defines the caching strategy.
 
-· cachename: Defines the name of the cache region to be used by the secondary cache provider. If you do not specify
+* cachename: Defines the name of the cache region to be used by the secondary cache provider. If you do not specify
    a region name for the component, the entity name of the component is considered as the cache name. In case a
    region is not specified in the configuration file, a region is automatically created with the default configuration.
 
@@ -4299,9 +4299,9 @@ In this case, the primary key of the associated objects are cached. It does not 
 association unless caching is enabled for those objects. To cache an association, specify the following attributes on the
 association property.
 
-· cacheuse: Defines the caching strategy.
+* cacheuse: Defines the caching strategy.
 
-· cachename: Defines the name of the cache region to be used by the secondary cache provider. If you do not specify
+* cachename: Defines the name of the cache region to be used by the secondary cache provider. If you do not specify
     a region name for the association property, the <comoponent_name>.<property_name> is considered as the cache
     name. In case a region is not specified in the configuration file, a region is automatically created with the default
     configuration.
@@ -4554,9 +4554,9 @@ ORM provides callbacks to the event listeners for all the persistence events lik
 events can be used for data validations or transformation or for some generic functions such as auditing. These events
 can be handled at two levels in ColdFusion ORM:
 
-· In a persistent CFC
+* In a persistent CFC
 
-· Using an event handler CFC
+* Using an event handler CFC
 
 To enable event handling for an application, define the following setting: ormsettings.eventhandling= "true"
 
@@ -4579,26 +4579,26 @@ A persistent CFC can have various methods and if these methods are present, call
 the CFC. The CFC can then handle these events. In this case, the event for entity persistence comes to the CFC that the
 system loads, inserts, updates, or deletes. These methods are:
 
-· preLoad(): This method is called before the load operation or before the data is loaded from the database.
+* preLoad(): This method is called before the load operation or before the data is loaded from the database.
 
-· postLoad(): This method is called after the load operation is complete.
+* postLoad(): This method is called after the load operation is complete.
 
-· preInsert(): This method is called just before the object is inserted.
+* preInsert(): This method is called just before the object is inserted.
 
-· postInsert(): This method is called after the insert operation is complete.
+* postInsert(): This method is called after the insert operation is complete.
 
-· preUpdate(Struct oldData): This method is called just before the object is updated. A struct of old data is passed
+* preUpdate(Struct oldData): This method is called just before the object is updated. A struct of old data is passed
    to this method to know the original state of the entity being updated.
 
-· postUpdate(): This method is called after the update operation is complete.
+* postUpdate(): This method is called after the update operation is complete.
 
    Note: When you call the EntitySave() method on an object that is not loaded using EntityLoad(), it gets updated but
    the intercepter call fails. This happens because an empty map is created for the object and there is no previous data
    associated with it.
 
-· preDelete(): This method is called before the object is deleted.
+* preDelete(): This method is called before the object is deleted.
 
-· postDelete(): This method is called after the delete operation is complete.
+* postDelete(): This method is called after the delete operation is complete.
 
 
 Event handling using an event handler CFC
@@ -4617,26 +4617,26 @@ For application-wide event handler CFC, you need to specify the component name a
 
 The methods for application-wide event handler are:
 
-· preLoad(entity): This method is called before the load operation or before the data is loaded from the database.
+* preLoad(entity): This method is called before the load operation or before the data is loaded from the database.
 
-· postLoad(entity): This method is called after the load operation is complete.
+* postLoad(entity): This method is called after the load operation is complete.
 
-· preInsert(entity): This method is called just before the object is inserted.
+* preInsert(entity): This method is called just before the object is inserted.
 
-· postInsert(entity): This method is called after the insert operation is complete.
+* postInsert(entity): This method is called after the insert operation is complete.
 
-· preUpdate(entity, Struct oldData): This method is called just before the object is updated. A struct of old
+* preUpdate(entity, Struct oldData): This method is called just before the object is updated. A struct of old
    data is passed to this method to know the original state of the entity being updated.
 
    Note: When you call the EntitySave() method on an object that is not loaded using EntityLoad(), it gets updated but
    the intercepter call fails. This happens because an empty map is created for the object and there is no previous data
    associated with it.
 
-· postUpdate(entity): This method is called after the update operation is complete.
+* postUpdate(entity): This method is called after the update operation is complete.
 
-· preDelete(entity): This method is called before the object is deleted.
+* preDelete(entity): This method is called before the object is deleted.
 
-· postDelete(entity): This method is called after the delete operation is complete.
+* postDelete(entity): This method is called after the delete operation is complete.
 
 
 
@@ -4660,9 +4660,9 @@ the following:
 
 In the THIS scope of Application.cfc, in ormsettings struct, set the dbCreate property to one of the following values:
 
-· update: Creates the table (if it does not exist) or updates the table (if it exists).
+* update: Creates the table (if it does not exist) or updates the table (if it exists).
 
-· dropcreate: Drops the table if it exists and then creates it.
+* dropcreate: Drops the table if it exists and then creates it.
 
 For example,
 
@@ -4734,11 +4734,11 @@ naming strategy specifies how the table and column have to be named for a CFC an
 Naming strategy takes "logical name" for a table or column and returns the actual table or column name that should
 be used.
 
-· Logical table name: This is the table name specified for the CFC. If it is not specified, the entity name is taken as the
+* Logical table name: This is the table name specified for the CFC. If it is not specified, the entity name is taken as the
    logical table name. If the entity name is also not specified, the unqualified CFC name, for example, Person for
    a.b.c.Person, is taken as the logical table name.
 
-· Logical column name: This is the column name specified for a CFC property. If it is not specified, the property
+* Logical column name: This is the column name specified for a CFC property. If it is not specified, the property
    name is taken as the logical column name.
 
 Naming strategy is applied to an application by setting the following in Application.cfc
@@ -4747,14 +4747,14 @@ Naming strategy is applied to an application by setting the following in Applica
 
 The value of strategy could be:
 
-· default: This strategy uses the logical table or column name as it is. ColdFusion ORM using this value as the
+* default: This strategy uses the logical table or column name as it is. ColdFusion ORM using this value as the
    default strategy.
 
-· smart: This strategy changes the logical table or column name to uppercase. Also, if the logical table or column
+* smart: This strategy changes the logical table or column name to uppercase. Also, if the logical table or column
    name is in camel case, this strategy breaks the camelcased name and separates the broken words using underscore.
    For example, for a CFC named "OrderProduct", this strategy changes the table name as "ORDER_PRODUCT".
 
-· your own cfc : You can get complete control of the naming strategy by providing your own implementation. You
+* your own cfc : You can get complete control of the naming strategy by providing your own implementation. You
    need to specify the fully qualified name of the CFC as the value for naming strategy. This CFC must implement
    cfide.orm.INamingStrategy interface.
 
@@ -4855,11 +4855,11 @@ source in the application.
 Usage scenario
 Consider an application with the following three modules:
 
-· HR
+* HR
 
-· Finance
+* Finance
 
-· Sales
+* Sales
 
 Assume that all these modules have their own databases (and therefore separate data sources). But at the application-
 level, all the three modules have to interact with each other. A single data source makes it impossible to build the entire
@@ -4907,15 +4907,15 @@ ORM settings
 The following are the data source-specific ORM settings for which you can specify string or struct values in the
 Application.cfc:
 
-· schema
+* schema
 
-· catalog
+* catalog
 
-· dialect
+* dialect
 
-· dbcreate
+* dbcreate
 
-· sqlscript
+* sqlscript
 
 For multiple data sources, a struct can be specified with data source name as the key and the appropriate setting as the
 value. If a string value is specified, it applies to the default data source of ORM.

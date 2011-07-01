@@ -208,21 +208,21 @@ Using cfspreadsheet
 
 The cfspreadsheet tag lets you manage Excel spreadsheets. The tag lets you do the following:
 
-· Read a spreadsheet file (XLS file) and store it in a ColdFusion spreadsheet object, query, CSV string, or HTML
+* Read a spreadsheet file (XLS file) and store it in a ColdFusion spreadsheet object, query, CSV string, or HTML
    string.
 
-· Write a single sheet to a new XLS from a query, ColdFusion spreadsheet object, or CSV string variable.
+* Write a single sheet to a new XLS from a query, ColdFusion spreadsheet object, or CSV string variable.
 
-· Add a sheet to an existing XLS file.
+* Add a sheet to an existing XLS file.
 
 Use the spreadsheet functions to manipulate rows and columns in a spreadsheet and the data in the rows and columns.
 You can also specify and get comments, values, and formulas for a cell in the spreadsheet.
 
 Microsoft Office Excel 2007 is supported by cfspreadsheet and all the spreadsheet functions except the following:
 
-· SpreadSheetAddSplitPane
+* SpreadSheetAddSplitPane
 
-· SpreadSheetAddFreezePane
+* SpreadSheetAddFreezePane
 
 For detailed information about cfspreadsheet and all the spreadsheet functions, see CFML Reference.
 
@@ -498,10 +498,10 @@ application. Download this template from the Adobe website or copy it from the C
 
 Remember these points:
 
-· Web Parts support only the native single sign-on solution; other pluggable single sign-on services are not
+* Web Parts support only the native single sign-on solution; other pluggable single sign-on services are not
    supported.
 
-· Only single sign-on credentials are passed to the ColdFusion application. The ColdFusion application must have
+* Only single sign-on credentials are passed to the ColdFusion application. The ColdFusion application must have
    the necessary logic to retrieve the credentials and login to the application.
 
 
@@ -557,13 +557,13 @@ Import the CF9SSOWebPart.wsp Web Part into a Web Part Page
 
 6 Enter the following details in the toolbar pane.
 
-    · URL of the ColdFusion application to access
+    * URL of the ColdFusion application to access
 
-    · The form field name as the User ID
+    * The form field name as the User ID
 
-    · The form field name as the password
+    * The form field name as the password
 
-    · Name of the SSO application where the credentials are configured
+    * Name of the SSO application where the credentials are configured
 
 Once the Web Part is deployed, it takes the credentials from the SharePoint Single Sign-On database (based on the
 application name entered in the Tools Pane). These credentials are transferred to the ColdFusion application through
@@ -617,13 +617,13 @@ Configure the CFSharepointSSO Web Part
 
 5 After adding the CFSharepointSSO Web Part, click the Tools pane and enter the following details.
 
-    · URL of the ColdFusion application to access
+    * URL of the ColdFusion application to access
 
-    · The form field name as the User ID
+    * The form field name as the User ID
 
-    · The form field name as the password
+    * The form field name as the password
 
-    · Name of the SSO application where the credentials are configured
+    * Name of the SSO application where the credentials are configured
 
 Once the Web Part is deployed, it takes the credentials from the SharePoint Single Sign-On database (based on the
 application name entered in the Tools Pane). These credentials are transferred to the ColdFusion application through

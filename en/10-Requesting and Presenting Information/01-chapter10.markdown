@@ -17,27 +17,27 @@ ColdFusion forms tags
 You can use HTML or CFML tags to define your form. ColdFusion includes the following CFML tags that correspond
 to HTML tags, but provide additional functionality:
 
-· cfapplet
+* cfapplet
 
-· cfform
+* cfform
 
-· cfinput
+* cfinput
 
-· cfselect
+* cfselect
 
-· cftextarea
+* cftextarea
 
 These tags support all the attributes of their HTML counterparts, plus ColdFusion attributes and features.
 
 ColdFusion also provides the following forms tags that have no direct equivalent in HTML:
 
-· cfcalendar     Lets users select dates from a Flash month-by-month calendar.
+* cfcalendar     Lets users select dates from a Flash month-by-month calendar.
 
-· cfgrid     Displays and lets users enter data in a row and column grid format; can get data directly from a query.
+* cfgrid     Displays and lets users enter data in a row and column grid format; can get data directly from a query.
 
-· cfslider    Lets users input data by moving a sliding marker.
+* cfslider    Lets users input data by moving a sliding marker.
 
-· cftree    Displays data in a hierarchical tree format with graphical indicators; can get data directly from a query.
+* cftree    Displays data in a hierarchical tree format with graphical indicators; can get data directly from a query.
 
 
 ColdFusion Form tag features
@@ -210,19 +210,19 @@ Contractor? <cfinput type="checkbox" name="Contractor"
 Forms guidelines
 When using forms, keep in mind the following guidelines:
 
-· To make the coding process easy to follow, name form controls the same as target database fields. For example, if
+* To make the coding process easy to follow, name form controls the same as target database fields. For example, if
     a text control corresponds to a data source FirstName field, use FirstName as the control name.
 
-· For ease of use, limit radio buttons to between three and five mutually exclusive options. If you need more options,
+* For ease of use, limit radio buttons to between three and five mutually exclusive options. If you need more options,
     consider a drop-down list.
 
-· Use list boxes to allow the user to choose from many options or to choose multiple items from a list.
+* Use list boxes to allow the user to choose from many options or to choose multiple items from a list.
 
-· Check boxes, radio buttons, and list boxes do not pass data to action pages unless they are selected on a form. If you
+* Check boxes, radio buttons, and list boxes do not pass data to action pages unless they are selected on a form. If you
     try to reference these variables on the action page, you receive an error if they are not present. For information on
     how to determine whether a variable exists on the action page, see "Testing for a variable's existence" on page 709.
 
-· You can dynamically populate drop-down lists using query data. For more information, see "Dynamically
+* You can dynamically populate drop-down lists using query data. For more information, see "Dynamically
     populating list boxes" on page 718.
 
 
@@ -436,9 +436,9 @@ One of the limitations of HTML forms is the inability to define input fields as 
 requirement for database applications, ColdFusion lets you require users to enter data in fields. To specify a field as
 required, you can do either of the following:
 
-· Use the required attribute of the cfinput, cfselect, cftextarea, and cftree tags.
+* Use the required attribute of the cfinput, cfselect, cftextarea, and cftree tags.
 
-· Use a hidden field that has a name attribute composed of the field name and the suffix _required. You can use this
+* Use a hidden field that has a name attribute composed of the field name and the suffix _required. You can use this
    technique with CFML and HTML form tags.
 
 For example, to require that the user enter a value in the FirstName field of a cfinput tag, use the following syntax:
@@ -478,22 +478,22 @@ If you use a hidden field tag, you customize the message using the value attribu
 Form variable notes and considerations
 When using form variables in an action page, keep in mind the following guidelines:
 
-· A form variable is available on the action page and pages that it includes.
+* A form variable is available on the action page and pages that it includes.
 
-· Prefix form variables with "Form."when referencing them on the action page.
+* Prefix form variables with "Form."when referencing them on the action page.
 
-· Surround variable values with number signs (#) for output.
+* Surround variable values with number signs (#) for output.
 
-· Variables for check boxes, radio buttons, and list boxes with size attributes greater than 1 only get passed to the
+* Variables for check boxes, radio buttons, and list boxes with size attributes greater than 1 only get passed to the
    action page if you select an option. Text boxes, passwords, and text area fields pass an empty string if you do not
    enter text.
 
-· An error occurs if the action page tries to use a variable that was not passed.
+* An error occurs if the action page tries to use a variable that was not passed.
 
-· If multiple controls have the same name, one form variable is passed to the action page with a comma-delimited
+* If multiple controls have the same name, one form variable is passed to the action page with a comma-delimited
    list of values.
 
-· You can validate form variable values on the client or the server.
+* You can validate form variable values on the client or the server.
 
 
 Working with queries and data
@@ -751,9 +751,9 @@ Returning results to the user
 When you return your results to the user, ensure that your pages respond to the user's needs and are appropriate for
 the type and amount of information. In particular, consider the following situations:
 
-· When there are no query results
+* When there are no query results
 
-· When you return partial results
+* When you return partial results
 
 
 Handling no query results
@@ -773,13 +773,13 @@ before displaying the data:
 
 Do the following:
 
-· Prefix RecordCount with the query name.
+* Prefix RecordCount with the query name.
 
-· Add a procedure after the cfif tag that displays a message to the user.
+* Add a procedure after the cfif tag that displays a message to the user.
 
-· Add a procedure after the cfelse tag to format the returned data.
+* Add a procedure after the cfelse tag to format the returned data.
 
-· Follow the second procedure with a </cfif> tag end to indicate the end of the conditional code.
+* Follow the second procedure with a </cfif> tag end to indicate the end of the conditional code.
 
 
 Return search results to users
@@ -886,20 +886,20 @@ as a few hundred bytes or more, but not many thousands of bytes.
 Limitations of the cfflush tag: Because the cfflush tag sends data to the browser when it executes, it has several
 limitations, including the following:
 
-· Using any of the following tags or functions on a page anywhere after the cfflush tag can cause errors or
+* Using any of the following tags or functions on a page anywhere after the cfflush tag can cause errors or
     unexpected results: cfcontent, cfcookie, cfform, cfheader, cfhtmlhead, cflocation, and SetLocale. (These
     tags and functions normally modify the HTML header, but cannot do so after a cfflush tag, because the cfflush
     tag sends the header.)
 
-· Using the cfset tag to set a cookie anywhere on a page that has a cfflush tag does not set the cookie in the browser.
+* Using the cfset tag to set a cookie anywhere on a page that has a cfflush tag does not set the cookie in the browser.
 
-· Using the cfflush tag within the body of several tags, including cfsavecontent, cfqueryparam, and custom tags,
+* Using the cfflush tag within the body of several tags, including cfsavecontent, cfqueryparam, and custom tags,
     can cause errors.
 
-· If you save Client variables as cookies, any client variables that you set after a cfflush tag are not saved in the
+* If you save Client variables as cookies, any client variables that you set after a cfflush tag are not saved in the
     browser.
 
-· You can catch cfflush errors, except Cookie errors, with a cfcatch tag. Catch cookie errors with a cfcatch
+* You can catch cfflush errors, except Cookie errors, with a cfcatch tag. Catch cookie errors with a cfcatch
     type="Any" tag.
 
 
@@ -1004,9 +1004,9 @@ the form page automatically reflects the changes that you make to the database.
 
 You use two tags to dynamically populate a list box:
 
-· Use the cfquery tag to retrieve the column data from a database table.
+* Use the cfquery tag to retrieve the column data from a database table.
 
-· Use the cfselect tag with the query attribute to dynamically populate the options of this form control.
+* Use the cfselect tag with the query attribute to dynamically populate the options of this form control.
 
 
 Dynamically populate a list box
@@ -1380,11 +1380,11 @@ The information here describes features of the cfform tag and focuses on using s
 do not have HTML counterparts. For other features of ColdFusion forms that you create using the cfform tag, see the
 following:
 
-· "Validating Data" on page 743
+* "Validating Data" on page 743
 
-· "Creating Forms in Flash" on page 765
+* "Creating Forms in Flash" on page 765
 
-· "Creating Skinnable XML Forms" on page 783
+* "Creating Skinnable XML Forms" on page 783
 
 
 The cfform controls
@@ -1470,10 +1470,10 @@ as follows:
 Usage notes for the preservedata attribute
 When you use the preservedata attribute, follow these guidelines:
 
-· In the cftree tag, the preservedata attribute causes the tree to expand to the previously selected element. For this
+* In the cftree tag, the preservedata attribute causes the tree to expand to the previously selected element. For this
     to work correctly, set the completePath attribute to True.
 
-· The preservedata attribute has no effect on a cfgrid tag. If you populate the control from a query, update the
+* The preservedata attribute has no effect on a cfgrid tag. If you populate the control from a query, update the
     data source with the new data (typically by using a cfgridupdate tag) before redisplaying the grid. The grid then
     displays the updated database information.
 
@@ -1678,10 +1678,10 @@ The cftree tag lets you force a user to select an item from the tree control by 
 With or without the required attribute, ColdFusion passes two form variables to the application page specified in the
 cfformaction attribute:
 
-· Form.treename.path        Returns the complete path of the user selection, in the form:
+* Form.treename.path        Returns the complete path of the user selection, in the form:
    [root]\node1\node2\node_n\value
 
-· Form.treename.node         Returns the node of the user selection.
+* Form.treename.node         Returns the node of the user selection.
 
 To return the root part of the path, set the completepath attribute of the cftree tag to Yes; otherwise, the path value
 starts with the first node. If you specify a root name for a tree item using the queryasroot tag, that value is returned
@@ -1832,19 +1832,19 @@ Requesting and Presenting Information
 
 The following are the ColdFusion built-in image names:
 
-· computer
+* computer
 
-· document
+* document
 
-· element
+* element
 
-· folder
+* folder
 
-· floppy
+* floppy
 
-· fixed
+* fixed
 
-· remote
+* remote
 
 Note: In applet format, you can also control the tree appearance by using the cftree tag lookAndFeel attribute to
 specify a Windows, Motif, or Metal look.
@@ -2017,11 +2017,11 @@ formatting options, as well as the option of validating user selections with a J
 
 You can also perform the following tasks with a cfgrid tag:
 
-· Sort data in the grid alphanumerically.
+* Sort data in the grid alphanumerically.
 
-· Update, insert, and delete data.
+* Update, insert, and delete data.
 
-· Display images in the grid.
+* Display images in the grid.
 
 Note: Flash format grids support a subset of the features available in applet format grids. For details on features supported
 in each format, see the cfgrid tag in the CFML Reference.
@@ -2153,10 +2153,10 @@ the insert and delete attribute to Yes causes the cfgrid tag to display Insert a
 
 You can use a grid in two ways to change your ColdFusion data sources:
 
-· Create a page to which you pass the cfgrid form variables. In that page, perform cfquery operations to update
+* Create a page to which you pass the cfgrid form variables. In that page, perform cfquery operations to update
    data source records based on the form values returned by the cfgrid tag.
 
-· Pass grid edits to a page that includes the cfgridupdate tag, which automatically extracts the form variable values
+* Pass grid edits to a page that includes the cfgridupdate tag, which automatically extracts the form variable values
    and passes that data directly to the data source.
 
 Using the cfquery tag gives you complete control over interactions with your data source. The cfgridupdate tag
@@ -2166,17 +2166,17 @@ provides a much simpler interface for operations that do not require the same le
 Controlling cell contents
 You can control the data that a user can enter into a cfgrid cell in the following ways:
 
-· By default, a cell is not editable. Use the cfgrid attribute selectmode="edit" to edit cell contents.
+* By default, a cell is not editable. Use the cfgrid attribute selectmode="edit" to edit cell contents.
 
-· Use the cfgridcolumntype attribute to control sorting order, to make the fields check boxes, or to display an
+* Use the cfgridcolumntype attribute to control sorting order, to make the fields check boxes, or to display an
    image.
 
-· Use the cfgridcolumnvalues attribute to specify a drop-down list of values from which the user can choose. You
+* Use the cfgridcolumnvalues attribute to specify a drop-down list of values from which the user can choose. You
    can use the valuesDisplay attribute to provide a list of items to display that differs from the actual values that you
    enter in the database. You can use the valuesDelimiter attribute to specify the separator between values in the
    valuesvaluesDisplay lists.
 
-· Although the cfgrid tag does not have a validate attribute, it does have an onValidate attribute that lets you
+* Although the cfgrid tag does not have a validate attribute, it does have an onValidate attribute that lets you
    specify a JavaScript function to perform validation.
 
 For more information on controlling the cell contents, see the attribute descriptions for the cfgridcolumn tag in the
@@ -2378,12 +2378,12 @@ your data source.
 In most cases, use the cfgridupdate tag to update your database. However, this tag does not provide the complete
 SQL control that the cfquery tag provides. In particular, the cfgridupdate tag has the following characteristics:
 
-· You can update only a single table.
+* You can update only a single table.
 
-· Rows are deleted first, then rows are inserted, then any changes are made to existing rows. You cannot modify the
+* Rows are deleted first, then rows are inserted, then any changes are made to existing rows. You cannot modify the
    order of changes.
 
-· Updating stops when an error occurs. It is possible that some database changes are made, but the tag does not
+* Updating stops when an error occurs. It is possible that some database changes are made, but the tag does not
    provide any information on them.
 
 
@@ -2642,14 +2642,14 @@ cfapplet tag is simple.
 
 The cfapplet tag within a form offers several advantages over using the HTML applet tag:
 
-· Return values: The cfapplet tag requires a form field name attribute, so you can avoid coding additional
+* Return values: The cfapplet tag requires a form field name attribute, so you can avoid coding additional
    JavaScript to capture the applet's return values. You can reference return values like any other ColdFusion form
    variable: Form.variablename.
 
-· Ease of use: The applet's interface is defined in the ColdFusion Administrator, so each instance of the cfapplet
+* Ease of use: The applet's interface is defined in the ColdFusion Administrator, so each instance of the cfapplet
    tag in your pages only needs to reference the applet name and specify a form variable name.
 
-· Parameter defaults: ColdFusion uses the parameter value pairs that you defined in the ColdFusion Administrator.
+* Parameter defaults: ColdFusion uses the parameter value pairs that you defined in the ColdFusion Administrator.
    You can override these values by specifying parameter value pairs in the cfapplet tag.
 
 When an applet is registered, you enter just the applet source and the form variable name:
@@ -2766,14 +2766,14 @@ About ColdFusion validation
 Data validation lets you control data that is entered into an application by ensuring that the data conforms to specific
 type or formatting rules. Validation techniques have the following features:
 
-· They let you provide feedback to users so that they can immediately correct information they provide. For example,
+* They let you provide feedback to users so that they can immediately correct information they provide. For example,
     a form can provide immediate feedback when a user enters a name in a telephone number field, or the form could
     force the user to enter the number in the correct format.
 
-· They help prevent application errors that can arise when processing invalid data. For example, a validation test can
+* They help prevent application errors that can arise when processing invalid data. For example, a validation test can
     prevent a variable that is used in a calculation from having nonnumeric data.
 
-· They can help enhance security by preventing malicious users from providing data that takes advantage of system
+* They can help enhance security by preventing malicious users from providing data that takes advantage of system
     security weaknesses, such as buffer overrun attacks.
 
 ColdFusion provides several techniques to ensure that data is valid. These include techniques for validating form data
@@ -2914,18 +2914,18 @@ Note: For more information on ColdFusion error handling, see "Handling Errors" o
 Selecting a validation technique
 The following considerations affect the validation technique that you select:
 
-· If you are validating form data, the techniques you use can vary depending on whether you are using HTML, Flash,
+* If you are validating form data, the techniques you use can vary depending on whether you are using HTML, Flash,
     or XML forms; for example, different form types have different validation limitations.
 
-· Different validation techniques are appropriate for different form controls and data types.
+* Different validation techniques are appropriate for different form controls and data types.
 
-· Available techniques vary depending on when and where you want the data validated; on the client or the server,
+* Available techniques vary depending on when and where you want the data validated; on the client or the server,
     when the user enters data or submits a form, or when ColdFusion processes a variable or function argument.
 
-· Each technique has specific features and considerations, such as the form of user feedback, feature limitations, and
+* Each technique has specific features and considerations, such as the form of user feedback, feature limitations, and
     so on.
 
-· Security issues or concerns that apply to your environment or application can affect the technique you select.
+* Security issues or concerns that apply to your environment or application can affect the technique you select.
 
 The table in the preceding section described some of the considerations (see "Validation techniques" on page 743). The
 following table describes additional considerations for selecting a validation technique. For additional considerations
@@ -3023,15 +3023,15 @@ Malicious users can circumvent validation techniques that require validation on 
 submission of validation rules in hidden fields. If you must use a technique for preventing malicious data submissions,
 consider using the following techniques:
 
-· The onSubmit or OnBlur validation in Flash forms, which use Flash built-in validation.
+* The onSubmit or OnBlur validation in Flash forms, which use Flash built-in validation.
 
-· The IsValid function and the cfparam, and cfargument tags, which let you test variables and arguments in your
+* The IsValid function and the cfparam, and cfargument tags, which let you test variables and arguments in your
     CFML code.
 
-· The cfqueryparam tag in cfquery tags, which can help protect databases from malicious query input (see
+* The cfqueryparam tag in cfquery tags, which can help protect databases from malicious query input (see
     "Enhancing security with cfqueryparam" on page 416.
 
-· The script protection option, which helps prevent cross-site scripting attacks. You can set this option on the
+* The script protection option, which helps prevent cross-site scripting attacks. You can set this option on the
     ColdFusion Administrator Server Settings > Settings page or by using the Application.cfc This.scriptProtect
     variable or the cfapplication tag scriptprotect attribute. For more information on cross-site scripting attacks and
     this option, see the cfapplication tag page in the CFML Reference.
@@ -3155,9 +3155,9 @@ variableName *              A string formatted according to ColdFusion variable 
 Validating form fields
 In basic form field validation, do the following:
 
-· Use a cfinput or cftextarea tag.
+* Use a cfinput or cftextarea tag.
 
-· Specify a validation type, such as numeric, or multiple types.
+* Specify a validation type, such as numeric, or multiple types.
 
 
 
@@ -3170,9 +3170,9 @@ Requesting and Presenting Information
 
 
 
-· Optionally, specify an error message.
+* Optionally, specify an error message.
 
-· Optionally, specify a validation technique. (By default, ColdFusion uses onSubmit validation.)
+* Optionally, specify a validation technique. (By default, ColdFusion uses onSubmit validation.)
 
 The following example specifies onBlur validation of a telephone number:
 
@@ -3189,25 +3189,25 @@ complete example.
 Validation type considerations
 General considerations: Consider the following issues when you determine how to validate form data:
 
-· When you validate form data using onBlur, onSubmit, onServer, or hidden form field validation, you can specify
+* When you validate form data using onBlur, onSubmit, onServer, or hidden form field validation, you can specify
    one or more validation types for each field that you validate. For example, you can specify that a field entry is
    required and that it must be numeric. To specify multiple validation types for onSubmit, onBlur, or onServer
    validation, specify the type values in a comma-delimited list.
 
-· If you use onBlur, onSubmit, or onServer type validation, you can specify only one error message for each field that
+* If you use onBlur, onSubmit, or onServer type validation, you can specify only one error message for each field that
    you validate. If you use hidden field validation, you can create a custom message for each validation rule (except for
    range checking).
 
-· In the cfinput tag, most validation type attributes apply only to text or password fields.
+* In the cfinput tag, most validation type attributes apply only to text or password fields.
 
 Validation algorithm differences: The underlying validation code used when validating form data can differ
 depending on the validation technique and the form type. As a result, the algorithms used vary in some instances,
 including the following:
 
-· The validation algorithms used for date/time values in onSubmit and OnBlur validation are different from those
+* The validation algorithms used for date/time values in onSubmit and OnBlur validation are different from those
    validation algorithms used for all server-side validation techniques.
 
-· The algorithms used for onSubmit and OnBlur validation in Flash can vary from those algorithms used for HTML
+* The algorithms used for onSubmit and OnBlur validation in Flash can vary from those algorithms used for HTML
    or XML format, and generally follow simpler rules.
 
 For detailed information on the validation algorithms used for validation techniques used on the server, see
@@ -3343,9 +3343,9 @@ Masking form input values
 The cfinput tag mask attribute controls the format of data that can be entered into a text or datefield input field.
 You can also use a mask attribute in the cfcalendar tag. You can combine masking and validation on a field.
 
-· In HTML and Flash form format, a mask can control the format of data entered into a text field.
+* In HTML and Flash form format, a mask can control the format of data entered into a text field.
 
-· In the cfcalendar tag, and, for Flash format forms, the datefield type cfinput field, a mask can control the
+* In the cfcalendar tag, and, for Flash format forms, the datefield type cfinput field, a mask can control the
    format of the date that ColdFusion uses for the date a user chooses in the displayed calendar.
 
 Note: The standard ColdFusion XML skins do not support masking.
@@ -3465,29 +3465,29 @@ character.
 Single-character regular expressions
 The following rules govern regular expressions that match a single character:
 
-· Special characters are: + * ? . [ ^ $ ( ) { | \
+* Special characters are: + * ? . [ ^ $ ( ) { | \
 
-· Any character matches itself if it is not a special character or if a preceding backslash (\) escapes the character.
+* Any character matches itself if it is not a special character or if a preceding backslash (\) escapes the character.
 
-· A backslash (\) followed by any special character matches the literal character itself; that is, the backslash escapes
+* A backslash (\) followed by any special character matches the literal character itself; that is, the backslash escapes
    the special character.
 
-· A period (.) matches any character except newline.
+* A period (.) matches any character except newline.
 
-· A set of characters enclosed in brackets ([]) is a one-character regular expression that matches any of the characters
+* A set of characters enclosed in brackets ([]) is a one-character regular expression that matches any of the characters
    in that set. For example, "[akm]" matches an a, k, or m. If you include ] (closing square bracket) in square brackets,
    it must be the first character. Otherwise, it does not work, even if you use \].
 
-· A dash can indicate a range of characters. For example, [a-z] matches any lowercase letter.
+* A dash can indicate a range of characters. For example, [a-z] matches any lowercase letter.
 
-· If the first character of a set of characters in brackets is the caret (^), the expression matches any character except
+* If the first character of a set of characters in brackets is the caret (^), the expression matches any character except
    those characters in the set. It does not match the empty string. For example: "[^akm]" matches any character except
    a, k, or m. The caret loses its special meaning if it is not the first character of the set.
 
-· You can make regular expressions case insensitive by substituting individual characters with character sets; for
+* You can make regular expressions case insensitive by substituting individual characters with character sets; for
    example, "[Nn][Ii][Cc][Kk]" is a case-insensitive pattern for the name Nick (or NICK, or nick, or even nIcK).
 
-· You can use the following escape sequences to match specific characters or character classes:
+* You can use the following escape sequences to match specific characters or character classes:
 
 Escape seq       Matches                                         Escape seq   Meaning
 
@@ -3532,29 +3532,29 @@ Requesting and Presenting Information
 Multicharacter regular expressions
 Use the following rules to build a multicharacter regular expression:
 
-· Parentheses group parts of regular expressions into a subexpression that can be treated as a single unit. For example,
+* Parentheses group parts of regular expressions into a subexpression that can be treated as a single unit. For example,
    "(ha)+" matches one or more instances of ha.
 
-· A one-character regular expression or grouped subexpression followed by an asterisk (*) matches zero or more
+* A one-character regular expression or grouped subexpression followed by an asterisk (*) matches zero or more
    occurrences of the regular expression. For example, "[a-z]*" matches zero or more lowercase characters.
 
-· A one-character regular expression or grouped subexpression followed by a plus sign (+) matches one or more
+* A one-character regular expression or grouped subexpression followed by a plus sign (+) matches one or more
    occurrences of the regular expression. For example, "[a-z]+" matches one or more lowercase characters.
 
-· A one-character regular expression or grouped subexpression followed by a question mark (?) matches zero or one
+* A one-character regular expression or grouped subexpression followed by a question mark (?) matches zero or one
    occurrence of the regular expression. For example, "xy?z" matches either xyz or xz.
 
-· The carat (^) at the beginning of a regular expression matches the beginning of the field.
+* The carat (^) at the beginning of a regular expression matches the beginning of the field.
 
-· The dollar sign ($) at the end of a regular expression matches the end of the field.
+* The dollar sign ($) at the end of a regular expression matches the end of the field.
 
-· The concatenation of regular expressions creates a regular expression that matches the corresponding
+* The concatenation of regular expressions creates a regular expression that matches the corresponding
    concatenation of strings. For example, "[A-Z][a-z]*" matches any capitalized word.
 
-· The OR character (|) allows a choice between two regular expressions. For example, "jell(y|ies)" matches either jelly
+* The OR character (|) allows a choice between two regular expressions. For example, "jell(y|ies)" matches either jelly
    or jellies.
 
-· Curly brackets ({}) indicate a range of occurrences of a regular expression. You use them in the form "{m, n}" where
+* Curly brackets ({}) indicate a range of occurrences of a regular expression. You use them in the form "{m, n}" where
    m is a positive integer equal to or greater than zero indicating the start of the range and n is equal to or greater than
    m, indicating the end of the range. For example, "(ba){0,3}" matches up to three pairs of the expression ba. The form
    "{m,}" requires at least m occurrences of the preceding regular expression. The form "{m}" requires exactly m
@@ -3579,11 +3579,11 @@ Exact and partial matches
 ColdFusion validation normally considers a value to be valid if any of it matches the regular expression pattern. If you
 want to ensure that the entire entry matches the pattern, "anchor" it to the beginning and end of the field, as follows:
 
-· If a caret (^) is at the beginning of a pattern, the field must begin with a string that matches the pattern.
+* If a caret (^) is at the beginning of a pattern, the field must begin with a string that matches the pattern.
 
-· If a dollar sign ($) is at the end of a pattern, the field must end with a string that matches the pattern.
+* If a dollar sign ($) is at the end of a pattern, the field must end with a string that matches the pattern.
 
-· If the expression starts with a caret and ends with a dollar sign, the field must exactly match the pattern.
+* If the expression starts with a caret and ends with a dollar sign, the field must exactly match the pattern.
 
 
 Expression examples
@@ -3630,35 +3630,35 @@ algorithms as onServer validation of ColdFusion form fields.
 
 Hidden field validation has the following features:
 
-· You can use it with standard HTML tags. For example, you can validate data in an HTML input tag. This feature
+* You can use it with standard HTML tags. For example, you can validate data in an HTML input tag. This feature
    was useful in releases previous to ColdFusion MX 7, because the cfinput tag did not support all HTML type
    attributes.
 
-· It is backward-compatible with validation previous to ColdFusion MX 7, when hidden field validation was the only
+* It is backward-compatible with validation previous to ColdFusion MX 7, when hidden field validation was the only
    way to do validation on the server.
 
-· Because you use a separate tag for each validation type, if you specify multiple validation rules for a field, you can
+* Because you use a separate tag for each validation type, if you specify multiple validation rules for a field, you can
    specify a different error message for each rule.
 
-· You can use hidden field validation with any form field type that submits a data value, not input, cfinput,
+* You can use hidden field validation with any form field type that submits a data value, not input, cfinput,
    textarea, or cftextarea.
 
 
 Specifying hidden form field validation
 To specify hidden field validation, you do the following:
 
-· Create one HTML input element or CFML cfinput tag of type="hidden" for each validation rule.
+* Create one HTML input element or CFML cfinput tag of type="hidden" for each validation rule.
 
-· Specify the name of the field to validate as the first part of the hidden field name.
+* Specify the name of the field to validate as the first part of the hidden field name.
 
-· Specify the type of validation, starting with an underscore character (_), as the second part of the hidden field name.
+* Specify the type of validation, starting with an underscore character (_), as the second part of the hidden field name.
 
-· You can specify multiple rules for each form data field. For example, to specify range and required validation for a
+* You can specify multiple rules for each form data field. For example, to specify range and required validation for a
    field named myValue, create hidden myValue_cfformrange and myValue_cfformrequired fields.
 
-· For most types of validation, specify the error message as the field value attribute.
+* For most types of validation, specify the error message as the field value attribute.
 
-· For range, maximum length, or regular expression validation, specify the rule, such as the maximum length, in the
+* For range, maximum length, or regular expression validation, specify the rule, such as the maximum length, in the
    value attribute. For these validation types, you cannot specify a custom error message.
 
 The following example uses hidden fields to require data in a date field and ensure that the field contains a date. It
@@ -3782,16 +3782,16 @@ Hidden form field considerations
 Consider the following rules and recommendations when determining whether and how to use hidden form field
 validation:
 
-· Use hidden field validation if you want to validate data from standard HTML input tags. The cfinput and
+* Use hidden field validation if you want to validate data from standard HTML input tags. The cfinput and
    cftextarea tags include a validateAt attribute that provides a simpler method for specifying server-side
    validation.
 
-· Consider using hidden field validation with the cfinput and cftextarea tags if you specify multiple validation
+* Consider using hidden field validation with the cfinput and cftextarea tags if you specify multiple validation
    rules for a single field and want to provide a separate error message for each validation.
 
-· Do not use the suffixes listed in the table as field names.
+* Do not use the suffixes listed in the table as field names.
 
-· Adding a validation rule to a field does not make it a required field. Add a separate _required hidden field to
+* Adding a validation rule to a field does not make it a required field. Add a separate _required hidden field to
    ensure user entry.
 
 
@@ -3943,19 +3943,19 @@ In addition to native ColdFusion input validation using the validate attribute o
 the following tags support the onValidate attribute, which lets you specify a JavaScript function to handle your
 cfform input validation:
 
-· cfgrid
+* cfgrid
 
-· cfinput
+* cfinput
 
-· cfslider
+* cfslider
 
-· cftextarea
+* cftextarea
 
-· cftree
+* cftree
 
 ColdFusion passes the following arguments to the JavaScript function that you specify in the onValidate attribute:
 
-· The form JavaScript DOM object
+* The form JavaScript DOM object
 
 
 
@@ -3968,9 +3968,9 @@ Requesting and Presenting Information
 
 
 
-· The name attribute of the form element
+* The name attribute of the form element
 
-· The value of the control to validate
+* The value of the control to validate
 
 For example, if you write the cfinput tag as the following:
 
@@ -4086,25 +4086,25 @@ when onValidate returns a False value). If you use the onValidate attribute, you
 to specify a JavaScript function that handles the validation errors. The following cfform tags support the onerror
 attribute:
 
-· cfgrid
+* cfgrid
 
-· cfinput
+* cfinput
 
-· cfselect
+* cfselect
 
-· cfslider
+* cfslider
 
-· cftextinput
+* cftextinput
 
-· cftree
+* cftree
 
 ColdFusion passes the following JavaScript objects to the function in the onerror attribute:
 
-· The JavaScript form object
+* The JavaScript form object
 
-· The name attribute of the form element
+* The name attribute of the form element
 
-· The value that failed validation
+* The value that failed validation
 
 
 
@@ -4116,7 +4116,7 @@ Requesting and Presenting Information
 
 
 
-· The error message text specified by the CFML tag's message attribute
+* The error message text specified by the CFML tag's message attribute
 
 The following example shows a form that uses an onError attribute to tell ColdFusion to call a showErrorMessage
 JavaScript function that uses the alert method to display an error message. The function assembles the message from
@@ -4159,10 +4159,10 @@ syntax in your error-handling code.
 
 These two validation techniques operate as follows:
 
-· The IsValid function tests the value of a ColdFusion variable. If the value is valid, it returns True; if the value is
+* The IsValid function tests the value of a ColdFusion variable. If the value is valid, it returns True; if the value is
    invalid, it returns False.
 
-· The cfparam tag with a type attribute tests the value of a ColdFusion value for validity. If the value is valid, it does
+* The cfparam tag with a type attribute tests the value of a ColdFusion value for validity. If the value is valid, it does
    nothing; if the value is invalid, it throws a ColdFusion expression exception.
 
 You can use either technique interchangeably. The technique you choose should depend on your coding style and
@@ -4358,10 +4358,10 @@ ColdFusion can deliver forms to the client in Flash (SWF file) format. ColdFusio
 binary from your CFML code and displays it on the client. Flash forms have the following advantages over HTML
 forms:
 
-· They are browser-independent. Flash Player works in all commonly used browsers on Windows and Macintosh
+* They are browser-independent. Flash Player works in all commonly used browsers on Windows and Macintosh
    systems, and in Netscape and Mozilla on Linux.
 
-· By default, they present a modern, visually pleasing appearance, and you can apply predefined color skins or
+* By default, they present a modern, visually pleasing appearance, and you can apply predefined color skins or
    customize the appearance with specifications like those specifications in a Cascading Style Sheet (CSS).
 
 
@@ -4375,10 +4375,10 @@ Requesting and Presenting Information
 
 
 
-· They let you develop complex, multipart forms that do not require multiple pages, by using tabbed or accordion-
+* They let you develop complex, multipart forms that do not require multiple pages, by using tabbed or accordion-
    style dialog boxes.
 
-· They automatically do much of the layout work for you.
+* They automatically do much of the layout work for you.
 
    Note: Flash form configuration requirements differ from ColdFusion requirements. For example, Flash forms do not
    work sometimes with all J2EE servers supported by ColdFusion. For more information, see Installing ColdFusion.
@@ -4398,24 +4398,24 @@ following image contains a two-tab form that shows many of these features:
 
 This form includes the following features:
 
-· Each tab contains a different section of the overall form, and users can enter data on both tabs before submitting
+* Each tab contains a different section of the overall form, and users can enter data on both tabs before submitting
    the form. This technique can eliminate the need for multiple forms on multiple HTML pages.
 
-· The first and last names are required fields, indicated by the red asterisks.
+* The first and last names are required fields, indicated by the red asterisks.
 
-· The Flash form automatically fills the e-mail field with data from the name fields, but the user can override this
+* The Flash form automatically fills the e-mail field with data from the name fields, but the user can override this
    information.
 
-· When the user selects the date field, a calendar automatically opens for picking the date.
+* When the user selects the date field, a calendar automatically opens for picking the date.
 
 
 Flash form CFML differences from HTML forms
 Because ColdFusion sends a Flash form to the client in SWF file format, everything inside a Flash form is rendered by
 Flash. Rendering the form in Flash has several effects:
 
-· Plain text and HTML tags in the body of a Flash Form have no effect.
+* Plain text and HTML tags in the body of a Flash Form have no effect.
 
-· Specify all form content inside CFML tags that support Flash forms.
+* Specify all form content inside CFML tags that support Flash forms.
 
 
 
@@ -4428,11 +4428,11 @@ Requesting and Presenting Information
 
 
 
-· ColdFusion provides two tags that let you take advantage of Flash features and perform tasks that you would
+* ColdFusion provides two tags that let you take advantage of Flash features and perform tasks that you would
    otherwise do in HTML: use the cfformitem tag to add text blocks and horizontal and vertical rules to your form,
    and you use the cfformgroup tag to structure your form.
 
-· Standard ColdFusion forms tags, such as cfinput and cftree, include attributes that work only with Flash forms,
+* Standard ColdFusion forms tags, such as cfinput and cftree, include attributes that work only with Flash forms,
    and attribute values that let you specify form style and behavior. These tags include the skin attribute with many
    Flash-specific style attribute values for appearance, and the bind attribute for filling a field value with data from
    other fields.
@@ -4445,13 +4445,13 @@ Building Flash forms
 You build Flash forms using standard ColdFusion form tags, plus the cfformgroup and cfformitem tags. These tags
 create the elements of the form, as follows:
 
-· The cfcalendar, cfgrid, cfinput, cfselect, cftextarea, and cftree tags create controls for data display and
+* The cfcalendar, cfgrid, cfinput, cfselect, cftextarea, and cftree tags create controls for data display and
    user input.
 
-· The cfformitem tag lets you add formatted or unformatted text, spacers, and horizontal and vertical rules without
+* The cfformitem tag lets you add formatted or unformatted text, spacers, and horizontal and vertical rules without
    using HTML.
 
-· The cfformgroup tag creates containers, such as horizontally aligned boxes or tabbed navigators, that let you
+* The cfformgroup tag creates containers, such as horizontally aligned boxes or tabbed navigators, that let you
    group, organize, and structure the form contents.
 
 Flash forms follow a hierarchical structure of containers and children.
@@ -4797,12 +4797,12 @@ Sizing elements in a Flash form is something of an art, rather than a science. A
 height and width attributes, Flash tends to do a good job of laying out the form. However, keep in mind the following
 considerations:
 
-· If you do not specify the height and width attributes in the cfform tag, Flash reserves the full dimensions of the
+* If you do not specify the height and width attributes in the cfform tag, Flash reserves the full dimensions of the
    visible browser window, if the form is not in a table, or the table cell, if the form is in a table, even if they are not
    required for the form contents. Any HTML output that precedes or follows the form causes the output page to
    exceed the size of the browser window.
 
-· If you do not specify the height or width of a control, including a form group, Flash adjusts the dimensions, trying
+* If you do not specify the height or width of a control, including a form group, Flash adjusts the dimensions, trying
    to fit the controls in the available space. For example, Flash often extends input boxes to the width of the containing
    control, if not otherwise specified.
 
@@ -5062,20 +5062,20 @@ Note: If you use the bind attribute, you cannot use the value attribute.
 
 The following rules and techniques apply to the binding formats:
 
-· The sourceName value in these formats is the name attribute of the tag that contains the element that you are
+* The sourceName value in these formats is the name attribute of the tag that contains the element that you are
    binding to.
 
-· You can bind to additional information about a selected item in a tree. Replace value with display to get the
+* You can bind to additional information about a selected item in a tree. Replace value with display to get the
    displayed value, or with path to get the path to the node in the tree.
 
-· You can bind to the displayed value of a cfselect item by replacing data with label.
+* You can bind to the displayed value of a cfselect item by replacing data with label.
 
-· If the user selects multiple items in a cfselect control, the selectedItem object contains the most recent selection,
+* If the user selects multiple items in a cfselect control, the selectedItem object contains the most recent selection,
    and a selectedItems array contains all selected items. You can access the individual values in the array, as in
    myTree.selectedItems[1].data. The selectedItems array exists only if the user selects multiple items; otherwise, it is
    undefined.
 
-· You can use ActionScript expressions in Flash bind statements.
+* You can use ActionScript expressions in Flash bind statements.
 
    The following example shows how to use the values from the firstName and lastName fields to construct an e-mail
    address. The user can change or replace this value with a typed entry.
@@ -5123,36 +5123,36 @@ the color used for highlighted and selected elements.
 
 You can select the following Flash skins:
 
-· haloBlue
+* haloBlue
 
-· haloGreen (the default)
+* haloGreen (the default)
 
-· haloOrange
+* haloOrange
 
-· haloSilver
+* haloSilver
 
 
 About Flash form styles
 The ColdFusion Flash form tags have a style attribute that lets you specify control characteristics using CSS syntax.
 You can specify a style attribute in the following tags:
 
-· cfform
+* cfform
 
-· cfformgroup
+* cfformgroup
 
-· cfcalendar
+* cfcalendar
 
-· cfformitem, types hrule and vrule
+* cfformitem, types hrule and vrule
 
-· cfgrid
+* cfgrid
 
-· cfinput
+* cfinput
 
-· cfselect
+* cfselect
 
-· cftextarea
+* cftextarea
 
-· cftree
+* cftree
 
    The attributes for the cfform and cfformgroup generally apply to all the form or form group's children.
 
@@ -5192,19 +5192,19 @@ You specify styles that take length or dimension values, including font sizes, i
 The fontSize style property lets you use a set of keywords in addition to numbered units. You can use the following
 keywords when you set the fontSize style property. The exact sizes are defined by the client browser.
 
-· xx-small
+* xx-small
 
-· x-small
+* x-small
 
-· small
+* small
 
-· medium
+* medium
 
-· large
+* large
 
-· x-large
+* x-large
 
-· xx-large
+* xx-large
 
    The following cfinput tag uses the style attribute with a fontSize keyword to specify the size of the text in the
    input box:
@@ -5349,11 +5349,11 @@ documents available in the Flash and Flex sections of LiveDocs at www.adobe.com/
 Using ActionScript code in CFML
 You can use ActionScript in the following attribute of tags in CFML Flash format forms:
 
-· Form and control events, such as the onSubmit attribute of the cfform tag, or the onChange and onClick
+* Form and control events, such as the onSubmit attribute of the cfform tag, or the onChange and onClick
    attributes of the cfinput tag. The attribute description on the tag reference pages in the CFML Reference list the
    event attributes.
 
-· Bind expressions, which you can use to set field values. For more information on binding data, see "Binding data
+* Bind expressions, which you can use to set field values. For more information on binding data, see "Binding data
    in Flash forms" on page 776.
 
    Your ActionScript code can be inline in the form attribute specification, you can make a call to a custom function
@@ -5394,15 +5394,15 @@ your Flash form controls.
 
 You can use the following custom functions in the ActionScript for all form controls to reset or submit the form:
 
-· resetForm()
+* resetForm()
 
-· submitForm()
+* submitForm()
 
 You can use the following custom functions in cfgrid tags only to insert and delete rows in the grid:
 
-· GridData.insertRow(gridName)
+* GridData.insertRow(gridName)
 
-· GridData.deleteRow(gridName)
+* GridData.deleteRow(gridName)
 
 The following example shows how you can use the two GridData functions to add custom buttons that add and delete
 rows from a Flash form. These buttons are equivalent to the buttons that ColdFusion creates if you specify
@@ -5482,11 +5482,11 @@ Minimizing form recompilation
 Flash forms are sent to the client as SWF files, which ColdFusion must compile from your CFML code. The following
 techniques can help limit how frequently ColdFusion must recompile a Flash form.
 
-· Only data must be dynamic. Whenever a variable name changes, or a form characteristic, such as an element width
+* Only data must be dynamic. Whenever a variable name changes, or a form characteristic, such as an element width
     or a label changes, the Flash output must be recompiled. If a data value changes, the output does not need to be
     recompiled.
 
-· Use cfformgroup type="repeater" if you must loop no more than ten times over no more than ten elements.
+* Use cfformgroup type="repeater" if you must loop no more than ten times over no more than ten elements.
     This tag does not require recompiling when the number of elements changes. It does have a processing overhead
     that increases with the number of loops and elements, however, so for large data sets or many elements, it is often
     more efficient not to use the repeater.
@@ -5502,10 +5502,10 @@ A Flash form can be reloaded multiple times if a user displays a page with a Fla
 the browser Back button to return to the page with the form. This behavior is common with search forms, login forms,
 and the like. When the user returns to the original page:
 
-· If the timeout value is 0, or the time-out period has expired, the data is no longer available, and ColdFusion returns
+* If the timeout value is 0, or the time-out period has expired, the data is no longer available, and ColdFusion returns
     a data-expired exception to the browser; in this case, the browser typically tells the user to reload the page.
 
-· If the time-out has not expired, the browser displays the original data.
+* If the time-out has not expired, the browser displays the original data.
 
     If your form data contains sensitive information, such as credit card numbers or social security numbers, leave the
     time-out set to 0. Otherwise, consider setting a time-out value that corresponds to a small number of minutes.
@@ -5562,10 +5562,10 @@ The role of the XSLT skin
 An XSLT skin and associated cascading style sheet (CSS) determine how an XML skinnable form is processed and
 displayed, as follows:
 
-· The XSLT skin tells ColdFusion how to process the XML, and typically converts it to HTML for display. The skin
+* The XSLT skin tells ColdFusion how to process the XML, and typically converts it to HTML for display. The skin
    specifies the CSS style sheet to use to format the output.
 
-· The CSS style sheet specifies style definitions that determine the appearance of the generated output.
+* The CSS style sheet specifies style definitions that determine the appearance of the generated output.
 
 XSLT skins give you extensive freedom in the generated output. They let you create a custom appearance for your
 forms, or even different appearances for different purposes. For example, you could use the same form in an intranet
@@ -5605,23 +5605,23 @@ the form as part of a larger form.
 ColdFusion XSL skins
 ColdFusion provides the following XSLT skins:
 
-· basic
+* basic
 
-· basiccss
+* basiccss
 
-· basiccss_top
+* basiccss_top
 
-· beige
+* beige
 
-· blue
+* blue
 
-· default
+* default
 
-· lightgray
+* lightgray
 
-· red
+* red
 
-· silver
+* silver
 
 The XSLT skin files are located in the cf_webroot\CFIDE\scripts\xsl directory, and the CSS files that they use for style
 definitions are located in the cf_webroot\CFIDE\scripts\css directory.
@@ -5685,7 +5685,7 @@ The specific attributes you can use and their meanings can depend on the skins.
 Using ColdFusion skins: The skins that are supplied with ColdFusion support the attributes that you can use with
 HTML forms. You can also use label attributes to provide labels for the following tags:
 
-· cfinput with type attribute values of text, button, password, and file
+* cfinput with type attribute values of text, button, password, and file
 
 
 
@@ -5697,11 +5697,11 @@ Requesting and Presenting Information
 
 
 
-· cfselect
+* cfselect
 
-· cfslider
+* cfslider
 
-· cftextarea
+* cftextarea
 
 Using other skins: If you use any other skin, some attributes are not supported, or the skin supports custom attributes.
 Get the information about the supported attributes from the XSLT skin developer.
@@ -5720,11 +5720,11 @@ skin must process the attributes to display the items.
 
 Using ColdFusion skins: The skins provided in ColdFusion support the following cfformitem types:
 
-· hrule
+* hrule
 
-· text
+* text
 
-· html
+* html
 
 The hrule type inserts an HTML hr tag, and the text type displays unformatted plain text.
 
@@ -5750,11 +5750,11 @@ process the resulting XML to affect the display.
 
 Using ColdFusion skins: The skins provided in ColdFusion support the following type attribute values:
 
-· horizontal
+* horizontal
 
-· vertical
+* vertical
 
-· fieldset
+* fieldset
 
 The horizontal and vertical types arrange their child tags in the specified direction and place a label to the left of
 the group of children. The following text from the Example: a simple skinnable form section shows how you could use
@@ -5928,11 +5928,11 @@ The XForms data model specifies the data that the form submits. It includes info
 that can submit data, including initial values and validation information. It does not contain information about
 cfformgroup or cfformitem tags. The data model consists of the following elements and their children:
 
-· One xf:instance element
+* One xf:instance element
 
-· One xf:submission element
+* One xf:submission element
 
-· One xf:bind element for each form control that can submit data
+* One xf:bind element for each form control that can submit data
 
 
 xf:instance element
@@ -6037,11 +6037,11 @@ cf:validate type="valiadationtype"              Data validation information.
                                                 and cf:trigger children. ColdFusion generates a cf:validate element for
                                                 each of the following:
 
-                                                ·  cfinput or cftextareavalidation attribute
+                                                *  cfinput or cftextareavalidation attribute
 
-                                                ·  cfinput or cftextarearange attribute
+                                                *  cfinput or cftextarearange attribute
 
-                                                ·  cfslider: the range and message attributes are specified by a
+                                                *  cfslider: the range and message attributes are specified by a
                                                    cf:validate type="range" element
 
 
@@ -6055,13 +6055,13 @@ cf:argument                                     Data validation specification.
                                                 Valid name values are as follows. Unless specified otherwise, the name is
                                                 identical to the corresponding CFML tag attribute name.
 
-                                                ·  max
+                                                *  max
 
-                                                ·  message
+                                                *  message
 
-                                                ·  min
+                                                *  min
 
-                                                ·  pattern
+                                                *  pattern
 
 
 cf:trigger                                      When to do the validation; specifies a form element validateAt attribute
@@ -6069,11 +6069,11 @@ cf:trigger                                      When to do the validation; speci
 (in the body of a cf:validate element)
                                                 Has one attribute, event, which can be one of the following:
 
-                                                ·  onBlur
+                                                *  onBlur
 
-                                                ·  onSubmit
+                                                *  onSubmit
 
-                                                ·  onServer
+                                                *  onServer
 
                                                 If a validateAt attribute specifies multiple validation triggers, the XML has
                                                 one cf:trigger element for each entry in the list.
@@ -6242,21 +6242,21 @@ Requesting and Presenting Information
 
  label                   Control label text. Specified by one of the following:
 
-                         · The CFML tag label attribute
+                         * The CFML tag label attribute
 
-                         · The value attribute of the radiobutton, radio, submit, and resetcfinput tags
+                         * The value attribute of the radiobutton, radio, submit, and resetcfinput tags
 
-                         · The tag body content of cfselectoption subtags,
+                         * The tag body content of cfselectoption subtags,
 
-                         · Not used for cfgrid and cftree tags.
+                         * Not used for cfgrid and cftree tags.
 
  controltype             Type of control. One of the following:
 
-                         · The cfinputtype attribute
+                         * The cfinputtype attribute
 
-                         ·  Select, slider, or textarea, for the cfselect, cfslider, or cftextarea tags, respectively.
+                         *  Select, slider, or textarea, for the cfselect, cfslider, or cftextarea tags, respectively.
 
-                         · Not used for cfgrid and cftree tags.
+                         * Not used for cfgrid and cftree tags.
 
  attribname              Name of a CFML tag attribute. There is a cf:attribute tag for each attribute specified in the CFML code that
                          does not otherwise have an entry in the XML.
@@ -6532,15 +6532,15 @@ The cfformgroup and cfformitem tags
 All cfformgroup tags and all cfformitem tags, except type="html" and type="text", generate xf:group
 elements. The following rules determine the element structure:
 
-· The CFML tag type attribute determines the xf:groupappearance attribute.
+* The CFML tag type attribute determines the xf:groupappearance attribute.
 
-· ColdFusion converts type attribute values to all-lowercase characters.
+* ColdFusion converts type attribute values to all-lowercase characters.
 
-· For cfformgroup tags only, the CFML label attribute determines the xf:grouplabel attribute.
+* For cfformgroup tags only, the CFML label attribute determines the xf:grouplabel attribute.
 
-· All other CFML attributes are placed in cf:attribute elements in a xf:extension element.
+* All other CFML attributes are placed in cf:attribute elements in a xf:extension element.
 
-· The cfformitem tags generate an xf:output element with the body text in a <![CDATA[ section.
+* The cfformitem tags generate an xf:output element with the body text in a <![CDATA[ section.
 
 The following example shows two cformitem tags, and the resulting XML:
 
@@ -6689,14 +6689,14 @@ You can create your own XSLT skins to process the XML that ColdFusion generates.
 and CSS programming. General information on writing XSLT transformations or CSS styles is not provided here.
 However, information about the following areas is provided:
 
-· How ColdFusion passes form attribute values to the XML file
+* How ColdFusion passes form attribute values to the XML file
 
-· How to extend XSLT skins that ColdFusion provides as templates
+* How to extend XSLT skins that ColdFusion provides as templates
 
-· Basic techniques for extending the basic.xsl file to support additional cfformgroup and cfformitem tag type
+* Basic techniques for extending the basic.xsl file to support additional cfformgroup and cfformitem tag type
    attributes
 
-· How to extend the ColdFusion CSS files to enhance form appearance.
+* How to extend the ColdFusion CSS files to enhance form appearance.
 
 
 XSLT skin file locations
@@ -6741,19 +6741,19 @@ Attribute and value passthrough
 ColdFusion passes form tag attributes or attribute values that it does not specifically process directly to the XML, as
 follows:
 
-· It converts cfformitem and cfformgrouptype attributes to xf:group element appearance attributes.
+* It converts cfformitem and cfformgrouptype attributes to xf:group element appearance attributes.
 
-· It passes the name and value of tag attributes that it does not recognize or process in cf:attribute elements.
+* It passes the name and value of tag attributes that it does not recognize or process in cf:attribute elements.
 
 This passthrough feature lets you create custom versions of any of the following items for your XSLT to process:
 
-· The cfformitem types, such as rules, spacers, or other display elements
+* The cfformitem types, such as rules, spacers, or other display elements
 
-· The cfgroup types, such as divided boxes or tabbed dialog boxes
+* The cfgroup types, such as divided boxes or tabbed dialog boxes
 
-· The custom cfinput types, such as a custom year chooser element
+* The custom cfinput types, such as a custom year chooser element
 
-· ColdFusion tag attributes, such as those used to control validation
+* ColdFusion tag attributes, such as those used to control validation
 
 
 Extending ColdFusion XSLT skins
@@ -6802,22 +6802,22 @@ HTML. For example, they do not support horizontal or vertical rules.
 The ColdFusion skin XSL files have several features that you can use when designing and developing your own
 transformation. They do the following:
 
-· Provide an overall structure and initial templates for implementing custom transformations.
+* Provide an overall structure and initial templates for implementing custom transformations.
 
-· Show how you can handle the various elements in the ColdFusion-generated XML.
+* Show how you can handle the various elements in the ColdFusion-generated XML.
 
-· Use a structure of included files that can form a template for your XSLT code.
+* Use a structure of included files that can form a template for your XSLT code.
 
-· The base XSL files include a separate file, _cfformvalidation.xsl, with complete code for generating the hidden fields
+* The base XSL files include a separate file, _cfformvalidation.xsl, with complete code for generating the hidden fields
    required for ColdFusion onServer validation and the JavaScript for performing ColdFusion onSubmit and onBlur
    validation. You can include this file without modification to do ColdFusion validation in your XSLT template, or
    you can change it to add other forms of validation or to change the validation rules.
 
-· The base XSL files include files, that implement several form groups, laying out the child tags and applying a label
+* The base XSL files include files, that implement several form groups, laying out the child tags and applying a label
    to the group. These files can serve as templates for implementing additional form group types or you can expand
    them to provide more sophisticated horizontal and vertical form groups.
 
-· You can add custom cfformgroup and cfformitemtype attributes by including additional XSL files.
+* You can add custom cfformgroup and cfformitemtype attributes by including additional XSL files.
 
 
 Extending basic.xsl cfformgroup and cfformitem support
@@ -6904,13 +6904,13 @@ About Ajax and ColdFusion user interface features
 Ajax (Asynchronous JavaScript and XML) is a set of web technologies for creating interactive web applications. Ajax
 applications typically combine:
 
-· HTML and CSS for formatting and displaying information.
+* HTML and CSS for formatting and displaying information.
 
-· JavaScript for client-side dynamic scripting
+* JavaScript for client-side dynamic scripting
 
-· Asynchronous communication with a server using the XMLHttpRequest function.
+* Asynchronous communication with a server using the XMLHttpRequest function.
 
-· XML or JSON (JavaScript Object Notation) as a technique for serializing and transferring data between the sever
+* XML or JSON (JavaScript Object Notation) as a technique for serializing and transferring data between the sever
     and the client.
 
 ColdFusion provides many tools that simplify using Ajax technologies for dynamic applications. By using ColdFusion
@@ -6920,9 +6920,9 @@ tags and functions, you can easily create complex Ajax applications.
 ColdFusion Ajax features
 ColdFusion provides two types of Ajax features:
 
-· Data and development features
+* Data and development features
 
-· User interface features
+* User interface features
 
 
 
@@ -6941,12 +6941,12 @@ provide dynamic data. They include many features that you can use with other Aja
 
 The following data and development features are important for use with form and layout tags:
 
-· ColdFusion supports data binding in many tags. Binding allows form and display tags to dynamically display
+* ColdFusion supports data binding in many tags. Binding allows form and display tags to dynamically display
    information based on form input. In the simplest application, you display form data directly in other form fields.
    But usually, you pass form field data as parameters to CFC or JavaScript functions or CFM pages, and use the results
    to control the display.
 
-· The cfajaximport tag specifies the location of the JavaScript and CSS files that a ColdFusion page imports or to
+* The cfajaximport tag specifies the location of the JavaScript and CSS files that a ColdFusion page imports or to
    selectively import files required by specific tags. The ability to change the file location lets you support a wide range
    of configurations and use advanced techniques, such as application-specific styles.
 
@@ -6958,17 +6958,17 @@ User Interface tags and features
 Several ColdFusion user interface elements incorporate Ajax features. The tags and tag-attribute combinations can be
 divided into the following categories:
 
-· Container tags that lay out or display contents
+* Container tags that lay out or display contents
 
-· File management tags that handle files
+* File management tags that handle files
 
-· Forms tags that dynamically display data
+* Forms tags that dynamically display data
 
-· A menu tag that lets you create menu bars and pull-down menus
+* A menu tag that lets you create menu bars and pull-down menus
 
-· User assistance features that provide tool tips and form completion
+* User assistance features that provide tool tips and form completion
 
-· Four other tags for using geographical maps, progress bar, media player, and message box.
+* Four other tags for using geographical maps, progress bar, media player, and message box.
 
 The following table lists the basic tags and attributes that display the Ajax-based features. For information on
 additional forms-specific features, see "Using Ajax form controls and features" on page 820.
@@ -7064,9 +7064,9 @@ selections in Spry data sets.
 
 ColdFusion Ajax user interface controls and features can be divided into two major categories:
 
-· Display layout
+* Display layout
 
-· Data interaction
+* Data interaction
 
 Display layout controls include the cflayout, cfpod, and cfwindow controls. Some of the data interaction features
 include the HTML cfgrid control, the cfmenu control, and dynamic autosuggest lists for text input controls. Most
@@ -7093,13 +7093,13 @@ complex ways.
 Controlling Ajax user interface layout
 The following layout tags let you dynamically control the display:
 
-· cfdiv
+* cfdiv
 
-· cflayout
+* cflayout
 
-· cfpod
+* cfpod
 
-· cfwindow
+* cfwindow
 
 For information about how you can use these tags to submit form contents asynchronously, see "Using Ajax containers
 for form submission" on page 820.
@@ -7175,14 +7175,14 @@ Using layouts
 The cflayout tag controls the appearance and arrangement of one or more child cflayoutarea regions. The
 cflayoutarea regions contain display elements and can be arranged in one of the following ways:
 
-· Horizontally or vertically.
+* Horizontally or vertically.
 
-· In a free-form bordered grid (panel layout) with up to five regions: top, bottom, left. right, and center. You can
+* In a free-form bordered grid (panel layout) with up to five regions: top, bottom, left. right, and center. You can
    optionally configure the layout so that users can resize or collapse any or all of the regions, except the center region.
    The center region grows or shrinks to take up any space that other regions do not use. You can also dynamically
    show or hide individual regions, or let users collapse, expand, or close regions.
 
-· As a tabbed display, where selecting a tab changes the display region to show the contents of the tab's layout area.
+* As a tabbed display, where selecting a tab changes the display region to show the contents of the tab's layout area.
    You can dynamically show and hide, and enable and disable tabs, and optionally let users close tabs.
 
 You can configure a layout area to have scroll bars all the time, only when the area content exceeds the available screen
@@ -7380,9 +7380,9 @@ Partly Cloudy, 76 degrees
 Using pop-up windows
 ColdFusion HTML pop-up windows have the following characteristics:
 
-· They have title bars
+* They have title bars
 
-· They float over the browser window and can be placed at an arbitrary location over the window.
+* They float over the browser window and can be placed at an arbitrary location over the window.
 
 
 
@@ -7395,24 +7395,24 @@ Requesting and Presenting Information
 
 
 
-· They can be modal (users cannot interact with the main window when the pop-up window is displayed) or non-
+* They can be modal (users cannot interact with the main window when the pop-up window is displayed) or non-
   modal (users can interact with both windows).
 
-· You can specify that the user can drag, close, or resize the window.
+* You can specify that the user can drag, close, or resize the window.
 
-· You can create and show a window independently. After you create the window, you can use JavaScript functions
+* You can create and show a window independently. After you create the window, you can use JavaScript functions
   to show and hide it multiple times without having to create it again.
 
 
 Display and hide windows
 You display a window in the following ways:
 
-· By using a ColdFusion cfwindow tag with an initShow attribute value of to create and show the window.
+* By using a ColdFusion cfwindow tag with an initShow attribute value of to create and show the window.
 
-· By using a ColdFusion cfwindow tag with an initShow attribute value of false and calling the
+* By using a ColdFusion cfwindow tag with an initShow attribute value of false and calling the
   ColdFusion.Window.show JavaScript function to display it.
 
-· By using ColdFusion.Window.create and ColdFusion.Window.show JavaScript functions.
+* By using ColdFusion.Window.create and ColdFusion.Window.show JavaScript functions.
 
 You can hide a window that is currently showing by calling the ColdFusion.Window.hide function. You can use the
 ColdFusion.Window.onShow and ColdFusion.Window.onhide functions to specify JavaScript functions to run
@@ -7571,10 +7571,10 @@ type="button"/>
 Control container contents
 ColdFusion provides a variety of ways to set and change container tag contents:
 
-· You can use bind expressions in the container tag source (or for cfdiv, bind) attribute. The container then
+* You can use bind expressions in the container tag source (or for cfdiv, bind) attribute. The container then
   dynamically updates any time a bound control changes.
 
-· You can call the ColdFuson.navigate function to change the container body to be the contents returned by a
+* You can call the ColdFuson.navigate function to change the container body to be the contents returned by a
   specified URL. This function lets you specify a callback handler to do additional processing after the new content
   loads, and also lets you specify an error handler.
 
@@ -7593,7 +7593,7 @@ Requesting and Presenting Information
    to switch it back to normal once the navigate completes. Similarly, if a pod is shows pages from a book, the callback
    handler could update a page number in a separate field once a page loads
 
-· You can use the special controlName_body variable to access and change the body contents for cfpod and
+* You can use the special controlName_body variable to access and change the body contents for cfpod and
    cfwindow controls. For example, you can use the controlName_body.innerHTML property to set the body HTML.
    For cfpod and cfwindow tags, you can also use the controlName_title to get or set the title bar contents of the
    control.
@@ -7608,13 +7608,13 @@ The following example shows how you can use various techniques to change contain
 page and a second windowsource.cfm page with text that appears in a main page window when you click a button. The
 main page has a cfpod control, two cfwindow controls, and the following buttons:
 
-· The "Simple navigate" button calls a ColdFusion.navigate function to change the contents of the second
+* The "Simple navigate" button calls a ColdFusion.navigate function to change the contents of the second
    window.
 
-· The "Change w2 body & title" button replaces the second window's body and title innerHTML values directly to
+* The "Change w2 body & title" button replaces the second window's body and title innerHTML values directly to
    specific strings.
 
-· The "Change pod body" button changes the pod body innerHTML to the value of the second window's title
+* The "Change pod body" button changes the pod body innerHTML to the value of the second window's title
    innerHTML.
 
 The following example shows the main page:
@@ -7701,27 +7701,27 @@ The cfmenu and cfmenuitem tags let you create vertical menus and horizontal tool
 
 
 Define menus and toolbars
-· Use a single cfmenu tag to define the general menu characteristics.
+* Use a single cfmenu tag to define the general menu characteristics.
 
-· Create a horizontal (toolbar) menu or vertical menu by specifying a cfmenutype attribute value of horizontal or
+* Create a horizontal (toolbar) menu or vertical menu by specifying a cfmenutype attribute value of horizontal or
   vertical.
 
-· Menus can have submenus, but only the top menu can be horizontal. All children of a horizontal menu are vertical.
+* Menus can have submenus, but only the top menu can be horizontal. All children of a horizontal menu are vertical.
 
-· The top-level menu shows initially, a submenu shows when the user moves the mouse over the menu root in the
+* The top-level menu shows initially, a submenu shows when the user moves the mouse over the menu root in the
   parent menu.
 
-· Use cfmenuitem tags to specify individual menu items.
+* Use cfmenuitem tags to specify individual menu items.
 
-· To create submenus, nest cfmenuitem tags. The parent tag becomes the root of the submenu.
+* To create submenus, nest cfmenuitem tags. The parent tag becomes the root of the submenu.
 
-· All cfmenuitem tags, except tags for dividers, must have a display attribute, which defines the text to show on the
+* All cfmenuitem tags, except tags for dividers, must have a display attribute, which defines the text to show on the
   menu item, and can optionally have an image attribute.
 
-· A horizontal menu has dividers between all items. You place dividers in vertical menus by specifying a cfmenuitem
+* A horizontal menu has dividers between all items. You place dividers in vertical menus by specifying a cfmenuitem
   tag with a divider attribute.
 
-· To make a menu item active, specify a href attribute with a URL or a JavaScript function to call when the user clicks
+* To make a menu item active, specify a href attribute with a URL or a JavaScript function to call when the user clicks
   the menu item.
 
 
@@ -7834,10 +7834,10 @@ In addition to these styles, consider any style-related attributes, such as bgco
 
 When you design your menu, keep in mind the following issues:
 
-· Keep font sizes at 20 pixels or smaller. Larger sizes can result in menu text in vertical menus exceeding the menu
+* Keep font sizes at 20 pixels or smaller. Larger sizes can result in menu text in vertical menus exceeding the menu
    boundaries.
 
-· Consider how the style attributes interact. Because each menu and submenu consists of a surrounding menu area
+* Consider how the style attributes interact. Because each menu and submenu consists of a surrounding menu area
    and individual child items, be careful when you choose background colors. For example, if you specify different
    background-color styles in the cfmenu tag's menuStyle and childStyle attributes, the menu items are one color
    and the surrounding menu area are a different color.
@@ -7858,14 +7858,14 @@ The cffileupload tag lets you select multiple files and upload them to a server.
 Working with the cffileupload
 The cffileupload tag displays a dialog that lets you upload multiple files. The following are the file upload features:
 
-· Uses callback and error handlers that lets provides control over file upload process after upload completion or if
+* Uses callback and error handlers that lets provides control over file upload process after upload completion or if
    errors occur.
 
-· Lets you style the file upload control
+* Lets you style the file upload control
 
-· Provides option to stop or continue with upload in case of errors
+* Provides option to stop or continue with upload in case of errors
 
-· Provides option to send custom response to callback and error handlers
+* Provides option to send custom response to callback and error handlers
 
 
 
@@ -7958,22 +7958,22 @@ nameconflict="makeunique"> --->
 Using Ajax form controls and features
 ColdFusion HTML forms and controls provide the following Ajax-based features:
 
-· The cfgrid, cfinput, cfselect, cftextarea, and cftree controls support binding to get control contents.
+* The cfgrid, cfinput, cfselect, cftextarea, and cftree controls support binding to get control contents.
 
-· ColdFusion functions support asynchronous submission of forms without refreshing the entire page. When a form
+* ColdFusion functions support asynchronous submission of forms without refreshing the entire page. When a form
   is in an Ajax container control, it is done automatically. Also, the ColdFusion.Ajax.SubmitForm JavaScript
   function and Ajax proxy setForm function support manual asynchronous submissions.
 
-· The cfgrid and cftree tags provide HTML grids and trees that do not require a Java applet or Flash.
+* The cfgrid and cftree tags provide HTML grids and trees that do not require a Java applet or Flash.
 
-· The cftextarea control has a rich text editor option. The text editor is configurable.
+* The cftextarea control has a rich text editor option. The text editor is configurable.
 
-· The cfinput tag supports a datefield type with an Ajax-based pop-up calendar from which user can select the date.
+* The cfinput tag supports a datefield type with an Ajax-based pop-up calendar from which user can select the date.
 
-· The cfinput tag with text type supports an autosuggest attribute that lets you dynamically supply a drop-down
+* The cfinput tag with text type supports an autosuggest attribute that lets you dynamically supply a drop-down
   list of field completions based on the current user input.
 
-· The cfinput, cfselect, and cftextarea tags support a tooltip attribute that specifies a pop-up tool tip to
+* The cfinput, cfselect, and cftextarea tags support a tooltip attribute that specifies a pop-up tool tip to
   display when the user moves the mouse over the control. The cftooltip tag displays a tool over any region of a
   page, not just a form control.
 
@@ -8042,21 +8042,21 @@ of fields in a form to a CFC function, which can then do the necessary processin
 
 When you use the SetForm function, the following rules apply to the arguments in the called CFC function:
 
-· The function does not need to specify the form fields in cfargument tags, and the function gets the field values
+* The function does not need to specify the form fields in cfargument tags, and the function gets the field values
    passed by name.
 
-· Form fields that have the same names as CFC arguments override the CFC argument values.
+* Form fields that have the same names as CFC arguments override the CFC argument values.
 
-· If you do not specify form fields in the cfargument tags, they do not necessarily follow any declared arguments,
+* If you do not specify form fields in the cfargument tags, they do not necessarily follow any declared arguments,
    when you use positional (array) notation to access them in the arguments structure.
 
-· The arguments scope in the CFC function includes two fields that ColdFusion uses to control its behavior. These
+* The arguments scope in the CFC function includes two fields that ColdFusion uses to control its behavior. These
    fields are intended for internal use, and their names might change in future releases. Both field values are set to
    true:
 
-    · _CF_NODEBUG tells ColdFusion not to return debugging output in the call response.
+    * _CF_NODEBUG tells ColdFusion not to return debugging output in the call response.
 
-    · _CF_NOCACHE tells ColdFusion to send a no cache header on the response, which prevents the browser from
+    * _CF_NOCACHE tells ColdFusion to send a no cache header on the response, which prevents the browser from
        caching the response and ensures that every Ajax request results in a network call.
 
 
@@ -8188,9 +8188,9 @@ function does not support uploading a file attachment to the form.
 When you use this function, you pass it the name of the form to submit and the URL of the page that processes the
 form. You can also specify the following optional parameters:
 
-· A callback function that handles the returned results
+* A callback function that handles the returned results
 
-· An error handler that takes two parameters, an HTTP error code and a message
+* An error handler that takes two parameters, an HTTP error code and a message
 
 
 
@@ -8202,9 +8202,9 @@ Requesting and Presenting Information
 
 
 
-· The HTTP method (by default, POST)
+* The HTTP method (by default, POST)
 
-· Whether to submit the form asynchronously (by default, true)
+* Whether to submit the form asynchronously (by default, true)
 
 The following proof of concept example uses the ColdFusion.Ajax.submitForm function to submit two form fields
 to an asyncFormHandler.cfm page, which simply echoes the form values. The callback handler displays an alert with
@@ -8288,11 +8288,11 @@ grids, all data is initially available.
 In HTML mode, if you move the mouse over a column heading, a down arrow button appears. Clicking the button
 displays a list with the following options:
 
-· Sort the grid in ascending or descending order based on the column's content.
+* Sort the grid in ascending or descending order based on the column's content.
 
-· Select the columns to display.
+* Select the columns to display.
 
-· If the grid has a groupfield attribute: turn grouping off and on and group by the column value.
+* If the grid has a groupfield attribute: turn grouping off and on and group by the column value.
 
 If you specify selectMode="edit" for an HTML grid, the grid displays Insert, Save, Cancel, and Delete buttons to
 the bottom bar. The Insert button opens a new editable row. The Save button commits any changes to the bind source.
@@ -8379,14 +8379,14 @@ a structure, and then use the serializeJSON function to convert the structure in
 
 If you manually create a JavaScript object or its JSON representation, it must have two top-level keys:
 
-· TOTALROWCOUNT: The total number of rows in the query data set being returned. This value is the total number of
+* TOTALROWCOUNT: The total number of rows in the query data set being returned. This value is the total number of
     rows of data in all pages in the grid, and not the number of rows in the current page.
 
-· QUERY: The contents of the query being returned. The QUERY value must also be an object with two keys:
+* QUERY: The contents of the query being returned. The QUERY value must also be an object with two keys:
 
-    · COLUMNS: An array of the column names.
+    * COLUMNS: An array of the column names.
 
-    · DATA: A two-dimensional array, where the first dimension corresponds to the rows and the second dimension
+    * DATA: A two-dimensional array, where the first dimension corresponds to the rows and the second dimension
        corresponds to the field values, in the same order as the COLUMNS array.
 
 Note: If a CFC manually creates a return structure, the QUERY value can be a ColdFusion query object; ColdFusion
@@ -8557,9 +8557,9 @@ Requesting and Presenting Information
 
 To update or delete data dynamically, do the following:
 
-· Specify selectmode="edit" in the cfgrid tag. This lets the user edit the grid.
+* Specify selectmode="edit" in the cfgrid tag. This lets the user edit the grid.
 
-· Specify an onChange attribute in the cfgrid tag. The attribute must use a bind expression to specify a CFC method,
+* Specify an onChange attribute in the cfgrid tag. The attribute must use a bind expression to specify a CFC method,
    JavaScript function, or URL of a page that updates the data source. The bind expression has the same format as the
    bind expression described in "Dynamically filling form data" on page 825; however, it must take the following bind
    parameters that the grid automatically passes. These parameters send information about the grid and its state to the
@@ -8875,14 +8875,14 @@ For more information about binding and bind parameters, see "Binding data to for
 
 Bind expressions in trees work in the following ways:
 
-· If you use a bind expression, the cftree tag can have only a single cftreeitem tag. Therefore, the function or URL
+* If you use a bind expression, the cftree tag can have only a single cftreeitem tag. Therefore, the function or URL
    called by the bind expression must be able to populate all levels of the tree.
 
-· When a tree item expands, the CFC or JavaScript function or active page specified by the bind attribute returns an
+* When a tree item expands, the CFC or JavaScript function or active page specified by the bind attribute returns an
    array with the values for the child nodes of the item. The dynamic tree code on the client constructs the child items
    by using these values.
 
-· When a control to which the tree is bound generates an event that the tree is listening for, the tree is refreshed. For
+* When a control to which the tree is bound generates an event that the tree is listening for, the tree is refreshed. For
    example, if the tree uses a bind expression that includes a select box as a bind parameter, the tree collapses to the
    root nodes when the selected value in the select box changes.
 
@@ -8939,19 +8939,19 @@ Each structure in the array of structures or objects defines the contents and ap
 Each structure must have a VALUE field, and can have the following fields. Except for LEAFNODE, these structure
 keys correspond to cftreeitem attributes.
 
-· DISPLAY
+* DISPLAY
 
-· EXPAND
+* EXPAND
 
-· HREF
+* HREF
 
-· IMG
+* IMG
 
-· IMGOPEN
+* IMGOPEN
 
-· LEAFNODE
+* LEAFNODE
 
-· TARGET
+* TARGET
 
 Note: If a CFC does not return a value field, you do not get an error, but the tree does not work properly.
 
@@ -9198,9 +9198,9 @@ Requesting and Presenting Information
 Binding other controls to a tree
 ColdFusion tags that use bind expressions can bind to the selected node of a tree by using the following formats:
 
-· {[form:]tree.node} retrieves the value of the selected tree node.
+* {[form:]tree.node} retrieves the value of the selected tree node.
 
-· {[form:]tree.path} retrieves the path of the selected tree node. If the completePath attribute value is true, the
+* {[form:]tree.path} retrieves the path of the selected tree node. If the completePath attribute value is true, the
    bound path includes the root node.
 
 The bind expression is evaluated each time a select event occurs on an item in the tree. If you specify any other event
@@ -9275,9 +9275,9 @@ techniques. For more detailed information, see the FCKEditor website at http://w
 Defining custom toolbars
 You can use the following techniques to control the appearance of the toolbar:
 
-· Specify the toolbar name in the toolbar attribute
+* Specify the toolbar name in the toolbar attribute
 
-· Create custom toolbars in the fckconfig.js file.
+* Create custom toolbars in the fckconfig.js file.
 
 The editor has a single toolbar consisting of a set of active icons and fields, and separators. The toolbar attribute lets
 you select the toolbar configuration. The attribute value specifies the name of a toolbar set, which you define in a
@@ -9317,22 +9317,22 @@ Requesting and Presenting Information
 
 Follow these rules when you define a toolbar:
 
-· Start the definition with FCKConfig.ToolbarSets.
+* Start the definition with FCKConfig.ToolbarSets.
 
-· Specify the toolbar name in double quotation marks and brackets ([""]). Use this name, case correct, in the
+* Specify the toolbar name in double quotation marks and brackets ([""]). Use this name, case correct, in the
     cftextarea tag toolbar attribute.
 
-· Follow the toolbar name with an equal sign (=).
+* Follow the toolbar name with an equal sign (=).
 
-· Place all the toolbar controls inside a set of brackets, and follow the definition with a semicolon (;).
+* Place all the toolbar controls inside a set of brackets, and follow the definition with a semicolon (;).
 
-· Group controls in brackets.
+* Group controls in brackets.
 
-· Place each entry in single quotation marks (') and separate the entries with commas (,).
+* Place each entry in single quotation marks (') and separate the entries with commas (,).
 
-· Use the hyphen (-) character to specify a separator.
+* Use the hyphen (-) character to specify a separator.
 
-· Use a forward slash (/) character to start a new row.
+* Use a forward slash (/) character to start a new row.
 
 For a complete list of the valid toolbar entries, see the Default configuration in fckconfig.js.
 
@@ -9342,11 +9342,11 @@ You can add custom styles that users choose in the Styles selector and apply to 
 add a Style element to /CFIDE/scripts/ajax/FCKEditor/fckstyles.xml. The Style XML element has the following
 format:
 
-· The name attribute specifies the name that appears in the Style selector.
+* The name attribute specifies the name that appears in the Style selector.
 
-· The element attribute specifies the HTML element that surrounds the text.
+* The element attribute specifies the HTML element that surrounds the text.
 
-· Each Attribute child element defines the name and value of an attribute of the HTML tag.
+* Each Attribute child element defines the name and value of an attribute of the HTML tag.
 
 For example, the following definition creates a style that makes the selected text bold and underlined:
 
@@ -9413,15 +9413,15 @@ cf_webRoot/CFIDE/scripts/ajax/FCKeditor/editor/skins directory. The name of this
 use to specify the skin in the skin attribute. The custom skin directory must contain an images subdirectory and have
 the following files:
 
-· fck_editor.css: Defines the main interface, including the toolbar, its items (like, buttons, panels) and the context menu.
+* fck_editor.css: Defines the main interface, including the toolbar, its items (like, buttons, panels) and the context menu.
 
-· fck_dialog.css: Defines the basic structure of dialog boxes (standard for all dialogs).
+* fck_dialog.css: Defines the basic structure of dialog boxes (standard for all dialogs).
 
-· fck_strip.gif: Defines the Default toolbar buttons and context menu icons. It is a vertical image that contains all
+* fck_strip.gif: Defines the Default toolbar buttons and context menu icons. It is a vertical image that contains all
    icons placed one above the other. Each icon must correspond to a 16x16 pixels image. You can add custom images
    to this strip.
 
-· images/toolbar.buttonarrow.gif: Defines the small arrow image used in the toolbar combos and panel buttons.
+* images/toolbar.buttonarrow.gif: Defines the small arrow image used in the toolbar combos and panel buttons.
 
 Place all other images used by the skin (that are specified in the CSS files) in the images subfolder.
 
@@ -9433,22 +9433,22 @@ Using the datefield input control
 The HTML cfinput control with a type value of datefield lets users select dates from a pop-up calendar or enter
 the dates directly in the input box. When you use the control, keep in mind the following considerations:
 
-· To correctly display label text next to the control in both Internet Explorer and Firefox, surround the label text in
+* To correctly display label text next to the control in both Internet Explorer and Firefox, surround the label text in
    a <div style="float:left;"> tag and place three <br> tags between each line.
 
-· Consider specifying an overflow attribute with a value of visible in the cflayoutarea tag so that if the pop-up
+* Consider specifying an overflow attribute with a value of visible in the cflayoutarea tag so that if the pop-up
    calendar exceeds the layout area boundaries, it appears completely.
 
-· If you use a mask attribute to control the date format, it does not prevent the user from entering dates that do not
+* If you use a mask attribute to control the date format, it does not prevent the user from entering dates that do not
    conform to the mask. The mask attribute determines the format for dates that users select in the pop-up calendar.
    Also, if the user types a date in the field and opens the pop-up calendar, the calendar displays the selected date only
    if the entered text follows the mask pattern. If you do not specify a mask attribute, the pop-up only matches the
    default matching pattern.
 
-· If the user types a date with a month name or abbreviation in the control, instead of picking a date from the
+* If the user types a date with a month name or abbreviation in the control, instead of picking a date from the
    calendar, the selected date appears in the pop-up calendar only if both of the following conditions are true:
 
-    · The month position and name format match the mask pattern.
+    * The month position and name format match the mask pattern.
 
 
 
@@ -9461,13 +9461,13 @@ Requesting and Presenting Information
 
 
 
-   · The month name matches, case correct, the month names specified by the monthNames attribute, or, for an mmm
+   * The month name matches, case correct, the month names specified by the monthNames attribute, or, for an mmm
       mask, their three-letter abbreviations.
 
-· If the date mask specifies yy for the years, the pop-up calendar uses dates in the range 1951-2050, so if the user
+* If the date mask specifies yy for the years, the pop-up calendar uses dates in the range 1951-2050, so if the user
   enters 3/3/49 in the text field, the calendar displays March 3, 2049.
 
-· If the user enters invalid numbers in a date, the pop-up calendar calculates a valid date that corresponds to the
+* If the user enters invalid numbers in a date, the pop-up calendar calculates a valid date that corresponds to the
   invalid input. For example, if the user enters 32/13/2007 for a calendar with a dd/mm/yyyy mask, the pop-up
   calendar displays 01/02/2008.
 
@@ -9791,15 +9791,15 @@ Using geographical maps
 The cfmap tag lets you embed a geographical map within your ColdFusion page. The following are the supported map
 types:
 
-· earth
+* earth
 
-· terrain
+* terrain
 
-· satellite
+* satellite
 
-· hybrid
+* hybrid
 
-· map (default)
+* map (default)
 
 
 Using the marker window
@@ -10003,38 +10003,38 @@ Currently, ColdFusion supports only embedding of Google map. To generate a map, 
 key, and specify the latitude and longitude of the location, or the address of the location. The Google map API key can
 be specified in the following ways:
 
-· Using the cfajaximport tag. You specify the map API key in the params attribute as follows:
+* Using the cfajaximport tag. You specify the map API key in the params attribute as follows:
 
    <cfajaximport params="#{googlemapkey='Map API Key'}#"
 
-· Using Application.cfc as follows:
+* Using Application.cfc as follows:
 
    <cfset this.googlemapkey="Map API Key">
 
-· Using the Settings page in the ColdFusion Administrator. Specify the map API key in the Google Map Key field.
+* Using the Settings page in the ColdFusion Administrator. Specify the map API key in the Google Map Key field.
    You can also specify the map API key in runtime.cfc.
 
 
 Styling markers
 You can specify the following:
 
-· Custom marker icon: Specify the path to the icon using the markericon attribute. Ensure that you specify an image
+* Custom marker icon: Specify the path to the icon using the markericon attribute. Ensure that you specify an image
    of appropriate size.
 
-· Marker icon color: Use the markercolor attribute. You can specify a color of your preference only for the default
+* Marker icon color: Use the markercolor attribute. You can specify a color of your preference only for the default
    icon and not for others.
 
-· Map title: Use the title attribute.
+* Map title: Use the title attribute.
 
 
 Using the cfprogressbar tag
 The cfprogressbar tag has the following characteristics:
 
-· Automatically runs the progress bar for a duration that you specify.
+* Automatically runs the progress bar for a duration that you specify.
 
-· Dynamically loads data using bind expressions
+* Dynamically loads data using bind expressions
 
-· Lets styling of the progress bar
+* Lets styling of the progress bar
 
 
 
@@ -10047,10 +10047,10 @@ Requesting and Presenting Information
 
 
 
-· Uses callback and error handlers that give control to the users after the progress bar completes processing or if it
+* Uses callback and error handlers that give control to the users after the progress bar completes processing or if it
   encounters any exceptions.
 
-· Lets programmatic control over progress bar using JavaScript APIs.
+* Lets programmatic control over progress bar using JavaScript APIs.
 
 
 Progress bar modes
@@ -10354,11 +10354,11 @@ The sleep function in the following CFC provides sleep functionality in the Java
 Styling the progress bar
 The cfprogressbar has style attribute that lets you decide:
 
-· Background color of the progress bar
+* Background color of the progress bar
 
-· Color of the progress message
+* Color of the progress message
 
-· Color of the progress indicator
+* Color of the progress indicator
 
 
 
@@ -10471,13 +10471,13 @@ About ColdFusion Ajax data and development features
 Ajax (Asynchronous JavaScript and XML) is a set of web technologies for creating interactive web applications. Ajax
 applications typically combine:
 
-· HTML and CSS for formatting and displaying information.
+* HTML and CSS for formatting and displaying information.
 
-· JavaScript for client-side dynamic scripting
+* JavaScript for client-side dynamic scripting
 
-· Asynchronous communication with a server using the XMLHttpRequest function.
+* Asynchronous communication with a server using the XMLHttpRequest function.
 
-· XML or JSON (JavaScript Object Notation) as a technique for serializing and transferring data between the sever
+* XML or JSON (JavaScript Object Notation) as a technique for serializing and transferring data between the sever
    and the client.
 
 ColdFusion provides many tools that simplify using Ajax technologies for dynamic applications. By using ColdFusion
@@ -10502,58 +10502,58 @@ Data and development features
 ColdFusion data and development features help you develop effective Ajax applications that use ColdFusion to
 provide dynamic data. They include many features that you can use with other Ajax frameworks, including Spry.
 
-· ColdFusion supports data binding in many tags. Binding allows an application that uses form and display tags, such
+* ColdFusion supports data binding in many tags. Binding allows an application that uses form and display tags, such
   as cfselect and cfwindow, to dynamically display information based on form input. In the simplest application,
   you display form data directly in other form fields, but usually you pass form field data as parameters to CFC or
   JavaScript functions or URLs and use the results to control the display. Data binding uses events to automatically
   update the display, typically when the bound input data changes. You can also use the
   ColdFusion.Ajax.submitForm JavaScript function to get the current value of any bindable element.
 
-· The cfajaxproxy tag creates a JavaScript proxy that represents a CFC on the server. It manages the
+* The cfajaxproxy tag creates a JavaScript proxy that represents a CFC on the server. It manages the
   communication between the client and server, and provides several functions to simplify and manage handling the
   communication and its results. This tag provides access to all remote functions in a CFC. It also lets applications,
   including applications that use Ajax frameworks or widget sets such as Dojo or Backbase, easily access data from
   ColdFusion servers.
 
-· The cfsprydataset tag lets you use bind expressions to dynamically create and update Adobe Spry data sets.
+* The cfsprydataset tag lets you use bind expressions to dynamically create and update Adobe Spry data sets.
   Applications that use Spry framework elements, such as dynamic regions, use this tag to populate the Spry elements
   with information based on ColdFusion control input. This feature lets you easily intermix Spry and ColdFusion
   controls.
 
-· The cfajaximport tag specifies the location of the JavaScript and CSS files that a ColdFusion page imports. You
+* The cfajaximport tag specifies the location of the JavaScript and CSS files that a ColdFusion page imports. You
   also use this tag to selectively import files required by specific Ajax-based tags and functions. The ability to change
   the file location lets you support a wide range of configurations and use advanced techniques, such as application-
   specific styles. Although ColdFusion automatically determines and imports the required files, sometimes you must
   manually specify the information.
 
-· ColdFusion provides several CFML functions that let you create and consume JSON format data on the server and
+* ColdFusion provides several CFML functions that let you create and consume JSON format data on the server and
   let you prepare data for use in HTML cfgrid tags.
 
-· You display a floating logging window that shows client-side logging and debugging information. ColdFusion Ajax
+* You display a floating logging window that shows client-side logging and debugging information. ColdFusion Ajax
   features display information and error messages in this window, and several logging tags let you display additional
   information, including the structure of complex JavaScript variables.
 
 
 User interface features
-· Ajax-based HTML controls including the following:
+* Ajax-based HTML controls including the following:
 
-   · Tree
+   * Tree
 
-   · Grid
+   * Grid
 
-   · Rich text editor
+   * Rich text editor
 
-   · Date field
+   * Date field
 
-   · Autosuggest text input
+   * Autosuggest text input
 
-· Pop-up menus and menu bars.
+* Pop-up menus and menu bars.
 
-· Container tags that provide bordered, box, and tabbed layouts, pop-up windows, and pod regions.
+* Container tags that provide bordered, box, and tabbed layouts, pop-up windows, and pod regions.
 
-· A cfdiv container tag that enables asynchronous form submission and binding in HTML div and other regions.
+* A cfdiv container tag that enables asynchronous form submission and binding in HTML div and other regions.
 
-· Tool tips for specific controls and HTML regions.
+* Tool tips for specific controls and HTML regions.
 
 For detailed information on using the user interface features, see "Using Ajax User Interface Components and
 Features" on page 804.
@@ -10606,19 +10606,19 @@ Depending on the specific ColdFusion tag, a bind expression uses bind parameter 
 parameter values as parameters to a CFC function, a JavaScript function, or an HTTP request and uses the function or
 request response to update the page. Use the following as the data source for a bind expression:
 
-· ColdFusion form control attributes and values. You can bind to the following controls:
+* ColdFusion form control attributes and values. You can bind to the following controls:
 
-    · cfgrid
+    * cfgrid
 
-    · cfinput with checkbox, datefield, file, hidden, radio, or text types
+    * cfinput with checkbox, datefield, file, hidden, radio, or text types
 
-    · cfselect
+    * cfselect
 
-    · cftextarea
+    * cftextarea
 
-    · cftree
+    * cftree
 
-· Spry data set elements
+* Spry data set elements
 
 Note: You cannot use a bind expression to bind to controls in a dynamically loaded region. For example, you cannot bind
 from a control on one page to a control in a layout area on that page if the cflayoutarea tag uses a source attribute
@@ -10646,18 +10646,18 @@ Requesting and Presenting Information
 Using bind expressions
 To specify a bind expression, use one of the following formats:
 
-· cfc:componentPath.functionName(parameters)
+* cfc:componentPath.functionName(parameters)
 
    Note: In ColdFusion 9, the component path cannot use a mapping. The componentPath value must be a dot-
    delimited path from the web root or the directory that contains the current page.
 
-· javascript:functionName(parameters)
+* javascript:functionName(parameters)
 
-· url:URL?parameters
+* url:URL?parameters
 
-· URL?parameters
+* URL?parameters
 
-· A string containing one or more instances of {bind parameter}, such as {firstname}.{lastname}@{domain}
+* A string containing one or more instances of {bind parameter}, such as {firstname}.{lastname}@{domain}
 
 In formats 1-4 the parameters normally include one or more bind parameters. The following table lists the tag
 attributes that support bind expressions and the formats each use:
@@ -10795,10 +10795,10 @@ Internet Explorer when the user selects or deselects the check box, not when the
 
 Grids and trees do not have default bind attributes.
 
-· Always specify a grid target attribute by using the format {gridID.columnName}. The bind expression gets the value
+* Always specify a grid target attribute by using the format {gridID.columnName}. The bind expression gets the value
     of the specified column in the selected row.
 
-· For trees, you must bind to a specific node in the tree. Specify the node by using the node ID or an explicit path to
+* For trees, you must bind to a specific node in the tree. Specify the node by using the node ID or an explicit path to
     the node.
 
 To bind to a Spry data set element or attribute, use standard Spry path notation. For example, specify an element name.
@@ -10828,11 +10828,11 @@ the bind. The following code shows this use:
 
 The @none event specifier is also useful when used with autosuggest text inputs, trees and grids, as follows:
 
-· When you use an autosuggest text input, the bind expression is evaluated as a user types in text, and picks up data
+* When you use an autosuggest text input, the bind expression is evaluated as a user types in text, and picks up data
     from all bind parameters, including those parameters with @none specified. Therefore, for autosuggest, specify
     @none for all bind parameters, because there is no way for it to react to changes in the parameters.
 
-· When you call the ColdFusion.Grid.refresh or ColdFusion.Tree.refresh function, the function fetches data
+* When you call the ColdFusion.Grid.refresh or ColdFusion.Tree.refresh function, the function fetches data
     from all bind parameters when it evaluates the bind expression, including any parameters with @none specified. If
     you specify @none for all bind parameters, the tree or grid might not respond to changes in other controls, but gets
     data from all the bind parameters each time you explicitly refresh it.
@@ -10871,11 +10871,11 @@ Note: In the previous releases, the CFCs had to be web-accessible for Ajax appli
 
 In addition to accessing CFCs using relative or absolute path, you can also use any of the following methods to access CFCs:
 
-· logical mappings (defined in the ColdFusion Administrator)
+* logical mappings (defined in the ColdFusion Administrator)
 
-· per-app mappings (defined in Application.cfc)
+* per-app mappings (defined in Application.cfc)
 
-· imports (using cfimport/import)
+* imports (using cfimport/import)
 
 
 Usage
@@ -11050,7 +11050,7 @@ CFML page), and pass bind parameters as the function or URL parameters.
 The following example uses the same form as the first example in the preceding section, but uses a different bind
 expression with the following features:
 
-· It uses the keyup events of the name and domain fields to trigger binding. So the e-mail field gets updated each time
+* It uses the keyup events of the name and domain fields to trigger binding. So the e-mail field gets updated each time
    that you enter a letter in any of these fields.
 
 
@@ -11063,7 +11063,7 @@ Requesting and Presenting Information
 
 
 
-· It calls a CFC, which uses only the first letter of the first name when forming the e-mail address, and forces the
+* It calls a CFC, which uses only the first letter of the first name when forming the e-mail address, and forces the
    domain name to be all lowercase.
 
 The following example shows the bindapp.cfm page:
@@ -11103,11 +11103,11 @@ Using the cfajaxproxy tag to bind to display controls
 The cfajaxproxy tag with a bind attribute makes any of the following elements dependent on one or more bound
 ColdFusion Ajax controls:
 
-· A single CFC function
+* A single CFC function
 
-· A single JavaScript function
+* A single JavaScript function
 
-· An HTTP request; for example, the URL of a CFML page
+* An HTTP request; for example, the URL of a CFML page
 
 The function or request executes whenever a specific event (by default, the onChange event) of the bound control
 occurs.
@@ -11120,7 +11120,7 @@ information) text.
 The cfajaxproxy tag includes the following attributes that determine how the proxy handles the data returned by the
 function or the page:
 
-· The onError function specifies code to handle an HTTP error return. You use this attribute with a URL or CFC bind.
+* The onError function specifies code to handle an HTTP error return. You use this attribute with a URL or CFC bind.
 
 
 
@@ -11133,7 +11133,7 @@ Requesting and Presenting Information
 
 
 
-· The onSuccess function handles a valid return from the function or page and updates the display as required with
+* The onSuccess function handles a valid return from the function or page and updates the display as required with
    the returned information.
 
 Binding a function or request by using the cfajaxproxy tag enables you to perform a server-side action, such as
@@ -11146,20 +11146,20 @@ tag for a different activity.
 For example, if you have a form with an editable cfgrid control and a delete button that a user clicks to delete a grid
 row. The application must have the following behaviors:
 
-· When the user clicks the delete button two things must happen:
+* When the user clicks the delete button two things must happen:
 
-   · The application must call a mycfc.deleteButton CFC function to delete the row from the database.
+   * The application must call a mycfc.deleteButton CFC function to delete the row from the database.
 
-   · The grid must update to remove the deleted row.
+   * The grid must update to remove the deleted row.
 
-· When the user edits the grid content, the grid must call a mycfc.update function to update the database.
+* When the user edits the grid content, the grid must call a mycfc.update function to update the database.
 
 Implement these behaviors by doing the following:
 
-· In the cfgrid tag, specify a bind attribute that uses a bind expression to call a mycfc.update function each time the
+* In the cfgrid tag, specify a bind attribute that uses a bind expression to call a mycfc.update function each time the
    user changes the grid contents.
 
-· In a cfajaxproxy tag, specify a bind attribute that calls the mycfc.deleterow CFC function, and specify an
+* In a cfajaxproxy tag, specify a bind attribute that calls the mycfc.deleterow CFC function, and specify an
    onSuccess attribute that calls the ColdFusion.Grid.refresh function to update the displayed grid when the
    CFC function returns successfully.
 
@@ -11225,17 +11225,17 @@ more information, see the ColdFusion.Ajax.submitForm function in the CFML Refere
 Managing the client-server interaction
 Manage the client-server interaction in several ways:
 
-· Use the cfajaxproxy tag to create a client-side JavaScript proxy for a CFC and its functions. You then call the
+* Use the cfajaxproxy tag to create a client-side JavaScript proxy for a CFC and its functions. You then call the
    proxy functions in client JavaScript code to access the server-side CFC functions.
 
-· Use the cfsprydataset tag to dynamically populate a Spry data set from a URL or a CFC. You then use the data
+* Use the cfsprydataset tag to dynamically populate a Spry data set from a URL or a CFC. You then use the data
    set to populate Spry dynamic regions. You also use Spry data sets in bind expressions.
 
-· Use the cfajaxproxy tag to bind fields of ColdFusion Ajax form controls as parameters to a specific CFC function,
+* Use the cfajaxproxy tag to bind fields of ColdFusion Ajax form controls as parameters to a specific CFC function,
    JavaScript function, or HTTP request, and specify JavaScript functions to handle successful or error results. The
    function is run each time the event determined by the bind expression occurs.
 
-· Use ColdFusion Ajax-based UI tags, such as cftree or cfgrid that automatically get data from CFCs or URLs by
+* Use ColdFusion Ajax-based UI tags, such as cftree or cfgrid that automatically get data from CFCs or URLs by
    using data binding.
 
 For Information on working with Spry, including how to use the cfsprydataset tag, see "Using Spry with
@@ -11258,17 +11258,17 @@ Using ColdFusion Ajax CFC proxies
 Use the cfajaxproxy tag to create a client-side JavaScript proxy for a CFC and its functions. The proxy object has the
 following characteristics:
 
-· It provides a JavaScript function that corresponds to each CFC remote function. Calling these functions in your
+* It provides a JavaScript function that corresponds to each CFC remote function. Calling these functions in your
    client-side JavaScript code remotely calls the CFC functions on the server.
 
-· It provides JavaScript support functions for controlling the communication, which specifies asynchronous result
+* It provides JavaScript support functions for controlling the communication, which specifies asynchronous result
    and error handler callbacks, and sends form data to the server. For detailed information on these functions, see the
    cfajaxproxy tag in the CFML Reference.
 
-· It manages the interactions between the client and the CFC, including serializing and deserializing JavaScript arrays
+* It manages the interactions between the client and the CFC, including serializing and deserializing JavaScript arrays
    and structures to and from JSON format for transmission over the web.
 
-· It ensures automatic serialization (into JSON format) and deserialization of CFC return values.
+* It ensures automatic serialization (into JSON format) and deserialization of CFC return values.
 
 By using a ColdFusion Ajax proxy, any JavaScript code can call the proxied CFC functions. Thus, any Ajax application,
 not just one that uses ColdFusion Ajax UI elements, can use dynamic data provided by CFCs. Also, the proxy provides
@@ -11294,19 +11294,19 @@ For more information about creating and using CFC proxies, see the cfajaxproxy t
 Configuring the CFC proxy
 The proxy provides several JavaScript functions that you use to control the behavior of the proxy:
 
-· You use the setAsyncMode and setSyncMode functions to control the call mode. By default, all calls to remote CFC
+* You use the setAsyncMode and setSyncMode functions to control the call mode. By default, all calls to remote CFC
    functions are asynchronous, the most common synchronization method for Ajax applications.
 
-· You use the setCallbackHandler and setErrorHandler functions to specify the functions that handle the results
+* You use the setCallbackHandler and setErrorHandler functions to specify the functions that handle the results
    of successful and unsuccessful asynchronous calls.
 
    Note: For error handling to work properly, select the Enable HTTP Status Codes option on the Server Settings >
    Settings page of the ColdFusion Administrator.
 
-· You use the setHTTPMethod function to control whether the call uses a GET HTTP request (the default) or a POST
+* You use the setHTTPMethod function to control whether the call uses a GET HTTP request (the default) or a POST
    request.
 
-· You use the setForm function to prepare the proxy to send full form data to the remote function. This function
+* You use the setForm function to prepare the proxy to send full form data to the remote function. This function
    causes the proxy to pass each form field as a separate parameter to the CFC function.
 
 
@@ -11320,7 +11320,7 @@ Requesting and Presenting Information
 
 
 
-· You use the setReturnFormat function to specify whether to return the result in JSON format (the default), in
+* You use the setReturnFormat function to specify whether to return the result in JSON format (the default), in
     WDDX format, or as plain text. Use the setQueryFormat function to specify whether to return a JSON format
     query as an object with an array of column names and an array of row arrays, or as an object that corresponds to
     the WDDX query format. These functions only effect the format of data returned by ColdFusion. Data sent from
@@ -11564,7 +11564,7 @@ with ColdFusion if you install the documentation.
 Using Spry with ColdFusion
 ColdFusion provides support for mixing native ColdFusion elements and Spry elements in a single application.
 
-· ColdFusion tags use Spry data sets directly in bind expressions. Therefore, a ColdFusion form element, such as
+* ColdFusion tags use Spry data sets directly in bind expressions. Therefore, a ColdFusion form element, such as
    cfinput, binds to a field in a dynamic Spry data set, and is updated each time the data set updates, including when
    the user selects an item in a Spry control or dynamic region that the data set populates.
 
@@ -11588,7 +11588,7 @@ Requesting and Presenting Information
 
 
 
-· Spry data sets use a CFC function as the data source. To do this, you simply specify the URL of the CFC in the
+* Spry data sets use a CFC function as the data source. To do this, you simply specify the URL of the CFC in the
    Spry.Data.XMLDataSet function, just as you would invoke any remote CFC method using a URL. Specify the
    method name with a method URL parameter, and pass data to the function in additional URL parameters, as in the
    following example:
@@ -11596,7 +11596,7 @@ Requesting and Presenting Information
     Spry.Data.XMLDataSet("MyAppMgr.cfc?method=getFilter&filter=scores",
    "filters/filter");
 
-· The cfsprydataset tag dynamically creates and updates Spry XML or JSON data sets based on ColdFusion form data.
+* The cfsprydataset tag dynamically creates and updates Spry XML or JSON data sets based on ColdFusion form data.
    Spry dynamic regions and other elements then use this data to control their display.
 
    The following example shows a cfsprydataset tag that creates a Spry XML data set named dsProducts by calling
@@ -11638,17 +11638,17 @@ displayed in a second Spry dynamic region.
 
 The application consists of the following files:
 
-· A roundtrip.cfm page with the display controls and related logic
+* A roundtrip.cfm page with the display controls and related logic
 
-· A GridDataManager.cfc file with two functions:
+* A GridDataManager.cfc file with two functions:
 
-   · A getFilter function that gets the XML for the spry data set
+   * A getFilter function that gets the XML for the spry data set
 
-   · A getData function that gets the contents of the cfgrid control
+   * A getData function that gets the contents of the cfgrid control
 
-   · A getProduct function that gets detailed information on the selected book
+   * A getProduct function that gets detailed information on the selected book
 
-· A Filters.xml file with the XML data for the spry data set
+* A Filters.xml file with the XML data for the spry data set
 
 
 
@@ -11918,10 +11918,10 @@ The Filters.xml file
 Specifying client-side support files
 By default, ColdFusion does the following:
 
-· Gets all the client-side JavaScript, CSS, and other files required for Ajax-based features from the
+* Gets all the client-side JavaScript, CSS, and other files required for Ajax-based features from the
    web_root/CFIDE/scripts/ajax directory.
 
-· For each application page, imports only the JavaScript files required for the tags that are explicitly included on the page.
+* For each application page, imports only the JavaScript files required for the tags that are explicitly included on the page.
 
 In some cases, override these default behaviors.
 
@@ -11947,26 +11947,26 @@ control appearance, that apply only to certain applications.
 In both situations, inform ColdFusion of the new location. Specify the location of either or both directories containing
 the following files:
 
-· All client-side resources required by the ColdFusion Ajax features
+* All client-side resources required by the ColdFusion Ajax features
 
-· Only the CSS files required by the ColdFusion Ajax features
+* Only the CSS files required by the ColdFusion Ajax features
 
 
 Specify the client-side resource location
 Use any of the following techniques to control the location of the directory that contains the client-side resources
 required by the ColdFusion Ajax features:
 
-· If the ColdFusion client-side files required by all applications, including the files used by cfform tags are in a single
+* If the ColdFusion client-side files required by all applications, including the files used by cfform tags are in a single
     location, you specify the directory in the ColdFusion Administrator > Server Settings > Settings page, Default
     CFFORM ScriptSrc Directory field. The directory you specify and its subdirectories must have the same structure
     and contents as the CFIDE/scripts directory tree.
 
-· If the client-side files required for Ajax features on a specific page are in one location, you use the cfajaximport
+* If the client-side files required for Ajax features on a specific page are in one location, you use the cfajaximport
     tag scriptsrc attribute to specify the source directory. This tag overrides the setting in the administrator, and does
     not affect the files used for standard cfform features. The directory you specify must have an ajax subdirectory with
     the same structure and contents as the CFIDE/scripts/ajax directory tree.
 
-· You specify the client-side source directory for a specific form in the cfform tag scriptsrc attribute. This setting
+* You specify the client-side source directory for a specific form in the cfform tag scriptsrc attribute. This setting
     overrides any cfajaximport tag setting for the form and its child controls. The directory you specify and its
     subdirectories must have the same structure and contents as the CFIDE/scripts directory tree.
 
@@ -12002,12 +12002,12 @@ Importing tag-specific JavaScript files
 In the following situations, ColdFusion does not automatically import the JavaScript files that are required for Ajax-
 based tags:
 
-· If you use a ColdFusion Ajax-based tag on a page that you specify by using a source or bind attribute in a container
+* If you use a ColdFusion Ajax-based tag on a page that you specify by using a source or bind attribute in a container
    tag, such as cfdiv, cflayoutarea, cfpod, or cfwindow. Place a cfajaximport tag on the page that has the
    container tag and use the tags attribute to specify the Ajax feature tags that are on the other pages. (You do not
    have to do this for any tags that are also used on the page with the source attribute.)
 
-· If you use a ColdFusion Ajax JavaScript function, such as ColdFusion.Window.create or ColdFusion.navigate, on
+* If you use a ColdFusion Ajax JavaScript function, such as ColdFusion.Window.create or ColdFusion.navigate, on
    a page that does not otherwise import the required ColdFusion Ajax JavaScript functions, use the cfajaximport
    tag to import the required JavaScript functions. If you are using a function, such as coldFuson.navigate, that is
    not used for a specific control, you can omit any attributes; the default behavior is to import the base functions that
@@ -12050,11 +12050,11 @@ JSON data from the CFC function.
 
 Control the CFC function return format in the following ways:
 
-· Use the returnFormat attribute on the cffunction tag.
+* Use the returnFormat attribute on the cffunction tag.
 
-· Set a returnFormat parameter in the HTTP request that calls the CFC function.
+* Set a returnFormat parameter in the HTTP request that calls the CFC function.
 
-· Use the CFC proxy setReturnFormat function. (You do this only if your client-side code requires non-JSON
+* Use the CFC proxy setReturnFormat function. (You do this only if your client-side code requires non-JSON
    format data, for example, XML or WDDX.)
 
 
@@ -12070,28 +12070,28 @@ Requesting and Presenting Information
 If the requested return format is JSON and the function returns a query, ColdFusion serializes the query into a JSON
 object in either of the following formats:
 
-· As a JSON object with two entries: an array of column names, and an array of column data arrays.
+* As a JSON object with two entries: an array of column names, and an array of column data arrays.
 
     These entries are returned in the following situations:
 
-    · By default
+    * By default
 
-    · If you specify an HTTP URL parameter of queryFormat="row"
+    * If you specify an HTTP URL parameter of queryFormat="row"
 
-    · If you use the cfajaxproxy tag and call the proxy object's setReturnFormat function with a parameter value
+    * If you use the cfajaxproxy tag and call the proxy object's setReturnFormat function with a parameter value
        of row
 
     ColdFusion client-side binding and proxy code automatically converts this data into JavaScript that is consumed
     directly by HTML grids.
 
-· As a JSON object with three entries: the number of rows, an array of column names, and an object where each key
+* As a JSON object with three entries: the number of rows, an array of column names, and an object where each key
     is a column name and each value is an array with the column data
 
     These entries are returned in the following situations:
 
-    · If you specify an HTTP URL parameter of queryFormat="column"
+    * If you specify an HTTP URL parameter of queryFormat="column"
 
-· If you use the cfajaxproxy tag and call the proxy object's setQueryFormat function with a parameter value of
+* If you use the cfajaxproxy tag and call the proxy object's setQueryFormat function with a parameter value of
     column
 
     ColdFusion client-side binding and proxy code does not convert column format data into JavaScript that is
@@ -12122,11 +12122,11 @@ use Ajax to display these feeds; use standard ColdFusion tags and functions to d
 
 The following CFML functions support using JSON format in server-side code:
 
-· DeserializeJSON
+* DeserializeJSON
 
-· SerializeJSON
+* SerializeJSON
 
-· IsJSON
+* IsJSON
 
 
 
@@ -12144,9 +12144,9 @@ For more information about these functions and examples, see the CFML Reference.
 The following example shows how to use ColdFusion JSON functions in a non-Ajax application. It does a Yahoo
 search for references to "ColdFusion Ajax" and displays these results:
 
-· The total number of web pages found
+* The total number of web pages found
 
-· The titles and summaries of the (by default 10) returned results. The title is a link to the web pageURL.
+* The titles and summaries of the (by default 10) returned results. The title is a link to the web pageURL.
 
 <!--- Send an http request to the Yahoo Web Search Service. --->
 <cfhttp
@@ -12244,11 +12244,11 @@ To display the logging window you must do the following:
 Enable logging output
 To enable ColdFusion to send information to the logging window, do the following:
 
-· Select the Enable Ajax Debug Log Window option on the ColdFusion Administrator > Debugging & Logging >
+* Select the Enable Ajax Debug Log Window option on the ColdFusion Administrator > Debugging & Logging >
     Debug Output Settings page. To view exception messages in the logging window, select the Enable Robust
     Exception Information option on the Debug Output Settings page.
 
-· Make sure that the IP address of the system where you do the debugging is included on the ColdFusion
+* Make sure that the IP address of the system where you do the debugging is included on the ColdFusion
     Administrator > Debugging & Logging > Debugging IP List page of the ColdFusion Administrator. By default this
     list includes only 127.0.0.1.
 
@@ -12262,9 +12262,9 @@ in the URL when you request a page, as in the following URL:
 After the debug log window appears, it continues running until you navigate to a new page in the browser. The logging
 window includes options that let you filter the messages by either or both of the following criteria:
 
-· Severity
+* Severity
 
-· Category
+* Category
 
 You can select to display logging information at any combination of four levels of severity: debug, info, error, and
 window. The specific logging function that you call determines the severity level.
@@ -12310,9 +12310,9 @@ including information about JavaScript errors in the log function calls.
 
 When you call a logging function, you specify a message and a category.
 
-· The message can include JavaScript variables and HTML markup, such as bold text and line breaks.
+* The message can include JavaScript variables and HTML markup, such as bold text and line breaks.
 
-· The category is a short descriptive name. ColdFusion generates a check box option for each category to filter the
+* The category is a short descriptive name. ColdFusion generates a check box option for each category to filter the
    logging window output. This parameter is optional; the default value is global. You can specify a standard
    ColdFusion category or a custom category.
 
@@ -12362,13 +12362,13 @@ Requesting and Presenting Information
 Preventing errors
 The following rules and techniques help you prevent errors in your applications:
 
-· To ensure that your code works properly, make sure that all your pages, including dynamically loaded content and
+* To ensure that your code works properly, make sure that all your pages, including dynamically loaded content and
   pages that contain dynamic regions, have valid html, head, and body tags, and that all script tags are located in
   the page head. This is important for any page with ColdFusion Ajax tags and script tags, where it ensures that the
   script code is processed and that code is generated in the correct order. It also prevents problems in some browsers,
   such as Internet Explorer.
 
-· All JavaScript function definitions on pages that you include dynamically, for example by using a bind expression,
+* All JavaScript function definitions on pages that you include dynamically, for example by using a bind expression,
   the ColdFusion.navigate function, or a form submission within a ColdFusion Ajax container tag, must have the
   following syntax format:
 
@@ -12382,35 +12382,35 @@ The following rules and techniques help you prevent errors in your applications:
   on the application's main page, and not write them in-line in code that you get dynamically. Imported pages do not
   have this restriction on the function definition format.
 
-· In a CFM page, if you call a JavaScript function present in a file that is bound to the page, ensure that you do not
+* In a CFM page, if you call a JavaScript function present in a file that is bound to the page, ensure that you do not
   use the keyword var while declaring the function. var declares a function-local scope variable. Therefore, you
   cannot invoke the JavaScript function from the parent page.
 
-· As a general rule, the id attributes or name attributes, when you do not specify id attributes, of controls should be
+* As a general rule, the id attributes or name attributes, when you do not specify id attributes, of controls should be
   unique on the page, including on any pages that you specify in source attributes. Exceptions to this rule include
   the following:
 
-   · You can use the same name attribute for all options in a radio button group. Bind expressions get information
+   * You can use the same name attribute for all options in a radio button group. Bind expressions get information
       about the selected button.
 
-   · You can use the same name attribute for check boxes in a group if you want a single bind expression to get
+   * You can use the same name attribute for check boxes in a group if you want a single bind expression to get
       information about all selected controls in the group.
 
-   · If you have multiple similar forms on a page, you might have controls in each form with the same name or ID.
+   * If you have multiple similar forms on a page, you might have controls in each form with the same name or ID.
       You specify the individual controls in bind expressions by including the form name in the bind parameter.
 
-· Do not use an Application.cfc onRequestEnd function or onRequestEnd.cfm page that creates output in
+* Do not use an Application.cfc onRequestEnd function or onRequestEnd.cfm page that creates output in
   applications that use the cfajaxproxy tag or bind expressions that call CFC functions to get data. ColdFusion Ajax
   features normally require that all returned data from the server must be in JSON format; the onRequestEnd
   method onRequestEnd.cfm page appends any output as non-JSON information to the end of the returned data.
 
-· By default, all ColdFusion structure element names are in all uppercase characters. Therefore, your client-side Ajax
+* By default, all ColdFusion structure element names are in all uppercase characters. Therefore, your client-side Ajax
   code, such as an onSuccess function specified by a cfajaxproxy tag, must use uppercase letters for the returned
   object's element names if you do not explicitly ensure that the element names are not all uppercase. (You can create
   structure element names with lowercase characters by specifying the names in associative array notation, for
   example, myStruct["myElement"]="value".)
 
-· ColdFusion Ajax controls throw JavaScript errors if badly formed HTML causes errors in the browser DOM
+* ColdFusion Ajax controls throw JavaScript errors if badly formed HTML causes errors in the browser DOM
   hierarchy order. One example of such badly formed HTML is a table that contains a cfform tag, which in turn
   contains table rows. In this situation, you place the table tag inside the cfform tag.
 
@@ -12433,12 +12433,12 @@ Improving security
 ColdFusion includes several capabilities that help to ensure the security of Ajax application. Also, the ColdFusion
 Administrator disables output to the client-side logging window by default (see "Enable logging output" on page 884).
 
-· To prevent cross-site scripting, you cannot use remote URLs in code that executes on the client. For example, if you
+* To prevent cross-site scripting, you cannot use remote URLs in code that executes on the client. For example, if you
   use a URL such as http://www.myco.com/mypage.cfm in a cfwindow tag source attribute, the remote page does
   not load in the window and the window shows an error message. If you must access remote URLs, do so in CFML
   code that executes on the server, for example, by using a cfhttp tag on the page specified by a source attribute.
 
-· When a CFC function returns remote data in JSON format, by default, the data is sent without any prefix or
+* When a CFC function returns remote data in JSON format, by default, the data is sent without any prefix or
   wrapper. To help prevent cross-site scripting attacks where the attacker accesses the JSON data, you can tell
   ColdFusion to prefix the returned data with one or more characters. You can specify this behavior in several ways.
   The value of an item in the following list is determined by the preceding item in this list:
@@ -12461,15 +12461,15 @@ Administrator disables output to the client-side logging window by default (see 
      expressions and the CFC proxies created by the cfajaxproxy tag, automatically remove the security prefix
      when appropriate. You do not have to modify your client-side code.
 
-· ColdFusion provides capabilities that help prevent security attacks where an unauthorized party attempts to
+* ColdFusion provides capabilities that help prevent security attacks where an unauthorized party attempts to
   perform an action on the server, such as changing a password. Use the following techniques to ensure that a request
   to a CFML page or remote CFC function comes from a ColdFusion Ajax feature, such as a bind expression or CFC
   proxy, that is a valid part of your application:
 
-   · In the cffunction tag in a CFC function that returns data to an Ajax client, specify a verifyClient attribute
+   * In the cffunction tag in a CFC function that returns data to an Ajax client, specify a verifyClient attribute
      with a value of yes.
 
-   · At the top of a CFML page or function that is requested by a ColdFusion Ajax client, call the VerifyClient
+   * At the top of a CFML page or function that is requested by a ColdFusion Ajax client, call the VerifyClient
      ColdFusion function. This function takes no parameters.
 
   The VerifyClient function and attribute tell ColdFusion to require an encrypted security token in each request.
@@ -12499,25 +12499,25 @@ Requesting and Presenting Information
 Programming effectively
 The following recommendations help improve or customize your ColdFusion Ajax application.
 
-· Use the AjaxOnLoad function, which specifies a JavaScript function to run when the page loads, to perform any
+* Use the AjaxOnLoad function, which specifies a JavaScript function to run when the page loads, to perform any
   initialization actions that are required for a page to function properly. Use the AjaxOnLoad function to call
   functions when a page is loaded in a container tag. One use for this function could be on a page that pops up a login
   window if the user is not already logged in when it displays. You can use the AjaxOnLoad function to specify a
   JavaScript function that determines the login status and pops up the window only if necessary.
 
-· Use the following ColdFusion JavaScript functions to access the Ext JS or Yahoo YUI JavaScript library objects that
+* Use the following ColdFusion JavaScript functions to access the Ext JS or Yahoo YUI JavaScript library objects that
   underlie border and tab style cflayout controls, cfwindow controls, and HTML format cfgrid and cftree
   controls. Then use the raw object to modify the displayed control.
 
-   · ColdFusion.Layout.getBorderLayout
+   * ColdFusion.Layout.getBorderLayout
 
-   · ColdFusion.Grid.getGridObject
+   * ColdFusion.Grid.getGridObject
 
-   · ColdFusion.Layout.getTabLayout
+   * ColdFusion.Layout.getTabLayout
 
-   · ColdFusion.Tree.getTreeObject
+   * ColdFusion.Tree.getTreeObject
 
-   · ColdFusion.Window.getWindowObject
+   * ColdFusion.Window.getWindowObject
 
   For documentation on the objects and how to manage them, see the Ext documentation at
   extjs.com/deploy/ext/docs/ and the Yahoo toolkit documentation at developer.yahoo.com/yui/.
